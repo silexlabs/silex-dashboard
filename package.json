@@ -1,0 +1,26 @@
+{
+  "name": "silex-dashboard",
+  "version": "0.0.0",
+  "description": "Dashboard for Silex v3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/silexlabs/silex-dashboard.git"
+  },
+  "keywords": [
+    "silex",
+    "plugin"
+  ],
+  "author": "lexoyo",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/silexlabs/silex-dashboard/issues"
+  },
+  "homepage": "https://github.com/silexlabs/silex-dashboard#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}
