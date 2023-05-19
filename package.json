@@ -4,7 +4,7 @@
   "description": "Dashboard for Silex v3",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "FS_ROOT=`pwd`/.silex node node_modules/silex-website-builder"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/silexlabs/silex-dashboard#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^2.0.1",
+    "silex-website-builder": "^3.0.0-alpha.17"
   }
 }
