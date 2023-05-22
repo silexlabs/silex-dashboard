@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     'silex-dashboard': {
         'Dashboard': 'Dashboard',
     },

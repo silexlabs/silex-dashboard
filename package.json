@@ -4,7 +4,9 @@
   "description": "Dashboard for Silex v3",
   "main": "index.js",
   "scripts": {
-    "start": "FS_ROOT=`pwd`/.silex node node_modules/silex-website-builder"
+    "start": "FS_ROOT=`pwd`/.silex node node_modules/silex-website-builder",
+    "build": "eleventy",
+    "serve": "eleventy --serve"
   },
   "repository": {
     "type": "git",
