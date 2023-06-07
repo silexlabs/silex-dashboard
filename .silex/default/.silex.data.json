@@ -1,1 +1,1418 @@
-{"assets":[{"type":"image","src":"assets/alex-small.jpg","unitDim":"px","height":0,"width":0},{"type":"image","src":"assets/silex-icon-2018@200px.png","unitDim":"px","height":0,"width":0}],"pages":[{"frames":[{"component":{"type":"wrapper","classes":["body","loading"],"attributes":{"id":"ik0i"},"components":[{"tagName":"HEADER","type":"container","classes":[{"name":"header","active":false},{"name":"padding-normal","active":false}],"attributes":{"id":"igrg"},"components":[{"type":"image","attributes":{"id":"ir7s","src":"assets/silex-icon-2018@200px.png"},"custom-name":"logo"},{"tagName":"NAV","type":"container","classes":["nav"],"attributes":{"id":"i9jq"},"components":[{"type":"text","classes":["nav__item"],"attributes":{"id":"iels"},"components":[{"type":"textnode","content":"Sites"}]},{"type":"text","classes":["nav__item"],"attributes":{"id":"itv7"},"components":[{"type":"textnode","content":"Pugins"}]}],"custom-name":"Nav"},{"type":"container","attributes":{"id":"i24ew"},"custom-name":"User"},{"type":"image","attributes":{"id":"idkdk","src":"assets/alex-small.jpg"}}],"custom-name":"Header"},{"tagName":"MAIN","type":"container","classes":[{"name":"padding-normal","active":false},{"name":"section","active":false}],"attributes":{"id":"iz63r"},"components":[{"tagName":"H1","type":"text","attributes":{"id":"itp1f"},"components":[{"type":"textnode","content":"Welcome back!"},{"tagName":"br","void":true}]},{"type":"text","classes":["subtitle",{"name":"color--light","active":false}],"attributes":{"id":"iyex8"},"components":[{"type":"textnode","content":"Dive into your projects or kickstart a new one"}]},{"type":"container","classes":[{"name":"button-bar","active":false}],"attributes":{"id":"ickx4"},"components":[{"type":"text","classes":[{"name":"button","active":false},"button--primary",{"name":"rounded","active":false}],"attributes":{"id":"i2x0l"},"components":[{"tagName":"span","type":"text","attributes":{"id":"ibsgw"},"components":[{"type":"textnode","content":"+"}]},{"type":"textnode","content":" Create website"}]},{"type":"text","classes":[{"name":"button","active":false},{"name":"button--secondary","active":false},{"name":"rounded","active":false}],"attributes":{"id":"i0ro3"},"components":[{"type":"textnode","content":"Import"},{"tagName":"br","void":true}]}]},{"type":"container","classes":[{"name":"section","active":false}],"attributes":{"id":"if80m"},"components":[{"tagName":"SECTION","type":"container","classes":[{"name":"button-bar","active":false},{"name":"button-bar--full-width","active":false},{"name":"bg-white","active":false},{"name":"rounded","active":false}],"attributes":{"id":"idgvg"},"components":[{"tagName":"H3","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--main","active":false}],"attributes":{"id":"i69a7"},"components":[{"type":"textnode","content":"My first website"},{"tagName":"br","void":true}]},{"tagName":"P","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--secondary","active":false}],"attributes":{"id":"i65hn"},"components":[{"type":"textnode","content":"Updated 1h ago by lexoyo"},{"tagName":"br","void":true}]},{"tagName":"P","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--secondary","active":false}],"attributes":{"id":"i64qa"},"components":[{"type":"textnode","content":"Created 2023-02-16 by lexoyo"},{"tagName":"br","void":true}]},{"type":"text","classes":[{"name":"button","active":false},{"name":"button-bar_item","active":false},{"name":"rounded","active":false}],"attributes":{"id":"iol4h"},"components":[{"type":"textnode","content":"Edit"}]}]},{"tagName":"SECTION","type":"container","classes":[{"name":"button-bar","active":false},{"name":"button-bar--full-width","active":false},{"name":"bg-white","active":false},{"name":"rounded","active":false},"skeleton-anim","skeleton-wrapper"],"attributes":{"id":"i1fjn"},"components":[{"tagName":"H3","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--main","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"My first website"},{"tagName":"br","void":true}]},{"tagName":"P","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--secondary","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"Updated 1h ago by lexoyo"},{"tagName":"br","void":true}]},{"tagName":"P","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--secondary","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"Created 2023-02-16 by lexoyo"},{"tagName":"br","void":true}]},{"type":"text","classes":[{"name":"button","active":false},{"name":"button-bar_item","active":false},{"name":"rounded","active":false},"skeleton","skeleton-button"],"attributes":{"id":"ixz6c"},"components":[{"type":"textnode","content":"Edit"}]}]},{"tagName":"SECTION","type":"container","classes":[{"name":"button-bar","active":false},{"name":"button-bar--full-width","active":false},{"name":"bg-white","active":false},{"name":"rounded","active":false},"skeleton-anim","skeleton-wrapper"],"components":[{"tagName":"H3","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--main","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"My first website"},{"tagName":"br","void":true}]},{"tagName":"P","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--secondary","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"Updated 1h ago by lexoyo"},{"tagName":"br","void":true}]},{"tagName":"P","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--secondary","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"Created 2023-02-16 by lexoyo"},{"tagName":"br","void":true}]},{"type":"text","classes":[{"name":"button","active":false},{"name":"button-bar_item","active":false},{"name":"rounded","active":false},"skeleton","skeleton-button"],"attributes":{"id":"i2ts6y"},"components":[{"type":"textnode","content":"Edit"}]}]},{"tagName":"SECTION","type":"container","classes":[{"name":"button-bar","active":false},{"name":"button-bar--full-width","active":false},{"name":"bg-white","active":false},{"name":"rounded","active":false},"skeleton-anim","skeleton-wrapper"],"components":[{"tagName":"H3","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--main","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"My first website"},{"tagName":"br","void":true}]},{"tagName":"P","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--secondary","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"Updated 1h ago by lexoyo"},{"tagName":"br","void":true}]},{"tagName":"P","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--secondary","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"Created 2023-02-16 by lexoyo"},{"tagName":"br","void":true}]},{"type":"text","classes":[{"name":"button","active":false},{"name":"button-bar_item","active":false},{"name":"rounded","active":false},"skeleton","skeleton-button"],"attributes":{"id":"izokb"},"components":[{"type":"textnode","content":"Edit"}]}]},{"tagName":"SECTION","type":"container","classes":[{"name":"button-bar","active":false},{"name":"button-bar--full-width","active":false},{"name":"bg-white","active":false},{"name":"rounded","active":false},"skeleton-anim","skeleton-wrapper"],"components":[{"tagName":"H3","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--main","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"My first website"},{"tagName":"br","void":true}]},{"tagName":"P","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--secondary","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"Updated 1h ago by lexoyo"},{"tagName":"br","void":true}]},{"tagName":"P","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--secondary","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"Created 2023-02-16 by lexoyo"},{"tagName":"br","void":true}]},{"type":"text","classes":[{"name":"button","active":false},{"name":"button-bar_item","active":false},{"name":"rounded","active":false},"skeleton","skeleton-button"],"attributes":{"id":"iz3mi"},"components":[{"type":"textnode","content":"Edit"}]}]},{"tagName":"SECTION","type":"container","classes":[{"name":"button-bar","active":false},{"name":"button-bar--full-width","active":false},{"name":"bg-white","active":false},{"name":"rounded","active":false},"skeleton-anim","skeleton-wrapper"],"components":[{"tagName":"H3","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--main","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"My first website"},{"tagName":"br","void":true}]},{"tagName":"P","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--secondary","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"Updated 1h ago by lexoyo"},{"tagName":"br","void":true}]},{"tagName":"P","type":"text","classes":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--secondary","active":false},"skeleton-text","skeleton"],"components":[{"type":"textnode","content":"Created 2023-02-16 by lexoyo"},{"tagName":"br","void":true}]},{"type":"text","classes":[{"name":"button","active":false},{"name":"button-bar_item","active":false},{"name":"rounded","active":false},"skeleton","skeleton-button"],"attributes":{"id":"ic6ju"},"components":[{"type":"textnode","content":"Edit"}]}]}]}],"custom-name":"Main"},{"tagName":"FOOTER","type":"container","classes":[{"name":"header","active":false},"footer"],"attributes":{"id":"ilzpl"},"components":[{"type":"text","classes":[{"name":"section","active":false}],"attributes":{"id":"i238z"},"components":[{"type":"textnode","content":"Links"},{"tagName":"br","void":true},{"tagName":"ul","attributes":{"id":"ibmxx"},"components":[{"tagName":"li","type":"text","attributes":{"id":"iktkw"},"components":[{"type":"textnode","content":"Docs"}]},{"tagName":"li","type":"text","components":[{"type":"textnode","content":"Support"}]},{"tagName":"li","type":"text","classes":["gjs-hovered"],"attributes":{"id":"ihfzt","draggable":"true"},"components":[{"type":"textnode","content":"Bug report"}]},{"tagName":"li","type":"text","attributes":{"id":"i4qli"},"components":[{"type":"textnode","content":"Source code"},{"tagName":"br","void":true}]}]}]}],"custom-name":"Footer"}]}}],"type":"main","id":"mk3OKgfr4A9V7Dww"}],"styles":[{"selectors":["#iels"],"style":{"padding":"10px"}},{"selectors":["nav__item"],"style":{"margin":"0px 10px 0px 10px","font-size":"0.8rem"}},{"selectors":["#itv7"],"style":{"padding":"10px"}},{"selectors":["body"],"style":{"font-family":"\"Roboto\", sans-serif","background-color":"#f0f0f0"}},{"selectors":[{"name":"header","active":false}],"style":{"display":"flex","min-height":"60px","align-items":"center","justify-content":"space-between","background-color":"#ffffff"}},{"selectors":["#ir7s"],"style":{"color":"black","width":"32px","height":"32px"}},{"selectors":[{"name":"padding-normal","active":false}],"style":{"padding":"0px 24px 0px 24px"}},{"selectors":["#i9jq"],"style":{"display":"flex","align-items":"center"}},{"selectors":["nav"],"style":{"width":"100%","margin":"0px 20px 0px 20px"}},{"selectors":["#iz63r"],"style":{"min-height":"90vh"}},{"selectors":["#itp1f"],"style":{"font-size":"2rem","margin":"0px 0px 10px 0px"}},{"selectors":["subtitle"],"style":{"font-size":"1rem","margin":"0px 0px 60px 0px"}},{"selectors":[{"name":"section","active":false}],"style":{"max-width":"1080px","margin":"80px auto 80px auto"}},{"selectors":["subtitle",{"name":"color--light","active":false}],"style":{"color":"#636363","font-weight":"700"}},{"selectors":["#i24ew"],"style":{"min-height":"100px"}},{"selectors":["#idkdk"],"style":{"color":"black","border-radius":"100% 100% 100% 100%"}},{"selectors":[{"name":"button","active":false}],"style":{"font-weight":"700","background-color":"#dddddd","font-size":"0.8rem","padding":"12px 12px 12px 12px","display":"inline-block"}},{"selectors":[{"name":"button","active":false},"button--primary"],"style":{"background-color":"#5e85a8","color":"white"}},{"selectors":[{"name":"button-bar","active":false}],"style":{"margin":"10px 0px 10px 0px","display":"flex"}},{"selectors":["#ibsgw"],"style":{"font-size":"1.5rem","position":"relative","top":"3px","line-height":"1px"}},{"selectors":["#iol4h"],"style":{"padding":"10px"}},{"selectors":[{"name":"button-bar","active":false},{"name":"button-bar--full-width","active":false}],"style":{"justify-content":"space-between","align-items":"center"}},{"selectors":[{"name":"button-bar_item","active":false}],"style":{"margin":"20px 20px 20px 20px"}},{"selectors":[{"name":"button-bar_item","active":false},{"name":"button-bar__item--secondary","active":false}],"style":{"font-size":"0.8rem","color":"#444444"}},{"selectors":[{"name":"button","active":false},{"name":"button--secondary","active":false}],"style":{"margin":"0px 0px 0px 20px","font-weight":"400"}},{"selectors":[{"name":"bg-white","active":false}],"style":{"background-color":"#ffffff"}},{"selectors":[{"name":"rounded","active":false}],"style":{"border-radius":"5px 5px 5px 5px"}},{"selectors":["#ilzpl"],"style":{"min-height":"100px"}},{"selectors":["#i238z"],"style":{"padding":"10px"}},{"selectors":["footer"],"style":{"display":"block","margin":"20px 0px 20px 0px","padding":"1px 0px 1px 0px"}},{"selectors":["skeleton-text","skeleton"],"style":{"background-color":"#dddddd","color":"transparent","opacity":"0.31","border-radius":"5px 5px 5px 5px"}},{"selectors":["skeleton","skeleton-button"],"style":{"color":"transparent","opacity":"0.16"}},{"selectors":["skeleton-anim"],"style":{"position":"relative"}},{"selectors":["#ixz6c"],"style":{"padding":"10px"}},{"selectors":["#ic6ju"],"style":{"padding":"10px"}},{"selectors":["#iz3mi"],"style":{"padding":"10px"}},{"selectors":["#izokb"],"style":{"padding":"10px"}},{"selectors":["#i2ts6y"],"style":{"padding":"10px"}}],"settings":{"lang":"","title":"","description":"","favicon":"","og:title":"","og:description":"","og:image":"","head":"<style>\n.skeleton-anim:after {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  content: \"\";\n  background: \n    linear-gradient(0.25turn, transparent, rgba(255,255,255,.75), transparent),\n    linear-gradient(transparent, transparent),\n    radial-gradient(38px circle at 19px 19px, transparent 50%, transparent 51%),\n    linear-gradient(transparent, transparent);  \n  background-repeat: no-repeat;\n  background-size: 315px 250px, 315px 180px, 100px 100px, 225px 30px; \n  background-position: -315px 0, 0 0, 0px 190px, 50px 195px; \n  animation: loading 1.5s infinite;\n}\n\n@keyframes loading {  \n  to {\n    background-position: 200% 0, 0 0, 0 190px, 50px 195px;\n  }\n}\n\n</style>"},"publication":{"css":{"url":"/css","path":"css"},"html":{"path":"_layouts"},"url":"/","path":"../../","autoHomePage":false},"name":"","fonts":[{"name":"Roboto","value":"\"Roboto\", sans-serif","variants":[]}],"symbols":[]}
+{
+  "assets": [
+    {
+      "type": "image",
+      "src": "assets/alex-small.jpg",
+      "unitDim": "px",
+      "height": 0,
+      "width": 0
+    }, {
+      "type": "image",
+      "src": "assets/silex-icon-2018@200px.png",
+      "unitDim": "px",
+      "height": 0,
+      "width": 0
+    }
+  ],
+  "pages": [
+    {
+      "frames": [
+        {
+          "component": {
+            "type": "wrapper",
+            "classes": [
+              "body", "loading"
+            ],
+            "attributes": {
+              "id": "ik0i"
+            },
+            "components": [
+              {
+                "tagName": "HEADER",
+                "type": "container",
+                "classes": [
+                  {
+                    "name": "header",
+                    "active": false
+                  }, {
+                    "name": "padding-normal",
+                    "active": false
+                  }
+                ],
+                "attributes": {
+                  "id": "igrg"
+                },
+                "components": [
+                  {
+                    "type": "image",
+                    "attributes": {
+                      "id": "ir7s",
+                      "src": "assets/silex-icon-2018@200px.png"
+                    },
+                    "custom-name": "logo"
+                  }, {
+                    "tagName": "NAV",
+                    "type": "container",
+                    "classes": ["nav"],
+                    "attributes": {
+                      "id": "i9jq"
+                    },
+                    "components": [
+                      {
+                        "type": "text",
+                        "classes": ["nav__item"],
+                        "attributes": {
+                          "id": "iels"
+                        },
+                        "components": [
+                          {
+                            "type": "textnode",
+                            "content": "Sites"
+                          }
+                        ]
+                      }, {
+                        "type": "text",
+                        "classes": ["nav__item"],
+                        "attributes": {
+                          "id": "itv7"
+                        },
+                        "components": [
+                          {
+                            "type": "textnode",
+                            "content": "Pugins"
+                          }
+                        ]
+                      }
+                    ],
+                    "custom-name": "Nav"
+                  }, {
+                    "type": "container",
+                    "attributes": {
+                      "id": "i24ew"
+                    },
+                    "custom-name": "User"
+                  }, {
+                    "type": "image",
+                    "attributes": {
+                      "id": "idkdk",
+                      "src": "assets/alex-small.jpg"
+                    }
+                  }
+                ],
+                "custom-name": "Header"
+              }, {
+                "tagName": "MAIN",
+                "type": "container",
+                "classes": [
+                  {
+                    "name": "padding-normal",
+                    "active": false
+                  }, {
+                    "name": "section",
+                    "active": false
+                  }
+                ],
+                "attributes": {
+                  "id": "iz63r"
+                },
+                "components": [
+                  {
+                    "tagName": "H1",
+                    "type": "text",
+                    "attributes": {
+                      "id": "itp1f"
+                    },
+                    "components": [
+                      {
+                        "type": "textnode",
+                        "content": "Welcome back!"
+                      }, {
+                        "tagName": "br",
+                        "void": true
+                      }
+                    ]
+                  }, {
+                    "type": "text",
+                    "classes": [
+                      "subtitle", {
+                        "name": "color--light",
+                        "active": false
+                      }
+                    ],
+                    "attributes": {
+                      "id": "iyex8"
+                    },
+                    "components": [
+                      {
+                        "type": "textnode",
+                        "content": "Dive into your projects or kickstart a new one"
+                      }
+                    ]
+                  }, {
+                    "type": "container",
+                    "classes": [
+                      {
+                        "name": "button-bar",
+                        "active": false
+                      }
+                    ],
+                    "attributes": {
+                      "id": "ickx4"
+                    },
+                    "components": [
+                      {
+                        "type": "text",
+                        "classes": [
+                          {
+                            "name": "button",
+                            "active": false
+                          },
+                          "button--primary", {
+                            "name": "rounded",
+                            "active": false
+                          }
+                        ],
+                        "attributes": {
+                          "id": "i2x0l"
+                        },
+                        "components": [
+                          {
+                            "tagName": "span",
+                            "type": "text",
+                            "attributes": {
+                              "id": "ibsgw"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "+"
+                              }
+                            ]
+                          }, {
+                            "type": "textnode",
+                            "content": " Create website"
+                          }
+                        ]
+                      }, {
+                        "type": "text",
+                        "classes": [
+                          {
+                            "name": "button",
+                            "active": false
+                          }, {
+                            "name": "button--secondary",
+                            "active": false
+                          }, {
+                            "name": "rounded",
+                            "active": false
+                          }
+                        ],
+                        "attributes": {
+                          "id": "i0ro3"
+                        },
+                        "components": [
+                          {
+                            "type": "textnode",
+                            "content": "Import"
+                          }, {
+                            "tagName": "br",
+                            "void": true
+                          }
+                        ]
+                      }
+                    ]
+                  }, {
+                    "type": "container",
+                    "classes": [
+                      {
+                        "name": "section",
+                        "active": false
+                      }
+                    ],
+                    "attributes": {
+                      "id": "if80m"
+                    },
+                    "components": [
+                      {
+                        "tagName": "SECTION",
+                        "type": "container",
+                        "classes": [
+                          {
+                            "name": "button-bar",
+                            "active": false
+                          }, {
+                            "name": "button-bar--full-width",
+                            "active": false
+                          }, {
+                            "name": "bg-white",
+                            "active": false
+                          }, {
+                            "name": "rounded",
+                            "active": false
+                          }
+                        ],
+                        "attributes": {
+                          "id": "idgvg"
+                        },
+                        "components": [
+                          {
+                            "tagName": "H3",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--main",
+                                "active": false
+                              }
+                            ],
+                            "attributes": {
+                              "id": "i69a7"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "My first website"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "tagName": "P",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--secondary",
+                                "active": false
+                              }
+                            ],
+                            "attributes": {
+                              "id": "i65hn"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Updated 1h ago by lexoyo"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "tagName": "P",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--secondary",
+                                "active": false
+                              }
+                            ],
+                            "attributes": {
+                              "id": "i64qa"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Created 2023-02-16 by lexoyo"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button",
+                                "active": false
+                              }, {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "rounded",
+                                "active": false
+                              }
+                            ],
+                            "attributes": {
+                              "id": "iol4h"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Edit"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tagName": "SECTION",
+                        "type": "container",
+                        "classes": [
+                          {
+                            "name": "button-bar",
+                            "active": false
+                          },
+                          {
+                            "name": "button-bar--full-width",
+                            "active": false
+                          },
+                          {
+                            "name": "bg-white",
+                            "active": false
+                          },
+                          {
+                            "name": "rounded",
+                            "active": false
+                          },
+                          "skeleton-anim",
+                          "skeleton-wrapper"
+                        ],
+                        "attributes": {
+                          "id": "i1fjn"
+                        },
+                        "components": [
+                          {
+                            "tagName": "H3",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--main",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "My first website"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "tagName": "P",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--secondary",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Updated 1h ago by lexoyo"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "tagName": "P",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--secondary",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Created 2023-02-16 by lexoyo"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button",
+                                "active": false
+                              },
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              },
+                              {
+                                "name": "rounded",
+                                "active": false
+                              },
+                              "skeleton",
+                              "skeleton-button"
+                            ],
+                            "attributes": {
+                              "id": "ixz6c"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Edit"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tagName": "SECTION",
+                        "type": "container",
+                        "classes": [
+                          {
+                            "name": "button-bar",
+                            "active": false
+                          },
+                          {
+                            "name": "button-bar--full-width",
+                            "active": false
+                          },
+                          {
+                            "name": "bg-white",
+                            "active": false
+                          },
+                          {
+                            "name": "rounded",
+                            "active": false
+                          },
+                          "skeleton-anim",
+                          "skeleton-wrapper"
+                        ],
+                        "components": [
+                          {
+                            "tagName": "H3",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--main",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "My first website"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "tagName": "P",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--secondary",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Updated 1h ago by lexoyo"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "tagName": "P",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--secondary",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Created 2023-02-16 by lexoyo"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button",
+                                "active": false
+                              },
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              },
+                              {
+                                "name": "rounded",
+                                "active": false
+                              },
+                              "skeleton",
+                              "skeleton-button"
+                            ],
+                            "attributes": {
+                              "id": "i2ts6y"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Edit"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tagName": "SECTION",
+                        "type": "container",
+                        "classes": [
+                          {
+                            "name": "button-bar",
+                            "active": false
+                          },
+                          {
+                            "name": "button-bar--full-width",
+                            "active": false
+                          },
+                          {
+                            "name": "bg-white",
+                            "active": false
+                          },
+                          {
+                            "name": "rounded",
+                            "active": false
+                          },
+                          "skeleton-anim",
+                          "skeleton-wrapper"
+                        ],
+                        "components": [
+                          {
+                            "tagName": "H3",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--main",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "My first website"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "tagName": "P",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--secondary",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Updated 1h ago by lexoyo"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "tagName": "P",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--secondary",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Created 2023-02-16 by lexoyo"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button",
+                                "active": false
+                              },
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              },
+                              {
+                                "name": "rounded",
+                                "active": false
+                              },
+                              "skeleton",
+                              "skeleton-button"
+                            ],
+                            "attributes": {
+                              "id": "izokb"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Edit"
+                              }
+                            ]
+                          }
+                        ]
+                      }, {
+                        "tagName": "SECTION",
+                        "type": "container",
+                        "classes": [
+                          {
+                            "name": "button-bar",
+                            "active": false
+                          },
+                          {
+                            "name": "button-bar--full-width",
+                            "active": false
+                          },
+                          {
+                            "name": "bg-white",
+                            "active": false
+                          },
+                          {
+                            "name": "rounded",
+                            "active": false
+                          },
+                          "skeleton-anim",
+                          "skeleton-wrapper"
+                        ],
+                        "components": [
+                          {
+                            "tagName": "H3",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--main",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "My first website"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "tagName": "P",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--secondary",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Updated 1h ago by lexoyo"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "tagName": "P",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--secondary",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Created 2023-02-16 by lexoyo"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button",
+                                "active": false
+                              },
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              },
+                              {
+                                "name": "rounded",
+                                "active": false
+                              },
+                              "skeleton",
+                              "skeleton-button"
+                            ],
+                            "attributes": {
+                              "id": "iz3mi"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Edit"
+                              }
+                            ]
+                          }
+                        ]
+                      }, {
+                        "tagName": "SECTION",
+                        "type": "container",
+                        "classes": [
+                          {
+                            "name": "button-bar",
+                            "active": false
+                          },
+                          {
+                            "name": "button-bar--full-width",
+                            "active": false
+                          },
+                          {
+                            "name": "bg-white",
+                            "active": false
+                          },
+                          {
+                            "name": "rounded",
+                            "active": false
+                          },
+                          "skeleton-anim",
+                          "skeleton-wrapper"
+                        ],
+                        "components": [
+                          {
+                            "tagName": "H3",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--main",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "My first website"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "tagName": "P",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--secondary",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Updated 1h ago by lexoyo"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "tagName": "P",
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              }, {
+                                "name": "button-bar__item--secondary",
+                                "active": false
+                              },
+                              "skeleton-text",
+                              "skeleton"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Created 2023-02-16 by lexoyo"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }, {
+                            "type": "text",
+                            "classes": [
+                              {
+                                "name": "button",
+                                "active": false
+                              },
+                              {
+                                "name": "button-bar_item",
+                                "active": false
+                              },
+                              {
+                                "name": "rounded",
+                                "active": false
+                              },
+                              "skeleton",
+                              "skeleton-button"
+                            ],
+                            "attributes": {
+                              "id": "ic6ju"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Edit"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "custom-name": "Main"
+              }, {
+                "tagName": "FOOTER",
+                "type": "container",
+                "classes": [
+                  {
+                    "name": "header",
+                    "active": false
+                  },
+                  "footer"
+                ],
+                "attributes": {
+                  "id": "ilzpl"
+                },
+                "components": [
+                  {
+                    "type": "text",
+                    "classes": [
+                      {
+                        "name": "section",
+                        "active": false
+                      }
+                    ],
+                    "attributes": {
+                      "id": "i238z"
+                    },
+                    "components": [
+                      {
+                        "type": "textnode",
+                        "content": "Links"
+                      }, {
+                        "tagName": "br",
+                        "void": true
+                      }, {
+                        "tagName": "ul",
+                        "attributes": {
+                          "id": "ibmxx"
+                        },
+                        "components": [
+                          {
+                            "tagName": "li",
+                            "type": "text",
+                            "attributes": {
+                              "id": "iktkw"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Docs"
+                              }
+                            ]
+                          }, {
+                            "tagName": "li",
+                            "type": "text",
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Support"
+                              }
+                            ]
+                          }, {
+                            "tagName": "li",
+                            "type": "text",
+                            "classes": ["gjs-hovered"],
+                            "attributes": {
+                              "id": "ihfzt",
+                              "draggable": "true"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Bug report"
+                              }
+                            ]
+                          }, {
+                            "tagName": "li",
+                            "type": "text",
+                            "attributes": {
+                              "id": "i4qli"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "Source code"
+                              }, {
+                                "tagName": "br",
+                                "void": true
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "custom-name": "Footer"
+              }
+            ]
+          }
+        }
+      ],
+      "type": "main",
+      "id": "mk3OKgfr4A9V7Dww"
+    }
+  ],
+  "styles": [
+    {
+      "selectors": ["#iels"],
+      "style": {
+        "padding": "10px"
+      }
+    },
+    {
+      "selectors": ["nav__item"],
+      "style": {
+        "margin": "0px 10px 0px 10px",
+        "font-size": "0.8rem"
+      }
+    },
+    {
+      "selectors": ["#itv7"],
+      "style": {
+        "padding": "10px"
+      }
+    },
+    {
+      "selectors": ["body"],
+      "style": {
+        "font-family": "\"Roboto\", sans-serif",
+        "background-color": "#f0f0f0"
+      }
+    }, {
+      "selectors": [
+        {
+          "name": "header",
+          "active": false
+        }
+      ],
+      "style": {
+        "display": "flex",
+        "min-height": "60px",
+        "align-items": "center",
+        "justify-content": "space-between",
+        "background-color": "#ffffff"
+      }
+    }, {
+      "selectors": ["#ir7s"],
+      "style": {
+        "color": "black",
+        "width": "32px",
+        "height": "32px"
+      }
+    }, {
+      "selectors": [
+        {
+          "name": "padding-normal",
+          "active": false
+        }
+      ],
+      "style": {
+        "padding": "0px 24px 0px 24px"
+      }
+    }, {
+      "selectors": ["#i9jq"],
+      "style": {
+        "display": "flex",
+        "align-items": "center"
+      }
+    }, {
+      "selectors": ["nav"],
+      "style": {
+        "width": "100%",
+        "margin": "0px 20px 0px 20px"
+      }
+    }, {
+      "selectors": ["#iz63r"],
+      "style": {
+        "min-height": "90vh"
+      }
+    }, {
+      "selectors": ["#itp1f"],
+      "style": {
+        "font-size": "2rem",
+        "margin": "0px 0px 10px 0px"
+      }
+    }, {
+      "selectors": ["subtitle"],
+      "style": {
+        "font-size": "1rem",
+        "margin": "0px 0px 60px 0px"
+      }
+    }, {
+      "selectors": [
+        {
+          "name": "section",
+          "active": false
+        }
+      ],
+      "style": {
+        "max-width": "1080px",
+        "margin": "80px auto 80px auto"
+      }
+    }, {
+      "selectors": [
+        "subtitle", {
+          "name": "color--light",
+          "active": false
+        }
+      ],
+      "style": {
+        "color": "#636363",
+        "font-weight": "700"
+      }
+    }, {
+      "selectors": ["#i24ew"],
+      "style": {
+        "min-height": "100px"
+      }
+    }, {
+      "selectors": ["#idkdk"],
+      "style": {
+        "color": "black",
+        "border-radius": "100% 100% 100% 100%"
+      }
+    }, {
+      "selectors": [
+        {
+          "name": "button",
+          "active": false
+        }
+      ],
+      "style": {
+        "font-weight": "700",
+        "background-color": "#dddddd",
+        "font-size": "0.8rem",
+        "padding": "12px 12px 12px 12px",
+        "display": "inline-block"
+      }
+    }, {
+      "selectors": [
+        {
+          "name": "button",
+          "active": false
+        },
+        "button--primary"
+      ],
+      "style": {
+        "background-color": "#5e85a8",
+        "color": "white"
+      }
+    }, {
+      "selectors": [
+        {
+          "name": "button-bar",
+          "active": false
+        }
+      ],
+      "style": {
+        "margin": "10px 0px 10px 0px",
+        "display": "flex"
+      }
+    }, {
+      "selectors": ["#ibsgw"],
+      "style": {
+        "font-size": "1.5rem",
+        "position": "relative",
+        "top": "3px",
+        "line-height": "1px"
+      }
+    }, {
+      "selectors": ["#iol4h"],
+      "style": {
+        "padding": "10px"
+      }
+    }, {
+      "selectors": [
+        {
+          "name": "button-bar",
+          "active": false
+        }, {
+          "name": "button-bar--full-width",
+          "active": false
+        }
+      ],
+      "style": {
+        "justify-content": "space-between",
+        "align-items": "center"
+      }
+    }, {
+      "selectors": [
+        {
+          "name": "button-bar_item",
+          "active": false
+        }
+      ],
+      "style": {
+        "margin": "20px 20px 20px 20px"
+      }
+    }, {
+      "selectors": [
+        {
+          "name": "button-bar_item",
+          "active": false
+        }, {
+          "name": "button-bar__item--secondary",
+          "active": false
+        }
+      ],
+      "style": {
+        "font-size": "0.8rem",
+        "color": "#444444"
+      }
+    }, {
+      "selectors": [
+        {
+          "name": "button",
+          "active": false
+        }, {
+          "name": "button--secondary",
+          "active": false
+        }
+      ],
+      "style": {
+        "margin": "0px 0px 0px 20px",
+        "font-weight": "400"
+      }
+    }, {
+      "selectors": [
+        {
+          "name": "bg-white",
+          "active": false
+        }
+      ],
+      "style": {
+        "background-color": "#ffffff"
+      }
+    }, {
+      "selectors": [
+        {
+          "name": "rounded",
+          "active": false
+        }
+      ],
+      "style": {
+        "border-radius": "5px 5px 5px 5px"
+      }
+    }, {
+      "selectors": ["#ilzpl"],
+      "style": {
+        "min-height": "100px"
+      }
+    }, {
+      "selectors": ["#i238z"],
+      "style": {
+        "padding": "10px"
+      }
+    }, {
+      "selectors": ["footer"],
+      "style": {
+        "display": "block",
+        "margin": "20px 0px 20px 0px",
+        "padding": "1px 0px 1px 0px"
+      }
+    }, {
+      "selectors": [
+        "skeleton-text", "skeleton"
+      ],
+      "style": {
+        "background-color": "#dddddd",
+        "color": "transparent",
+        "opacity": "0.31",
+        "border-radius": "5px 5px 5px 5px"
+      }
+    }, {
+      "selectors": [
+        "skeleton", "skeleton-button"
+      ],
+      "style": {
+        "color": "transparent",
+        "opacity": "0.16"
+      }
+    }, {
+      "selectors": ["skeleton-anim"],
+      "style": {
+        "position": "relative"
+      }
+    }, {
+      "selectors": ["#ixz6c"],
+      "style": {
+        "padding": "10px"
+      }
+    }, {
+      "selectors": ["#ic6ju"],
+      "style": {
+        "padding": "10px"
+      }
+    }, {
+      "selectors": ["#iz3mi"],
+      "style": {
+        "padding": "10px"
+      }
+    }, {
+      "selectors": ["#izokb"],
+      "style": {
+        "padding": "10px"
+      }
+    }, {
+      "selectors": ["#i2ts6y"],
+      "style": {
+        "padding": "10px"
+      }
+    }
+  ],
+  "settings": {
+    "lang": "",
+    "title": "",
+    "description": "",
+    "favicon": "",
+    "og:title": "",
+    "og:description": "",
+    "og:image": "",
+    "head": "<style>\n.skeleton-anim:after {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  content: \"\";\n  background: \n    linear-gradient(0.25turn, transparent, rgba(255,255,255,.75), transparent),\n    linear-gradient(transparent, transparent),\n    radial-gradient(38px circle at 19px 19px, transparent 50%, transparent 51%),\n    linear-gradient(transparent, transparent);  \n  background-repeat: no-repeat;\n  background-size: 315px 250px, 315px 180px, 100px 100px, 225px 30px; \n  background-position: -315px 0, 0 0, 0px 190px, 50px 195px; \n  animation: loading 1.5s infinite;\n}\n\n@keyframes loading {  \n  to {\n    background-position: 200% 0, 0 0, 0 190px, 50px 195px;\n  }\n}\n\n</style>"
+  },
+  "publication": {
+    "css": {
+      "url": "/css",
+      "path": "css"
+    },
+    "html": {
+      "path": "_includes"
+    },
+    "url": "/",
+    "path": "../../",
+    "autoHomePage": false
+  },
+  "name": "",
+  "fonts": [
+    {
+      "name": "Roboto",
+      "value": "\"Roboto\", sans-serif",
+      "variants": []
+    }
+  ],
+  "symbols": []}
