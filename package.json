@@ -4,7 +4,7 @@
   "description": "Dashboard for Silex v3",
   "main": "index.js",
   "scripts": {
-    "start": "FS_ROOT=`pwd`/.silex node node_modules/silex-website-builder",
+    "start": "FS_ROOT=`pwd`/.silex silex",
     "build": "eleventy",
     "serve": "eleventy --serve"
   },
@@ -24,6 +24,6 @@
   "homepage": "https://github.com/silexlabs/silex-dashboard#readme",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "silex-website-builder": "^3.0.0-alpha.17"
+    "@silexlabs/silex": "^3.0.0-alpha.30"
   }
 }
