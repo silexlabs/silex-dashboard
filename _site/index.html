@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang=""><head><link rel="stylesheet" href="/css/main.css"><style>.skeleton-anim:after{width:100%;height:100%;position:absolute;top:0;left:0;content:"";background:linear-gradient(.25turn,transparent,rgba(255,255,255,.75),transparent),linear-gradient(transparent,transparent),radial-gradient(38px circle at 19px 19px,transparent 50%,transparent 51%),linear-gradient(transparent,transparent);background-repeat:no-repeat;background-size:315px 250px,315px 180px,100px 100px,225px 30px;background-position:-315px 0,0 0,0 190px,50px 195px;animation:loading 1.5s infinite}@keyframes loading{to{background-position:200% 0,0 0,0 190px,50px 195px}}</style><title>Dashboard</title><link rel="icon" href=""><meta property="description" content=""><meta property="og:title" content=""><meta property="og:description" content=""><meta property="og:image" content=""></head><body id="ik0i" class="body loading"><header id="igrg" class="header padding-normal"><img id="ir7s" src="assets/silex-icon-2018@200px.png"><nav id="i9jq" class="nav"><div id="iels" class="nav__item active">Sites</div><div id="itv7" class="nav__item">Documentation</div><div class="nav__item">Contribute</div></nav><div id="i24ew">
+    <div id="get-1">
+      <script type="module">
+        import { html, render } from 'https://unpkg.com/lit-html/lit-html.js'
+        function renderTemplate(container, {loaded, json, del}) {
+            render(html`<img id="idkdk" src="assets/alex-small.jpg" src="${json.avatar.url}">`, container)
+        }
+        async function del(id) {
+          const ok = confirm('Delete? Are you sure? Really?')
+          if(ok) {
+            console.log('Delete website', id)
+            const response = await fetch('http://localhost:6805/me/?id=' + id, {
+              method: "DELETE",
+              mode: "cors",
+            })
+            if(response.ok) {
+              // reload to get the latest data
+              // TODO: do not reload the page
+              window.location.reload()
+            }
+          }
+        }
+        window.addEventListener('load', () => {
+          const container = document.getElementById('get-1')
+          console.log({container})
+          async function load() {
+            const response = await fetch('http://localhost:6805/me/')
+            if(response.ok) {
+              // Load the data
+              const json = await response.json()
+              // Render the data
+              renderTemplate(container, {json, loaded: true, del})
+            }
+          }
+          load()
+          // Render defaults / placeholders
+          renderTemplate(container, {json: [], loaded: false, del})
+        })
+      </script>
+    </div>
+    </div></header><main id="iz63r" class="padding-normal section"><h1 id="itp1f">Welcome back!<br><br></h1><div id="iyex8" class="subtitle color--light">Dive into your projects or kickstart a new one</div><div id="ickx4" class="button-bar margin-20">
+    <div id="get-2">
+      <div id="i2x0l" class="button button--primary rounded"><span id="ibsgw">+</span>Create website</div>
+      <script type="module">
+        import { html, render } from 'https://unpkg.com/lit-html/lit-html.js'
+        const container = document.getElementById('get-2')
+        container.addEventListener('click', () => {
+          async function load() {
+            const name = prompt()
+            if(name) {
+              console.log('Create website', name)
+              const response = await fetch('http://localhost:6805/website/?id=' + name, {
+                method: "POST",
+                mode: "cors",
+                data: JSON.stringify({
+                  name,
+                }),
+              })
+              if(response.ok) {
+                // reload to get the latest data
+                // TODO: do not reload the page
+                window.location.reload()
+              }
+            }
+          }
+          load()
+        })
+      </script>
+    </div>
+    <div id="i0ro3" class="button button--secondary rounded">Import</div></div>
+    <div id="get-3">
+      <script type="module">
+        import { html, render } from 'https://unpkg.com/lit-html/lit-html.js'
+        function renderTemplate(container, {loaded, json, del}) {
+            render(html`<div id="if80m">${ loaded ? json.map(data => html`<section id="idgvg" class="button-bar button-bar--full-width bg-white rounded loaded__item"><h3 id="i69a7" class="button-bar_item button-bar__item--main">${data.name || data.id}</h3><p id="i65hn" class="button-bar_item button-bar__item--secondary flex-no-shrink">Updated ${ new Date(data.stats.mtime).toLocaleString() }</p><p id="i64qa" class="button-bar_item button-bar__item--secondary flex-no-shrink">Created ${ new Date(data.stats.ctime).toLocaleString() }</p><div class="button-bar_item flex-no-shrink"><a id="ifyf6p" href="http://localhost:6805/?id=${ data.id }" class="button rounded button--primary button--small">Edit</a><div id="iol4h" class="button rounded button--secondary button--small " @click=${ () => del(data.id) } >X</div></section></div>`) : ''}${ !loaded ? html`<section id="i1fjn" class="button-bar button-bar--full-width bg-white rounded skeleton-anim skeleton-wrapper loading__item"><h3 class="button-bar_item button-bar__item--main skeleton-text skeleton">My first website<br><br></h3><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Updated 1h ago by lexoyo<br><br></p><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Created 2023-02-16 by lexoyo<br><br></p><div id="ixz6c" class="button button-bar_item rounded skeleton skeleton-button">Edit</div></section><section class="button-bar button-bar--full-width bg-white rounded skeleton-anim skeleton-wrapper loading__item"><h3 class="button-bar_item button-bar__item--main skeleton-text skeleton">My first website<br><br></h3><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Updated 1h ago by lexoyo<br><br></p><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Created 2023-02-16 by lexoyo<br><br></p><div class="button button-bar_item rounded skeleton skeleton-button">Edit</div></section><section class="button-bar button-bar--full-width bg-white rounded skeleton-anim skeleton-wrapper loading__item"><h3 class="button-bar_item button-bar__item--main skeleton-text skeleton">My first website<br><br></h3><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Updated 1h ago by lexoyo<br><br></p><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Created 2023-02-16 by lexoyo<br><br></p><div class="button button-bar_item rounded skeleton skeleton-button">Edit</div></section><section class="button-bar button-bar--full-width bg-white rounded skeleton-anim skeleton-wrapper loading__item"><h3 class="button-bar_item button-bar__item--main skeleton-text skeleton">My first website<br><br></h3><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Updated 1h ago by lexoyo<br><br></p><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Created 2023-02-16 by lexoyo<br><br></p><div class="button button-bar_item rounded skeleton skeleton-button">Edit</div></section><section class="button-bar button-bar--full-width bg-white rounded skeleton-anim skeleton-wrapper loading__item"><h3 class="button-bar_item button-bar__item--main skeleton-text skeleton">My first website<br><br></h3><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Updated 1h ago by lexoyo<br><br></p><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Created 2023-02-16 by lexoyo<br><br></p><div class="button button-bar_item rounded skeleton skeleton-button">Edit</div></section>` : ''}`, container)
+        }
+        async function del(id) {
+          const ok = confirm('Delete? Are you sure? Really?')
+          if(ok) {
+            console.log('Delete website', id)
+            const response = await fetch('http://localhost:6805/website/?id=' + id, {
+              method: "DELETE",
+              mode: "cors",
+            })
+            if(response.ok) {
+              // reload to get the latest data
+              // TODO: do not reload the page
+              window.location.reload()
+            }
+          }
+        }
+        window.addEventListener('load', () => {
+          const container = document.getElementById('get-3')
+          console.log({container})
+          async function load() {
+            const response = await fetch('http://localhost:6805/website/')
+            if(response.ok) {
+              // Load the data
+              const json = await response.json()
+              // Render the data
+              renderTemplate(container, {json, loaded: true, del})
+            }
+          }
+          load()
+          // Render defaults / placeholders
+          renderTemplate(container, {json: [], loaded: false, del})
+        })
+      </script>
+    </div>
+    </main><footer id="ilzpl" class="header footer"><div id="i238z" class="section">Links<br><br><ul id="ibmxx"><li id="iktkw">Docs</li><li>Support</li><li id="ihfzt" draggable="true" class="gjs-hovered">Bug report</li><li id="i4qli">Source code<br><br></li></ul></div></footer></body></html>
