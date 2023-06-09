@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang=""><head><link rel="stylesheet" href="/css/main.css"><!--
+<div class="app">
+    <div v-if="showLoginForm">
+      <h2>Login</h2>
+      <form @submit.prevent="login">
+        <label>
+          Username:
+          <input type="text" v-model="username" required />
+        </label>
+        <label>
+          Password:
+          <input type="password" v-model="password" required />
+        </label>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  
+    <div v-if="loggedIn">
+      <button @click="showLoginForm = true; loggedIn = false; websites = []">Logout</button>
+      <h2>Websites</h2>
+      <ul>
+        <li v-for="(website, index) in websites" :key="index">
+          <div v-text="website.name || website.id"></div>
+          <button @click="deleteWebsite(website.id)">Delete</button>
+        </li>
+      </ul>
+  
+      <button @click="showCreationForm = true">Create Website</button>
+  
+      <div v-if="showCreationForm">
+        <h2>Create Website</h2>
+        <form @submit.prevent="createWebsite">
+          <label>
+            Website Name:
+            <input type="text" v-model="newWebsiteName" required />
+          </label>
+          <button type="submit">Create</button>
+        </form>
+      </div>
+    </div>
+  
+    <div v-if="error">
+      <p>Error: </p>
+      <button @click="error = null">Dismiss</button>
+    </div>
+  
+    <div v-if="message">
+      <p></p>
+      <button @click="message = null">Dismiss</button>
+    </div>
+  </div>
+-->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref, onMounted, reactive } = Vue;
+    const apiUrl = 'http://localhost:6805';
+  
+    const App = {
+        data() {
+            return {
+                websites: [],
+                newWebsiteName: '',
+                showCreationForm: false,
+                error: null,
+                message: null,
+                showLoginForm: false,
+                username: '',
+                password: '',
+                loggedIn: true
+            }
+        },
+        mounted() {
+            if (this.loggedIn) this.fetchWebsites()
+            else this.showLoginForm = true
+        },
+        methods: {
+            openEditor(id) {
+                window.open(`${apiUrl}/?id=${id}`)
+            },
+            async fetchWebsites() {
+                try {
+                    const response = await fetch(`${apiUrl}/website/`)
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`)
+                    }
+                    this.websites = await response.json();
+                } catch (error) {
+                    this.error = 'Failed to fetch websites'
+                }
+            },
+
+            async login() {
+                try {
+                    const response = await fetch(`${apiUrl}/me/`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            username: this.username,
+                            password: this.password,
+                        }),
+                    })
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`)
+                    }
+                    this.loggedIn = true;
+                    this.showLoginForm = false;
+                    await this.fetchWebsites()
+                } catch (error) {
+                    this.error = 'Failed to log in'
+                }
+            },
+
+            async createWebsite() {
+                if(!this.newWebsiteName) throw new Error('You need to provide a website name')
+                try {
+                    const id = this.newWebsiteName.replace(/[/\\?%*:|"<>]/g, '_')
+                    const response = await fetch(`${apiUrl}/website/?id=${id}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            name: this.newWebsiteName,
+                        }),
+                    })
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`)
+                    }
+                    this.message = 'Website created successfully'
+                    this.newWebsiteName = ''
+                    this.showCreationForm = false;
+                    await this.fetchWebsites()
+                } catch (error) {
+                    this.error = 'Failed to create website'
+                }
+            },
+
+            async deleteWebsite(id) {
+                const ok = confirm('Deleting a website? Are your sure? Really?')
+                if(!ok) return
+                try {
+                    const response = await fetch(`${apiUrl}/website/?id=${id}`, {
+                        method: 'DELETE',
+                    })
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`)
+                    }
+                    this.message = 'Website deleted successfully'
+                    await this.fetchWebsites()
+                } catch (error) {
+                    this.error = 'Failed to delete website'
+                }
+            },
+        },
+    };
+  
+    window.addEventListener('load', () => {
+        createApp(App).mount('.app');
+    })
+  </script>
+   <style>.button{cursor:pointer}.skeleton-anim:after{width:100%;height:100%;position:absolute;top:0;left:0;content:"";background:linear-gradient(.25turn,transparent,rgba(255,255,255,.75),transparent),linear-gradient(transparent,transparent),radial-gradient(38px circle at 19px 19px,transparent 50%,transparent 51%),linear-gradient(transparent,transparent);background-repeat:no-repeat;background-size:315px 250px,315px 180px,100px 100px,225px 30px;background-position:-315px 0,0 0,0 190px,50px 195px;animation:loading 1.5s infinite}@keyframes loading{to{background-position:200% 0,0 0,0 190px,50px 195px}}</style><title>Silex Dashboard</title><link rel="icon" href=""><meta property="description" content=""><meta property="og:title" content=""><meta property="og:description" content=""><meta property="og:image" content=""></head><body id="ik0i" class="body loading"><header id="igrg" class="header padding-normal"><img id="ir7s" src="/assets//silex-icon-2018@200px.png"><nav id="i9jq" class="nav"><a id="iels" href="/" class="nav__item active" target="">Sites</a><a id="iels" href="http://docs.silex.me/" class="nav__item " target="_blank">Docs</a><a id="iels" href="https://www.silex.me/" class="nav__item " target="_blank">About</a></nav><div class="lang h-space"><a href="/en" class="lang__item nav__item active" hreflang="en">en</a><a href="/fr" class="lang__item nav__item " hreflang="fr">fr</a></div><div id="i24ew"><img id="idkdk" src="/assets//alex-small.jpg" src="${json.avatar.url}"></div></header><main id="iz63r" class="padding-normal section app"><h1 id="itp1f">Welcome back!</h1><div id="iyex8" class="subtitle color--light">Dive into your projects or kickstart a new one</div><div id="ickx4" class="button-bar margin-20"><div id="i2x0l" class="button button--primary rounded" @click="showCreationForm = !showCreationForm" v-if="!showCreationForm"><span id="ibsgw" class="icon-font">+</span><span id="itl2n8">Create website</span></div><div id="i0ro3" class="button button--secondary rounded">Import</div></div><div id="ihwwxz" class="box" v-if="showCreationForm"><h3 id="i3gd1b" class="box__header">Create a new website</h3><form method="get" id="i50acf" class="form" @submit.prevent="createWebsite"><div id="igtg1t" class="v-space"><label id="i1nmbc" class="v-space">Website name</label><input type="text" id="ij5iwh" placeholder="My project website" class="input full-width" v-model="newWebsiteName"></div><div id="ie0xes"><button type="submit" id="i021na" class="button rounded button--primary">Create</button><button type="reset" class="button rounded button--secondary" @click="showCreationForm = !showCreationForm">Cancel</button></div></form></div><div id="if80m"><section id="idgvg" class="button-bar button-bar--full-width bg-white rounded loaded__item" v-if="!loading" v-for="(website, index) in websites" :key="index"><h3 id="i69a7" class="button-bar_item button-bar__item--main" v-text="website.name || website.id">My first website</h3><p id="i65hn" class="button-bar_item button-bar__item--secondary flex-no-shrink" v-text="'Updated ' + new Date(website.stats.mtime).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })">Updated 1h ago by lexoyo</p><p id="i64qa" class="button-bar_item button-bar__item--secondary flex-no-shrink" v-text="'Created ' + new Date(website.stats.birthtime).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })">Created 2023-02-16 by lexoyo</p><div id="i3b4tr" class="button-bar_item flex-no-shrink"><div id="ifyf6p" href="" class="button rounded button--primary button--small" @click="openEditor(website.id)">Edit</div><div id="iol4h" class="button rounded button--secondary button--small" @click="deleteWebsite(website.id)" title="Delete">X</div></div></section><section id="i1fjn" class="button-bar button-bar--full-width bg-white rounded skeleton-anim skeleton-wrapper loading__item" v-if="loading"><h3 class="button-bar_item button-bar__item--main skeleton-text skeleton">My first website<br><br></h3><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Updated 1h ago by lexoyo<br><br></p><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Created 2023-02-16 by lexoyo<br><br></p><div id="ixz6c" class="button button-bar_item rounded skeleton skeleton-button">Edit</div></section><section id="irvul" class="button-bar button-bar--full-width bg-white rounded skeleton-anim skeleton-wrapper loading__item" v-if="loading"><h3 class="button-bar_item button-bar__item--main skeleton-text skeleton">My first website<br><br></h3><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Updated 1h ago by lexoyo<br><br></p><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Created 2023-02-16 by lexoyo<br><br></p><div id="il9yj" class="button button-bar_item rounded skeleton skeleton-button">Edit</div></section><section id="ilfrpa" class="button-bar button-bar--full-width bg-white rounded skeleton-anim skeleton-wrapper loading__item" v-if="loading"><h3 class="button-bar_item button-bar__item--main skeleton-text skeleton">My first website<br><br></h3><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Updated 1h ago by lexoyo<br><br></p><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Created 2023-02-16 by lexoyo<br><br></p><div id="i6hzwc" class="button button-bar_item rounded skeleton skeleton-button">Edit</div></section><section id="i02gi" class="button-bar button-bar--full-width bg-white rounded skeleton-anim skeleton-wrapper loading__item" v-if="loading"><h3 class="button-bar_item button-bar__item--main skeleton-text skeleton">My first website<br><br></h3><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Updated 1h ago by lexoyo<br><br></p><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Created 2023-02-16 by lexoyo<br><br></p><div id="iajsm" class="button button-bar_item rounded skeleton skeleton-button">Edit</div></section><section id="ik7zi" class="button-bar button-bar--full-width bg-white rounded skeleton-anim skeleton-wrapper loading__item" v-if="loading"><h3 class="button-bar_item button-bar__item--main skeleton-text skeleton">My first website<br><br></h3><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Updated 1h ago by lexoyo<br><br></p><p class="button-bar_item button-bar__item--secondary skeleton-text skeleton">Created 2023-02-16 by lexoyo<br><br></p><div id="i4szg" class="button button-bar_item rounded skeleton skeleton-button">Edit</div></section></div><div id="i7ej6j" class="box horizontal" v-if="error"><div id="iv0eyi" class="full-width v-space h-space" v-text="error">Insert your text here</div><div id="i4656n" class="button rounded button--small button--tertiary" @click="error = null">Dismiss</div></div><div id="ilteie" class="box horizontal" v-if="message"><div id="i2d31v" class="full-width v-space h-space" v-text="message">Insert your text here</div><div id="i2urco" class="button rounded button--small button--tertiary" @click="message = null">Dismiss</div></div></main><footer id="ilzpl" class="header footer"><div id="i238z" class="section">Links<br><br><ul id="ibmxx"><li id="iktkw">Docs</li><li>Support</li><li id="ihfzt" draggable="true" class="gjs-hovered">Bug report</li><li id="i4qli">Source code<br><br></li></ul></div></footer></body></html>
