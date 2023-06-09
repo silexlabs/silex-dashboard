@@ -89,7 +89,7 @@
                     }
                     this.websites = await response.json();
                 } catch (error) {
-                    this.error = 'Failed to fetch websites'
+                    this.error = 'Erreur, impossible de récupérer la liste des sites'
                 }
             },
 
@@ -106,7 +106,7 @@
                         }),
                     })
                     if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`)
+                        throw new Error(`Erreur HTTP ! status: ${response.status}`)
                     }
                     this.loggedIn = true;
                     this.showLoginForm = false;
@@ -117,7 +117,7 @@
             },
 
             async createWebsite() {
-                if(!this.newWebsiteName) throw new Error('You need to provide a website name')
+                if(!this.newWebsiteName) throw new Error('Vous n\'avez pas donné de nom à votre site')
                 try {
                     const id = this.newWebsiteName.replace(/[/\\?%*:|"<>]/g, '_')
                     const response = await fetch(`${apiUrl}/website/?id=${id}`, {
@@ -130,19 +130,19 @@
                         }),
                     })
                     if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`)
+                        throw new Error(`Erreur HTTP ! status: ${response.status}`)
                     }
-                    this.message = 'Website created successfully'
+                    this.message = 'Le site a bien été créé'
                     this.newWebsiteName = ''
                     this.showCreationForm = false;
                     await this.fetchWebsites()
                 } catch (error) {
-                    this.error = 'Failed to create website'
+                    this.error = 'Erreur, le site n\'a pas été créé'
                 }
             },
 
             async deleteWebsite(id) {
-                const ok = confirm('Deleting a website? Are your sure? Really?')
+                const ok = confirm('Etes vous sûr.e de vouloir supprimer définitivement ce site ?')
                 if(!ok) return
                 try {
                     const response = await fetch(`${apiUrl}/website/?id=${id}`, {
@@ -151,10 +151,10 @@
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`)
                     }
-                    this.message = 'Website deleted successfully'
+                    this.message = 'Le site a bien été effacé'
                     await this.fetchWebsites()
                 } catch (error) {
-                    this.error = 'Failed to delete website'
+                    this.error = 'Erreur, le site n\'a pas été effacé'
                 }
             },
         },

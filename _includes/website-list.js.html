@@ -53,7 +53,7 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script>
     const { createApp, ref, onMounted, reactive } = Vue;
-    const apiUrl = 'http://localhost:6805';
+    const apiUrl = '{{ site.silexUrl }}';
   
     const App = {
         data() {
@@ -85,7 +85,7 @@
                     }
                     this.websites = await response.json();
                 } catch (error) {
-                    this.error = 'Failed to fetch websites'
+                    this.error = '{{ api-translations[lang]["Failed to fetch websites"] }}'
                 }
             },
 
@@ -102,7 +102,7 @@
                         }),
                     })
                     if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`)
+                        throw new Error(`{{ api-translations[lang]["HTTP error! status: ${response.status}"] }}`)
                     }
                     this.loggedIn = true;
                     this.showLoginForm = false;
@@ -113,7 +113,7 @@
             },
 
             async createWebsite() {
-                if(!this.newWebsiteName) throw new Error('You need to provide a website name')
+                if(!this.newWebsiteName) throw new Error('{{ api-translations[lang]["You need to provide a website name"] }}')
                 try {
                     const id = this.newWebsiteName.replace(/[/\\?%*:|"<>]/g, '_')
                     const response = await fetch(`${apiUrl}/website/?id=${id}`, {
@@ -126,31 +126,31 @@
                         }),
                     })
                     if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`)
+                        throw new Error(`{{ api-translations[lang]["HTTP error! status: ${response.status}"] }}`)
                     }
-                    this.message = 'Website created successfully'
+                    this.message = '{{ api-translations[lang]["Website created successfully"] }}'
                     this.newWebsiteName = ''
                     this.showCreationForm = false;
                     await this.fetchWebsites()
                 } catch (error) {
-                    this.error = 'Failed to create website'
+                    this.error = '{{ api-translations[lang]["Failed to create website"] }}'
                 }
             },
 
             async deleteWebsite(id) {
-                const ok = confirm('Deleting a website? Are your sure? Really?')
+                const ok = confirm('{{ api-translations[lang]["Deleting a website? Are your sure? Really?"] }}')
                 if(!ok) return
                 try {
                     const response = await fetch(`${apiUrl}/website/?id=${id}`, {
                         method: 'DELETE',
                     })
                     if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`)
+                        throw new Error(`{{ api-translations[lang][""] }}HTTP error! status: ${response.status}`)
                     }
-                    this.message = 'Website deleted successfully'
+                    this.message = '{{ api-translations[lang]["Website deleted successfully"] }}'
                     await this.fetchWebsites()
                 } catch (error) {
-                    this.error = 'Failed to delete website'
+                    this.error = '{{ api-translations[lang]["Failed to delete website"] }}'
                 }
             },
         },

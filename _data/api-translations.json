@@ -1,0 +1,22 @@
+{
+    "en": {
+        "Failed to fetch websites": "Failed to fetch websites",
+        "HTTP error! status: ${response.status}": "HTTP error! status: ${response.status}",
+        "You need to provide a website name": "You need to provide a website name",
+        "Website created successfully": "Website created successfully",
+        "Failed to create website": "Failed to create website",
+        "Deleting a website? Are your sure? Really?": "Deleting a website? Are your sure? Really?",
+        "Website deleted successfully": "Website deleted successfully",
+        "Failed to delete website": "Failed to delete website"
+    },
+    "fr": {
+        "Failed to fetch websites": "Erreur, impossible de récupérer la liste des sites",
+        "HTTP error! status: ${response.status}": "Erreur HTTP ! status: ${response.status}",
+        "You need to provide a website name": "Vous n\\'avez pas donné de nom à votre site",
+        "Website created successfully": "Le site a bien été créé",
+        "Failed to create website": "Erreur, le site n\\'a pas été créé",
+        "Deleting a website? Are your sure? Really?": "Etes vous sûr.e de vouloir supprimer définitivement ce site ?",
+        "Website deleted successfully": "Le site a bien été effacé",
+        "Failed to delete website": "Erreur, le site n\\'a pas été effacé"
+    }
+}
