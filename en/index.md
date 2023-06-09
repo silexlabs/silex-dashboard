@@ -24,5 +24,9 @@ nav:
 - label: About
   url: https://www.silex.me/
   target: _blank
+- label: News
+  url: https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=en-US&source=silex-dashboard
+  target: _blank
+
 
 ---
