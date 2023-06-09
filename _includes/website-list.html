@@ -1,0 +1,163 @@
+<!--
+<div class="app">
+    <div v-if="showLoginForm">
+      <h2>Login</h2>
+      <form @submit.prevent="login">
+        <label>
+          Username:
+          <input type="text" v-model="username" required />
+        </label>
+        <label>
+          Password:
+          <input type="password" v-model="password" required />
+        </label>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  
+    <div v-if="loggedIn">
+      <button @click="showLoginForm = true; loggedIn = false; websites = []">Logout</button>
+      <h2>Websites</h2>
+      <ul>
+        <li v-for="(website, index) in websites" :key="index">
+          <div v-text="website.name || website.id"></div>
+          <button @click="deleteWebsite(website.id)">Delete</button>
+        </li>
+      </ul>
+  
+      <button @click="showCreationForm = true">Create Website</button>
+  
+      <div v-if="showCreationForm">
+        <h2>Create Website</h2>
+        <form @submit.prevent="createWebsite">
+          <label>
+            Website Name:
+            <input type="text" v-model="newWebsiteName" required />
+          </label>
+          <button type="submit">Create</button>
+        </form>
+      </div>
+    </div>
+  
+    <div v-if="error">
+      <p>Error: {{ error }}</p>
+      <button @click="error = null">Dismiss</button>
+    </div>
+  
+    <div v-if="message">
+      <p>{{ message }}</p>
+      <button @click="message = null">Dismiss</button>
+    </div>
+  </div>
+-->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref, onMounted, reactive } = Vue;
+    const apiUrl = 'http://localhost:6805';
+  
+    const App = {
+        data() {
+            return {
+                websites: [],
+                newWebsiteName: '',
+                showCreationForm: false,
+                error: null,
+                message: null,
+                showLoginForm: false,
+                username: '',
+                password: '',
+                loggedIn: true
+            }
+        },
+        mounted() {
+            if (this.loggedIn) this.fetchWebsites()
+            else this.showLoginForm = true
+        },
+        methods: {
+            openEditor(id) {
+                window.open(`${apiUrl}/?id=${id}`)
+            },
+            async fetchWebsites() {
+                try {
+                    const response = await fetch(`${apiUrl}/website/`)
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`)
+                    }
+                    this.websites = await response.json();
+                } catch (error) {
+                    this.error = 'Failed to fetch websites'
+                }
+            },
+
+            async login() {
+                try {
+                    const response = await fetch(`${apiUrl}/me/`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            username: this.username,
+                            password: this.password,
+                        }),
+                    })
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`)
+                    }
+                    this.loggedIn = true;
+                    this.showLoginForm = false;
+                    await this.fetchWebsites()
+                } catch (error) {
+                    this.error = 'Failed to log in'
+                }
+            },
+
+            async createWebsite() {
+                if(!this.newWebsiteName) throw new Error('You need to provide a website name')
+                try {
+                    const id = this.newWebsiteName.replace(/[/\\?%*:|"<>]/g, '_')
+                    const response = await fetch(`${apiUrl}/website/?id=${id}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            name: this.newWebsiteName,
+                        }),
+                    })
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`)
+                    }
+                    this.message = 'Website created successfully'
+                    this.newWebsiteName = ''
+                    this.showCreationForm = false;
+                    await this.fetchWebsites()
+                } catch (error) {
+                    this.error = 'Failed to create website'
+                }
+            },
+
+            async deleteWebsite(id) {
+                const ok = confirm('Deleting a website? Are your sure? Really?')
+                if(!ok) return
+                try {
+                    const response = await fetch(`${apiUrl}/website/?id=${id}`, {
+                        method: 'DELETE',
+                    })
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`)
+                    }
+                    this.message = 'Website deleted successfully'
+                    await this.fetchWebsites()
+                } catch (error) {
+                    this.error = 'Failed to delete website'
+                }
+            },
+        },
+    };
+  
+    window.addEventListener('load', () => {
+        createApp(App).mount('.app');
+    })
+  </script>
+   
