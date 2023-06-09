@@ -1,0 +1,9 @@
+{%- assign permalinkWithoutLang = page.url | split: "/" | slice: 2 | join: "/" %}
+{%- for alt in languages %}
+  {%- if alt.code != lang %}
+    <link
+      rel="alternate"
+      hreflang="{{alt.code}}"
+      href="/{{alt.code}}/{{permalinkWithoutLang}}" />
+  {%- endif %}
+{%- endfor %}
