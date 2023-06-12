@@ -66,7 +66,8 @@
                 showLoginForm: false,
                 username: '',
                 password: '',
-                loggedIn: true
+                loggedIn: true,
+                loading: true,
             }
         },
         mounted() {
@@ -78,6 +79,7 @@
                 window.open(`${apiUrl}/?id=${id}`)
             },
             async fetchWebsites() {
+                this.loading = true
                 try {
                     const response = await fetch(`${apiUrl}/website/`)
                     if (!response.ok) {
@@ -87,9 +89,11 @@
                 } catch (error) {
                     this.error = '{{ api-translations[lang]["Failed to fetch websites"] }}'
                 }
+                this.loading = false
             },
 
             async login() {
+                this.loading = true
                 try {
                     const response = await fetch(`${apiUrl}/me/`, {
                         method: 'POST',
@@ -110,10 +114,12 @@
                 } catch (error) {
                     this.error = 'Failed to log in'
                 }
+                this.loading = false
             },
 
             async createWebsite() {
                 if(!this.newWebsiteName) throw new Error('{{ api-translations[lang]["You need to provide a website name"] }}')
+                this.loading = true
                 try {
                     const id = this.newWebsiteName.replace(/[/\\?%*:|"<>]/g, '_')
                     const response = await fetch(`${apiUrl}/website/?id=${id}`, {
@@ -135,11 +141,13 @@
                 } catch (error) {
                     this.error = '{{ api-translations[lang]["Failed to create website"] }}'
                 }
+                this.loading = false
             },
 
             async deleteWebsite(id) {
                 const ok = confirm('{{ api-translations[lang]["Deleting a website? Are your sure? Really?"] }}')
                 if(!ok) return
+                this.loading = true
                 try {
                     const response = await fetch(`${apiUrl}/website/?id=${id}`, {
                         method: 'DELETE',
@@ -152,6 +160,7 @@
                 } catch (error) {
                     this.error = '{{ api-translations[lang]["Failed to delete website"] }}'
                 }
+                this.loading = false
             },
         },
     };
