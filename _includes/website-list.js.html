@@ -75,8 +75,8 @@
             else this.showLoginForm = true
         },
         methods: {
-            openEditor(id) {
-                window.open(`${apiUrl}/?id=${id}`)
+            openEditor(id, lang) {
+                window.open(`${apiUrl}/?id=${id}&lang=${lang}`)
             },
             async fetchWebsites() {
                 this.loading = true
