@@ -1,6 +1,7 @@
 const fs = require('node:fs/promises')
 const { join } = require('node:path')
 const express = require('express')
+const node_modules = require('node_modules-path')
 const serveStatic = require('serve-static')
 const locale = require('locale')
 
@@ -22,11 +23,21 @@ module.exports = async function(config, options) {
 
   // Serve the dashboard and the editor
   config.on('silex:startup:start', ({app}) => {
+    const router = express.Router()
+    app.use(router)
+
+    // Use cache
+    router.use(withCache)
+
+    // Localization populate req.locale
+    router.use(locale(languages.map(l => l.code), opts.defaultLanguage))
+
     // Serve the dashboard
-    const dashRouter = express.Router()
-    dashRouter.use(locale(languages.map(l => l.code), opts.defaultLanguage))
-    dashRouter.use('/', serveStatic(opts.rootPath))
-    app.use(withCache,  dashRouter)
+    router.use('/', serveStatic(opts.rootPath))
+
+    // Serve scripts
+    router.use('/js/vue/', express.static(node_modules('vue') + '/vue'))
+    router.use('/', express.static(join(__dirname, 'public')))
 
     // Serve the editor when the ?id param is present in the URL
     const editorRouter = express.Router()
