@@ -13,6 +13,7 @@ add-cancel: Annuler
 list-item-updated: Mis à jour le
 list-item-created: Créé le
 list-edit: Editer
+list-rename: Renommer
 list-delete: Supprimer
 message-dismiss: Fermer
 nav:

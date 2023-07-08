@@ -7,7 +7,9 @@
         "Failed to create website": "Failed to create website",
         "Deleting a website? Are your sure? Really?": "Deleting a website? Are your sure? Really?",
         "Website deleted successfully": "Website deleted successfully",
-        "Failed to delete website": "Failed to delete website"
+        "Failed to delete website": "Failed to delete website",
+        "New name for this website": "New name for this website",
+        "Website renamed successfully": "Website renamed successfully"
     },
     "fr": {
         "Failed to fetch websites": "Erreur, impossible de récupérer la liste des sites",
@@ -17,6 +19,8 @@
         "Failed to create website": "Erreur, le site n\\'a pas été créé",
         "Deleting a website? Are your sure? Really?": "Etes vous sûr.e de vouloir supprimer définitivement ce site ?",
         "Website deleted successfully": "Le site a bien été effacé",
-        "Failed to delete website": "Erreur, le site n\\'a pas été effacé"
+        "Failed to delete website": "Erreur, le site n\\'a pas été effacé",
+        "New name for this website": "Nouveau nom",
+        "Website renamed successfully": "Changement de nom effectué"
     }
 }

@@ -37,6 +37,7 @@ window.addEventListener('load', function() {
         loading: true,
         storage: null,
         user: null,
+        showMenu: false,
       }
     },
     mounted() {
@@ -49,7 +50,7 @@ window.addEventListener('load', function() {
           this.user = await getUser({type: ConnectorType.STORAGE})
           if(this.user) {
             this.loggedIn = true
-            this.websites = await websiteList({connectorId: this.user.connectorId})
+            this.websites = await websiteList({connectorId: this.user.connector.connectorId})
             this.loading = false
           } else {
             this.openLogin()
@@ -75,6 +76,13 @@ window.addEventListener('load', function() {
         window.open(`/?id=${id}&lang=${lang}`)
       },
 
+      async logout() {
+        await logout({
+          type: ConnectorType.STORAGE,
+          connectorId: this.user.connector.connectorId,
+        })
+      },
+
       async createWebsite() {
         if (!this.newWebsiteName) throw new Error('{{ api-translations[lang]["You need to provide a website name"] }}')
         this.loading = true
@@ -86,12 +94,12 @@ window.addEventListener('load', function() {
               name: this.newWebsiteName,
               imageUrl: null,
             },
-            connectorId: this.user.connectorId
+            connectorId: this.user.connector.connectorId
           })
           this.message = '{{ api-translations[lang]["Website created successfully"] }}'
           this.newWebsiteName = ''
           this.showCreationForm = false;
-          this.websites = await websiteList({connectorId: this.user.connectorId})
+          this.websites = await websiteList({connectorId: this.user.connector.connectorId})
           this.loading = false
           return result
         } catch (error) {
@@ -106,9 +114,28 @@ window.addEventListener('load', function() {
         if (!ok) return
         this.loading = true
         try {
-          const result = await websiteDelete({websiteId, connectorId: this.user.connectorId})
+          const result = await websiteDelete({websiteId, connectorId: this.user.connector.connectorId})
           this.message = '{{ api-translations[lang]["Website deleted successfully"] }}'
-          this.websites = await websiteList({connectorId: this.user.connectorId})
+          this.websites = await websiteList({connectorId: this.user.connector.connectorId})
+          this.loading = false
+          return result
+        } catch (error) {
+          this.loading = false
+          this.error = '{{ api-translations[lang]["Failed to delete website"] }}'
+        }
+      },
+
+      async renameWebsite(websiteId) {
+        const website = this.websites.find(w => w.websiteId === websiteId)
+        console.log({website})
+        console.log('{{ api-translations[lang]["New name for this website"] }}', website.name)
+        const name = prompt('{{ api-translations[lang]["New name for this website"] }}', website.name)
+        if (!name) return
+        this.loading = true
+        try {
+          const result = await websiteMetaWrite({websiteId, connectorId: this.user.connector.connectorId, data: { name }})
+          this.message = '{{ api-translations[lang]["Website renamed successfully"] }}'
+          this.websites = await websiteList({connectorId: this.user.connector.connectorId})
           this.loading = false
           return result
         } catch (error) {
