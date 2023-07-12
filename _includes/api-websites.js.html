@@ -1,6 +1,7 @@
 <script src="/js/vue/dist/vue.global.js"></script>
 <script src="/js/main.js"></script>
 <script type="module">
+const CONNECTORS_PATH = '/connectors/'
 window.addEventListener('load', function() {
   const { createApp } = Vue;
   const { api, constants, types } = silex;
@@ -8,20 +9,11 @@ window.addEventListener('load', function() {
     ConnectorType,
   } = types
   const {
-    ApiError, 
-    connectorList,
     getUser,
     logout,
-    publicationStatus,
-    publish,
-    websiteAssetsLoad,
-    websiteAssetsSave,
     websiteDelete,
     websiteList,
-    websiteLoad,
-    websiteSave,
     websiteCreate,
-    websiteMetaRead,
     websiteMetaWrite,
   } = api
 
@@ -50,7 +42,7 @@ window.addEventListener('load', function() {
           this.user = await getUser({type: ConnectorType.STORAGE})
           if(this.user) {
             this.loggedIn = true
-            this.websites = await websiteList({connectorId: this.user.connector.connectorId})
+            this.websites = await websiteList({connectorId: this.user.storage.connectorId})
             this.loading = false
           } else {
             this.openLogin()
@@ -69,17 +61,20 @@ window.addEventListener('load', function() {
 
       openLogin(id, lang) {
         //throw new Error('debug')
-        window.open('./login/', '_self')
+        const path = `/{{lang}}${CONNECTORS_PATH}`
+        console.log(window.location.pathname, window.location.path, path)
+        if(window.location.pathname === path) return
+        window.open(path, '_self')
       },
 
       openEditor(id, lang) {
-        window.open(`/?id=${id}&lang=${lang}`)
+        window.open(`/?id=${id}&lang=${lang}&connectorId=${this.user.storage.connectorId}`, '_blank')
       },
 
       async logout() {
         await logout({
           type: ConnectorType.STORAGE,
-          connectorId: this.user.connector.connectorId,
+          connectorId: this.user.storage.connectorId,
         })
       },
 
@@ -94,12 +89,12 @@ window.addEventListener('load', function() {
               name: this.newWebsiteName,
               imageUrl: null,
             },
-            connectorId: this.user.connector.connectorId
+            connectorId: this.user.storage.connectorId
           })
           this.message = '{{ api-translations[lang]["Website created successfully"] }}'
           this.newWebsiteName = ''
           this.showCreationForm = false;
-          this.websites = await websiteList({connectorId: this.user.connector.connectorId})
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
           this.loading = false
           return result
         } catch (error) {
@@ -114,9 +109,9 @@ window.addEventListener('load', function() {
         if (!ok) return
         this.loading = true
         try {
-          const result = await websiteDelete({websiteId, connectorId: this.user.connector.connectorId})
+          const result = await websiteDelete({websiteId, connectorId: this.user.storage.connectorId})
           this.message = '{{ api-translations[lang]["Website deleted successfully"] }}'
-          this.websites = await websiteList({connectorId: this.user.connector.connectorId})
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
           this.loading = false
           return result
         } catch (error) {
@@ -127,15 +122,13 @@ window.addEventListener('load', function() {
 
       async renameWebsite(websiteId) {
         const website = this.websites.find(w => w.websiteId === websiteId)
-        console.log({website})
-        console.log('{{ api-translations[lang]["New name for this website"] }}', website.name)
         const name = prompt('{{ api-translations[lang]["New name for this website"] }}', website.name)
         if (!name) return
         this.loading = true
         try {
-          const result = await websiteMetaWrite({websiteId, connectorId: this.user.connector.connectorId, data: { name }})
+          const result = await websiteMetaWrite({websiteId, connectorId: this.user.storage.connectorId, data: { name }})
           this.message = '{{ api-translations[lang]["Website renamed successfully"] }}'
-          this.websites = await websiteList({connectorId: this.user.connector.connectorId})
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
           this.loading = false
           return result
         } catch (error) {

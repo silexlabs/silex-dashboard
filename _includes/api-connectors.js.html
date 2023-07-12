@@ -1,0 +1,47 @@
+<script src="/js/vue/dist/vue.global.js"></script>
+<script src="/js/main.js"></script>
+<script type="module">
+window.addEventListener('load', function() {
+  const { createApp } = Vue;
+  const { api, constants, types } = silex;
+  const {
+    ConnectorType,
+  } = types
+  const {
+    connectorList,
+  } = api
+
+  const App = {
+    data() {
+      return {
+        connectors: [],
+        error: null,
+        message: null,
+        loading: true,
+      }
+    },
+    mounted() {
+      this.init()
+    },
+
+    methods: {
+      async init() {
+        try {
+          this.loading = true
+          console.log('init')
+          this.connectors = await connectorList()
+          console.log('connectors', this.connectors)
+          this.loading = false
+        } catch (error) {
+          console.error(error)
+          this.error = error
+          this.loading = false
+        }
+      },
+    },
+  };
+
+  // Start vue app
+  createApp(App).mount('.app');
+})
+</script>

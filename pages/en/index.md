@@ -1,5 +1,5 @@
 ---
-layout: dashboard
+layout: websites
 lang: en
 title: Silex Dashboard
 title2: Welcome back!
