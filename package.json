@@ -24,7 +24,7 @@
   "homepage": "https://github.com/silexlabs/silex-dashboard#readme",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@silexlabs/silex": "^3.0.0-alpha.31"
+    "@silexlabs/silex": "^3.0.0-alpha.42"
   },
   "dependencies": {
     "locale": "^0.1.0",
