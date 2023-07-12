@@ -1,4 +1,4 @@
-<script src="/js/vue/dist/vue.global.js"></script>
+<script src="/node_modules/vue/dist/vue.global.js"></script>
 <script src="/js/main.js"></script>
 <script type="module">
 const CONNECTORS_PATH = '/connectors/'
@@ -39,8 +39,11 @@ window.addEventListener('load', function() {
     methods: {
       async init() {
         try {
-          this.user = await getUser({type: ConnectorType.STORAGE})
-          if(this.user) {
+          // Debug
+          window.app = this
+          const user = await getUser({type: ConnectorType.STORAGE})
+          if(user) {
+            this.user = user
             this.loggedIn = true
             this.websites = await websiteList({connectorId: this.user.storage.connectorId})
             this.loading = false
