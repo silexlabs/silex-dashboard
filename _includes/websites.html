@@ -88,7 +88,7 @@ a:hover { text-decoration: underline; }
             >{{ link.code }}</A>{% endfor %}</div><div
             id="i24ew"
             class="user__wrapper "
-            v-if="user"  @NOmouseover="showMenu = true"  @NOmouseout="showMenu = false"  @click="showMenu = !showMenu"
+            v-if="user && !user.storage.disableLogout"  @NOmouseover="showMenu = true"  @NOmouseout="showMenu = false"  @click="showMenu = !showMenu"
             
             ><div
             id="i5xsbd"
