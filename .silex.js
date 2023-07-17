@@ -5,6 +5,7 @@ const node_modules = require('node_modules-path')
 const serveStatic = require('serve-static')
 const locale = require('locale')
 const { withCache } = require('@silexlabs/silex/dist/plugins/server/plugins/server/Cache')
+const { ServerEvent } = require('@silexlabs/silex').events
 
 module.exports = async function(config, options) {
   // Defaults
@@ -18,7 +19,7 @@ module.exports = async function(config, options) {
   const languages = JSON.parse(await fs.readFile(join(__dirname, '_data/languages.json')))
 
   // Serve the dashboard and the editor
-  config.on('silex:startup:start', ({app}) => {
+  config.on(ServerEvent.STARTUP_START, ({app}) => {
     const router = express.Router()
     app.use(router)
 

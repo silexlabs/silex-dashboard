@@ -2,7 +2,6 @@ import templatePlugin from '/node_modules/@silexlabs/silex/dist/plugins/client/p
 import publishTo from '/node_modules/@silexlabs/silex/dist/plugins/client/plugins/client/publicationRenderer.js'
 
 export default async function(config, options) {
-  console.log('silex-client.js', templatePlugin)
   // Defaults
   const opts = {
     ...options,
