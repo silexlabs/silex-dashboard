@@ -50,6 +50,7 @@ window.addEventListener('load', function() {
   } = types
   const {
     connectorList,
+    logout,
   } = api
 
   const App = {
@@ -59,10 +60,16 @@ window.addEventListener('load', function() {
         error: null,
         message: null,
         loading: true,
+        lastConnector: null,
       }
     },
     mounted() {
       this.init()
+      window.addEventListener('message', (event) => {
+        if(event.data && event.data.type === 'login') {
+          this.loginResult(event.data)
+        }
+      })
     },
 
     methods: {
@@ -70,12 +77,44 @@ window.addEventListener('load', function() {
         try {
           this.loading = true
           console.log('init')
-          this.connectors = await connectorList()
+          this.connectors = await connectorList({type: ConnectorType.STORAGE})
           console.log('connectors', this.connectors)
           this.loading = false
         } catch (error) {
           console.error(error)
           this.error = error
+          this.loading = false
+        }
+      },
+      openLogin(connector) {
+        this.lastConnector = connector
+        const nonOAuthUrl = `${constants.API_PATH}${constants.API_CONNECTOR_PATH}${constants.API_CONNECTOR_LOGIN}?connectorId=${connector.connectorId}&type=${connector.type}`
+        console.log('openLogin', connector.oauthUrl, nonOAuthUrl)
+        window.open(connector.oauthUrl || nonOAuthUrl, '_blank')
+      },
+      loginResult(data) {
+        console.log('loginResult', data)
+        if(data.error) {
+          this.error = data.error
+          this.message = `Error, login failed. ${data.message}`
+        } else {
+          window.location.href = '/'
+        }
+      },
+      async logout() {
+        try {
+          this.message = 'Logging out'
+          await logout({type: ConnectorType.STORAGE, connectorId: this.lastConnector.connectorId})
+          this.loggedIn = false
+          this.user = null
+          this.websites = []
+          this.loading = false
+          this.message = ''
+          this.error = false
+        } catch (error) {
+          console.error(error)
+          this.error = error
+          this.message = error.message
           this.loading = false
         }
       },
@@ -99,26 +138,41 @@ window.addEventListener('load', function() {
             class=" app"
             
             
-            ><div
+            ><A
+            id="ixzhcr" href="/"
+            class="button button-bar__item--secondary "
+            
+            
+            >< Back</A><div
             id="imgx81"
             
             
             
             ><div
             id="in62y2"
+            class="button-bar "
             
             
-            
-            ><div
-            id="isqe61"
-            
-            v-if="!loading" v-for="(connector, index) in connectors" :key="index"
+            ><A
+            id="isqe61" href="https://"
+            class="h-space button-bar__item--main button-bar_item button big-button "
+            v-if="!loading" v-for="(connector, index) in connectors" :key="index" :style="{ backgroundColor: connector.background, color: connector.color }" @click="openLogin(connector)"
             
             ><div
             id="i87asw"
             
+            v-text="connector.displayName"
             
+            >Insert your text here</div></A></div><div
+            id="i9msnk"
             
-            >Insert your text here</div></div></div></div></body>
+            v-if="error" v-html="message"
+            
+            >Insert your text here</div><div
+            id="i6akll"
+            class="button button--tertiary "
+            v-if="error" @click="logout()"
+            
+            >Logout</div></div></body>
       </html>
       

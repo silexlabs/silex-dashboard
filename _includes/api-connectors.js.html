@@ -9,6 +9,7 @@ window.addEventListener('load', function() {
   } = types
   const {
     connectorList,
+    logout,
   } = api
 
   const App = {
@@ -18,10 +19,16 @@ window.addEventListener('load', function() {
         error: null,
         message: null,
         loading: true,
+        lastConnector: null,
       }
     },
     mounted() {
       this.init()
+      window.addEventListener('message', (event) => {
+        if(event.data && event.data.type === 'login') {
+          this.loginResult(event.data)
+        }
+      })
     },
 
     methods: {
@@ -29,12 +36,44 @@ window.addEventListener('load', function() {
         try {
           this.loading = true
           console.log('init')
-          this.connectors = await connectorList()
+          this.connectors = await connectorList({type: ConnectorType.STORAGE})
           console.log('connectors', this.connectors)
           this.loading = false
         } catch (error) {
           console.error(error)
           this.error = error
+          this.loading = false
+        }
+      },
+      openLogin(connector) {
+        this.lastConnector = connector
+        const nonOAuthUrl = `${constants.API_PATH}${constants.API_CONNECTOR_PATH}${constants.API_CONNECTOR_LOGIN}?connectorId=${connector.connectorId}&type=${connector.type}`
+        console.log('openLogin', connector.oauthUrl, nonOAuthUrl)
+        window.open(connector.oauthUrl || nonOAuthUrl, '_blank')
+      },
+      loginResult(data) {
+        console.log('loginResult', data)
+        if(data.error) {
+          this.error = data.error
+          this.message = `{{ api-translations[lang]["Login failed"] }} ${data.message}`
+        } else {
+          window.location.href = '/'
+        }
+      },
+      async logout() {
+        try {
+          this.message = '{{ api-translations[lang]["Logging out"] }}'
+          await logout({type: ConnectorType.STORAGE, connectorId: this.lastConnector.connectorId})
+          this.loggedIn = false
+          this.user = null
+          this.websites = []
+          this.loading = false
+          this.message = ''
+          this.error = false
+        } catch (error) {
+          console.error(error)
+          this.error = error
+          this.message = error.message
           this.loading = false
         }
       },

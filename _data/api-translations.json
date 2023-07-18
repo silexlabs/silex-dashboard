@@ -9,7 +9,11 @@
         "Website deleted successfully": "Website deleted successfully",
         "Failed to delete website": "Failed to delete website",
         "New name for this website": "New name for this website",
-        "Website renamed successfully": "Website renamed successfully"
+        "Website renamed successfully": "Website renamed successfully",
+        "Login failed": "Error, login failed.",
+        "Logout": "Logout",
+        "Logging out": "Logging out",
+        "Back to home": "< Back"
     },
     "fr": {
         "Failed to fetch websites": "Erreur, impossible de récupérer la liste des sites",
@@ -21,6 +25,10 @@
         "Website deleted successfully": "Le site a bien été effacé",
         "Failed to delete website": "Erreur, le site n\\'a pas été effacé",
         "New name for this website": "Nouveau nom",
-        "Website renamed successfully": "Changement de nom effectué"
+        "Website renamed successfully": "Changement de nom effectué",
+        "Login failed": "Erreur, impossible de se connecter.",
+        "Logout": "Logout",
+        "Logging out": "Déconnexion en cours",
+        "Back to home": "< Retour"
     }
 }

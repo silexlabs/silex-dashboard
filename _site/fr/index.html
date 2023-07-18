@@ -94,7 +94,7 @@ window.addEventListener('load', function() {
         } catch (error) {
           console.error(error)
           this.loading = false
-          if(error.code === 401) {
+          if(error.code === 401 || error.httpStatusCode === 401) {
             this.loggedIn = false
             this.openLogin()
           } else {
@@ -120,6 +120,7 @@ window.addEventListener('load', function() {
           type: ConnectorType.STORAGE,
           connectorId: this.user.storage.connectorId,
         })
+        window.location.reload()
       },
 
       async createWebsite() {

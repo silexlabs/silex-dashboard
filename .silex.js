@@ -7,6 +7,12 @@ const locale = require('locale')
 const { withCache } = require('@silexlabs/silex/dist/plugins/server/plugins/server/Cache')
 const { ServerEvent } = require('@silexlabs/silex').events
 
+const { ConnectorType } = require('@silexlabs/silex/dist/server/types')
+const FtpConnector = require('@silexlabs/silex/dist/plugins/server/plugins/server/FtpConnector').default
+const GitlabConnector = require('@silexlabs/silex/dist/plugins/server/plugins/server/GitlabConnector').default
+const {FsStorage} = require('@silexlabs/silex/dist/server/server/connectors/FsStorage')
+const {FsHosting} = require('@silexlabs/silex/dist/server/server/connectors/FsHosting')
+
 module.exports = async function(config, options) {
   // Defaults
   const opts = {
@@ -14,6 +20,28 @@ module.exports = async function(config, options) {
     rootPath: join(__dirname, '_site'),
     ...options,
   }
+
+  config.addHostingConnector([
+    new FsHosting(config, {
+      path: process.env.SILEX_FS_ROOT,
+    }),
+    new FtpConnector(config, {
+      type: ConnectorType.HOSTING,
+    }),
+  ])
+
+  config.addStorageConnector([
+    //new FsStorage(config, {
+    //  path: process.env.SILEX_FS_ROOT,
+    //}),
+    new FtpConnector(config, {
+      type: ConnectorType.STORAGE,
+    }),
+    new GitlabConnector(config, {
+      clientId: process.env.GITLAB_CLIENT_ID,
+      clientSecret: process.env.GITLAB_CLIENT_SECRET,
+    }),
+  ])
 
   // Detect language from browser
   const languages = JSON.parse(await fs.readFile(join(__dirname, '_data/languages.json')))

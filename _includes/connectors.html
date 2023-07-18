@@ -49,26 +49,41 @@ a:hover { text-decoration: underline; }
             class=" app"
             
             
-            ><div
+            ><A
+            id="ixzhcr" href="/"
+            class="button button-bar__item--secondary "
+            
+            
+            >{{ api-translations[lang]["Back to home"] }}</A><div
             id="imgx81"
             
             
             
             ><div
             id="in62y2"
+            class="button-bar "
             
             
-            
-            ><div
-            id="isqe61"
-            
-            v-if="!loading" v-for="(connector, index) in connectors" :key="index"
+            ><A
+            id="isqe61" href="https://"
+            class="h-space button-bar__item--main button-bar_item button big-button "
+            v-if="!loading" v-for="(connector, index) in connectors" :key="index" :style="{ backgroundColor: connector.background, color: connector.color }" @click="openLogin(connector)"
             
             ><div
             id="i87asw"
             
+            v-text="connector.displayName"
             
+            >Insert your text here</div></A></div><div
+            id="i9msnk"
             
-            >Insert your text here</div></div></div></div></body>
+            v-if="error" v-html="message"
+            
+            >Insert your text here</div><div
+            id="i6akll"
+            class="button button--tertiary "
+            v-if="error" @click="logout()"
+            
+            >{{ api-translations[lang]["Logout"] }}</div></div></body>
       </html>
       

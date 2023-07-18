@@ -1,5 +1,5 @@
 import templatePlugin from '/node_modules/@silexlabs/silex/dist/plugins/client/plugins/client/template.js'
-import publishTo from '/node_modules/@silexlabs/silex/dist/plugins/client/plugins/client/publicationRenderer.js'
+import publicationRenderer from '/node_modules/@silexlabs/silex/dist/plugins/client/plugins/client/publicationRenderer.js'
 
 export default async function(config, options) {
   // Defaults
@@ -7,19 +7,18 @@ export default async function(config, options) {
     ...options,
   }
   await config.addPlugin(templatePlugin)
-  await config.addPlugin(publishTo, {
-    publishTo: 'https://silex.me/publish',
+  await config.addPlugin(publicationRenderer, {
     css: {
       frontMatter: true,
       ext: '.css.liquid',
-      path: '../../pages'
+      path: '../../../pages'
     },
     html: {
       frontMatter: false,
-      path: '../../_includes'
+      path: '../../../_includes'
     },
     assets: {
-      path: '../../',
+      path: '../../../',
       url: '/',
     },
   })
