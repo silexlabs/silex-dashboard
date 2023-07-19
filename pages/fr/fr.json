@@ -1,0 +1,23 @@
+{
+  "nav": [
+    {
+      "label": "Sites",
+      "url": "/"
+    },
+    {
+      "label": "Docs",
+      "url": "http://docs.silex.me/",
+      "target": "_blank"
+    },
+    {
+      "label": "A propos",
+      "url": "https://www.silex.me/",
+      "target": "_blank"
+    },
+    {
+      "label": "Info",
+      "url": "https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=fr-FR&source=silex-dashboard",
+      "target": "_blank"
+    }
+  ]
+}

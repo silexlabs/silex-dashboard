@@ -14,6 +14,8 @@ const {FsStorage} = require('@silexlabs/silex/dist/server/server/connectors/FsSt
 const {FsHosting} = require('@silexlabs/silex/dist/server/server/connectors/FsHosting')
 
 module.exports = async function(config, options) {
+  console.log('> Silex dashboard plugin starting', {config, options})
+
   // Defaults
   const opts = {
     defaultLanguage: 'en',
@@ -67,7 +69,7 @@ module.exports = async function(config, options) {
 
     // Serve the editor when the ?id param is present in the URL
     const editorRouter = express.Router()
-    console.log('dashboard route /', {opts})
+    console.log('> Silex dashboard on route /', {opts})
     editorRouter.use('/', (req, res, next) => {
       console.log('dashboard route / called', req.path, req.query.id, req.locale)
       if (req.path === '/' && !req.query.id) res.redirect(`/${req.locale}/`)

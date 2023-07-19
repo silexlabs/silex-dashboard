@@ -46,10 +46,46 @@ a:hover { text-decoration: underline; }
       </head>
       <body
             id="i2hcfw"
-            class=" app"
+            class="body app"
+            
+            
+            ><HEADER
+            
+            class="header padding-normal "
             
             
             ><A
+            href="/"
+            
+            
+            
+            ><img
+            src="/assets/silex-icon-2018@200px.png" href=""
+            class="nav__logo "
+            
+            
+            ></img></A><NAV
+            id="in5jeq"
+            class="nav "
+            
+            
+            >{% for item in nav %}<A
+            href="{{ item.url }}" id="i0g3ac"
+            class="nav__item {% if forloop.index == 1 %}active{% endif %}"
+            target="{{ item.target }}"
+            
+            >{{ item.label }}</A>{% endfor %}</NAV><div
+            
+            class="lang h-space "
+            
+            
+            >{% assign links = languages %}
+{%- for link in links %}<A
+            href="/{{ link.code }}"
+            class="lang__item nav__item {% if link.code == lang %}active{% endif %}"
+            hreflang="{{link.code}}"
+            
+            >{{ link.code }}</A>{% endfor %}</div></HEADER><A
             id="ixzhcr" href="/"
             class="button button-bar__item--secondary "
             
@@ -60,12 +96,12 @@ a:hover { text-decoration: underline; }
             
             
             ><H1
-            
-            
+            id="ighycb"
+            class="title "
             
             
             >{{ api-translations[lang]["Welcome to Silex"] }}</H1><div
-            
+            id="it2175"
             class="subtitle "
             
             
