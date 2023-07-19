@@ -13,7 +13,9 @@
         "Login failed": "Error, login failed.",
         "Logout": "Logout",
         "Logging out": "Logging out",
-        "Back to home": "< Back"
+        "Back to home": "< Back",
+        "Welcome to Silex": "Welcome to Silex",
+        "Please login to continue": "Please login to continue"
     },
     "fr": {
         "Failed to fetch websites": "Erreur, impossible de récupérer la liste des sites",
@@ -29,6 +31,8 @@
         "Login failed": "Erreur, impossible de se connecter.",
         "Logout": "Logout",
         "Logging out": "Déconnexion en cours",
-        "Back to home": "< Retour"
+        "Back to home": "< Retour",
+        "Welcome to Silex": "Bienvenue sur Silex",
+        "Please login to continue": "Merci de vous connecter pour continuer"
     }
 }

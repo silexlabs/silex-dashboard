@@ -30,18 +30,18 @@ module.exports = async function(config, options) {
     }),
   ])
 
-  config.addStorageConnector([
-    //new FsStorage(config, {
-    //  path: process.env.SILEX_FS_ROOT,
-    //}),
-    new FtpConnector(config, {
-      type: ConnectorType.STORAGE,
-    }),
-    new GitlabConnector(config, {
-      clientId: process.env.GITLAB_CLIENT_ID,
-      clientSecret: process.env.GITLAB_CLIENT_SECRET,
-    }),
-  ])
+  //config.addStorageConnector([
+  //  //new FsStorage(config, {
+  //  //  path: process.env.SILEX_FS_ROOT,
+  //  //}),
+  //  new FtpConnector(config, {
+  //    type: ConnectorType.STORAGE,
+  //  }),
+  //  new GitlabConnector(config, {
+  //    clientId: process.env.GITLAB_CLIENT_ID,
+  //    clientSecret: process.env.GITLAB_CLIENT_SECRET,
+  //  }),
+  //])
 
   // Detect language from browser
   const languages = JSON.parse(await fs.readFile(join(__dirname, '_data/languages.json')))
