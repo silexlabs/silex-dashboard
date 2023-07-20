@@ -71,6 +71,7 @@ window.addEventListener('load', function() {
         storage: null,
         user: null,
         showMenu: false,
+        empty: false,
       }
     },
     mounted() {
@@ -87,6 +88,7 @@ window.addEventListener('load', function() {
             this.user = user
             this.loggedIn = true
             this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+            this.empty = this.websites.length === 0
             this.loading = false
           } else {
             this.openLogin()
@@ -98,7 +100,8 @@ window.addEventListener('load', function() {
             this.loggedIn = false
             this.openLogin()
           } else {
-            this.error = error
+            this.error = `Erreur, impossible de démarrer le tableau de bord - ${error.message}`
+            this.message = ''
           }
         }
       },
@@ -124,9 +127,9 @@ window.addEventListener('load', function() {
       },
 
       async createWebsite() {
-        if (!this.newWebsiteName) throw new Error('Vous n\'avez pas donné de nom à votre site')
-        this.loading = true
         try {
+          if (!this.newWebsiteName) throw new Error('Vous n\'avez pas donné de nom à votre site')
+          this.loading = true
           const websiteId = this.newWebsiteName.replace(/[/\\?%*:|"<>]/g, '_')
           const result = await websiteCreate({
             websiteId,
@@ -137,15 +140,18 @@ window.addEventListener('load', function() {
             connectorId: this.user.storage.connectorId
           })
           this.message = 'Le site a bien été créé'
+          this.error = ''
           this.newWebsiteName = ''
           this.showCreationForm = false;
           this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
           this.loading = false
           return result
         } catch (error) {
           this.loading = false
           console.error(error)
-          this.error = 'Erreur, le site n\'a pas été créé'
+          this.error = `Erreur, le site n\'a pas été créé - ${error.message}`
+          this.message = ''
         }
       },
 
@@ -156,12 +162,15 @@ window.addEventListener('load', function() {
         try {
           const result = await websiteDelete({websiteId, connectorId: this.user.storage.connectorId})
           this.message = 'Le site a bien été effacé'
+          this.error = ''
           this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
           this.loading = false
           return result
         } catch (error) {
           this.loading = false
-          this.error = 'Erreur, le site n\'a pas été effacé'
+          this.error = `Erreur, le site n\'a pas été effacé - ${error.message}`
+          this.message = ''
         }
       },
 
@@ -173,12 +182,15 @@ window.addEventListener('load', function() {
         try {
           const result = await websiteMetaWrite({websiteId, connectorId: this.user.storage.connectorId, data: { name }})
           this.message = 'Changement de nom effectué'
+          this.error = ''
           this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
           this.loading = false
           return result
         } catch (error) {
           this.loading = false
-          this.error = 'Erreur, le site n\'a pas été effacé'
+          this.error = `Erreur, le nom n\'a pas été changé - ${error.message}`
+          this.message = ''
         }
       },
     },
@@ -288,16 +300,31 @@ window.addEventListener('load', function() {
             
             
             ><H1
-            id="itp1f"
-            class="title "
             
+            class="title "
+            v-if="!empty"
             
             >Bienvenue !</H1><div
             id="iyex8"
             class="subtitle "
+            v-if="!empty"
+            
+            >Plongez-vous dans un projet ou créez-en un nouveau</div><SECTION
+            id="iqmx38"
+            
+            v-if="empty"
+            
+            ><H1
+            
+            class="title "
             
             
-            >Plongez-vous dans un projet ou créez-en un nouveau</div><div
+            >Bienvenue !</H1><DIV
+            
+            class="subtitle "
+            
+            
+            >Créez votre premier projet, clickez sur le boutont "Créer un site"</DIV></SECTION><div
             id="ickx4"
             class="button-bar margin-20 "
             
@@ -370,7 +397,7 @@ window.addEventListener('load', function() {
             >Annuler</button></div></form></div><div
             id="if80m"
             
-            
+            v-if="!empty"
             
             ><SECTION
             id="idgvg"
@@ -484,31 +511,6 @@ window.addEventListener('load', function() {
             
             >Created 2023-02-16 by lexoyo</P><div
             id="i8oes3"
-            class="button-bar_item skeleton skeleton-button "
-            
-            
-            >Edit</div></SECTION><SECTION
-            id="iqmx38"
-            class="button-bar button-bar--full-width bg-white rounded loading__item skeleton-anim skeleton-wrapper "
-            v-if="loading"
-            
-            ><H3
-            
-            class="button-bar_item button-bar__item--main skeleton-text skeleton "
-            
-            
-            >My first websiteMy first websiteMy first websiteMy first</H3><P
-            
-            class="button-bar_item button-bar__item--secondary skeleton-text skeleton "
-            
-            
-            >Updated 1h ago by lexoyo</P><P
-            
-            class="button-bar_item button-bar__item--secondary skeleton-text skeleton "
-            
-            
-            >Created 2023-02-16 by lexoyo</P><div
-            id="ie83jl"
             class="button-bar_item skeleton skeleton-button "
             
             

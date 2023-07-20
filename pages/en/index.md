@@ -3,6 +3,8 @@ layout: websites
 lang: en
 title: Silex Dashboard
 title2: Welcome back!
+title2-empty: Welcome, let's get started
+subtitle-empty: Create your first project, click on "Create a website"
 subtitle: Dive into your projects or kickstart a new one
 add-button: Create website
 add-title: Create a new website

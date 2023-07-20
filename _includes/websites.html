@@ -116,16 +116,31 @@ a:hover { text-decoration: underline; }
             
             
             ><H1
-            id="itp1f"
-            class="title "
             
+            class="title "
+            v-if="!empty"
             
             >{{ title2 }}</H1><div
             id="iyex8"
             class="subtitle "
+            v-if="!empty"
+            
+            >{{ subtitle }}</div><SECTION
+            id="iqmx38"
+            
+            v-if="empty"
+            
+            ><H1
+            
+            class="title "
             
             
-            >{{ subtitle }}</div><div
+            >{{ title2-empty }}</H1><DIV
+            
+            class="subtitle "
+            
+            
+            >{{ subtitle-empty }}</DIV></SECTION><div
             id="ickx4"
             class="button-bar margin-20 "
             
@@ -198,7 +213,7 @@ a:hover { text-decoration: underline; }
             >{{ add-cancel }}</button></div></form></div><div
             id="if80m"
             
-            
+            v-if="!empty"
             
             ><SECTION
             id="idgvg"
@@ -312,31 +327,6 @@ a:hover { text-decoration: underline; }
             
             >Created 2023-02-16 by lexoyo</P><div
             id="i8oes3"
-            class="button-bar_item skeleton skeleton-button "
-            
-            
-            >Edit</div></SECTION><SECTION
-            id="iqmx38"
-            class="button-bar button-bar--full-width bg-white rounded loading__item skeleton-anim skeleton-wrapper "
-            v-if="loading"
-            
-            ><H3
-            
-            class="button-bar_item button-bar__item--main skeleton-text skeleton "
-            
-            
-            >My first websiteMy first websiteMy first websiteMy first</H3><P
-            
-            class="button-bar_item button-bar__item--secondary skeleton-text skeleton "
-            
-            
-            >Updated 1h ago by lexoyo</P><P
-            
-            class="button-bar_item button-bar__item--secondary skeleton-text skeleton "
-            
-            
-            >Created 2023-02-16 by lexoyo</P><div
-            id="ie83jl"
             class="button-bar_item skeleton skeleton-button "
             
             

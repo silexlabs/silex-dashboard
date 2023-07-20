@@ -71,7 +71,6 @@ module.exports = async function(config, options) {
     const editorRouter = express.Router()
     console.log('> Silex dashboard on route /', {opts})
     editorRouter.use('/', (req, res, next) => {
-      console.log('dashboard route / called', req.path, req.query.id, req.locale)
       if (req.path === '/' && !req.query.id) res.redirect(`/${req.locale}/`)
       else next()
     })

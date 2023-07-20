@@ -30,6 +30,7 @@ window.addEventListener('load', function() {
         storage: null,
         user: null,
         showMenu: false,
+        empty: false,
       }
     },
     mounted() {
@@ -46,6 +47,7 @@ window.addEventListener('load', function() {
             this.user = user
             this.loggedIn = true
             this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+            this.empty = this.websites.length === 0
             this.loading = false
           } else {
             this.openLogin()
@@ -57,7 +59,8 @@ window.addEventListener('load', function() {
             this.loggedIn = false
             this.openLogin()
           } else {
-            this.error = error
+            this.error = `{{ api-translations[lang]["Failed to start dashboard"] }} - ${error.message}`
+            this.message = ''
           }
         }
       },
@@ -83,9 +86,9 @@ window.addEventListener('load', function() {
       },
 
       async createWebsite() {
-        if (!this.newWebsiteName) throw new Error('{{ api-translations[lang]["You need to provide a website name"] }}')
-        this.loading = true
         try {
+          if (!this.newWebsiteName) throw new Error('{{ api-translations[lang]["You need to provide a website name"] }}')
+          this.loading = true
           const websiteId = this.newWebsiteName.replace(/[/\\?%*:|"<>]/g, '_')
           const result = await websiteCreate({
             websiteId,
@@ -96,15 +99,18 @@ window.addEventListener('load', function() {
             connectorId: this.user.storage.connectorId
           })
           this.message = '{{ api-translations[lang]["Website created successfully"] }}'
+          this.error = ''
           this.newWebsiteName = ''
           this.showCreationForm = false;
           this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
           this.loading = false
           return result
         } catch (error) {
           this.loading = false
           console.error(error)
-          this.error = '{{ api-translations[lang]["Failed to create website"] }}'
+          this.error = `{{ api-translations[lang]["Failed to create website"] }} - ${error.message}`
+          this.message = ''
         }
       },
 
@@ -115,12 +121,15 @@ window.addEventListener('load', function() {
         try {
           const result = await websiteDelete({websiteId, connectorId: this.user.storage.connectorId})
           this.message = '{{ api-translations[lang]["Website deleted successfully"] }}'
+          this.error = ''
           this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
           this.loading = false
           return result
         } catch (error) {
           this.loading = false
-          this.error = '{{ api-translations[lang]["Failed to delete website"] }}'
+          this.error = `{{ api-translations[lang]["Failed to delete website"] }} - ${error.message}`
+          this.message = ''
         }
       },
 
@@ -132,12 +141,15 @@ window.addEventListener('load', function() {
         try {
           const result = await websiteMetaWrite({websiteId, connectorId: this.user.storage.connectorId, data: { name }})
           this.message = '{{ api-translations[lang]["Website renamed successfully"] }}'
+          this.error = ''
           this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
           this.loading = false
           return result
         } catch (error) {
           this.loading = false
-          this.error = '{{ api-translations[lang]["Failed to delete website"] }}'
+          this.error = `{{ api-translations[lang]["Failed to rename website"] }} - ${error.message}`
+          this.message = ''
         }
       },
     },
