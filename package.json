@@ -1,6 +1,6 @@
 {
   "name": "@silexlabs/silex-dashboard",
-  "version": "1.0.6",
+  "version": "1.0.5",
   "description": "Dashboard for Silex v3",
   "main": ".silex.js",
   "scripts": {
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/silexlabs/silex-dashboard#readme",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@silexlabs/silex": "^3.0.0-alpha.49"
+    "@silexlabs/silex": "^3.0.0-alpha.50"
   },
   "dependencies": {
     "locale": "^0.1.0",
