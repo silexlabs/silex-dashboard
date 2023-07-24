@@ -1,5 +1,5 @@
 import templatePlugin from '/node_modules/@silexlabs/silex/dist/plugins/client/plugins/client/template.js'
-import publicationRenderer from '/node_modules/@silexlabs/silex/dist/plugins/client/plugins/client/publicationRenderer.js'
+import eleventyPlugin from '/node_modules/@silexlabs/silex/dist/plugins/client/plugins/client/11ty.js'
 
 export default async function(config, options) {
   // Defaults
@@ -7,18 +7,17 @@ export default async function(config, options) {
     ...options,
   }
   await config.addPlugin(templatePlugin)
-  await config.addPlugin(publicationRenderer, {
+  await config.addPlugin(eleventyPlugin, {
     css: {
-      frontMatter: true,
-      ext: '.css.liquid',
-      path: '../../../pages'
+      path: '../../../pages',
+      url: '/css',
     },
     html: {
-      frontMatter: false,
-      path: '../../../_includes'
+      path: '../../../_includes',
+      url: '',
     },
     assets: {
-      path: '../../../',
+      path: '../../..',
       url: '/',
     },
   })
