@@ -9,16 +9,14 @@ export default async function(config, options) {
   await config.addPlugin(templatePlugin)
   await config.addPlugin(eleventyPlugin, {
     css: {
-      path: '../../../pages',
-      url: '/css',
+      path: '../../pages',
+      url: '/css', // Used in the permalink in liquid
     },
     html: {
-      path: '../../../_includes',
-      url: '',
+      path: '../../_includes',
     },
     assets: {
-      path: '../../..',
-      url: '/',
+      path: '../../assets',
     },
   })
 }
