@@ -6,8 +6,8 @@ title2: Welcome back!
 subtitle: Dive into your projects or kickstart a new one
 title2-empty: Welcome, let's get started
 subtitle-empty: Create your first project, click on "Create a website"
-text-empty1: "So empty...",
-text-empty2: "Ready to start your journey?",
+text-empty1: "Such emptyness..."
+text-empty2: "Ready to start your journey?"
 add-button: Create website
 add-title: Create a new website
 add-name-label: Website name
