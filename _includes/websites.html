@@ -10,11 +10,11 @@
 {% render "alternate.liquid" languages: languages lang: lang page: page %}
 
 <style>
-h1, h2, h3, label {	color:#2B1B63;}
-.button { cursor: pointer; }
+body {color:#2B1B63;}
+.pointer, .button { cursor: pointer; }
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
-.uppercase {text-transform: uppercase;}
+.uppercase  {text-transform: uppercase;}
 .skeleton-anim:after {
   width: 100%;
   height: 100%;
@@ -50,328 +50,368 @@ a:hover { text-decoration: underline; }
 <meta property="og:image" content=""/>
       </head>
       <body
-            id="ik0i"
+            id="ik0i" src="undefined"
             class="body loading app"
             
             
             ><HEADER
-            id="igrg"
+            id="igrg" src="undefined"
             class="header padding-normal "
             
             
             ><A
-            id="igvu43" href="/"
+            id="igvu43" href="/" src="undefined"
             
             
             
             ><img
-            src="/assets/silex-icon-2018@200px.png" href="" id="iel80b-2"
+            src="/api/website/assets/picto-silex@3x.png?websiteId=default&connectorId=fs-storage" href="" id="iel80b-2"
             class="nav__logo "
             
             
             ></img></A><NAV
-            id="i9jq"
+            id="i9jq" src="undefined"
             class="nav "
             
             
             >{% for item in nav %}<A
-            id="iels" href="{{ item.url }}"
+            id="iels" href="{{ item.url }}" src="undefined"
             class="nav__item uppercase {% if forloop.index == 1 %}active{% endif %}"
             target="{{ item.target }}"
             
             >{{ item.label }}</A>{% endfor %}</NAV><div
-            id="i2red7"
+            id="i2red7" src="undefined"
             class="lang h-space "
             
             
             >{% assign links = languages %}
 {%- for link in links %}<A
-            href="/{{ link.code }}" id="iciz"
-            class="lang__item nav__item {% if link.code == lang %}active{% endif %}"
+            href="/{{ link.code }}" id="iciz" src="undefined"
+            class="lang__item nav__item uppercase {% if link.code == lang %}active{% endif %}"
             hreflang="{{link.code}}"
             
             >{{ link.code }}</A>{% endfor %}</div><div
-            id="i24ew"
-            class="user__wrapper "
+            id="i24ew" src="undefined"
+            class="user__wrapper pointer "
             v-if="user && !user.storage.disableLogout"  @NOmouseover="showMenu = true"  @NOmouseout="showMenu = false"  @click="showMenu = !showMenu"
             
             ><div
-            id="i5xsbd"
+            id="i5xsbd" src="undefined"
             class="user-icon__wrapper "
             v-if="user" v-show="!showMenu || user.storage.disableLogout"
             
             ><div
-            id="i5wlbq"
+            id="i5wlbq" src="undefined"
             class="user-icon__image "
             v-if="user" v-show="!showMenu || user.storage.disableLogout" :style='`background: url("${user.picture}"); background-repeat: no-repeat; background-size: contain;`'
             
             ></div></div><div
-            id="ic9eoa"
+            id="ic9eoa" src="undefined"
             
             v-show="showMenu && !user.storage.disableLogout"
             
             ><div
-            id="iksw4d"
-            class="button button--secondary "
+            id="iksw4d" src="undefined"
+            class="button button--tertiary "
             @click="logout()"
             
-            >Logout</div></div></div></HEADER><MAIN
-            id="iz63r"
-            class="padding-normal section "
+            >Logout</div></div></div></HEADER><div
+            id="iy8ax3" src="undefined"
+            class="bg-silex-purpel "
+            
+            
+            ><div
+            id="iisz8f" src="undefined"
+            class="section-top text-centered text-white "
             
             
             ><H1
-            id="ic31o"
-            class="title "
+            id="ic31o" src="undefined"
+            class="title-40 "
             v-if="!empty"
             
             >{{ title2 }}</H1><div
-            id="iyex8"
-            class="subtitle "
+            id="iyex8" src="undefined"
+            class="subtitle-16 "
             v-if="!empty"
             
-            >{{ subtitle }}</div><SECTION
-            id="iqmx38"
+            >{{ subtitle }}</div><H1
+            id="i4ybc" src="undefined"
+            class="title-40 "
+            v-if="empty"
+            
+            >{{ title2-empty }}</H1><DIV
+            id="iino6r" src="undefined"
+            class="subtitle-16 "
+            v-if="empty"
+            
+            >{{ subtitle-empty }}</DIV></div></div><MAIN
+            id="iz63r" src="undefined"
+            class="padding-normal section "
+            
+            
+            ><SECTION
+            id="iqmx38" src="undefined"
             
             v-if="empty"
             
-            ><H1
-            id="i4ybc"
-            class="title "
-            
-            
-            >{{ title2-empty }}</H1><DIV
-            id="iino6r"
-            class="subtitle "
-            
-            
-            >{{ subtitle-empty }}</DIV></SECTION><div
-            id="ickx4"
+            ></SECTION><div
+            id="ickx4" src="undefined"
             class="button-bar margin-20 "
             
             
             ><BUTTON
-            id="i2x0l"
+            id="i2x0l" src="undefined"
             class="button button--primary rounded top-space-40 "
             @click="showCreationForm = !showCreationForm" v-if="!showCreationForm"
             
             ><span
-            id="ibsgw"
+            id="ibsgw" src="undefined"
             class="icon-font "
             
             
             >+</span> <span
-            id="itl2n8"
+            id="itl2n8" src="undefined"
             
             
             
             >{{ add-button }}</span></BUTTON><div
-            id="i0ro3"
+            id="i0ro3" src="undefined"
             class="button button--secondary rounded "
             
             
             >Import</div></div><div
-            id="ihwwxz"
-            class="box top-space-40 "
+            id="ihwwxz" src="undefined"
+            class="box top-space-40 padding-30 box_transp "
             v-if="showCreationForm"
             
             ><H3
-            id="i3gd1b"
-            class="box__header "
+            id="i3gd1b" src="undefined"
+            class="box__header text-centered "
             
             
             >{{ add-title }}</H3><form
-            method="get" id="i50acf"
+            method="get" id="i50acf" src="undefined"
             class="form "
             @submit.prevent="createWebsite"
             
             ><div
-            id="igtg1t"
+            id="igtg1t" src="undefined"
             class="v-space "
             
             
             ><label
-            id="i1nmbc"
+            id="i1nmbc" src="undefined"
             class="v-space "
             
             
             >{{ add-name-label }}</label><input
-            type="text" id="ij5iwh" placeholder="{{ add-name-placeholder }}"
+            type="text" id="ij5iwh" placeholder="{{ add-name-placeholder }}" src="undefined"
             class="input full-width "
             v-model="newWebsiteName"
             
             ></input></div><div
-            id="ie0xes"
+            id="ie0xes" src="undefined"
             
             
             
             ><button
-            type="submit" id="i021na"
-            class="button rounded button--primary right-space "
+            type="submit" id="i021na" src="undefined"
+            class="button rounded button--primary right-space-20 "
             
             
             >{{ add-ok }}</button><button
-            type="reset"
+            type="reset" src="undefined"
             class="button rounded button--secondary "
             @click="showCreationForm = !showCreationForm"
             
             >{{ add-cancel }}</button></div></form></div><div
-            id="if80m"
+            id="if80m" src="undefined"
             class="margin-20 "
             v-if="!empty"
             
             ><SECTION
-            id="idgvg"
+            id="idgvg" src="undefined"
             class="button-bar button-bar--full-width bg-white rounded loaded__item "
             v-if="!loading" v-for="(website, index) in websites" :key="index"
             
             ><H3
-            id="i69a7"
-            class="button-bar_item button-bar__item--main "
+            id="i69a7" src="undefined"
+            class="button-bar_item button-bar__item--main right-space-40 "
             v-text="website.name || website.id"
             
             >My first website</H3><P
-            id="i65hn"
-            class="button-bar_item button-bar__item--secondary flex-no-shrink "
+            id="i65hn" src="undefined"
+            class="button-bar_item button-bar__item--secondary flex-no-shrink right-space-40 "
             v-text="'{{ list-item-updated }} ' + new Date(website.updatedAt).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })"
             
             >Updated 1h ago by lexoyo</P><P
-            id="i64qa"
-            class="button-bar_item button-bar__item--secondary flex-no-shrink "
+            id="i64qa" src="undefined"
+            class="button-bar_item button-bar__item--secondary flex-no-shrink right-space-40 "
             v-text="'{{ list-item-created }} ' + new Date(website.createdAt).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })"
             
             >Created 2023-02-16 by lexoyo</P><div
-            id="i3b4tr"
+            id="i3b4tr" src="undefined"
             class="button-bar_item flex-no-shrink "
             
             
             ><BUTTON
-            id="ifyf6p" href=""
-            class="button rounded button--primary button--small right-space "
+            id="ifyf6p" href="" src="undefined"
+            class="right-space-20 bold button-bar__item--link pointer "
             @click="openEditor(website.websiteId, '{{lang}}')"
             
             >{{ list-edit }}</BUTTON><BUTTON
-            href="" id="ihf6ew"
-            class="button rounded button--small right-space button--tertiary "
+            href="" id="ihf6ew" src="undefined"
+            class="right-space-20 button-bar__item--link pointer "
             @click="renameWebsite(website.websiteId, '{{lang}}')"
             
             >{{ list-rename }}</BUTTON><BUTTON
-            id="iol4h"
-            class="button rounded button--small button--tertiary "
+            id="iol4h" src="undefined"
+            class="button-bar__item--link pointer "
             @click="deleteWebsite(website.websiteId)" title="{{ list-delete }}"
             
             >X</BUTTON></div></SECTION><SECTION
-            id="i1fjn"
+            id="i1fjn" src="undefined"
             class="button-bar button-bar--full-width bg-white rounded loading__item skeleton-anim skeleton-wrapper "
             v-if="loading"
             
             ><H3
-            
+            id="iwu6a" src="undefined"
             class="button-bar_item button-bar__item--main skeleton-text skeleton "
             
             
             >My first websiteMy first websiteMy first websiteMy first</H3><P
-            
+            id="i26fn" src="undefined"
             class="button-bar_item button-bar__item--secondary skeleton-text skeleton "
             
             
             >Updated 1h ago by lexoyo</P><P
-            
+            src="undefined"
             class="button-bar_item button-bar__item--secondary skeleton-text skeleton "
             
             
             >Created 2023-02-16 by lexoyo</P><div
-            id="ixz6c"
+            id="ixz6c" src="undefined"
             class="button-bar_item skeleton skeleton-button "
             
             
             >Edit</div></SECTION><SECTION
-            id="iwxxo5"
+            id="iwxxo5" src="undefined"
             class="button-bar button-bar--full-width bg-white rounded loading__item skeleton-anim skeleton-wrapper "
             v-if="loading"
             
             ><H3
-            
+            src="undefined"
             class="button-bar_item button-bar__item--main skeleton-text skeleton "
             
             
             >My first websiteMy first websiteMy first websiteMy first</H3><P
-            
+            src="undefined"
             class="button-bar_item button-bar__item--secondary skeleton-text skeleton "
             
             
             >Updated 1h ago by lexoyo</P><P
-            
+            src="undefined"
             class="button-bar_item button-bar__item--secondary skeleton-text skeleton "
             
             
             >Created 2023-02-16 by lexoyo</P><div
-            id="i9fx3l"
+            id="i9fx3l" src="undefined"
             class="button-bar_item skeleton skeleton-button "
             
             
             >Edit</div></SECTION><SECTION
-            id="isld3r"
+            id="isld3r" src="undefined"
             class="button-bar button-bar--full-width bg-white rounded loading__item skeleton-anim skeleton-wrapper "
             v-if="loading"
             
             ><H3
-            
+            src="undefined"
             class="button-bar_item button-bar__item--main skeleton-text skeleton "
             
             
             >My first websiteMy first websiteMy first websiteMy first</H3><P
-            
+            src="undefined"
             class="button-bar_item button-bar__item--secondary skeleton-text skeleton "
             
             
             >Updated 1h ago by lexoyo</P><P
-            
+            src="undefined"
             class="button-bar_item button-bar__item--secondary skeleton-text skeleton "
             
             
             >Created 2023-02-16 by lexoyo</P><div
-            id="i8oes3"
+            id="i8oes3" src="undefined"
             class="button-bar_item skeleton skeleton-button "
             
             
             >Edit</div></SECTION></div><div
-            id="i7ej6j"
-            class="box horizontal "
+            id="i7ej6j" src="undefined"
+            class="horizontal box-message text-white "
             v-if="error"
             
-            ><div
-            id="iv0eyi"
+            ><H3
+            id="iv0eyi" src="undefined"
             class="full-width v-space h-space "
             v-text="error"
             
-            >Insert your text here</div><div
-            id="i4656n"
-            class="button rounded button--small button--tertiary "
+            >Insert your text here</H3><div
+            id="i4656n" src="undefined"
+            class="rounded pointer button-bar__item--link text-white "
             @click="error = null"
             
             >{{ message-dismiss }}</div></div><div
-            id="ilteie"
-            class="box horizontal "
+            id="ilteie" src="undefined"
+            class="horizontal box-message text-white "
             v-if="message"
             
-            ><div
-            id="i2d31v"
+            ><H3
+            id="i2d31v" src="undefined"
             class="full-width v-space h-space "
             v-text="message"
             
-            >Insert your text here</div><div
-            id="i2urco"
-            class="button rounded button--small button--tertiary "
+            >Insert your text here</H3><div
+            id="i2urco" src="undefined"
+            class="rounded pointer button-bar__item--link text-white "
             @click="message = null"
             
-            >{{ message-dismiss }}</div></div></MAIN><FOOTER
-            id="ilzpl"
+            >{{ message-dismiss }}</div></div><div
+            id="ipccl7" src="undefined"
+            
+            
+            
+            ><div
+            id="i2fkm9" src="undefined"
+            class="margin-20 empty-image "
+            v-if="empty"
+            
+            ></div><div
+            id="i5ydxo" src="undefined"
+            class="box padding-50-30 "
+            v-if="empty"
+            
+            ><P
+            id="ikl1qu" src="undefined"
+            class="text-centered title-26 "
+            
+            
+            >C'est bien calme ici..<br
+            src="undefined"
+            
+            
+            
+            ></br></P><H3
+            id="iwzrqi" src="undefined"
+            class="text-centered title-26 "
+            
+            
+            >Prêt à démarrer une nouvelle aventure ?</H3></div></div></MAIN><FOOTER
+            id="ilzpl" src="undefined"
             class="header footer "
             
             
             ><div
-            id="i238z"
+            id="i238z" src="undefined"
             class="section "
             
             

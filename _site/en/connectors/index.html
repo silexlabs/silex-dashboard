@@ -14,11 +14,11 @@
       href="/fr/connectors" />
 
 <style>
-h1, h2, h3, label {	color:#2B1B63;}
-.button { cursor: pointer; }
+body {color:#2B1B63;}
+.pointer, .button { cursor: pointer; }
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
-.uppercase {text-transform: uppercase;}
+.uppercase  {text-transform: uppercase;}
 .skeleton-anim:after {
   width: 100%;
   height: 100%;
@@ -139,110 +139,120 @@ window.addEventListener('load', function() {
 <meta property="og:image" content=""/>
       </head>
       <body
-            id="i2hcfw"
+            id="i2hcfw" src="undefined"
             class="body app"
             
             
             ><HEADER
-            id="ij139z"
+            id="ij139z" src="undefined"
             class="header padding-normal full-width "
             
             
             ><A
-            href="/"
+            href="/" src="undefined"
             
             
             
             ><img
-            src="/assets/silex-icon-2018@200px.png" href=""
+            src="/api/website/assets/picto-silex@3x.png?websiteId=default&connectorId=fs-storage" href=""
             class="nav__logo "
             
             
             ></img></A><NAV
-            id="in5jeq"
+            id="in5jeq" src="undefined"
             class="nav "
             
             
             ><A
-            href="/" id="i0g3ac"
+            href="/" id="i0g3ac" src="undefined"
             class="nav__item active"
             target=""
             
             >Sites</A><A
-            href="http://docs.silex.me/" id="i0g3ac"
+            href="http://docs.silex.me/" id="i0g3ac" src="undefined"
             class="nav__item "
             target="_blank"
             
             >Docs</A><A
-            href="https://www.silex.me/" id="i0g3ac"
+            href="https://www.silex.me/" id="i0g3ac" src="undefined"
             class="nav__item "
             target="_blank"
             
             >About</A><A
-            href="https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=en-US&source=silex-dashboard" id="i0g3ac"
+            href="https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=en-US&source=silex-dashboard" id="i0g3ac" src="undefined"
             class="nav__item "
             target="_blank"
             
             >News</A></NAV><div
-            
+            src="undefined"
             class="lang h-space "
             
             
             ><A
-            href="/en"
+            href="/en" src="undefined"
             class="lang__item nav__item active"
             hreflang="en"
             
             >en</A><A
-            href="/fr"
+            href="/fr" src="undefined"
             class="lang__item nav__item "
             hreflang="fr"
             
             >fr</A></div></HEADER><A
-            id="ixzhcr" href="/"
+            id="ixzhcr" href="/" src="undefined"
             class="button button-bar__item--secondary "
             
             
             >< Back</A><div
-            id="imgx81"
+            id="imawg3" src="undefined"
+            class="bg-silex-purpel "
             
+            
+            ><div
+            id="imgx81" src="undefined"
+            
+            
+            
+            ><div
+            id="iikf0s" src="undefined"
+            class="box text-centered padding-100-30 box_login "
             
             
             ><H1
-            id="ighycb"
-            class="title "
+            id="ighycb" src="undefined"
+            class="title-40 "
             
             
             >Welcome to Silex</H1><div
-            id="it2175"
-            class="subtitle "
+            id="it2175" src="undefined"
+            class="subtitle-16 "
             
             
             >Please login to continue</div><div
-            id="in62y2"
+            id="in62y2" src="undefined"
             class="button-bar "
             
             
             ><A
-            id="isqe61" href="https://"
+            id="isqe61" href="https://" src="undefined"
             class="h-space button-bar__item--main button-bar_item button big-button "
             v-if="!loading" v-for="(connector, index) in connectors" :key="index" :style="{ backgroundColor: connector.background, color: connector.color }" @click="openLogin(connector)"
             
             ><div
-            id="i87asw"
+            id="i87asw" src="undefined"
             
             v-text="connector.displayName"
             
-            >Insert your text here</div></A></div><div
-            id="i9msnk"
-            
+            >Insert your text here</div></A></div></div><div
+            id="i9msnk" src="undefined"
+            class="text-white top-space-20 "
             v-if="error" v-html="message"
             
             >Insert your text here</div><div
-            id="i6akll"
+            id="i6akll" src="undefined"
             class="button button--tertiary "
             v-if="error" @click="logout()"
             
-            >Logout</div></div></body>
+            >Logout</div></div></div></body>
       </html>
       
