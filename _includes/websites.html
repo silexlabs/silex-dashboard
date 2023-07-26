@@ -124,7 +124,7 @@ input:focus {
             class="button button--tertiary "
             @click="logout()"
             
-            >Logout</div></div></div></HEADER><div
+            >Logout</div></div></div></HEADER><HEADER
             id="iy8ax3" src="undefined"
             class="bg-silex-purpel "
             
@@ -139,22 +139,22 @@ input:focus {
             class="title-40 "
             v-if="!empty"
             
-            >{{ title2 }}</H1><div
+            >{{ title2 }}</H1><P
             id="iyex8" src="undefined"
             class="subtitle-16 "
             v-if="!empty"
             
-            >{{ subtitle }}</div><H1
+            >{{ subtitle }}</P><H1
             id="i4ybc" src="undefined"
             class="title-40 "
             v-if="empty"
             
-            >{{ title2-empty }}</H1><DIV
+            >{{ title2-empty }}</H1><P
             id="iino6r" src="undefined"
             class="subtitle-16 "
             v-if="empty"
             
-            >{{ subtitle-empty }}</DIV></div></div><MAIN
+            >{{ subtitle-empty }}</P></div></HEADER><MAIN
             id="iz63r" src="undefined"
             class="padding-normal section main-min-height "
             
@@ -374,17 +374,12 @@ input:focus {
             class="text-centered title-26 "
             
             
-            >C'est bien calme ici..<br
-            src="undefined"
-            
-            
-            
-            ></br></P><H3
+            >{{ text-empty1 }}</P><H3
             id="iwzrqi" src="undefined"
             class="text-centered title-26 "
             
             
-            >Prêt à démarrer une nouvelle aventure ?</H3></div></div><div
+            >{{ text-empty2 }}</H3></div></div><div
             id="i7ej6j" src="undefined"
             class="horizontal box-message text-white "
             v-if="error"
