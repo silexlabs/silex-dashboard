@@ -163,7 +163,7 @@ window.addEventListener('load', function() {
             
             
             ><img
-            src="/api/website/assets/picto-silex@3x.png?websiteId=default&connectorId=fs-storage" href=""
+            src="/assets/picto-silex@3x.png" href=""
             class="nav__logo "
             
             
@@ -248,6 +248,11 @@ window.addEventListener('load', function() {
             v-if="!loading" v-for="(connector, index) in connectors" :key="index" :style="{ backgroundColor: connector.background, color: connector.color }" @click="openLogin(connector)"
             
             ><div
+            
+            class="button-bar__item__icon "
+            :style='`background: url("${connector.icon}"); background-repeat: no-repeat; background-size: contain;`'
+            
+            ></div><div
             id="i87asw" src="undefined"
             
             v-text="connector.displayName"
