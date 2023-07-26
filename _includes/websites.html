@@ -10,11 +10,20 @@
 {% render "alternate.liquid" languages: languages lang: lang page: page %}
 
 <style>
-body {color:#2B1B63;}
-.button { cursor: pointer; }
-a { text-decoration: none; }
+body {	color:#2B1B63;}
+.button, .pointer { cursor: pointer;}
+a { 
+	text-decoration: none;
+	color:#8873FE;}
 a:hover { text-decoration: underline; }
 .uppercase  {text-transform: uppercase;}
+/*label*/
+::placeholder {color: #8873FE;}
+input:focus {
+	border: 2px solid ##9977FE;
+	background-color:#ffffff;}
+:focus { outline: none;}
+/*label*/
 .skeleton-anim:after {
   width: 100%;
   height: 100%;
@@ -65,7 +74,7 @@ a:hover { text-decoration: underline; }
             
             
             ><img
-            src="/api/website/assets/picto-silex@3x.png?websiteId=default&connectorId=fs-storage" href="" id="iel80b-2"
+            src="/assets/picto-silex@3x.png" href="" id="iel80b-2"
             class="nav__logo "
             
             
@@ -147,7 +156,7 @@ a:hover { text-decoration: underline; }
             
             >{{ subtitle-empty }}</DIV></div></div><MAIN
             id="iz63r" src="undefined"
-            class="padding-normal section "
+            class="padding-normal section main-min-height "
             
             
             ><SECTION
@@ -157,7 +166,7 @@ a:hover { text-decoration: underline; }
             
             ></SECTION><div
             id="ickx4" src="undefined"
-            class="button-bar margin-20 "
+            class="margin-20 "
             
             
             ><BUTTON
@@ -202,7 +211,7 @@ a:hover { text-decoration: underline; }
             
             ><label
             id="i1nmbc" src="undefined"
-            class="v-space "
+            class="v-space bold color-2B1B63-80 "
             
             
             >{{ add-name-label }}</label><input
@@ -237,7 +246,7 @@ a:hover { text-decoration: underline; }
             
             ><H3
             id="i69a7" src="undefined"
-            class="button-bar_item button-bar__item--main right-space-40 "
+            class="button-bar_item button-bar__item--main right-space-40 color-2B1B63-80 uppercase "
             v-text="website.name || website.id"
             
             >My first website</H3><P
@@ -346,36 +355,6 @@ a:hover { text-decoration: underline; }
             
             
             >Edit</div></SECTION></div><div
-            id="i7ej6j" src="undefined"
-            class="horizontal box-message text-white "
-            v-if="error"
-            
-            ><H3
-            id="iv0eyi" src="undefined"
-            class="full-width v-space h-space "
-            v-text="error"
-            
-            >Insert your text here</H3><div
-            id="i4656n" src="undefined"
-            class="rounded pointer button-bar__item--link text-white "
-            @click="error = null"
-            
-            >{{ message-dismiss }}</div></div><div
-            id="ilteie" src="undefined"
-            class="horizontal box-message text-white "
-            v-if="message"
-            
-            ><H3
-            id="i2d31v" src="undefined"
-            class="full-width v-space h-space "
-            v-text="message"
-            
-            >Insert your text here</H3><div
-            id="i2urco" src="undefined"
-            class="rounded pointer button-bar__item--link text-white "
-            @click="message = null"
-            
-            >{{ message-dismiss }}</div></div><div
             id="ipccl7" src="undefined"
             
             
@@ -405,7 +384,37 @@ a:hover { text-decoration: underline; }
             class="text-centered title-26 "
             
             
-            >Prêt à démarrer une nouvelle aventure ?</H3></div></div></MAIN><FOOTER
+            >Prêt à démarrer une nouvelle aventure ?</H3></div></div><div
+            id="i7ej6j" src="undefined"
+            class="horizontal box-message text-white "
+            v-if="error"
+            
+            ><H3
+            id="iv0eyi" src="undefined"
+            class="full-width v-space h-space "
+            v-text="error"
+            
+            >Insert your text here</H3><div
+            id="i4656n" src="undefined"
+            class="rounded pointer button-bar__item--link text-white "
+            @click="error = null"
+            
+            >{{ message-dismiss }}</div></div><div
+            id="ilteie" src="undefined"
+            class="horizontal box-message text-white "
+            v-if="message"
+            
+            ><H3
+            id="i2d31v" src="undefined"
+            class="full-width v-space h-space "
+            v-text="message"
+            
+            >Insert your text here</H3><div
+            id="i2urco" src="undefined"
+            class="rounded pointer button-bar__item--link text-white "
+            @click="message = null"
+            
+            >{{ message-dismiss }}</div></div></MAIN><FOOTER
             id="ilzpl" src="undefined"
             class="header footer "
             

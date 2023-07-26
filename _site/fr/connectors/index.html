@@ -14,11 +14,20 @@
       href="/en/connectors" />
 
 <style>
-body {color:#2B1B63;}
-.button { cursor: pointer; }
-a { text-decoration: none; }
+body {	color:#2B1B63;}
+.button, .pointer { cursor: pointer;}
+a { 
+	text-decoration: none;
+	color:#8873FE;}
 a:hover { text-decoration: underline; }
 .uppercase  {text-transform: uppercase;}
+/*label*/
+::placeholder {color: #8873FE;}
+input:focus {
+	border: 2px solid ##9977FE;
+	background-color:#ffffff;}
+:focus { outline: none;}
+/*label*/
 .skeleton-anim:after {
   width: 100%;
   height: 100%;
@@ -165,27 +174,27 @@ window.addEventListener('load', function() {
             
             ><A
             href="/" id="i0g3ac" src="undefined"
-            class="nav__item active"
+            class="nav__item uppercase active"
             target=""
             
             >Sites</A><A
             href="http://docs.silex.me/" id="i0g3ac" src="undefined"
-            class="nav__item "
+            class="nav__item uppercase "
             target="_blank"
             
             >Docs</A><A
             href="https://www.silex.me/" id="i0g3ac" src="undefined"
-            class="nav__item "
+            class="nav__item uppercase "
             target="_blank"
             
             >A propos</A><A
             href="https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=fr-FR&source=silex-dashboard" id="i0g3ac" src="undefined"
-            class="nav__item "
+            class="nav__item uppercase "
             target="_blank"
             
             >Info</A></NAV><div
             src="undefined"
-            class="lang h-space "
+            class="lang h-space uppercase "
             
             
             ><A
