@@ -15,7 +15,12 @@
       "target": "_blank"
     },
     {
-      "label": "Info",
+      "label": "Communauté",
+      "url": "https://community.silex.me/",
+      "target": "_blank"
+    },
+    {
+      "label": "News",
       "url": "https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=fr-FR&source=silex-dashboard",
       "target": "_blank"
     }
