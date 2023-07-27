@@ -15,16 +15,22 @@
 
 <style>
 body {	color:#2B1B63;}
-.button, .pointer { cursor: pointer;}
+.button, .pointer { cursor: pointer!important}
+.button{min-width:110px;}
 a { 
 	text-decoration: none;
 	color:#8873FE;}
 a:hover { text-decoration: underline; }
 .uppercase  {text-transform: uppercase;}
+
+/*footer position*/
+.main-min-height {min-height: calc(100vh - 560px);}
+/*footer position*/
+
 /*label*/
 ::placeholder {color: #8873FE;}
 input:focus {
-	border: 2px solid #9977FE;
+	border: 2px solid ##9977FE;
 	background-color:#ffffff;}
 :focus { outline: none;}
 /*label*/
@@ -52,6 +58,57 @@ input:focus {
   }
 }
 
+/*FX ANIMATIONS*/
+.fx-scale:hover  {
+	transform-origin: center bottom;
+	transform: scale(1.1);
+	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+}
+/*flash*/
+.fx-underline:hover, .fx-flash:hover {
+	        animation: flash-in .5s ;
+}
+/* Underline animation */
+.fx-underline  {
+	position: relative;
+}
+/* Fade in */
+.fx-underline::after {
+	content: '';
+	position: absolute;
+	bottom: -3px;
+	left: 0;
+	width: 100%;
+	height: 0.1em;
+	background-color: #8873fe;
+	opacity: 0;
+	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 1.8);
+}
+
+.fx-underline:hover::after,
+.fx-underline:focus::after {
+	opacity: 1;
+	transform: translate3d(0, 2.2em, 0);
+}
+
+/* Scale from center */
+.fx-underline:after {
+	transform: scale(0);
+	transform-origin: center;
+}
+
+.fx-underline:hover::after,
+.fx-underline:focus::after{
+	transform: scale(1);
+}
+/* Underline animation */
+/*flash-in animation*/
+      @keyframes flash-in{
+        0% {opacity:0;}
+        100% {opacity:1;}
+      }
+/*flash-in animation*/
+/*FX ANIMATIONS*/
 </style>
       <script src="/node_modules/vue/dist/vue.global.js"></script>
 <script src="/js/main.js"></script>
@@ -230,7 +287,7 @@ window.addEventListener('load', function() {
             
             ><HEADER
             id="igrg" src="undefined"
-            class="header padding-normal "
+            class="menu-bar "
             
             
             ><A
@@ -264,6 +321,11 @@ window.addEventListener('load', function() {
             target="_blank"
             
             >About</A><A
+            id="iels" href="https://community.silex.me/" src="undefined"
+            class="nav__item uppercase "
+            target="_blank"
+            
+            >Community</A><A
             id="iels" href="https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=en-US&source=silex-dashboard" src="undefined"
             class="nav__item uppercase "
             target="_blank"
@@ -340,7 +402,7 @@ window.addEventListener('load', function() {
             
             >Create your first project, click on "Create a website"</P></div></HEADER><MAIN
             id="iz63r" src="undefined"
-            class="padding-normal section main-min-height "
+            class="padding-normal main-min-height website-max-width margin-80 "
             
             
             ><SECTION
@@ -355,7 +417,7 @@ window.addEventListener('load', function() {
             
             ><BUTTON
             id="i2x0l" src="undefined"
-            class="button button--primary rounded top-space-40 "
+            class="button button--primary rounded top-space-40 fx-scale fx-scale-round "
             @click="showCreationForm = !showCreationForm" v-if="!showCreationForm"
             
             ><span
@@ -410,12 +472,12 @@ window.addEventListener('load', function() {
             
             ><button
             type="submit" id="i021na" src="undefined"
-            class="button rounded button--primary right-space-20 "
+            class="button rounded button--primary right-space-20 fx-scale "
             
             
             >Create</button><button
             type="reset" src="undefined"
-            class="button rounded button--secondary "
+            class="button rounded button--secondary fx-scale "
             @click="showCreationForm = !showCreationForm"
             
             >Cancel</button></div></form></div><div
@@ -425,112 +487,112 @@ window.addEventListener('load', function() {
             
             ><SECTION
             id="idgvg" src="undefined"
-            class="button-bar button-bar--full-width bg-white rounded loaded__item "
+            class="button-bar loaded__item "
             v-if="!loading" v-for="(website, index) in websites" :key="index"
             
             ><H3
             id="i69a7" src="undefined"
-            class="button-bar_item button-bar__item--main right-space-40 color-2B1B63-80 uppercase "
+            class="right-space-40 color-2B1B63-80 uppercase "
             v-text="website.name || website.id"
             
             >My first website</H3><P
             id="i65hn" src="undefined"
-            class="button-bar_item button-bar__item--secondary flex-no-shrink right-space-40 "
+            class="button-bar__item--secondary flex-no-shrink right-space-40 "
             v-text="'Updated ' + new Date(website.updatedAt).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })"
             
             >Updated 1h ago by lexoyo</P><P
             id="i64qa" src="undefined"
-            class="button-bar_item button-bar__item--secondary flex-no-shrink right-space-40 "
+            class="button-bar__item--secondary flex-no-shrink right-space-40 "
             v-text="'Created ' + new Date(website.createdAt).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })"
             
             >Created 2023-02-16 by lexoyo</P><div
             id="i3b4tr" src="undefined"
-            class="button-bar_item flex-no-shrink "
+            class="flex-no-shrink "
             
             
             ><BUTTON
             id="ifyf6p" href="" src="undefined"
-            class="right-space-20 bold button-bar__item--link pointer "
+            class="right-space-20 bold button-bar__item--link pointer fx-underline fx-scale "
             @click="openEditor(website.websiteId, 'en')"
             
             >Edit</BUTTON><BUTTON
             href="" id="ihf6ew" src="undefined"
-            class="right-space-20 button-bar__item--link pointer "
+            class="right-space-20 button-bar__item--link pointer fx-underline fx-scale "
             @click="renameWebsite(website.websiteId, 'en')"
             
             >Rename</BUTTON><BUTTON
             id="iol4h" src="undefined"
-            class="button-bar__item--link pointer "
+            class="button-bar__item--link pointer fx-flash fx-scale "
             @click="deleteWebsite(website.websiteId)" title="Delete"
             
             >X</BUTTON></div></SECTION><SECTION
             id="i1fjn" src="undefined"
-            class="button-bar button-bar--full-width bg-white rounded loading__item skeleton-anim skeleton-wrapper "
+            class="button-bar loading__item skeleton-anim skeleton-wrapper "
             v-if="loading"
             
             ><H3
             id="iwu6a" src="undefined"
-            class="button-bar_item button-bar__item--main skeleton-text skeleton right-space-40 "
+            class="skeleton-text skeleton right-space-40 "
             
             
             >My first websiteMy first websiteMy first websiteMy first</H3><P
             id="i26fn" src="undefined"
-            class="button-bar_item button-bar__item--secondary skeleton-text skeleton right-space-40 "
+            class="button-bar__item--secondary skeleton-text skeleton right-space-40 "
             
             
             >Updated 1h ago by lexoyo</P><P
             id="iywbk" src="undefined"
-            class="button-bar_item button-bar__item--secondary skeleton-text skeleton right-space-40 "
+            class="button-bar__item--secondary skeleton-text skeleton right-space-40 "
             
             
             >Created 2023-02-16 by lexoyo</P><div
             id="ixz6c" src="undefined"
-            class="button-bar_item skeleton skeleton-button "
+            class="skeleton skeleton-button "
             
             
             >Edit</div></SECTION><SECTION
             id="iwxxo5" src="undefined"
-            class="button-bar button-bar--full-width bg-white rounded loading__item skeleton-anim skeleton-wrapper "
+            class="button-bar loading__item skeleton-anim skeleton-wrapper "
             v-if="loading"
             
             ><H3
-            src="undefined"
-            class="button-bar_item button-bar__item--main skeleton-text skeleton "
+            id="inmp3" src="undefined"
+            class="skeleton-text skeleton right-space-40 "
             
             
             >My first websiteMy first websiteMy first websiteMy first</H3><P
-            src="undefined"
-            class="button-bar_item button-bar__item--secondary skeleton-text skeleton "
+            id="icjz8" src="undefined"
+            class="button-bar__item--secondary skeleton-text skeleton right-space-40 "
             
             
             >Updated 1h ago by lexoyo</P><P
-            src="undefined"
-            class="button-bar_item button-bar__item--secondary skeleton-text skeleton "
+            id="illbe" src="undefined"
+            class="button-bar__item--secondary skeleton-text skeleton right-space-40 "
             
             
             >Created 2023-02-16 by lexoyo</P><div
             id="i9fx3l" src="undefined"
-            class="button-bar_item skeleton skeleton-button "
+            class="skeleton skeleton-button "
             
             
             >Edit</div></SECTION><SECTION
             id="isld3r" src="undefined"
-            class="button-bar button-bar--full-width bg-white rounded loading__item skeleton-anim skeleton-wrapper "
+            class="button-bar loading__item skeleton-anim skeleton-wrapper "
             v-if="loading"
             
             ><H3
             src="undefined"
-            class="button-bar_item button-bar__item--main skeleton-text skeleton "
+            class="button-bar_item button-bar__item--main skeleton-text skeleton right-space-40 "
             
             
             >My first websiteMy first websiteMy first websiteMy first</H3><P
             src="undefined"
-            class="button-bar_item button-bar__item--secondary skeleton-text skeleton "
+            class="button-bar_item button-bar__item--secondary skeleton-text skeleton right-space-40 "
             
             
             >Updated 1h ago by lexoyo</P><P
             src="undefined"
-            class="button-bar_item button-bar__item--secondary skeleton-text skeleton "
+            class="button-bar_item button-bar__item--secondary skeleton-text skeleton right-space-40 "
             
             
             >Created 2023-02-16 by lexoyo</P><div
@@ -565,27 +627,27 @@ window.addEventListener('load', function() {
             
             >Ready to start your journey?</H3></div></div><div
             id="i7ej6j" src="undefined"
-            class="horizontal box-message text-white "
+            class="flex-between box-message text-white "
             v-if="error"
             
             ><H3
             id="iv0eyi" src="undefined"
-            class="full-width v-space h-space "
+            class="box-message-text "
             v-text="error"
             
             >Insert your text here</H3><div
             id="i4656n" src="undefined"
-            class="rounded pointer button-bar__item--link text-white "
+            class="pointer button-bar__item--link text-white "
             @click="error = null"
             
             >Dismiss</div></div><div
             id="ilteie" src="undefined"
-            class="horizontal box-message text-white "
+            class="flex-between box-message text-white "
             v-if="message"
             
             ><H3
             id="i2d31v" src="undefined"
-            class="full-width v-space h-space "
+            class="box-message-text "
             v-text="message"
             
             >Insert your text here</H3><div
@@ -595,12 +657,12 @@ window.addEventListener('load', function() {
             
             >Dismiss</div></div></MAIN><FOOTER
             id="ilzpl" src="undefined"
-            class="header footer "
+            class="footer "
             
             
             ><div
             id="i238z" src="undefined"
-            class="section "
+            class="website-max-width "
             
             
             ></div></FOOTER></body>

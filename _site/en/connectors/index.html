@@ -15,16 +15,22 @@
 
 <style>
 body {	color:#2B1B63;}
-.button, .pointer { cursor: pointer;}
+.button, .pointer { cursor: pointer!important}
+.button{min-width:110px;}
 a { 
 	text-decoration: none;
 	color:#8873FE;}
 a:hover { text-decoration: underline; }
 .uppercase  {text-transform: uppercase;}
+
+/*footer position*/
+.main-min-height {min-height: calc(100vh - 560px);}
+/*footer position*/
+
 /*label*/
 ::placeholder {color: #8873FE;}
 input:focus {
-	border: 2px solid #9977FE;
+	border: 2px solid ##9977FE;
 	background-color:#ffffff;}
 :focus { outline: none;}
 /*label*/
@@ -52,6 +58,57 @@ input:focus {
   }
 }
 
+/*FX ANIMATIONS*/
+.fx-scale:hover  {
+	transform-origin: center bottom;
+	transform: scale(1.1);
+	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+}
+/*flash*/
+.fx-underline:hover, .fx-flash:hover {
+	        animation: flash-in .5s ;
+}
+/* Underline animation */
+.fx-underline  {
+	position: relative;
+}
+/* Fade in */
+.fx-underline::after {
+	content: '';
+	position: absolute;
+	bottom: -3px;
+	left: 0;
+	width: 100%;
+	height: 0.1em;
+	background-color: #8873fe;
+	opacity: 0;
+	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 1.8);
+}
+
+.fx-underline:hover::after,
+.fx-underline:focus::after {
+	opacity: 1;
+	transform: translate3d(0, 2.2em, 0);
+}
+
+/* Scale from center */
+.fx-underline:after {
+	transform: scale(0);
+	transform-origin: center;
+}
+
+.fx-underline:hover::after,
+.fx-underline:focus::after{
+	transform: scale(1);
+}
+/* Underline animation */
+/*flash-in animation*/
+      @keyframes flash-in{
+        0% {opacity:0;}
+        100% {opacity:1;}
+      }
+/*flash-in animation*/
+/*FX ANIMATIONS*/
 </style>
       <script src="/node_modules/vue/dist/vue.global.js"></script>
 <script src="/js/main.js"></script>
@@ -154,11 +211,11 @@ window.addEventListener('load', function() {
             
             ><HEADER
             id="ij139z" src="undefined"
-            class="header padding-normal full-width "
+            class="menu-bar "
             
             
             ><A
-            href="/" src="undefined"
+            href="/" id="iy54t1" src="undefined"
             
             
             
@@ -188,6 +245,11 @@ window.addEventListener('load', function() {
             target="_blank"
             
             >About</A><A
+            href="https://community.silex.me/" id="i0g3ac" src="undefined"
+            class="nav__item uppercase "
+            target="_blank"
+            
+            >Community</A><A
             href="https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=en-US&source=silex-dashboard" id="i0g3ac" src="undefined"
             class="nav__item uppercase "
             target="_blank"
