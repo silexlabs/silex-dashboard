@@ -15,8 +15,10 @@
 
 <style>
 body {	color:#2B1B63;}
+/*BTNS*/
 .button, .pointer { cursor: pointer!important}
 .button{min-width:110px;}
+/*BTNS*/
 a { 
 	text-decoration: none;
 	color:#8873FE;}
@@ -57,8 +59,39 @@ input:focus {
     background-position: 200% 0, 0 0, 0 190px, 50px 195px;
   }
 }
-
 /*FX ANIMATIONS*/
+/*scale-round-inside*/
+.fx-scale-round {
+	position:relative;
+	  z-index: 10;
+  overflow: hidden;
+}
+.fx-scale-round::after {
+  content: "";
+  background: #ffffff;
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  left: -50%;
+  right: -50%;
+  top: -100%;
+  bottom: -100%;
+  transform: scale(0, 0);
+	transform-origin: center bottom;
+  transition: all 0.3s ease-out;
+
+}
+.fx-scale-round:hover {
+	transform-origin: center bottom;
+	transform: scale(1.1);
+	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+} 
+.fx-scale-round:hover::after {
+  transform: scale(1, 1);
+	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+}
+/*scale-round-inside*/
+/*scale*/
 .fx-scale:hover  {
 	transform-origin: center bottom;
 	transform: scale(1.1);
@@ -108,6 +141,7 @@ input:focus {
         100% {opacity:1;}
       }
 /*flash-in animation*/
+
 /*FX ANIMATIONS*/
 </style>
       <script src="/node_modules/vue/dist/vue.global.js"></script>
@@ -417,7 +451,7 @@ window.addEventListener('load', function() {
             
             ><BUTTON
             id="i2x0l" src="undefined"
-            class="button button--primary rounded top-space-40 fx-scale fx-scale-round "
+            class="button button--primary rounded top-space-40 fx-scale-round "
             @click="showCreationForm = !showCreationForm" v-if="!showCreationForm"
             
             ><span
@@ -472,12 +506,12 @@ window.addEventListener('load', function() {
             
             ><button
             type="submit" id="i021na" src="undefined"
-            class="button rounded button--primary right-space-20 fx-scale "
+            class="button rounded button--primary right-space-20 fx-scale-round "
             
             
             >Create</button><button
             type="reset" src="undefined"
-            class="button rounded button--secondary fx-scale "
+            class="button rounded button--secondary fx-scale-round "
             @click="showCreationForm = !showCreationForm"
             
             >Cancel</button></div></form></div><div
@@ -610,14 +644,9 @@ window.addEventListener('load', function() {
             class="margin-20 empty-image "
             v-if="empty"
             
-            ><div
-            
-            
-            
-            
-            ></div></div><div
+            ></div><div
             id="i5ydxo" src="undefined"
-            class="box padding-50-30 content--center "
+            class="box padding-50-30 "
             v-if="empty"
             
             ><P
@@ -630,22 +659,7 @@ window.addEventListener('load', function() {
             class="text-centered title-26 "
             
             
-            >Ready to start your journey?</H3><BUTTON
-            id="iskfvr" src="undefined"
-            class="button button--primary rounded top-space-40 fx-scale fx-scale-round "
-            @click="showCreationForm = !showCreationForm" v-if="!showCreationForm"
-            
-            ><span
-            id="it39jj" src="undefined"
-            class="icon-font "
-            
-            
-            >+</span> <span
-            id="i9zsby" src="undefined"
-            
-            
-            
-            >Create website</span></BUTTON></div></div><div
+            >Ready to start your journey?</H3></div></div><div
             id="i7ej6j" src="undefined"
             class="flex-between box-message text-white "
             v-if="error"
@@ -686,22 +700,22 @@ window.addEventListener('load', function() {
             
             
             ><A
-            id="izngeh" href="http://docs.silex.me/"
+            id="ipa5zg" href="http://docs.silex.me/"
             class="footer__item "
             
             
             >Documentation</A><A
-            id="izngeh" href="https://www.silex.me/"
+            id="ipa5zg" href="https://www.silex.me/"
             class="footer__item "
             
             
             >About Silex, official website</A><A
-            id="izngeh" href="https://community.silex.me/"
+            id="ipa5zg" href="https://community.silex.me/"
             class="footer__item "
             
             
             >Community furum</A><A
-            id="izngeh" href="http://www.silexlabs.org/"
+            id="ipa5zg" href="http://www.silexlabs.org/"
             class="footer__item "
             
             
