@@ -24,5 +24,49 @@
       "url": "https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=fr-FR&source=silex-dashboard",
       "target": "_blank"
     }
+  ],
+  "footer1": [
+    {
+      "label": "Documentation",
+      "url": "http://docs.silex.me/",
+      "target": "_blank"
+    },
+    {
+      "label": "À propos de Silex, site officiel",
+      "url": "https://www.silex.me/",
+      "target": "_blank"
+    },
+    {
+      "label": "Forum communautaire",
+      "url": "https://community.silex.me/",
+      "target": "_blank"
+    },
+    {
+      "label": "Silex Labs - l'organisation à but non lucratif derrière Silex",
+      "url": "http://www.silexlabs.org/",
+      "target": "_blank"
+    }
+  ],
+  "footer2": [
+    {
+      "label": "Newsletter - tous les 3 mois",
+      "url": "https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=fr-FR&source=silex-dashboard",
+      "target": "_blank"
+    },
+    {
+      "label": "Meetups, événements, ateliers",
+      "url": "https://www.meetup.com/Silex-Labs-Aperopensource/",
+      "target": "_blank"
+    },
+    {
+      "label": "Mastodon - suivez-nous sur le réseau social libre/gratuit",
+      "url": "https://fosstodon.org/@silex",
+      "target": "_blank"
+    },
+    {
+      "label": "Youtube - tutoriels et plus",
+      "url": "https://www.youtube.com/user/Silexlabs/",
+      "target": "_blank"
+    }
   ]
 }

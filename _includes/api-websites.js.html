@@ -74,7 +74,7 @@ window.addEventListener('load', function() {
       },
 
       openEditor(id, lang) {
-        window.open(`/?id=${id}&lang=${lang}&connectorId=${this.user.storage.connectorId}`, '_blank')
+        window.open(`/?id=${id}&lang=${lang}&connectorId=${this.user.storage.connectorId}`, '_self')
       },
 
       async logout() {

@@ -186,7 +186,7 @@ window.addEventListener('load', function() {
       },
 
       openEditor(id, lang) {
-        window.open(`/?id=${id}&lang=${lang}&connectorId=${this.user.storage.connectorId}`, '_blank')
+        window.open(`/?id=${id}&lang=${lang}&connectorId=${this.user.storage.connectorId}`, '_self')
       },
 
       async logout() {
@@ -492,8 +492,8 @@ window.addEventListener('load', function() {
             
             ><H3
             id="i69a7" src="undefined"
-            class="right-space-40 color-2B1B63-80 uppercase "
-            v-text="website.name || website.id"
+            class="right-space-40 color-2B1B63-80 uppercase pointer "
+            v-text="website.name || website.id" @click="openEditor(website.websiteId, 'fr')"
             
             >My first website</H3><P
             id="i65hn" src="undefined"
@@ -610,9 +610,14 @@ window.addEventListener('load', function() {
             class="margin-20 empty-image "
             v-if="empty"
             
-            ></div><div
+            ><div
+            
+            
+            
+            
+            ></div></div><div
             id="i5ydxo" src="undefined"
-            class="box padding-50-30 "
+            class="box padding-50-30 content--center "
             v-if="empty"
             
             ><P
@@ -625,7 +630,22 @@ window.addEventListener('load', function() {
             class="text-centered title-26 "
             
             
-            >Prêt.e à démarrer une nouvelle aventure?</H3></div></div><div
+            >Prêt.e à démarrer une nouvelle aventure?</H3><BUTTON
+            id="iskfvr" src="undefined"
+            class="button button--primary rounded top-space-40 fx-scale fx-scale-round "
+            @click="showCreationForm = !showCreationForm" v-if="!showCreationForm"
+            
+            ><span
+            id="it39jj" src="undefined"
+            class="icon-font "
+            
+            
+            >+</span> <span
+            id="i9zsby" src="undefined"
+            
+            
+            
+            >Créer un site</span></BUTTON></div></div><div
             id="i7ej6j" src="undefined"
             class="flex-between box-message text-white "
             v-if="error"
@@ -661,10 +681,55 @@ window.addEventListener('load', function() {
             
             
             ><div
-            id="i238z" src="undefined"
-            class="website-max-width "
+            
+            class="footer__column "
             
             
-            ></div></FOOTER></body>
+            ><A
+            id="izngeh" href="http://docs.silex.me/"
+            class="footer__item "
+            
+            
+            >Documentation</A><A
+            id="izngeh" href="https://www.silex.me/"
+            class="footer__item "
+            
+            
+            >À propos de Silex, site officiel</A><A
+            id="izngeh" href="https://community.silex.me/"
+            class="footer__item "
+            
+            
+            >Forum communautaire</A><A
+            id="izngeh" href="http://www.silexlabs.org/"
+            class="footer__item "
+            
+            
+            >Silex Labs - l'organisation à but non lucratif derrière Silex</A></div><div
+            
+            class="footer__column "
+            
+            
+            ><A
+            href="https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=fr-FR&source=silex-dashboard"
+            class="footer__item "
+            
+            
+            >Newsletter - tous les 3 mois</A><A
+            href="https://www.meetup.com/Silex-Labs-Aperopensource/"
+            class="footer__item "
+            
+            
+            >Meetups, événements, ateliers</A><A
+            href="https://fosstodon.org/@silex"
+            class="footer__item "
+            
+            
+            >Mastodon - suivez-nous sur le réseau social libre/gratuit</A><A
+            href="https://www.youtube.com/user/Silexlabs/"
+            class="footer__item "
+            
+            
+            >Youtube - tutoriels et plus</A></div></FOOTER></body>
       </html>
       

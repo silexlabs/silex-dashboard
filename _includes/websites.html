@@ -303,8 +303,8 @@ input:focus {
             
             ><H3
             id="i69a7" src="undefined"
-            class="right-space-40 color-2B1B63-80 uppercase "
-            v-text="website.name || website.id"
+            class="right-space-40 color-2B1B63-80 uppercase pointer "
+            v-text="website.name || website.id" @click="openEditor(website.websiteId, '{{lang}}')"
             
             >My first website</H3><P
             id="i65hn" src="undefined"
@@ -421,9 +421,14 @@ input:focus {
             class="margin-20 empty-image "
             v-if="empty"
             
-            ></div><div
+            ><div
+            
+            
+            
+            
+            ></div></div><div
             id="i5ydxo" src="undefined"
-            class="box padding-50-30 "
+            class="box padding-50-30 content--center "
             v-if="empty"
             
             ><P
@@ -436,7 +441,22 @@ input:focus {
             class="text-centered title-26 "
             
             
-            >{{ text-empty2 }}</H3></div></div><div
+            >{{ text-empty2 }}</H3><BUTTON
+            id="iskfvr" src="undefined"
+            class="button button--primary rounded top-space-40 fx-scale fx-scale-round "
+            @click="showCreationForm = !showCreationForm" v-if="!showCreationForm"
+            
+            ><span
+            id="it39jj" src="undefined"
+            class="icon-font "
+            
+            
+            >+</span> <span
+            id="i9zsby" src="undefined"
+            
+            
+            
+            >{{ add-button }}</span></BUTTON></div></div><div
             id="i7ej6j" src="undefined"
             class="flex-between box-message text-white "
             v-if="error"
@@ -472,10 +492,25 @@ input:focus {
             
             
             ><div
-            id="i238z" src="undefined"
-            class="website-max-width "
+            
+            class="footer__column "
             
             
-            >{{ content }}</div></FOOTER></body>
+            >{% for item in footer1 %}<A
+            id="izngeh" href="{{ item.url }}"
+            class="footer__item "
+            
+            
+            >{{ item.label }}</A>{% endfor %}</div><div
+            
+            class="footer__column "
+            
+            
+            >{% for item in footer2 %}<A
+            href="{{ item.url }}"
+            class="footer__item "
+            
+            
+            >{{ item.label }}</A>{% endfor %}</div></FOOTER></body>
       </html>
       
