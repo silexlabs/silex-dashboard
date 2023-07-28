@@ -261,17 +261,17 @@ input:focus {
             
             
             ><BUTTON
-            id="i2x0l" src="undefined"
+            src="undefined"
             class="button button--primary rounded top-space-40 fx-scale-round "
-            @click="showCreationForm = !showCreationForm" v-if="!showCreationForm"
+            @click="showCreationForm = !showCreationForm" v-if="!showCreationForm" v-if="!empty"
             
             ><span
-            id="ibsgw" src="undefined"
+            id="igsxoc" src="undefined"
             class="icon-font "
             
             
             >+</span> <span
-            id="itl2n8" src="undefined"
+            src="undefined"
             
             
             
@@ -457,7 +457,7 @@ input:focus {
             
             ></div><div
             id="i5ydxo" src="undefined"
-            class="box padding-50-30 "
+            class="box padding-50-30 box--centered "
             v-if="empty"
             
             ><P
@@ -470,7 +470,22 @@ input:focus {
             class="text-centered title-26 "
             
             
-            >{{ text-empty2 }}</H3></div></div><div
+            >{{ text-empty2 }}</H3><BUTTON
+            id="i2x0l" src="undefined"
+            class="button button--primary rounded top-space-40 fx-scale-round "
+            @click="showCreationForm = !showCreationForm" v-if="!showCreationForm" v-if="empty"
+            
+            ><span
+            id="ibsgw" src="undefined"
+            class="icon-font "
+            
+            
+            >+</span> <span
+            id="itl2n8" src="undefined"
+            
+            
+            
+            >{{ add-button }}</span></BUTTON></div></div><div
             id="i7ej6j" src="undefined"
             class="flex-between box-message text-white "
             v-if="error"
@@ -506,22 +521,22 @@ input:focus {
             
             
             ><div
-            
+            id="isucae" src="undefined"
             class="footer__column "
             
             
             >{% for item in footer1 %}<A
-            id="ipa5zg" href="{{ item.url }}"
+            id="ipa5zg" href="{{ item.url }}" src="undefined"
             class="footer__item "
             
             
             >{{ item.label }}</A>{% endfor %}</div><div
-            
+            id="ie28kq" src="undefined"
             class="footer__column "
             
             
             >{% for item in footer2 %}<A
-            href="{{ item.url }}"
+            href="{{ item.url }}" id="iahjww" src="undefined"
             class="footer__item "
             
             
