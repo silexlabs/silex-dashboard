@@ -82,5 +82,10 @@ window.addEventListener('load', function() {
 
   // Start vue app
   createApp(App).mount('.app');
+
+  // Remove loading
+  setTimeout(() => {
+    document.body.classList.add('after-js')
+  }, 100)
 })
 </script>

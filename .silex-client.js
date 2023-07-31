@@ -1,5 +1,5 @@
-import templatePlugin from '/node_modules/@silexlabs/silex/dist/plugins/client/plugins/client/template.js'
-import eleventyPlugin from '/node_modules/@silexlabs/silex/dist/plugins/client/plugins/client/11ty.js'
+import templatePlugin from '/js/template.js'
+import eleventyPlugin from '/js/11ty.js'
 
 export default async function(config, options) {
   // Defaults

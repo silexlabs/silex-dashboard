@@ -10,6 +10,25 @@
 {% render "alternate.liquid" languages: languages lang: lang page: page %}
 
 <style>
+.before-js > * {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+.after-js > * {
+  visibility: visible;
+  opacity: 1;
+}
+.before-js:before {
+  content: 'Loading';
+  position: absolute;
+  top: 49%;
+  left: 49%;
+}
+.after-js:before {
+  content: none;
+}
+
 body {	color:#2B1B63;}
 /*BTNS*/
 .button, .pointer { cursor: pointer!important}

@@ -53,6 +53,9 @@ module.exports = async function(config, options) {
     routes: [{
       path: nodeModules('vue') + '/vue/dist',
       route: '/js',
+    }, {
+      path: nodeModules('@silexlabs/silex') + '/@silexlabs/silex/dist/plugins/client/plugins/client/',
+      route: '/js',
     }],
   })
 
