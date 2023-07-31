@@ -6,8 +6,11 @@ const serveStatic = require('serve-static')
 const locale = require('locale')
 const { withCache } = require('@silexlabs/silex/dist/plugins/server/plugins/server/Cache')
 const { ServerEvent } = require('@silexlabs/silex').events
+const nodeModules = require('node_modules-path')
 
 const { ConnectorType } = require('@silexlabs/silex/dist/server/types')
+const StaticPlugin = require('@silexlabs/silex/dist/plugins/server/plugins/server/StaticPlugin').default
+
 const FtpConnector = require('@silexlabs/silex/dist/plugins/server/plugins/server/FtpConnector').default
 const GitlabConnector = require('@silexlabs/silex/dist/plugins/server/plugins/server/GitlabConnector').default
 const {FsStorage} = require('@silexlabs/silex/dist/server/server/connectors/FsStorage')
@@ -44,6 +47,14 @@ module.exports = async function(config, options) {
   //    clientSecret: process.env.GITLAB_CLIENT_SECRET,
   //  }),
   //])
+
+  // Serve vue from node_modules
+  config.addPlugin(StaticPlugin, {
+    routes: [{
+      path: nodeModules('vue') + '/vue/dist',
+      route: '/js',
+    }],
+  })
 
   // Detect language from browser
   const languages = JSON.parse(await fs.readFile(join(__dirname, '_data/languages.json')))
