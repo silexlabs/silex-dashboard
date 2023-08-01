@@ -245,7 +245,7 @@ input:focus {
             
             
             ><A
-            id="isqe61" href="https://"
+            id="isqe61" href=""
             class="button big-button "
             v-if="!loading" v-for="(connector, index) in connectors" :key="index" :style="{ backgroundColor: connector.background, color: connector.color }" @click="openLogin(connector)"
             
@@ -266,7 +266,7 @@ input:focus {
             
             >Insert your text here</div><div
             id="i6akll"
-            class="button button--tertiary "
+            class="button button--tertiary text-centered "
             v-if="error" @click="logout()"
             
             >{{ api-translations[lang]["Logout"] }}</div></div></div></body>
