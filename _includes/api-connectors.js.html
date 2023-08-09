@@ -1,4 +1,4 @@
-<script src="/js/vue.global.js"></script>
+<script src="/js/vue.global.prod.js"></script>
 <script src="/js/main.js"></script>
 <script type="module">
 window.addEventListener('load', function() {
@@ -8,6 +8,7 @@ window.addEventListener('load', function() {
     ConnectorType,
   } = types
   const {
+    setServerUrl,
     connectorList,
     logout,
   } = api
@@ -34,6 +35,10 @@ window.addEventListener('load', function() {
     methods: {
       async init() {
         try {
+          // Init Silex server path
+          // Go up 2 levels because of the language prefix + the page path
+          setServerUrl((window.location.origin + window.location.pathname.replace(/\/$/, '')).replace(/\/[^/]+\/[^/]+$/, ''))
+          // Start
           this.loading = true
           console.log('init')
           this.connectors = await connectorList({type: ConnectorType.STORAGE})

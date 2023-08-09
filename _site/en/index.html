@@ -163,7 +163,7 @@ input:focus {
 
 /*FX ANIMATIONS*/
 </style>
-      <script src="/js/vue.global.js"></script>
+      <script src="/js/vue.global.prod.js"></script>
 <script src="/js/main.js"></script>
 <script type="module">
 const CONNECTORS_PATH = '/connectors/'
@@ -174,6 +174,7 @@ window.addEventListener('load', function() {
     ConnectorType,
   } = types
   const {
+    setServerUrl,
     getUser,
     logout,
     websiteDelete,
@@ -205,8 +206,10 @@ window.addEventListener('load', function() {
     methods: {
       async init() {
         try {
-          // Debug
-          window.app = this
+          // Init Silex server path
+          // Go up one level because of the language prefix
+          setServerUrl((window.location.origin + window.location.pathname.replace(/\/$/, '')).replace(/\/[^/]+$/, ''))
+          // Start
           const user = await getUser({type: ConnectorType.STORAGE})
           if(user) {
             this.user = user
