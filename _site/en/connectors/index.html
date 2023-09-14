@@ -1,9 +1,8 @@
-
-      <!DOCTYPE html>
-      <html lang="">
-      <head>
-      <link rel="stylesheet" href="/css/connectors.css" />
-      <!--  font google -->
+<!DOCTYPE html>
+<html lang="">
+<head>
+<link rel="stylesheet" href="/css/connectors.css" />
+<!--  font google -->
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
 
@@ -33,7 +32,6 @@
   content: none;
 }
 
-body {	color:#2B1B63;}
 /*BTNS*/
 .button, .pointer { cursor: pointer!important}
 .button{min-width:110px;}
@@ -43,6 +41,10 @@ a {
 	color:#8873FE;}
 a:hover { text-decoration: underline; }
 .uppercase  {text-transform: uppercase;}
+.underline:hover{ 
+  text-decoration: underline;
+	text-decoration-thickness: from-font;
+  text-underline-position: under;}
 
 /*footer position*/
 .main-min-height {min-height: calc(100vh - 560px);}
@@ -79,7 +81,7 @@ input:focus {
   }
 }
 /*FX ANIMATIONS*/
-/*scale-round-inside*/
+/*scale-round-inside_pour-BTN*/
 .fx-scale-round {
 	position:relative;
 	  z-index: 10;
@@ -109,7 +111,7 @@ input:focus {
   transform: scale(1, 1);
 	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
 }
-/*scale-round-inside*/
+/*scale-round-inside_pour-BTN*/
 /*scale*/
 .fx-scale:hover  {
 	transform-origin: center bottom;
@@ -117,43 +119,10 @@ input:focus {
 	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
 }
 /*flash*/
-.fx-underline:hover, .fx-flash:hover {
+.fx-flash:hover {
 	        animation: flash-in .5s ;
 }
-/* Underline animation */
-.fx-underline  {
-	position: relative;
-}
-/* Fade in */
-.fx-underline::after {
-	content: '';
-	position: absolute;
-	bottom: -3px;
-	left: 0;
-	width: 100%;
-	height: 0.1em;
-	background-color: #8873fe;
-	opacity: 0;
-	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 1.8);
-}
 
-.fx-underline:hover::after,
-.fx-underline:focus::after {
-	opacity: 1;
-	transform: translate3d(0, 2.2em, 0);
-}
-
-/* Scale from center */
-.fx-underline:after {
-	transform: scale(0);
-	transform-origin: center;
-}
-
-.fx-underline:hover::after,
-.fx-underline:focus::after{
-	transform: scale(1);
-}
-/* Underline animation */
 /*flash-in animation*/
       @keyframes flash-in{
         0% {opacity:0;}
@@ -163,7 +132,7 @@ input:focus {
 
 /*FX ANIMATIONS*/
 </style>
-      <script src="/js/vue.global.js"></script>
+<script src="/js/vue.global.js"></script>
 <script src="/js/main.js"></script>
 <script type="module">
 window.addEventListener('load', function() {
@@ -260,14 +229,14 @@ window.addEventListener('load', function() {
 })
 </script>
 
-      <title></title>
-      <link rel="icon" href="" />
-      <meta property="description" content=""/>
-<meta property="og:title" content=""/>
-<meta property="og:description" content=""/>
-<meta property="og:image" content=""/>
-      </head>
-      <body
+<title></title>
+<link rel="icon" href="" />
+<meta name="description" property="description" content=""/>
+<meta name="og:title" property="og:title" content=""/>
+<meta name="og:description" property="og:description" content=""/>
+<meta name="og:image" property="og:image" content=""/>
+</head>
+<body
             id="i2hcfw"
             class="body app"
             
@@ -393,5 +362,4 @@ window.addEventListener('load', function() {
             v-if="error" @click="logout()"
             
             >Logout</div></div></div></body>
-      </html>
-      
+</html>

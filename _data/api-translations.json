@@ -17,7 +17,9 @@
         "Logging out": "Logging out",
         "Back to home": "< Back",
         "Welcome to Silex": "Welcome to Silex",
-        "Please login to continue": "Please login to continue"
+        "Please login to continue": "Please login to continue",
+        "New name for the duplicated website": "New name for the duplicated website",
+        "Failed to duplicate website": "Failed to duplicate website"
     },
     "fr": {
         "Failed to start dashboard": "Erreur, impossible de démarrer le tableau de bord",
@@ -37,6 +39,8 @@
         "Logging out": "Déconnexion en cours",
         "Back to home": "< Retour",
         "Welcome to Silex": "Bienvenue sur Silex",
-        "Please login to continue": "Merci de vous connecter pour continuer"
+        "Please login to continue": "Merci de vous connecter pour continuer",
+        "New name for the duplicated website": "Nouveau nom pour votre site",
+        "Failed to duplicate website": "Erreur, le site n'a pas été dupliqué"
     }
 }

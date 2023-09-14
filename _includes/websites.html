@@ -132,10 +132,10 @@ input:focus {
 
 <title>{{ title }}</title>
 <link rel="icon" href="" />
-<meta property="description" content=""/>
-<meta property="og:title" content=""/>
-<meta property="og:description" content=""/>
-<meta property="og:image" content=""/>
+<meta name="description" property="description" content=""/>
+<meta name="og:title" property="og:title" content=""/>
+<meta name="og:description" property="og:description" content=""/>
+<meta name="og:image" property="og:image" content=""/>
 </head>
 <body
             id="ik0i"
@@ -349,11 +349,16 @@ input:focus {
             @click="openEditor(website.websiteId, '{{lang}}')"
             
             >{{ list-edit }}</BUTTON><BUTTON
-            id="ihf6ew"
+            
             class="right-space-20 button-bar__item--link pointer fx-scale underline fx-flash "
             @click="renameWebsite(website.websiteId, '{{lang}}')"
             
             >{{ list-rename }}</BUTTON><BUTTON
+            id="ihf6ew" title="{{ list-duplicate }}"
+            class="right-space-20 button-bar__item--link pointer fx-scale underline fx-flash button-bar__item--icon "
+            @click="duplicateWebsite(website.websiteId, '{{lang}}')"
+            
+            >{{ list-duplicate-icon }}</BUTTON><BUTTON
             id="iol4h"
             class="button-bar__item--link pointer fx-flash fx-scale "
             @click="deleteWebsite(website.websiteId)" title="{{ list-delete }}"

@@ -1,9 +1,8 @@
-
-      <!DOCTYPE html>
-      <html lang="">
-      <head>
-      <link rel="stylesheet" href="/css/websites.css" />
-      <!--  font google -->
+<!DOCTYPE html>
+<html lang="">
+<head>
+<link rel="stylesheet" href="/css/websites.css" />
+<!--  font google -->
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
 
@@ -33,7 +32,6 @@
   content: none;
 }
 
-body {	color:#2B1B63;}
 /*BTNS*/
 .button, .pointer { cursor: pointer!important}
 .button{min-width:110px;}
@@ -43,6 +41,10 @@ a {
 	color:#8873FE;}
 a:hover { text-decoration: underline; }
 .uppercase  {text-transform: uppercase;}
+.underline:hover{ 
+  text-decoration: underline;
+	text-decoration-thickness: from-font;
+  text-underline-position: under;}
 
 /*footer position*/
 .main-min-height {min-height: calc(100vh - 560px);}
@@ -79,7 +81,7 @@ input:focus {
   }
 }
 /*FX ANIMATIONS*/
-/*scale-round-inside*/
+/*scale-round-inside_pour-BTN*/
 .fx-scale-round {
 	position:relative;
 	  z-index: 10;
@@ -109,7 +111,7 @@ input:focus {
   transform: scale(1, 1);
 	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
 }
-/*scale-round-inside*/
+/*scale-round-inside_pour-BTN*/
 /*scale*/
 .fx-scale:hover  {
 	transform-origin: center bottom;
@@ -117,43 +119,10 @@ input:focus {
 	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
 }
 /*flash*/
-.fx-underline:hover, .fx-flash:hover {
+.fx-flash:hover {
 	        animation: flash-in .5s ;
 }
-/* Underline animation */
-.fx-underline  {
-	position: relative;
-}
-/* Fade in */
-.fx-underline::after {
-	content: '';
-	position: absolute;
-	bottom: -3px;
-	left: 0;
-	width: 100%;
-	height: 0.1em;
-	background-color: #8873fe;
-	opacity: 0;
-	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 1.8);
-}
 
-.fx-underline:hover::after,
-.fx-underline:focus::after {
-	opacity: 1;
-	transform: translate3d(0, 2.2em, 0);
-}
-
-/* Scale from center */
-.fx-underline:after {
-	transform: scale(0);
-	transform-origin: center;
-}
-
-.fx-underline:hover::after,
-.fx-underline:focus::after{
-	transform: scale(1);
-}
-/* Underline animation */
 /*flash-in animation*/
       @keyframes flash-in{
         0% {opacity:0;}
@@ -163,7 +132,7 @@ input:focus {
 
 /*FX ANIMATIONS*/
 </style>
-      <script src="/js/vue.global.js"></script>
+<script src="/js/vue.global.js"></script>
 <script src="/js/main.js"></script>
 <script type="module">
 const CONNECTORS_PATH = '/connectors/'
@@ -178,10 +147,14 @@ window.addEventListener('load', function() {
     getUser,
     logout,
     websiteDelete,
+    websiteDuplicate,
     websiteList,
     websiteCreate,
     websiteMetaWrite,
   } = api
+  function toSafeId(name) {
+    return name.replace(/[/\\?%*:|"<>]/g, '_')
+  }
 
   const App = {
     data() {
@@ -257,7 +230,7 @@ window.addEventListener('load', function() {
         try {
           if (!this.newWebsiteName) throw new Error('You need to provide a website name')
           this.loading = true
-          const websiteId = this.newWebsiteName.replace(/[/\\?%*:|"<>]/g, '_')
+          const websiteId = toSafeId(this.newWebsiteName)
           const result = await websiteCreate({
             websiteId,
             data: {
@@ -301,6 +274,20 @@ window.addEventListener('load', function() {
         }
       },
 
+      async duplicateWebsite(fromId) {
+        const name = prompt('New name for the duplicated website')
+        if (!name) return
+        this.loading = true
+        try {
+          const toId = toSafeId(name)
+          const result = await websiteDuplicate({fromId, toId, connectorId: this.user.storage.connectorId, data: { name }})
+        } catch (error) {
+          this.loading = false
+          this.error = `Failed to duplicate website - ${error.message}`
+          this.message = ''
+        }
+      },
+
       async renameWebsite(websiteId) {
         const website = this.websites.find(w => w.websiteId === websiteId)
         const name = prompt('New name for this website', website.name)
@@ -334,14 +321,14 @@ window.addEventListener('load', function() {
 </script>
 
 
-      <title>Silex Dashboard</title>
-      <link rel="icon" href="" />
-      <meta property="description" content=""/>
-<meta property="og:title" content=""/>
-<meta property="og:description" content=""/>
-<meta property="og:image" content=""/>
-      </head>
-      <body
+<title>Silex Dashboard</title>
+<link rel="icon" href="" />
+<meta name="description" property="description" content=""/>
+<meta name="og:title" property="og:title" content=""/>
+<meta name="og:description" property="og:description" content=""/>
+<meta name="og:image" property="og:image" content=""/>
+</head>
+<body
             id="ik0i"
             class="body loading app before-js"
             
@@ -477,7 +464,7 @@ window.addEventListener('load', function() {
             v-if="!empty"
             
             ><BUTTON
-            
+            id="ic92g"
             class="button button--primary rounded top-space-40 fx-scale-round "
             @click="showCreationForm = !showCreationForm" v-if="!showCreationForm"
             
@@ -553,7 +540,7 @@ window.addEventListener('load', function() {
             
             ><H3
             id="i69a7"
-            class="right-space-40 color-2B1B63-80 uppercase pointer "
+            class="right-space-40 color-2B1B63-80 uppercase pointer fx-flash full-width button-bar__title underline "
             v-text="website.name || website.id" @click="openEditor(website.websiteId, 'en')"
             
             >My first website</H3><P
@@ -573,15 +560,20 @@ window.addEventListener('load', function() {
             
             ><BUTTON
             id="ifyf6p"
-            class="right-space-20 bold button-bar__item--link pointer fx-underline fx-scale "
+            class="right-space-20 bold button-bar__item--link pointer fx-scale underline fx-flash "
             @click="openEditor(website.websiteId, 'en')"
             
             >Edit</BUTTON><BUTTON
-            id="ihf6ew"
-            class="right-space-20 button-bar__item--link pointer fx-underline fx-scale "
+            
+            class="right-space-20 button-bar__item--link pointer fx-scale underline fx-flash "
             @click="renameWebsite(website.websiteId, 'en')"
             
             >Rename</BUTTON><BUTTON
+            id="ihf6ew" title="Duplicate"
+            class="right-space-20 button-bar__item--link pointer fx-scale underline fx-flash button-bar__item--icon "
+            @click="duplicateWebsite(website.websiteId, 'en')"
+            
+            ><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="#8873fe" d="M384 336H192c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16l140.1 0L400 115.9V320c0 8.8-7.2 16-16 16zM192 384H384c35.3 0 64-28.7 64-64V115.9c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1H192c-35.3 0-64 28.7-64 64V320c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H256c35.3 0 64-28.7 64-64V416H272v32c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192c0-8.8 7.2-16 16-16H96V128H64z"/></svg></BUTTON><BUTTON
             id="iol4h"
             class="button-bar__item--link pointer fx-flash fx-scale "
             @click="deleteWebsite(website.websiteId)" title="Delete"
@@ -787,5 +779,4 @@ window.addEventListener('load', function() {
             
             
             >Youtube - tutorials and more</A></div></FOOTER></body>
-      </html>
-      
+</html>

@@ -13,10 +13,14 @@ window.addEventListener('load', function() {
     getUser,
     logout,
     websiteDelete,
+    websiteDuplicate,
     websiteList,
     websiteCreate,
     websiteMetaWrite,
   } = api
+  function toSafeId(name) {
+    return name.replace(/[/\\?%*:|"<>]/g, '_')
+  }
 
   const App = {
     data() {
@@ -92,7 +96,7 @@ window.addEventListener('load', function() {
         try {
           if (!this.newWebsiteName) throw new Error('{{ api-translations[lang]["You need to provide a website name"] }}')
           this.loading = true
-          const websiteId = this.newWebsiteName.replace(/[/\\?%*:|"<>]/g, '_')
+          const websiteId = toSafeId(this.newWebsiteName)
           const result = await websiteCreate({
             websiteId,
             data: {
@@ -132,6 +136,20 @@ window.addEventListener('load', function() {
         } catch (error) {
           this.loading = false
           this.error = `{{ api-translations[lang]["Failed to delete website"] }} - ${error.message}`
+          this.message = ''
+        }
+      },
+
+      async duplicateWebsite(fromId) {
+        const name = prompt('{{ api-translations[lang]["New name for the duplicated website"] }}')
+        if (!name) return
+        this.loading = true
+        try {
+          const toId = toSafeId(name)
+          const result = await websiteDuplicate({fromId, toId, connectorId: this.user.storage.connectorId, data: { name }})
+        } catch (error) {
+          this.loading = false
+          this.error = `{{ api-translations[lang]["Failed to duplicate website"] }} - ${error.message}`
           this.message = ''
         }
       },
