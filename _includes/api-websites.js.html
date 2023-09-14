@@ -140,13 +140,10 @@ window.addEventListener('load', function() {
         }
       },
 
-      async duplicateWebsite(fromId) {
-        const name = prompt('{{ api-translations[lang]["New name for the duplicated website"] }}')
-        if (!name) return
+      async duplicateWebsite(websiteId) {
         this.loading = true
         try {
-          const toId = toSafeId(name)
-          await websiteDuplicate({fromId, toId, connectorId: this.user.storage.connectorId, data: { name }})
+          await websiteDuplicate({websiteId, connectorId: this.user.storage.connectorId, data: { name }})
           this.error = ''
           this.websites = await websiteList({connectorId: this.user.storage.connectorId})
           this.message = '{{ api-translations[lang]["Website duplicated successfully"] }}'
