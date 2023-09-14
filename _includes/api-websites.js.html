@@ -146,7 +146,12 @@ window.addEventListener('load', function() {
         this.loading = true
         try {
           const toId = toSafeId(name)
-          const result = await websiteDuplicate({fromId, toId, connectorId: this.user.storage.connectorId, data: { name }})
+          await websiteDuplicate({fromId, toId, connectorId: this.user.storage.connectorId, data: { name }})
+          this.error = ''
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.message = '{{ api-translations[lang]["Website duplicated successfully"] }}'
+          this.empty = this.websites.length === 0
+          this.loading = false
         } catch (error) {
           this.loading = false
           this.error = `{{ api-translations[lang]["Failed to duplicate website"] }} - ${error.message}`

@@ -19,7 +19,8 @@
         "Welcome to Silex": "Welcome to Silex",
         "Please login to continue": "Please login to continue",
         "New name for the duplicated website": "New name for the duplicated website",
-        "Failed to duplicate website": "Failed to duplicate website"
+        "Failed to duplicate website": "Failed to duplicate website",
+        "Website duplicated successfully": "Website duplicated successfully"
     },
     "fr": {
         "Failed to start dashboard": "Erreur, impossible de démarrer le tableau de bord",
@@ -41,6 +42,7 @@
         "Welcome to Silex": "Bienvenue sur Silex",
         "Please login to continue": "Merci de vous connecter pour continuer",
         "New name for the duplicated website": "Nouveau nom pour votre site",
-        "Failed to duplicate website": "Erreur, le site n'a pas été dupliqué"
+        "Failed to duplicate website": "Erreur, le site n'a pas été dupliqué",
+        "Website duplicated successfully": "Le site a bien été dupliqué"
     }
 }
