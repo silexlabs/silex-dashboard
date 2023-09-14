@@ -6,131 +6,142 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
 
-
     <link
       rel="alternate"
       hreflang="en"
       href="/en/connectors" />
-
 <style>
-.before-js > * {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity .5s ease;
-}
-.after-js > * {
-  visibility: visible;
-  opacity: 1;
-}
-.before-js:before {
-  content: 'Loading';
-  position: absolute;
-  top: 49%;
-  left: 49%;
-}
-.after-js:before {
-  content: none;
-}
-
-/*BTNS*/
-.button, .pointer { cursor: pointer!important}
-.button{min-width:110px;}
-/*BTNS*/
-a { 
-	text-decoration: none;
-	color:#8873FE;}
-a:hover { text-decoration: underline; }
-.uppercase  {text-transform: uppercase;}
-.underline:hover{ 
-  text-decoration: underline;
-	text-decoration-thickness: from-font;
-  text-underline-position: under;}
-
-/*footer position*/
-.main-min-height {min-height: calc(100vh - 560px);}
-/*footer position*/
-
-/*label*/
-::placeholder {color: #8873FE;}
-input:focus {
-	border: 2px solid ##9977FE;
-	background-color:#ffffff;}
-:focus { outline: none;}
-/*label*/
-.skeleton-anim:after {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: "";
-  background: 
-    linear-gradient(0.25turn, transparent, rgba(255,255,255,.75), transparent),
-    linear-gradient(transparent, transparent),
-    radial-gradient(38px circle at 19px 19px, transparent 50%, transparent 51%),
-    linear-gradient(transparent, transparent);  
-  background-repeat: no-repeat;
-  background-size: 315px 250px, 315px 180px, 100px 100px, 225px 30px; 
-  background-position: -315px 0, 0 0, 0px 190px, 50px 195px; 
-  animation: loading 1.5s infinite;
-}
-
-@keyframes loading {  
-  to {
-    background-position: 200% 0, 0 0, 0 190px, 50px 195px;
+  .before-js > * {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease;
   }
-}
-/*FX ANIMATIONS*/
-/*scale-round-inside_pour-BTN*/
-.fx-scale-round {
-	position:relative;
-	  z-index: 10;
-  overflow: hidden;
-}
-.fx-scale-round::after {
-  content: "";
-  background: #ffffff;
-  position: absolute;
-  z-index: -1;
-  border-radius: 50%;
-  left: -50%;
-  right: -50%;
-  top: -100%;
-  bottom: -100%;
-  transform: scale(0, 0);
-	transform-origin: center bottom;
-  transition: all 0.3s ease-out;
-
-}
-.fx-scale-round:hover {
-	transform-origin: center bottom;
-	transform: scale(1.1);
-	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
-} 
-.fx-scale-round:hover::after {
-  transform: scale(1, 1);
-	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
-}
-/*scale-round-inside_pour-BTN*/
-/*scale*/
-.fx-scale:hover  {
-	transform-origin: center bottom;
-	transform: scale(1.1);
-	transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
-}
-/*flash*/
-.fx-flash:hover {
-	        animation: flash-in .5s ;
-}
-
-/*flash-in animation*/
-      @keyframes flash-in{
-        0% {opacity:0;}
-        100% {opacity:1;}
-      }
-/*flash-in animation*/
-
-/*FX ANIMATIONS*/
+  .after-js > * {
+    visibility: visible;
+    opacity: 1;
+  }
+  .before-js:before {
+    content: 'Loading';
+    position: absolute;
+    top: 49%;
+    left: 49%;
+  }
+  .after-js:before {
+    content: none;
+  }
+  /*BTNS*/
+  .button, .pointer {
+    cursor: pointer!important}
+  .button{
+    min-width:110px;
+  }
+  /*BTNS*/
+  a {
+    text-decoration: none;
+    color:#8873FE;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .uppercase  {
+    text-transform: uppercase;
+  }
+  .underline:hover{
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
+    text-underline-position: under;
+  }
+  /*footer position*/
+  .main-min-height {
+    min-height: calc(100vh - 560px);
+  }
+  /*footer position*/
+  /*label*/
+  ::placeholder {
+    color: #8873FE;
+  }
+  input:focus {
+    border: 2px solid ##9977FE;
+    background-color:#ffffff;
+  }
+  :focus {
+    outline: none;
+  }
+  /*label*/
+  .skeleton-anim:after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background: 
+      linear-gradient(0.25turn, transparent, rgba(255,255,255,.75), transparent),
+      linear-gradient(transparent, transparent),
+      radial-gradient(38px circle at 19px 19px, transparent 50%, transparent 51%),
+      linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: 315px 250px, 315px 180px, 100px 100px, 225px 30px;
+    background-position: -315px 0, 0 0, 0px 190px, 50px 195px;
+    animation: loading 1.5s infinite;
+  }
+  @keyframes loading {
+    to {
+      background-position: 200% 0, 0 0, 0 190px, 50px 195px;
+    }
+  }
+  /*FX ANIMATIONS*/
+  /*scale-round-inside_pour-BTN*/
+  .fx-scale-round {
+    position:relative;
+    z-index: 10;
+    overflow: hidden;
+  }
+  .fx-scale-round::after {
+    content: "";
+    background: #ffffff;
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    left: -50%;
+    right: -50%;
+    top: -100%;
+    bottom: -100%;
+    transform: scale(0, 0);
+    transform-origin: center bottom;
+    transition: all 0.3s ease-out;
+  }
+  .fx-scale-round:hover {
+    transform-origin: center bottom;
+    transform: scale(1.1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  .fx-scale-round:hover::after {
+    transform: scale(1, 1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  /*scale-round-inside_pour-BTN*/
+  /*scale*/
+  .fx-scale:hover  {
+    transform-origin: center bottom;
+    transform: scale(1.1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  /*flash*/
+  .fx-flash:hover {
+    animation: flash-in .5s ;
+  }
+  /*flash-in animation*/
+  @keyframes flash-in{
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  /*flash-in animation*/
+  /*FX ANIMATIONS*/
 </style>
 <script src="/js/vue.global.js"></script>
 <script src="/js/main.js"></script>
@@ -230,7 +241,7 @@ window.addEventListener('load', function() {
 </script>
 
 <title></title>
-<link rel="icon" href="" />
+<link rel="icon" href="/assets/favicon-32x32.png" />
 <meta name="description" property="description" content=""/>
 <meta name="og:title" property="og:title" content=""/>
 <meta name="og:description" property="og:description" content=""/>
