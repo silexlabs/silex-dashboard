@@ -355,16 +355,16 @@
             
             
             ><BUTTON
-            id="ifyf6p"
-            class="right-space-20 bold button-bar__item--link pointer fx-scale underline fx-flash "
+            id="ifyf6p" title="{{ list-edit }}"
+            class="button-bar__item--link pointer fx-scale fx-flash button-bar__item--icon "
             @click="openEditor(website.websiteId, '{{lang}}')"
             
-            >{{ list-edit }}</BUTTON><BUTTON
-            id="ihf6ew"
-            class="right-space-20 button-bar__item--link pointer fx-scale underline fx-flash "
+            >{{ list-edit-icon }}</BUTTON><BUTTON
+            id="ihf6ew" title="{{ list-rename }}"
+            class="button-bar__item--link pointer fx-scale fx-flash button-bar__item--icon "
             @click="renameWebsite(website.websiteId, '{{lang}}')"
             
-            >{{ list-rename }}</BUTTON><BUTTON
+            >{{ list-rename-icon }}</BUTTON><BUTTON
             id="iol4h" title="{{ list-duplicate }}"
             class="button-bar__item--link pointer fx-flash fx-scale button-bar__item--icon "
             @click="duplicateWebsite(website.websiteId, '{{lang}}')"
