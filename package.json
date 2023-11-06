@@ -4,7 +4,7 @@
   "description": "Dashboard for Silex v3",
   "main": ".silex.js",
   "scripts": {
-    "start": "silex --config `pwd`/.silex.js --cors-url * --fs-root `pwd`/_silex --client-config `pwd`/.silex-client.js --debug",
+    "start": "silex --server-config `pwd`/.silex.js --cors-url * --fs-root `pwd`/_silex --client-config `pwd`/.silex-client.js --debug",
     "build": "eleventy",
     "serve": "eleventy --serve"
   },
@@ -24,12 +24,12 @@
   "homepage": "https://github.com/silexlabs/silex-dashboard#readme",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@silexlabs/silex": "^3.0.0-alpha.117"
+    "@silexlabs/silex": "^3.0.0-alpha.122"
   },
   "dependencies": {
     "locale": "^0.1.0",
     "node_modules-path": "^2.0.7",
     "serve-static": "^1.15.0",
-    "vue": "^3.3.4"
+    "vue": "^3.3.7"
   }
 }
