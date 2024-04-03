@@ -4,7 +4,7 @@
   "description": "Dashboard for Silex v3",
   "main": ".silex.js",
   "scripts": {
-    "start": "silex --server-config `pwd`/.silex.js --cors-url * --fs-root `pwd`/_silex --fs-hosting-root `pwd`/pages/silex --client-config `pwd`/.silex-client.js --debug",
+    "start": "silex --server-config `pwd`/.silex.js --cors-url * --fs-root `pwd`/_silex --fs-hosting-root `pwd`/_published --client-config `pwd`/.silex-client.js --debug",
     "build": "eleventy",
     "serve": "eleventy --serve"
   },

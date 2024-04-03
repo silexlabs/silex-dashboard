@@ -1,5 +1,5 @@
 ---
-layout: websites
+layout: ../_published/websites.html
 lang: fr
 title: Dashboard Silex
 title2: Bienvenue !

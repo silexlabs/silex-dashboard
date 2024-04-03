@@ -1,4 +1,4 @@
 ---
-layout: connectors
+layout: ../_published/connectors.html
 lang: en
 ---
