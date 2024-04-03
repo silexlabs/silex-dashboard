@@ -1,22 +1,19 @@
-import templatePlugin from '/js/template.js'
-import eleventyPlugin from '/js/11ty.js'
+import SilexCms from './js/silex-cms/client.js'
 
-export default async function(config, options) {
+export default async function (config, options) {
   // Defaults
   const opts = {
     ...options,
   }
-  await config.addPlugin(templatePlugin)
-  await config.addPlugin(eleventyPlugin, {
-    css: {
-      path: '../pages',
-      url: '/css', // Used in the permalink in liquid
-    },
-    html: {
-      path: '../_includes',
-    },
-    assets: {
-      path: '../assets',
+  config.addPlugin(SilexCms, {
+    dataSources: [],
+    imagePlugin: false,
+    i18nPlugin: false,
+    enable11ty: false,
+    view: {
+      disableStates: true,
+      disableAttributes: false,
+      disableProperties: false,
     },
   })
 }

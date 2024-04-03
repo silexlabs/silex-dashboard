@@ -26,12 +26,6 @@ module.exports = async function(config, options) {
     ...options,
   }
 
-  config.setHostingConnectors([
-    new FsHosting(config, {
-      path: process.env.SILEX_FS_ROOT,
-    }),
-  ])
-
   //config.addStorageConnector([
   //  //new FsStorage(config, {
   //  //  path: process.env.SILEX_FS_ROOT,
@@ -48,14 +42,8 @@ module.exports = async function(config, options) {
   // Serve vue from node_modules
   config.addPlugin(StaticPlugin, {
     routes: [{
-      path: nodeModules('vue') + '/vue/dist',
-      route: '/js',
-    }, {
-      path: nodeModules('@silexlabs/silex') + '/@silexlabs/silex/dist/plugins/client/plugins/client/',
-      route: '/js',
-    }, {
-      path: nodeModules('lit-html') + '/lit-html/',
-      route: '/js/lit-html/',
+      route: '/js/silex-cms/',
+      path: node_modules('@silexlabs/silex-cms') + '/@silexlabs/silex-cms/dist/',
     }],
   })
 
