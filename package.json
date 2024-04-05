@@ -4,9 +4,10 @@
   "description": "Dashboard for Silex v3",
   "main": ".silex.js",
   "scripts": {
-    "start": "silex --server-config `pwd`/.silex.js --cors-url * --fs-root `pwd`/_silex --fs-hosting-root `pwd`/_published --client-config `pwd`/.silex-client.js --debug",
-    "build": "eleventy",
-    "serve": "eleventy --serve",
+    "start": "concurrently --kill-others \"$npm_execpath run silex:dev\" \"$npm_execpath run 11ty:dev\" \"$npm_execpath run tina:dev\"",
+    "silex:dev": "silex --server-config `pwd`/.silex.js --cors-url * --fs-root `pwd`/_silex --fs-hosting-root `pwd`/_published --client-config `pwd`/.silex-client.js --debug",
+    "11ty:dev": "eleventy --serve",
+    "11ty:build": "eleventy",
     "tina:dev": "tinacms dev",
     "tina:build": "tinacms build"
   },
@@ -29,7 +30,8 @@
     "@silexlabs/silex": "^3.0.0-alpha.149",
     "@silexlabs/silex-cms": "^0.0.98",
     "@tinacms/cli": "^1.5.43",
-    "@types/node": "^20.12.4"
+    "@types/node": "^20.12.4",
+    "concurrently": "^8.2.2"
   },
   "dependencies": {
     "locale": "^0.1.0",
