@@ -7,7 +7,8 @@
     "start": "silex --server-config `pwd`/.silex.js --cors-url * --fs-root `pwd`/_silex --fs-hosting-root `pwd`/_published --client-config `pwd`/.silex-client.js --debug",
     "build": "eleventy",
     "serve": "eleventy --serve",
-    "tina": "tina-gql server:start"
+    "tina:dev": "tinacms dev",
+    "tina:build": "tinacms build"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,8 @@
     "@11ty/eleventy": "^2.0.1",
     "@silexlabs/silex": "^3.0.0-alpha.149",
     "@silexlabs/silex-cms": "^0.0.94",
-    "tina-graphql-gateway-cli": "^0.5.0"
+    "@tinacms/cli": "^1.5.43",
+    "@types/node": "^20.12.4"
   },
   "dependencies": {
     "locale": "^0.1.0",

@@ -6,7 +6,16 @@ export default async function (config, options) {
     ...options,
   }
   config.addPlugin(SilexCms, {
-    dataSources: [],
+    dataSources: [{
+      id: 'tina',
+      type: 'graphql',
+      name: 'Tina (Local Files)',
+      url: 'http://localhost:4001/graphql',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }],
     imagePlugin: false,
     i18nPlugin: false,
     enable11ty: false,
