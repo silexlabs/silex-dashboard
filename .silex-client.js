@@ -18,11 +18,5 @@ export default async function (config, options) {
     }],
     imagePlugin: false,
     i18nPlugin: false,
-    enable11ty: false,
-    view: {
-      disableStates: true,
-      disableAttributes: false,
-      disableProperties: false,
-    },
   })
 }
