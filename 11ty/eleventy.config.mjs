@@ -1,7 +1,7 @@
-const nodeModules = require('node_modules-path')
-const fs = require('fs/promises')
+import nodeModules from 'node_modules-path'
+import fs from 'fs/promises'
 
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
   // Silex CMS
   eleventyConfig.addPassthroughCopy({"_published/css/*.css": "css"});
   eleventyConfig.addPassthroughCopy({"_published/assets": "assets"});
@@ -9,6 +9,13 @@ module.exports = function (eleventyConfig) {
   // For the fetch plugin
   eleventyConfig.watchIgnores.add('**/.cache/**')
 
+  // Delete _site before eleventy starts
+  eleventyConfig.on(
+    "eleventy.before",
+    async ({dir, runMode, outputMode}) => {
+      return fs.rm(dir.output, { recursive: true })
+    },
+  )
   // Serve node_modules
   eleventyConfig.on(
 		"eleventy.after",

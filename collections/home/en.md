@@ -1,5 +1,4 @@
 ---
-layout: ../_published/websites.html
 lang: en
 title: Silex Dashboard
 title2: Welcome back!

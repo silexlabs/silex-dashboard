@@ -160,6 +160,11 @@ export default defineConfig({
         format: 'json',
         fields: [
           {
+            label: 'Language',
+            name: 'lang',
+            type: 'string',
+          },
+          {
             label: 'Navigation Links',
             name: 'nav',
             type: 'object',

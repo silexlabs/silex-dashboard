@@ -1,0 +1,171 @@
+---
+permalink: "/{{lang}}/"
+collection: "Websites"
+
+---
+<!DOCTYPE html>
+<html lang="">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/websites-284b58c78495a84ee701bf021e8bdb96e647d1f6ffdd89a5261bdca58cf9ea63.css" />
+<!--  font google -->
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
+{% render "alternate.liquid" languages: languages lang: lang page: page %}
+<style>
+  .before-js > * {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease;
+  }
+  .after-js > * {
+    visibility: visible;
+    opacity: 1;
+  }
+  .before-js:before {
+    content: 'Loading';
+    position: absolute;
+    top: 49%;
+    left: 49%;
+  }
+  .after-js:before {
+    content: none;
+  }
+  /*BTNS*/
+  .button, .pointer {
+    cursor: pointer!important}
+  .button{
+    min-width:110px;
+  }
+  /*BTNS*/
+  a {
+    text-decoration: none;
+    color:#8873FE;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .uppercase  {
+    text-transform: uppercase;
+  }
+  .underline:hover{
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
+    text-underline-position: under;
+  }
+  /*footer position*/
+  .main-min-height {
+    min-height: calc(100vh - 560px);
+  }
+  /*footer position*/
+  /*label*/
+  ::placeholder {
+    color: #8873FE;
+  }
+  input:focus {
+    border: 2px solid ##9977FE;
+    background-color:#ffffff;
+  }
+  :focus {
+    outline: none;
+  }
+  /*label*/
+  .skeleton-anim:after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background: 
+      linear-gradient(0.25turn, transparent, rgba(255,255,255,.75), transparent),
+      linear-gradient(transparent, transparent),
+      radial-gradient(38px circle at 19px 19px, transparent 50%, transparent 51%),
+      linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: 315px 250px, 315px 180px, 100px 100px, 225px 30px;
+    background-position: -315px 0, 0 0, 0px 190px, 50px 195px;
+    animation: loading 1.5s infinite;
+  }
+  @keyframes loading {
+    to {
+      background-position: 200% 0, 0 0, 0 190px, 50px 195px;
+    }
+  }
+  /*FX ANIMATIONS*/
+  /*scale-round-inside_pour-BTN*/
+  .fx-scale-round {
+    position:relative;
+    z-index: 10;
+    overflow: hidden;
+  }
+  .fx-scale-round::after {
+    content: "";
+    background: #ffffff;
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    left: -50%;
+    right: -50%;
+    top: -100%;
+    bottom: -100%;
+    transform: scale(0, 0);
+    transform-origin: center bottom;
+    transition: all 0.3s ease-out;
+  }
+  .fx-scale-round:hover {
+    transform-origin: center bottom;
+    transform: scale(1.1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  .fx-scale-round:hover::after {
+    transform: scale(1, 1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  /*scale-round-inside_pour-BTN*/
+  /*scale*/
+  .fx-scale:hover  {
+    transform-origin: center bottom;
+    transform: scale(1.1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  /*flash*/
+  .fx-flash:hover {
+    animation: flash-in .5s ;
+  }
+  /*flash-in animation*/
+  @keyframes flash-in{
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  /*flash-in animation*/
+  /*FX ANIMATIONS*/
+</style>
+{% render "api-websites.js.html" frontmatter: frontmatter page: page site: site api-translations: api-translations lang: lang %}
+
+<title>{{ title }}</title>
+<link rel="icon" href="/assets/favicon-32x32.png" />
+
+<link href="https://fonts.googleapis.com" rel="preconnect" ><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin ><link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" ></head>
+{% liquid
+    assign var_ik0i_35 = tina.settingsConnection.totalCount | log
+    assign state_ik0i-958_ik0i-e8l061o7k5 = var_ik0i_35
+  %}<body id="ik0i" class="body loading"><HEADER id="igrg" class="menu-bar"><A id="igvu43" href="/"><img src="/assets/picto-silex@3x.png" id="iel80b-2" class="nav__logo"/></A><NAV id="i9jq" class="nav">{% liquid
+    assign var_iels_33 = state_ik0i-958_ik0i-e8l061o7k5 | log
+    assign state_iels-228_iels-va8n8eqhal = var_iels_33
+  %}{% liquid
+    assign var_iels_32 = state_ik0i-958_ik0i-e8l061o7k5.nav
+    %}
+    {% for state_iels-228___data in var_iels_32 %}
+  <a id="iels" href="{{ item.url }}" class="nav__item uppercase">{% liquid
+    assign var_iels_31 = state_iels-228___data.label
+    echo var_iels_31
+  %}</a>{% endfor %}</NAV><div id="i2red7" class="lang h-space"><A href="/{{ link.code }}" id="iciz" class="lang__item nav__item uppercase">en</A></div><div id="i24ew" class="user__wrapper pointer"><div id="i5xsbd" class="user-icon__wrapper"><div id="i5wlbq" class="user-icon__image"></div></div><div id="ic9eoa"><div id="iksw4d" class="button button--tertiary text-centered">Logout</div></div></div></HEADER><HEADER id="iy8ax3" class="bg-silex-purpel"><div id="iisz8f" class="section-top text-centered text-white"><h1 id="ic31o" class="title-40">{% liquid
+    assign var_ic31o_34 = state_ik0i-958_ik0i-e8l061o7k5.lang
+    echo var_ic31o_34
+  %}</h1><P id="iyex8" class="subtitle-16">Dive into your projects or kickstart a new one</P><H1 id="i4ybc" class="title-40">Welcome, let's get started<br/></H1><P id="iino6r" class="subtitle-16">Create your first project, click on the button "Create a website"<br/></P></div></HEADER><MAIN id="iz63r" class="padding-normal main-min-height website-max-width margin-80"><SECTION id="iqmx38"></SECTION><div id="ickx4" class="margin-20"><BUTTON id="ic92g" class="button button--primary rounded top-space-40 fx-scale-round"><span id="igsxoc" class="icon-font">+</span> <span>Create website</span></BUTTON><div id="i0ro3" class="button button--secondary rounded">Import</div></div><div id="ihwwxz" class="box top-space-40 padding-30 box_transp"><H3 id="i3gd1b" class="box__header text-centered">Create a new website</H3><form method="get" id="i50acf" class="form"><div id="igtg1t" class="v-space"><label id="i1nmbc" class="v-space bold color-2B1B63-80">Website name</label><input type="text" id="ij5iwh" placeholder="{{ add-name-placeholder }}" class="input full-width"/></div><div id="ie0xes"><button type="submit" id="i021na" class="button rounded button--primary right-space-20 fx-scale-round">Create</button><button type="reset" class="button rounded button--secondary fx-scale-round">Cancel</button></div></form></div><div id="if80m" class="margin-20"><SECTION id="idgvg" class="button-bar loaded__item"><H3 id="i69a7" class="right-space-40 color-2B1B63-80 uppercase pointer fx-flash full-width button-bar__title underline">My first website</H3><P id="i65hn" class="button-bar__item--secondary flex-no-shrink right-space-40">Updated 1h ago by lexoyo</P><P id="i64qa" class="button-bar__item--secondary flex-no-shrink right-space-40">Created 2023-02-16 by lexoyo</P><div id="i3b4tr" class="flex-no-shrink"><BUTTON id="ifyf6p" title="{{ list-edit }}" class="button-bar__item--link pointer fx-scale fx-flash button-bar__item--icon">Edit</BUTTON><BUTTON id="ihf6ew" title="{{ list-rename }}" class="button-bar__item--link pointer fx-scale fx-flash button-bar__item--icon">Rename</BUTTON><BUTTON id="iol4h" title="{{ list-duplicate }}" class="button-bar__item--link pointer fx-flash fx-scale button-bar__item--icon">⎘</BUTTON><BUTTON class="button-bar__item--link pointer fx-flash fx-scale">X</BUTTON></div></SECTION><SECTION id="i1fjn" class="button-bar loading__item skeleton-anim skeleton-wrapper"><H3 id="iwu6a" class="skeleton-text skeleton right-space-40">My first websiteMy first websiteMy first websiteMy first</H3><P id="i26fn" class="button-bar__item--secondary skeleton-text skeleton right-space-40">Updated 1h ago by lexoyo</P><P id="iywbk" class="button-bar__item--secondary skeleton-text skeleton right-space-40">Created 2023-02-16 by lexoyo</P><div id="ixz6c" class="skeleton skeleton-button">Edit</div></SECTION><SECTION id="iwxxo5" class="button-bar loading__item skeleton-anim skeleton-wrapper"><H3 id="inmp3" class="skeleton-text skeleton right-space-40">My first websiteMy first websiteMy first websiteMy first</H3><P id="icjz8" class="button-bar__item--secondary skeleton-text skeleton right-space-40">Updated 1h ago by lexoyo</P><P id="illbe" class="button-bar__item--secondary skeleton-text skeleton right-space-40">Created 2023-02-16 by lexoyo</P><div id="i9fx3l" class="skeleton skeleton-button">Edit</div></SECTION><SECTION id="isld3r" class="button-bar loading__item skeleton-anim skeleton-wrapper"><H3 class="button-bar_item button-bar__item--main skeleton-text skeleton right-space-40">My first websiteMy first websiteMy first websiteMy first</H3><P class="button-bar_item button-bar__item--secondary skeleton-text skeleton right-space-40">Updated 1h ago by lexoyo</P><P class="button-bar_item button-bar__item--secondary skeleton-text skeleton right-space-40">Created 2023-02-16 by lexoyo</P><div id="i8oes3" class="button-bar_item skeleton skeleton-button">Edit</div></SECTION></div><div id="ipccl7"><div id="i2fkm9" class="margin-20 empty-image"></div><div id="i5ydxo" class="box padding-50-30 box--centered"><P id="ikl1qu" class="text-centered title-26">C'est bien calme ici..<br/></P><H3 id="iwzrqi" class="text-centered title-26">Prêt à démarrer une nouvelle aventure ?</H3><BUTTON id="i2x0l" class="button button--primary rounded top-space-40 fx-scale-round"><span id="ibsgw" class="icon-font">+</span> <span id="itl2n8">Create website</span></BUTTON></div></div><div id="i7ej6j" class="flex-between box-message text-white"><H3 id="iv0eyi" class="box-message-text">Insert your text here</H3><div id="i4656n" class="pointer button-bar__item--link text-white">Dismiss</div></div><div id="ilteie" class="flex-between box-message text-white"><H3 id="i2d31v" class="box-message-text">Insert your text here</H3><div id="i2urco" class="rounded pointer button-bar__item--link text-white">Dismiss</div></div></MAIN><FOOTER id="ilzpl" class="footer"><div id="isucae" class="footer__column"><A id="ipa5zg" href="{{ item.url }}" class="footer__item">Insert your text here</A></div><div id="ie28kq" class="footer__column"><A href="{{ item.url }}" id="iahjww" class="footer__item">Insert your text here</A></div></FOOTER></body>
+</html>

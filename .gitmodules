@@ -1,3 +1,3 @@
-[submodule "_silex/dashboard"]
-	path = _silex/dashboard
+[submodule "silex/dashboard"]
+	path = silex/dashboard
 	url = git@gitlab.com:ceubri/dashboard-silexv3.git
