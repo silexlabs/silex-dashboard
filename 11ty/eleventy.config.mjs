@@ -3,8 +3,8 @@ import fs from 'fs/promises'
 
 export default function (eleventyConfig) {
   // Silex CMS
-  eleventyConfig.addPassthroughCopy({"_published/css/*.css": "css"});
-  eleventyConfig.addPassthroughCopy({"_published/assets": "assets"});
+  eleventyConfig.addPassthroughCopy({"../templates/css/*.css": "css"});
+  eleventyConfig.addPassthroughCopy({"../templates/assets": "assets"});
 
   // For the fetch plugin
   eleventyConfig.watchIgnores.add('**/.cache/**')
