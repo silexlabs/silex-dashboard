@@ -1,7 +1,9 @@
 [{
     "code": "en",
-    "label": "English"
+    "label": "English",
+    "permalink": "/"
 }, {
     "code": "fr",
-    "label": "Français"
+    "label": "Français",
+    "permalink": "/fr"
 }]
