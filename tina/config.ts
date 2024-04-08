@@ -11,12 +11,12 @@ export default defineConfig({
   branch,
   build: {
     outputFolder: "admin",
-    publicFolder: "_published/assets",
+    publicFolder: "templates/assets",
   },
   media: {
     tina: {
       mediaRoot: "",
-      publicFolder: "_published/assets",
+      publicFolder: "templates/assets",
     },
   },
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
@@ -25,7 +25,7 @@ export default defineConfig({
       {
         name: "home",
         label: "Home",
-        path: "pages/home",
+        path: "collections/home",
         fields: [
           {
             label: 'Layout',
@@ -154,9 +154,19 @@ export default defineConfig({
           }
         ],
       }, {
+        label: 'Languages',
+        name: 'languages',
+        path: 'collections/languages',
+        format: 'json',
+        fields: [
+          { label: 'Code', name: 'code', type: 'string' },
+          { label: 'Label', name: 'label', type: 'string' },
+          { label: 'permalink', name: 'permalink', type: 'string' }
+        ]
+      }, {
         label: 'Settings',
         name: 'settings',
-        path: '_data/settings',
+        path: 'collections/settings',
         format: 'json',
         fields: [
           {

@@ -48,7 +48,11 @@ module.exports = async function(config, options) {
   })
 
   // Detect language from browser
-  const languages = JSON.parse(await fs.readFile(join(__dirname, '_data/languages.json')))
+  // List of languages from collections/languages/*.json
+  const languages = []
+  for (const file of await fs.readdir(join(__dirname, '..', 'collections/languages'))) {
+    languages.push(JSON.parse(await fs.readFile(join(__dirname, '..', 'collections/languages', file))))
+  }
 
   // Serve the dashboard and the editor
   config.on(ServerEvent.STARTUP_START, ({app}) => {

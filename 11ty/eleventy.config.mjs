@@ -1,10 +1,11 @@
+import { EleventyI18nPlugin } from '@11ty/eleventy'
 import nodeModules from 'node_modules-path'
 import fs from 'fs/promises'
 
-export default function (eleventyConfig) {
+export default async function (eleventyConfig) {
   // Silex CMS
-  eleventyConfig.addPassthroughCopy({"../templates/css/*.css": "css"});
-  eleventyConfig.addPassthroughCopy({"../templates/assets": "assets"});
+  eleventyConfig.addPassthroughCopy({"templates/css/*.css": "css"});
+  eleventyConfig.addPassthroughCopy({"templates/assets": "assets"});
 
   // For the fetch plugin
   eleventyConfig.watchIgnores.add('**/.cache/**')
@@ -13,7 +14,14 @@ export default function (eleventyConfig) {
   eleventyConfig.on(
     "eleventy.before",
     async ({dir, runMode, outputMode}) => {
-      return fs.rm(dir.output, { recursive: true })
+      try {
+        return await fs.rm(dir.output, { recursive: true })
+      } catch(e) {
+        if(e.code === 'ENOENT') {
+          return
+        }
+        throw e
+      }
     },
   )
   // Serve node_modules
@@ -29,12 +37,26 @@ export default function (eleventyConfig) {
       }
 		}
 	)
+  // // Ignore all files from ../.gitignore
+  // eleventyConfig.setUseGitIgnore(false)
+  // const content = await fs.readFile('.gitignore', 'utf8')
+  // const files = content.split('\n')
+  // for (const file of files) {
+  //   if (file.trim() !== '') {
+  //     eleventyConfig.ignores.add(file.trim())
+  //   }
+  // }
+  eleventyConfig.addPlugin(EleventyI18nPlugin, {
+		defaultLanguage: "en",
+	})
+
+  // Return the configuration object
   return {
     dir: {
-      input: 'pages',
-      includes: '../_includes',
-      layouts: '../_includes',
-      data: '../_data',
+      input: 'templates',
+      includes: '../11ty/_includes',
+      layouts: '../11ty/_includes',
+      data: '../11ty/_data',
     }
   }
 }

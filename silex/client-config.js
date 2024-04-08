@@ -17,6 +17,7 @@ export default async function (config, options) {
       },
     }],
     imagePlugin: false,
-    i18nPlugin: false,
+    i18nPlugin: true,
+    cacheBuster: false,
   })
 }
