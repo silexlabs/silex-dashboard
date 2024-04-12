@@ -28,11 +28,6 @@ export default defineConfig({
         path: "collections/home",
         fields: [
           {
-            label: 'Layout',
-            name: 'layout',
-            type: 'string'
-          },
-          {
             label: 'Language',
             name: 'lang',
             type: 'string'
@@ -152,6 +147,32 @@ export default defineConfig({
             name: 'message_dismiss',
             type: 'string'
           }
+        ],
+      }, {
+        name: "connectors",
+        label: "Connectors",
+        path: "collections/connectors",
+        fields: [
+          {
+            label: 'Language',
+            name: 'lang',
+            type: 'string'
+          },
+          {
+            label: 'Title',
+            name: 'title',
+            type: 'string'
+          },
+          {
+            label: 'Title 2',
+            name: 'title2',
+            type: 'string'
+          },
+          {
+            label: 'Subtitle',
+            name: 'subtitle',
+            type: 'string'
+          },
         ],
       }, {
         label: 'Languages',

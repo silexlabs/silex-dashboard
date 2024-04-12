@@ -1,5 +1,6 @@
 ---
 permalink: "/{{ lang }}/connectors/"
+lang: "fr"
 collection: "Connectors"
 
 ---
@@ -7,7 +8,7 @@ collection: "Connectors"
 <html lang="">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/css/connectors-534ead474318d630cb8f8b81f07b0ec081417c0e9d60b45bbb11923c428757b9.css" />
+<link rel="stylesheet" href="/css/connectors-df645f87960302ea0f9a69349ff1b14e44c7359ffb533ba46354aa1ed6823d3e.css" />
 <!--  font google -->
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
@@ -151,5 +152,39 @@ collection: "Connectors"
 <link rel="icon" href="/assets/favicon-32x32.png" />
 
 <link href="https://www.googleapis.com" rel="preconnect" ><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin ><link href="https://www.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" ></head>
-<body id="i2hcfw" class="body"><HEADER id="ij139z" class="menu-bar"><A href="/" id="iy54t1"><img src="/assets/picto-silex@3x.png" class="nav__logo"/></A><NAV id="in5jeq" class="nav"><A href="{{ item.url }}" id="i0g3ac" class="nav__item uppercase">Sites</A></NAV><div class="lang h-space uppercase"><A href="/{{ link.code }}" class="lang__item nav__item">en</A></div></HEADER><A id="ixzhcr" href="/" class="button button-bar__item--secondary">{{ api-translations[lang]["Back to home"] }}</A><div id="imawg3" class="bg-silex-purpel"><div id="imgx81"><div id="iikf0s" class="box text-centered padding-100-30 box_login"><H1 id="ighycb" class="title-40">Welcome to Silex<br/></H1><div id="it2175" class="subtitle-16">Please login to continue<br/></div><div id="in62y2" class="button-bar"><A id="isqe61" class="button big-button"><div id="io3lid" class="button-bar__item__icon"></div><div id="i87asw">Insert your text here</div></A></div></div><div id="i9msnk" class="text-white top-space-20">Insert your text here</div><div id="i6akll" class="button button--tertiary text-centered">{{ api-translations[lang]["Logout"] }}</div></div></div></body>
+<body id="i2hcfw" class="body"><HEADER class="menu-bar"><A href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV class="nav" id="i14ch4">{% liquid
+    assign var_i95vq4_223 = tina.settingsConnection.edges | where: "node.lang", page.lang | first
+	assign var_i95vq4_224 = var_i95vq4_223.node.nav
+    %}
+    {% for state_iels-228___data in var_i95vq4_224 %}
+  <a href="{% liquid
+    assign var_i95vq4_225 = state_iels-228___data.url
+    echo var_i95vq4_225
+  %}" class="nav__item uppercase" target="{% liquid
+    assign var_i95vq4_226 = state_iels-228___data.target
+    echo var_i95vq4_226
+  %}">{% liquid
+    assign var_i95vq4_222 = state_iels-228___data.label
+    echo var_i95vq4_222
+  %}</a>{% endfor %}</NAV>{% liquid
+    assign var_ixuxrd_231 = tina.languagesConnection.edges
+    %}
+    {% for state_i2red7-8291___data in var_ixuxrd_231 %}
+  <div class="lang h-space"><a href="{% liquid
+    assign var_i61ffj_230 = state_i2red7-8291___data.node.permalink
+    echo var_i61ffj_230
+  %}" class="lang__item nav__item uppercase">{% liquid
+    assign var_i61ffj_229 = state_i2red7-8291___data.node.label
+    echo var_i61ffj_229
+  %}</a></div>{% endfor %}<div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div class="button button--tertiary text-centered" id="i5gzvu">Logout</div></div></div></HEADER><A id="ixzhcr" href="/" class="button button-bar__item--secondary">{{ api-translations[lang]["Back to home"] }}</A><div id="imawg3" class="bg-silex-purpel">{% liquid
+    assign var_imgx81_236 = tina.connectorsConnection.edges | where: "node.lang", page.lang | first
+	assign var_imgx81_237 = var_imgx81_236.node
+    assign state_imgx81-1985_imgx81-7uhkrqd2giq = var_imgx81_237
+  %}<div id="imgx81" class=""><div id="iikf0s" class="box text-centered padding-100-30 box_login"><h1 id="ighycb" class="title-40">{% liquid
+    assign var_ighycb_234 = state_imgx81-1985_imgx81-7uhkrqd2giq.title2
+    echo var_ighycb_234
+  %}</h1><div id="it2175" class="subtitle-16">{% liquid
+    assign var_it2175_235 = state_imgx81-1985_imgx81-7uhkrqd2giq.subtitle
+    echo var_it2175_235
+  %}</div><div id="in62y2" class="button-bar"><A id="isqe61" class="button big-button"><div id="io3lid" class="button-bar__item__icon"></div><div id="i87asw">Insert your text here</div></A></div></div><div id="i9msnk" class="text-white top-space-20">Insert your text here</div><div id="i6akll" class="button button--tertiary text-centered">{{ api-translations[lang]["Logout"] }}</div></div></div></body>
 </html>
