@@ -19,7 +19,7 @@ collection: "Connectors"
     opacity: 0;
     transition: opacity .5s ease;
   }
-  [data-gjs-type] .before-js > *, /* This is only inside the editor */
+  .before-js[data-gjs-type] > *, /* This is only inside the editor, .before-js needs to be on the body */
   .after-js > * {
     visibility: visible;
     opacity: 1;
@@ -30,7 +30,7 @@ collection: "Connectors"
     top: 49%;
     left: 49%;
   }
-  [data-gjs-type] .before-js:before, /* This is only inside the editor */
+  .before-js[data-gjs-type]:before, /* This is only inside the editor, .before-js needs to be on the body */
   .after-js:before {
     content: none;
   }
@@ -156,76 +156,76 @@ collection: "Connectors"
 
 <link href="https://www.googleapis.com" rel="preconnect" ><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin ><link href="https://www.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" ></head>
 <body id="i2hcfw" class="body app"><A id="ixzhcr" href="/" class="button button-bar__item--secondary">{{ api-translations[lang]["Back to home"] }}</A><div id="imawg3" class="bg-silex-purpel">{% liquid
-    assign var_imgx81_151 = tina.connectorsConnection.edges | where: "node.lang", page.lang | first
-	assign var_imgx81_152 = var_imgx81_151.node
-    assign state_imgx81-1985_imgx81-7uhkrqd2giq = var_imgx81_152
+    assign var_imgx81_1646 = tina.connectorsConnection.edges | where: "node.lang", page.lang | first
+	assign var_imgx81_1647 = var_imgx81_1646.node
+    assign state_imgx81-1985_imgx81-7uhkrqd2giq = var_imgx81_1647
   %}<div id="imgx81" class=""><div id="iikf0s" class="box box_login"><div id="ie0dxn" class="text-centered"><img id="ior0hl" src="/assets/logo-silex.svg"/><p id="it2175" class="subtitle-16">{% liquid
-    assign var_it2175_109 = state_imgx81-1985_imgx81-7uhkrqd2giq.subtitle
-    echo var_it2175_109
+    assign var_it2175_1604 = state_imgx81-1985_imgx81-7uhkrqd2giq.subtitle
+    echo var_it2175_1604
   %}</p><div id="ilq8ui" class="text-centered">{% liquid
-    assign var_ilq8ui_110 = state_imgx81-1985_imgx81-7uhkrqd2giq.help
-    echo var_ilq8ui_110
+    assign var_ilq8ui_1605 = state_imgx81-1985_imgx81-7uhkrqd2giq.help
+    echo var_ilq8ui_1605
   %}</div></div><h3 id="iqc1xf" class="margin-top">{% liquid
-    assign var_iqc1xf_111 = state_imgx81-1985_imgx81-7uhkrqd2giq.recommended
-    echo var_iqc1xf_111
+    assign var_iqc1xf_1606 = state_imgx81-1985_imgx81-7uhkrqd2giq.recommended
+    echo var_iqc1xf_1606
   %}</h3><div id="in62y2">{% liquid
-    assign var_isqe61_130 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
+    assign var_isqe61_1625 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
     %}
-    {% for state_isqe61-589___data in var_isqe61_130 %}
+    {% for state_isqe61-589___data in var_isqe61_1625 %}
   {% liquid
-    assign var_isqe61_128 = forloop.index0
-	assign var_isqe61_129 = "0"
+    assign var_isqe61_1623 = forloop.index0
+	assign var_isqe61_1624 = "0"
     %}
-    {% if var_isqe61_128 <= var_isqe61_129 %}
+    {% if var_isqe61_1623 <= var_isqe61_1624 %}
   <div id="isqe61" class="">{% liquid
-    assign var_i0vhjr_124 = state_isqe61-589___data.background_color
-    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_i0vhjr_124
+    assign var_i0vhjr_1619 = state_isqe61-589___data.background_color
+    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_i0vhjr_1619
   %}
 {% liquid
-    assign var_i0vhjr_125 = state_isqe61-589___data.color
-    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_i0vhjr_125
+    assign var_i0vhjr_1620 = state_isqe61-589___data.color
+    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_i0vhjr_1620
   %}<a id="i0vhjr" href="{% liquid
-    assign var_i0vhjr_126 = state_isqe61-589___data.auth_url
-    echo var_i0vhjr_126
+    assign var_i0vhjr_1621 = state_isqe61-589___data.auth_url
+    echo var_i0vhjr_1621
   %}" class="connector__card" data-style="{% liquid
-    assign var_i0vhjr_127 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
-    echo var_i0vhjr_127
+    assign var_i0vhjr_1622 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
+    echo var_i0vhjr_1622
   %}"><div id="io3lid" class="button-bar__item__icon">{% liquid
-    assign var_io3lid_122 = state_isqe61-589___data.icon
-    echo var_io3lid_122
+    assign var_io3lid_1617 = state_isqe61-589___data.icon
+    echo var_io3lid_1617
   %}</div><div id="i87asw" class="connector__description">{% liquid
-    assign var_i87asw_123 = state_isqe61-589___data.text
-    echo var_i87asw_123
+    assign var_i87asw_1618 = state_isqe61-589___data.text
+    echo var_i87asw_1618
   %}</div></a></div>{% endif %}{% endfor %}</div><h3 id="i8w75b" class="margin-30">{% liquid
-    assign var_i8w75b_131 = state_imgx81-1985_imgx81-7uhkrqd2giq.advanced_users
-    echo var_i8w75b_131
+    assign var_i8w75b_1626 = state_imgx81-1985_imgx81-7uhkrqd2giq.advanced_users
+    echo var_i8w75b_1626
   %}</h3><div id="igp4xl">{% liquid
-    assign var_id9k25_150 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
+    assign var_id9k25_1645 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
     %}
-    {% for state_isqe61-589___data in var_id9k25_150 %}
+    {% for state_isqe61-589___data in var_id9k25_1645 %}
   {% liquid
-    assign var_id9k25_148 = forloop.index0
-	assign var_id9k25_149 = "0"
+    assign var_id9k25_1643 = forloop.index0
+	assign var_id9k25_1644 = "0"
     %}
-    {% if var_id9k25_148 > var_id9k25_149 %}
+    {% if var_id9k25_1643 > var_id9k25_1644 %}
   <div id="id9k25" href="" class="">{% liquid
-    assign var_irgt6z_144 = state_isqe61-589___data.background_color
-    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_irgt6z_144
+    assign var_irgt6z_1639 = state_isqe61-589___data.background_color
+    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_irgt6z_1639
   %}
 {% liquid
-    assign var_irgt6z_145 = state_isqe61-589___data.color
-    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_irgt6z_145
+    assign var_irgt6z_1640 = state_isqe61-589___data.color
+    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_irgt6z_1640
   %}<a href="{% liquid
-    assign var_irgt6z_146 = state_isqe61-589___data.auth_url
-    echo var_irgt6z_146
+    assign var_irgt6z_1641 = state_isqe61-589___data.auth_url
+    echo var_irgt6z_1641
   %}" id="irgt6z" class="connector__card" data-style="{% liquid
-    assign var_irgt6z_147 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
-    echo var_irgt6z_147
+    assign var_irgt6z_1642 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
+    echo var_irgt6z_1642
   %}"><div class="button-bar__item__icon">{% liquid
-    assign var_i4o9bn_142 = state_isqe61-589___data.icon
-    echo var_i4o9bn_142
+    assign var_i8ia28_1637 = state_isqe61-589___data.icon
+    echo var_i8ia28_1637
   %}</div><div class="connector__description">{% liquid
-    assign var_iu222a_143 = state_isqe61-589___data.text
-    echo var_iu222a_143
+    assign var_i9oud6_1638 = state_isqe61-589___data.text
+    echo var_i9oud6_1638
   %}</div></a></div>{% endif %}{% endfor %}</div><div id="i3cney" class="button-bar"><a id="iacshy" class="button big-button connector__card" v-if="!loading" :key="index" :style="{ backgroundColor: connector.background, color: connector.color }" v-for="(connector, index) in connectors" v-on-click="openLogin(connector)"><div id="iiwn36"><div class="button-bar__item__icon" :style="`background: url('${connector.icon}'); background-repeat: no-repeat; background-size: contain;`"></div><div id="if4gvb" class="" v-text="connector.displayName">Name<br/></div></div><div id="isndui">This connector is about blablabla<br/></div></a></div></div><div id="i9msnk" class="text-white top-space-20" v-if="error" v-html="message">Insert your text here</div><div id="i6akll" class="button button--tertiary text-centered" v-if="error" v-on:click="logout()">{{ api-translations[lang]["Logout"] }}</div></div></div></body>
 </html>
