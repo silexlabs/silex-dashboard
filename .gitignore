@@ -2,3 +2,4 @@ node_modules
 _site
 __generated__
 .env
+.cache
