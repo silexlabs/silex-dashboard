@@ -71,7 +71,7 @@ module.exports = async function(config, options) {
     // Serve scripts
     //router.use('/js/vue/', express.static(node_modules('vue') + '/vue'))
     //router.use('/js/@silexlabs/silex/', express.static(node_modules('@silexlabs/silex') + '/@silexlabs/silex'))
-    router.use('/', express.static(join(__dirname, 'public')))
+    router.use('/', express.static(join(__dirname, '..', '_site')))
 
     // Serve the editor when the ?id param is present in the URL
     const editorRouter = express.Router()

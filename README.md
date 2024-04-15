@@ -10,14 +10,20 @@ For discussions and bug report please go to [Silex main project](https://github.
 
 ## Contribute
 
-Start 11ty on localhost:8080
+Start 11ty
 
 ```sh
 $ npm run serve
 ```
 
-Start Silex on localhost:6805
+Start Silex
 
 ```sh
 $ npm start
 ```
+
+Use these links
+
+* Silex editor: http://localhost:6805
+* Silex dashboard: http://localhost:6805/en/
+* Silex connectors: http://localhost:6805/en/connectors/

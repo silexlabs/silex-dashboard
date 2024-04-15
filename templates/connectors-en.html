@@ -8,7 +8,7 @@ collection: "Connectors"
 <html lang="">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/css/connectors-df645f87960302ea0f9a69349ff1b14e44c7359ffb533ba46354aa1ed6823d3e.css" />
+<link rel="stylesheet" href="/css/connectors-2b17e6ab4e459ad94a31ddaf728d62da5d6709ba28e55692c9683751b4520ce9.css" />
 <!--  font google -->
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
@@ -19,6 +19,7 @@ collection: "Connectors"
     opacity: 0;
     transition: opacity .5s ease;
   }
+  [data-gjs-type] .before-js > *, /* This is only inside the editor */
   .after-js > * {
     visibility: visible;
     opacity: 1;
@@ -29,6 +30,7 @@ collection: "Connectors"
     top: 49%;
     left: 49%;
   }
+  [data-gjs-type] .before-js:before, /* This is only inside the editor */
   .after-js:before {
     content: none;
   }
@@ -146,45 +148,84 @@ collection: "Connectors"
   /*flash-in animation*/
   /*FX ANIMATIONS*/
 </style>
+{% comment %}
 {% render "api-connectors.js.html" frontmatter: frontmatter page: page site: site api-translations: api-translations lang: lang %}
-
+{% endcomment %}
 
 <link rel="icon" href="/assets/favicon-32x32.png" />
 
 <link href="https://www.googleapis.com" rel="preconnect" ><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin ><link href="https://www.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" ></head>
-<body id="i2hcfw" class="body"><HEADER class="menu-bar"><A href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV class="nav" id="i14ch4">{% liquid
-    assign var_i95vq4_223 = tina.settingsConnection.edges | where: "node.lang", page.lang | first
-	assign var_i95vq4_224 = var_i95vq4_223.node.nav
+<body id="i2hcfw" class="body app"><A id="ixzhcr" href="/" class="button button-bar__item--secondary">{{ api-translations[lang]["Back to home"] }}</A><div id="imawg3" class="bg-silex-purpel">{% liquid
+    assign var_imgx81_151 = tina.connectorsConnection.edges | where: "node.lang", page.lang | first
+	assign var_imgx81_152 = var_imgx81_151.node
+    assign state_imgx81-1985_imgx81-7uhkrqd2giq = var_imgx81_152
+  %}<div id="imgx81" class=""><div id="iikf0s" class="box box_login"><div id="ie0dxn" class="text-centered"><img id="ior0hl" src="/assets/logo-silex.svg"/><p id="it2175" class="subtitle-16">{% liquid
+    assign var_it2175_109 = state_imgx81-1985_imgx81-7uhkrqd2giq.subtitle
+    echo var_it2175_109
+  %}</p><div id="ilq8ui" class="text-centered">{% liquid
+    assign var_ilq8ui_110 = state_imgx81-1985_imgx81-7uhkrqd2giq.help
+    echo var_ilq8ui_110
+  %}</div></div><h3 id="iqc1xf" class="margin-top">{% liquid
+    assign var_iqc1xf_111 = state_imgx81-1985_imgx81-7uhkrqd2giq.recommended
+    echo var_iqc1xf_111
+  %}</h3><div id="in62y2">{% liquid
+    assign var_isqe61_130 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
     %}
-    {% for state_iels-228___data in var_i95vq4_224 %}
-  <a href="{% liquid
-    assign var_i95vq4_225 = state_iels-228___data.url
-    echo var_i95vq4_225
-  %}" class="nav__item uppercase" target="{% liquid
-    assign var_i95vq4_226 = state_iels-228___data.target
-    echo var_i95vq4_226
-  %}">{% liquid
-    assign var_i95vq4_222 = state_iels-228___data.label
-    echo var_i95vq4_222
-  %}</a>{% endfor %}</NAV>{% liquid
-    assign var_ixuxrd_231 = tina.languagesConnection.edges
+    {% for state_isqe61-589___data in var_isqe61_130 %}
+  {% liquid
+    assign var_isqe61_128 = forloop.index0
+	assign var_isqe61_129 = "0"
     %}
-    {% for state_i2red7-8291___data in var_ixuxrd_231 %}
-  <div class="lang h-space"><a href="{% liquid
-    assign var_i61ffj_230 = state_i2red7-8291___data.node.permalink
-    echo var_i61ffj_230
-  %}" class="lang__item nav__item uppercase">{% liquid
-    assign var_i61ffj_229 = state_i2red7-8291___data.node.label
-    echo var_i61ffj_229
-  %}</a></div>{% endfor %}<div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div class="button button--tertiary text-centered" id="i5gzvu">Logout</div></div></div></HEADER><A id="ixzhcr" href="/" class="button button-bar__item--secondary">{{ api-translations[lang]["Back to home"] }}</A><div id="imawg3" class="bg-silex-purpel">{% liquid
-    assign var_imgx81_236 = tina.connectorsConnection.edges | where: "node.lang", page.lang | first
-	assign var_imgx81_237 = var_imgx81_236.node
-    assign state_imgx81-1985_imgx81-7uhkrqd2giq = var_imgx81_237
-  %}<div id="imgx81" class=""><div id="iikf0s" class="box text-centered padding-100-30 box_login"><h1 id="ighycb" class="title-40">{% liquid
-    assign var_ighycb_234 = state_imgx81-1985_imgx81-7uhkrqd2giq.title2
-    echo var_ighycb_234
-  %}</h1><div id="it2175" class="subtitle-16">{% liquid
-    assign var_it2175_235 = state_imgx81-1985_imgx81-7uhkrqd2giq.subtitle
-    echo var_it2175_235
-  %}</div><div id="in62y2" class="button-bar"><A id="isqe61" class="button big-button"><div id="io3lid" class="button-bar__item__icon"></div><div id="i87asw">Insert your text here</div></A></div></div><div id="i9msnk" class="text-white top-space-20">Insert your text here</div><div id="i6akll" class="button button--tertiary text-centered">{{ api-translations[lang]["Logout"] }}</div></div></div></body>
+    {% if var_isqe61_128 <= var_isqe61_129 %}
+  <div id="isqe61" class="">{% liquid
+    assign var_i0vhjr_124 = state_isqe61-589___data.background_color
+    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_i0vhjr_124
+  %}
+{% liquid
+    assign var_i0vhjr_125 = state_isqe61-589___data.color
+    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_i0vhjr_125
+  %}<a id="i0vhjr" href="{% liquid
+    assign var_i0vhjr_126 = state_isqe61-589___data.auth_url
+    echo var_i0vhjr_126
+  %}" class="connector__card" data-style="{% liquid
+    assign var_i0vhjr_127 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
+    echo var_i0vhjr_127
+  %}"><div id="io3lid" class="button-bar__item__icon">{% liquid
+    assign var_io3lid_122 = state_isqe61-589___data.icon
+    echo var_io3lid_122
+  %}</div><div id="i87asw" class="connector__description">{% liquid
+    assign var_i87asw_123 = state_isqe61-589___data.text
+    echo var_i87asw_123
+  %}</div></a></div>{% endif %}{% endfor %}</div><h3 id="i8w75b" class="margin-30">{% liquid
+    assign var_i8w75b_131 = state_imgx81-1985_imgx81-7uhkrqd2giq.advanced_users
+    echo var_i8w75b_131
+  %}</h3><div id="igp4xl">{% liquid
+    assign var_id9k25_150 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
+    %}
+    {% for state_isqe61-589___data in var_id9k25_150 %}
+  {% liquid
+    assign var_id9k25_148 = forloop.index0
+	assign var_id9k25_149 = "0"
+    %}
+    {% if var_id9k25_148 > var_id9k25_149 %}
+  <div id="id9k25" href="" class="">{% liquid
+    assign var_irgt6z_144 = state_isqe61-589___data.background_color
+    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_irgt6z_144
+  %}
+{% liquid
+    assign var_irgt6z_145 = state_isqe61-589___data.color
+    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_irgt6z_145
+  %}<a href="{% liquid
+    assign var_irgt6z_146 = state_isqe61-589___data.auth_url
+    echo var_irgt6z_146
+  %}" id="irgt6z" class="connector__card" data-style="{% liquid
+    assign var_irgt6z_147 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
+    echo var_irgt6z_147
+  %}"><div class="button-bar__item__icon">{% liquid
+    assign var_i4o9bn_142 = state_isqe61-589___data.icon
+    echo var_i4o9bn_142
+  %}</div><div class="connector__description">{% liquid
+    assign var_iu222a_143 = state_isqe61-589___data.text
+    echo var_iu222a_143
+  %}</div></a></div>{% endif %}{% endfor %}</div><div id="i3cney" class="button-bar"><a id="iacshy" class="button big-button connector__card" v-if="!loading" :key="index" :style="{ backgroundColor: connector.background, color: connector.color }" v-for="(connector, index) in connectors" v-on-click="openLogin(connector)"><div id="iiwn36"><div class="button-bar__item__icon" :style="`background: url('${connector.icon}'); background-repeat: no-repeat; background-size: contain;`"></div><div id="if4gvb" class="" v-text="connector.displayName">Name<br/></div></div><div id="isndui">This connector is about blablabla<br/></div></a></div></div><div id="i9msnk" class="text-white top-space-20" v-if="error" v-html="message">Insert your text here</div><div id="i6akll" class="button button--tertiary text-centered" v-if="error" v-on:click="logout()">{{ api-translations[lang]["Logout"] }}</div></div></div></body>
 </html>

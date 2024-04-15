@@ -18,48 +18,25 @@ export default async function (configData) {
         body: JSON.stringify({
           query: `query {
   __typename
-  settingsConnection {
-    __typename
-    edges {
-      __typename
-      node {
-        __typename
-        nav {
-          __typename
-          label
-          url
-          target
-
-        }
-        lang
-
-      }
-
-    }
-
-  }
-  languagesConnection {
-    __typename
-    edges {
-      __typename
-      node {
-        __typename
-        label
-        permalink
-
-      }
-
-    }
-
-  }
   connectorsConnection {
     __typename
     edges {
       __typename
       node {
         __typename
-        title2
         subtitle
+        help
+        recommended
+        advanced_users
+        connectors {
+          __typename
+          background_color
+          color
+          auth_url
+          icon
+          text
+
+        }
         lang
 
       }

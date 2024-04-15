@@ -156,22 +156,53 @@ export default defineConfig({
           {
             label: 'Language',
             name: 'lang',
-            type: 'string'
+            type: 'string',
           },
           {
             label: 'Title',
             name: 'title',
-            type: 'string'
+            type: 'string',
           },
           {
             label: 'Title 2',
             name: 'title2',
-            type: 'string'
+            type: 'string',
           },
           {
             label: 'Subtitle',
             name: 'subtitle',
-            type: 'string'
+            type: 'string',
+          },
+          {
+            label: 'Recommended',
+            name: 'recommended',
+            type: 'string',
+          },
+          {
+            label: 'Advanced users',
+            name: 'advanced_users',
+            type: 'string',
+          },
+          {
+            label: 'Help',
+            name: 'help',
+            type: 'string',
+          },
+          {
+            label: 'Connectors',
+            name: 'connectors',
+            type: 'object',
+            list: true,
+            fields: [
+              { label: 'Name', name: 'name', type: 'string' },
+              { label: 'Text', name: 'text', type: 'string' },
+              { label: 'Auth URL', name: 'auth_url', type: 'string' },
+              { label: 'Description', name: 'description', type: 'string' },
+              { label: 'Features', name: 'features', type: 'object', list: true, fields: [{ label: 'name', name: 'name', type: 'string' }, { label: 'description', name: 'description', type: 'string' }] },
+              { label: 'Icon', name: 'icon', type: 'string' },
+              { label: 'Color', name: 'color', type: 'string' },
+              { label: 'Background Color', name: 'background_color', type: 'string' },
+            ],
           },
         ],
       }, {
