@@ -156,76 +156,76 @@ collection: "Connectors"
 
 <link href="https://www.googleapis.com" rel="preconnect" ><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin ><link href="https://www.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" ></head>
 <body id="i2hcfw" class="body app"><A id="ixzhcr" href="/" class="button button-bar__item--secondary">{{ api-translations[lang]["Back to home"] }}</A><div id="imawg3" class="bg-silex-purpel">{% liquid
-    assign var_imgx81_1861 = tina.connectorsConnection.edges | where: "node.lang", page.lang | first
-	assign var_imgx81_1862 = var_imgx81_1861.node
-    assign state_imgx81-1985_imgx81-7uhkrqd2giq = var_imgx81_1862
+    assign var_imgx81_3866 = tina.connectorsConnection.edges | where: "node.lang", page.lang | first
+	assign var_imgx81_3867 = var_imgx81_3866.node
+    assign state_imgx81-1985_imgx81-7uhkrqd2giq = var_imgx81_3867
   %}<div id="imgx81" class=""><div id="iikf0s" class="box box_login"><div id="ie0dxn" class="text-centered"><img id="ior0hl" src="/assets/logo-silex.svg"/><p id="it2175" class="subtitle-16">{% liquid
-    assign var_it2175_1819 = state_imgx81-1985_imgx81-7uhkrqd2giq.subtitle
-    echo var_it2175_1819
+    assign var_it2175_3824 = state_imgx81-1985_imgx81-7uhkrqd2giq.subtitle
+    echo var_it2175_3824
   %}</p><div id="ilq8ui" class="text-centered">{% liquid
-    assign var_ilq8ui_1820 = state_imgx81-1985_imgx81-7uhkrqd2giq.help
-    echo var_ilq8ui_1820
+    assign var_ilq8ui_3825 = state_imgx81-1985_imgx81-7uhkrqd2giq.help
+    echo var_ilq8ui_3825
   %}</div></div><h3 id="iqc1xf" class="margin-top">{% liquid
-    assign var_iqc1xf_1821 = state_imgx81-1985_imgx81-7uhkrqd2giq.recommended
-    echo var_iqc1xf_1821
+    assign var_iqc1xf_3826 = state_imgx81-1985_imgx81-7uhkrqd2giq.recommended
+    echo var_iqc1xf_3826
   %}</h3><div id="in62y2">{% liquid
-    assign var_isqe61_1840 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
+    assign var_isqe61_3845 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
     %}
-    {% for state_isqe61-589___data in var_isqe61_1840 %}
+    {% for state_isqe61-589___data in var_isqe61_3845 %}
   {% liquid
-    assign var_isqe61_1838 = forloop.index0
-	assign var_isqe61_1839 = "0"
+    assign var_isqe61_3843 = forloop.index0
+	assign var_isqe61_3844 = "0"
     %}
-    {% if var_isqe61_1838 <= var_isqe61_1839 %}
+    {% if var_isqe61_3843 <= var_isqe61_3844 %}
   <div id="isqe61" class="">{% liquid
-    assign var_i0vhjr_1834 = state_isqe61-589___data.background_color
-    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_i0vhjr_1834
+    assign var_i0vhjr_3839 = state_isqe61-589___data.background_color
+    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_i0vhjr_3839
   %}
 {% liquid
-    assign var_i0vhjr_1835 = state_isqe61-589___data.color
-    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_i0vhjr_1835
+    assign var_i0vhjr_3840 = state_isqe61-589___data.color
+    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_i0vhjr_3840
   %}<a id="i0vhjr" href="{% liquid
-    assign var_i0vhjr_1836 = state_isqe61-589___data.auth_url
-    echo var_i0vhjr_1836
+    assign var_i0vhjr_3841 = state_isqe61-589___data.auth_url
+    echo var_i0vhjr_3841
   %}" class="connector__card" data-style="{% liquid
-    assign var_i0vhjr_1837 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
-    echo var_i0vhjr_1837
+    assign var_i0vhjr_3842 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
+    echo var_i0vhjr_3842
   %}"><div id="io3lid" class="button-bar__item__icon">{% liquid
-    assign var_io3lid_1832 = state_isqe61-589___data.icon
-    echo var_io3lid_1832
+    assign var_io3lid_3837 = state_isqe61-589___data.icon
+    echo var_io3lid_3837
   %}</div><div id="i87asw" class="connector__description">{% liquid
-    assign var_i87asw_1833 = state_isqe61-589___data.text
-    echo var_i87asw_1833
+    assign var_i87asw_3838 = state_isqe61-589___data.text
+    echo var_i87asw_3838
   %}</div></a></div>{% endif %}{% endfor %}</div><h3 id="i8w75b" class="margin-30">{% liquid
-    assign var_i8w75b_1841 = state_imgx81-1985_imgx81-7uhkrqd2giq.advanced_users
-    echo var_i8w75b_1841
+    assign var_i8w75b_3846 = state_imgx81-1985_imgx81-7uhkrqd2giq.advanced_users
+    echo var_i8w75b_3846
   %}</h3><div id="igp4xl">{% liquid
-    assign var_id9k25_1860 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
+    assign var_id9k25_3865 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
     %}
-    {% for state_isqe61-589___data in var_id9k25_1860 %}
+    {% for state_isqe61-589___data in var_id9k25_3865 %}
   {% liquid
-    assign var_id9k25_1858 = forloop.index0
-	assign var_id9k25_1859 = "0"
+    assign var_id9k25_3863 = forloop.index0
+	assign var_id9k25_3864 = "0"
     %}
-    {% if var_id9k25_1858 > var_id9k25_1859 %}
+    {% if var_id9k25_3863 > var_id9k25_3864 %}
   <div id="id9k25" href="" class="">{% liquid
-    assign var_irgt6z_1854 = state_isqe61-589___data.background_color
-    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_irgt6z_1854
+    assign var_irgt6z_3859 = state_isqe61-589___data.background_color
+    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_irgt6z_3859
   %}
 {% liquid
-    assign var_irgt6z_1855 = state_isqe61-589___data.color
-    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_irgt6z_1855
+    assign var_irgt6z_3860 = state_isqe61-589___data.color
+    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_irgt6z_3860
   %}<a href="{% liquid
-    assign var_irgt6z_1856 = state_isqe61-589___data.auth_url
-    echo var_irgt6z_1856
+    assign var_irgt6z_3861 = state_isqe61-589___data.auth_url
+    echo var_irgt6z_3861
   %}" id="irgt6z" class="connector__card" data-style="{% liquid
-    assign var_irgt6z_1857 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
-    echo var_irgt6z_1857
+    assign var_irgt6z_3862 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
+    echo var_irgt6z_3862
   %}"><div class="button-bar__item__icon">{% liquid
-    assign var_i8ia28_1852 = state_isqe61-589___data.icon
-    echo var_i8ia28_1852
+    assign var_i2ve3a_3857 = state_isqe61-589___data.icon
+    echo var_i2ve3a_3857
   %}</div><div class="connector__description">{% liquid
-    assign var_i9oud6_1853 = state_isqe61-589___data.text
-    echo var_i9oud6_1853
+    assign var_inlnar_3858 = state_isqe61-589___data.text
+    echo var_inlnar_3858
   %}</div></a></div>{% endif %}{% endfor %}</div><div id="i3cney" class="button-bar"><a id="iacshy" class="button big-button connector__card" v-if="!loading" :key="index" :style="{ backgroundColor: connector.background, color: connector.color }" v-for="(connector, index) in connectors" v-on-click="openLogin(connector)"><div id="iiwn36"><div class="button-bar__item__icon" :style="`background: url('${connector.icon}'); background-repeat: no-repeat; background-size: contain;`"></div><div id="if4gvb" class="" v-text="connector.displayName">Name<br/></div></div><div id="isndui">This connector is about blablabla<br/></div></a></div></div><div id="i9msnk" class="text-white top-space-20" v-if="error" v-html="message">Insert your text here</div><div id="i6akll" class="button button--tertiary text-centered" v-if="error" v-on:click="logout()">{{ api-translations[lang]["Logout"] }}</div></div></div></body>
 </html>

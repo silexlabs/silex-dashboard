@@ -50,6 +50,8 @@ window.addEventListener('load', function() {
           setServerUrl((window.location.origin + window.location.pathname.replace(/\/$/, '')).replace(/\/[^/]+$/, ''))
           // Start
           const user = await getUser({type: ConnectorType.STORAGE})
+          // Escape single quotes in the picture URL and decode the picture URL
+          user.picture = decodeURIComponent(user.picture).replace(/'/g, "\\'")
           if(user) {
             this.user = user
             this.loggedIn = true
