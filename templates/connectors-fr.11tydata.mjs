@@ -31,6 +31,7 @@ connectorsConnection {
         background_color
         color
         auth_url
+        description
         icon
         text
 

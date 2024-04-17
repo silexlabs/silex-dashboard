@@ -5,7 +5,7 @@ title2: Welcome to Silex
 subtitle: Please login to continue
 recommended: Recommended and free
 advanced_users: Advanced users
-help: Do you need help? Check <a href="https://docs.silex.me/en/user/login">the documentation</a>, <a href="https://short.silex.me/video_en">the video tutorials</a> or just <a href="https://short.silex.me/community">ask for help in the forums</a> or <a href="https://short.silex.me/chat">poke us in the chat</a>.
+help: Do you need help? Check <a href="https://docs.silex.me/en/user/login">the documentation</a>.
 connectors:
   - name: GitLab
     text: Connect with GitLab.com
@@ -57,27 +57,6 @@ connectors:
     description: >
       FTP is for professional users who want to host their websites with a
       hosting company of their choice
-
-
-      \| Feature | Available in Silex |
-
-      \| File storage | ✔ |
-
-      \| SaaS with a free plan | x |
-
-      \| Self hosting | ✔ |
-
-      \| File versionning / history | x  |
-
-      \| Collaborate with others | x |
-
-      \| Publish your website online | ✔ |
-
-      \| Custom domain | ✔ |
-
-      \| Free subdomain | x |
-
-      \| Compatible with Silex CMS | x |
     icon: >-
       <svg xmlns='http://www.w3.org/2000/svg' height='100%' viewBox='0 0 512
       512'>   <path d='M64 32C28.7 32 0 60.7 0 96v64c0 35.3 28.7 64 64

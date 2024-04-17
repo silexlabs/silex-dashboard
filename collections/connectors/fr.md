@@ -2,10 +2,10 @@
 lang: fr
 title: Silex Dashboard - login page
 title2: Bienvenue sur Silex
-subtitle: Merci de vous connecter pour continuer
+subtitle: Connectez-vous pour continuer
 recommended: Recommandé et gratuit
 advanced_users: Utilisateurs avancés
-help: Avez-vous besoin d'aide ? Consultez <a href="https://docs.silex.me/fr/user/login">la documentation</a>, <a href="https://short.silex.me/video_en">les tutoriels vidéo</a> ou simplement <a href="https://short.silex.me/community">demandez de l'aide sur les forums</a> ou <a href="https://short.silex.me/chat">contactez-nous sur le chat</a>.
+help: Avez-vous besoin d'aide ? Consultez <a href="https://docs.silex.me/fr/user/login">la documentation</a>.
 connectors:
   - name: GitLab
     text: Se connecter avec GitLab.com
