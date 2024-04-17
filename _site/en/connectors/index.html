@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/connectors-61bd21c2345101e48cc530cacf3afc0156ce7e089fcef3a34f853a537f0c55f2.css" />
+<!--  font google -->
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
+
+<style>
+  .before-js > * {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease;
+  }
+  .before-js[data-gjs-type] > *, /* This is only inside the editor, .before-js needs to be on the body */
+  .after-js > * {
+    visibility: visible;
+    opacity: 1;
+  }
+  .before-js:before {
+    content: 'Loading';
+    position: absolute;
+    top: 49%;
+    left: 49%;
+  }
+  .before-js[data-gjs-type]:before, /* This is only inside the editor, .before-js needs to be on the body */
+  .after-js:before {
+    content: none;
+  }
+  /*BTNS*/
+  .button, .pointer {
+    cursor: pointer!important}
+  .button{
+    min-width:110px;
+  }
+  /*BTNS*/
+  a {
+    text-decoration: none;
+    color:#8873FE;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .uppercase  {
+    text-transform: uppercase;
+  }
+  .underline:hover{
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
+    text-underline-position: under;
+  }
+  /*footer position*/
+  .main-min-height {
+    min-height: calc(100vh - 560px);
+  }
+  /*footer position*/
+  /*label*/
+  ::placeholder {
+    color: #8873FE;
+  }
+  input:focus {
+    border: 2px solid #9977FE;
+    background-color:#ffffff;
+  }
+  :focus {
+    outline: none;
+  }
+  /*label*/
+  .skeleton-anim:after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background: 
+      linear-gradient(0.25turn, transparent, rgba(255,255,255,.75), transparent),
+      linear-gradient(transparent, transparent),
+      radial-gradient(38px circle at 19px 19px, transparent 50%, transparent 51%),
+      linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: 315px 250px, 315px 180px, 100px 100px, 225px 30px;
+    background-position: -315px 0, 0 0, 0px 190px, 50px 195px;
+    animation: loading 1.5s infinite;
+  }
+  @keyframes loading {
+    to {
+      background-position: 200% 0, 0 0, 0 190px, 50px 195px;
+    }
+  }
+  /*FX ANIMATIONS*/
+  /*scale-round-inside_pour-BTN*/
+  .fx-scale-round {
+    position:relative;
+    z-index: 10;
+    overflow: hidden;
+  }
+  .fx-scale-round::after {
+    content: "";
+    background: #ffffff;
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    left: -50%;
+    right: -50%;
+    top: -100%;
+    bottom: -100%;
+    transform: scale(0, 0);
+    transform-origin: center bottom;
+    transition: all 0.3s ease-out;
+  }
+  .fx-scale-round:hover {
+    transform-origin: center bottom;
+    transform: scale(1.1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  .fx-scale-round:hover::after {
+    transform: scale(1, 1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  /*scale-round-inside_pour-BTN*/
+  /*scale*/
+  .fx-scale:hover  {
+    transform-origin: center bottom;
+    transform: scale(1.1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  /*flash*/
+  .fx-flash:hover {
+    animation: flash-in .25s ;
+  }
+  /*flash-in animation*/
+  @keyframes flash-in{
+    0% {
+      opacity:.25;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  /*flash-in animation*/
+  /*FX ANIMATIONS*/
+</style>
+<script src="/js/vue.global.prod.js"></script>
+<script src="/js/main.js"></script>
+<script type="module">
+          console.log('xxxxxx')
+const CONNECTORS_PATH = '/connectors/'
+window.addEventListener('load', function() {
+          console.log('xxxxxx')
+  const { createApp } = Vue;
+  const { api, constants, types } = silex;
+  const {
+    ConnectorType,
+  } = types
+  const {
+    setServerUrl,
+    getUser,
+    logout,
+    websiteDelete,
+    websiteDuplicate,
+    websiteList,
+    websiteCreate,
+    websiteMetaWrite,
+  } = api
+  function toSafeId(name) {
+    return name.replace(/[/\\?%*:|"<>]/g, '_')
+  }
+
+  const App = {
+    data() {
+      return {
+        websites: [],
+        newWebsiteName: '',
+        showCreationForm: false,
+        error: null,
+        message: null,
+        loggedIn: false,
+        loading: true,
+        storage: null,
+        user: null,
+        showMenu: false,
+        empty: false,
+      }
+    },
+    mounted() {
+      this.init()
+    },
+
+    methods: {
+      async init() {
+        try {
+          // Init Silex server path
+          // Go up one level because of the language prefix
+          setServerUrl(window.location.origin)
+          // Start
+          const user = await getUser({type: ConnectorType.STORAGE})
+          // Escape single quotes in the picture URL and decode the picture URL
+          user.picture = decodeURIComponent(user.picture).replace(/'/g, "\\'")
+          if(user) {
+            this.user = user
+            this.loggedIn = true
+            this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+            this.empty = this.websites.length === 0
+            this.loading = false
+          } else {
+            this.openLogin()
+          }
+        } catch (error) {
+          console.error(error)
+          this.loading = false
+          if(error.code === 401 || error.httpStatusCode === 401) {
+            this.loggedIn = false
+            this.openLogin()
+          } else {
+            this.error = `Failed to start dashboard - ${error.message}`
+            this.message = ''
+          }
+        }
+      },
+
+      openLogin(id, lang) {
+        //throw new Error('debug')
+        const path = `/en${CONNECTORS_PATH}`
+        console.log(window.location.pathname, window.location.path, path)
+        if(window.location.pathname === path) return
+        window.open(path, '_self')
+      },
+
+      openEditor(id, lang) {
+        window.open(`/?id=${id}&lang=${lang}&connectorId=${this.user.storage.connectorId}`, '_self')
+      },
+
+      async logout() {
+        await logout({
+          type: ConnectorType.STORAGE,
+          connectorId: this.user.storage.connectorId,
+        })
+        window.location.reload()
+      },
+
+      async createWebsite() {
+        try {
+          if (!this.newWebsiteName) throw new Error('You need to provide a website name')
+          this.loading = true
+          const websiteId = toSafeId(this.newWebsiteName)
+          const result = await websiteCreate({
+            websiteId,
+            data: {
+              name: this.newWebsiteName,
+              imageUrl: null,
+            },
+            connectorId: this.user.storage.connectorId
+          })
+          this.message = 'Website created successfully'
+          this.error = ''
+          this.newWebsiteName = ''
+          this.showCreationForm = false;
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
+          this.loading = false
+          return result
+        } catch (error) {
+          this.loading = false
+          console.error(error)
+          this.error = `Failed to create website - ${error.message}`
+          this.message = ''
+        }
+      },
+
+      async deleteWebsite(websiteId) {
+        const ok = confirm('Deleting a website? Are your sure? Really?')
+        if (!ok) return
+        this.loading = true
+        try {
+          const result = await websiteDelete({websiteId, connectorId: this.user.storage.connectorId})
+          this.message = 'Website deleted successfully'
+          this.error = ''
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
+          this.loading = false
+          return result
+        } catch (error) {
+          this.loading = false
+          this.error = `Failed to delete website - ${error.message}`
+          this.message = ''
+        }
+      },
+
+      async duplicateWebsite(websiteId) {
+        this.loading = true
+        try {
+          await websiteDuplicate({websiteId, connectorId: this.user.storage.connectorId, data: { name }})
+          this.error = ''
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.message = 'Website duplicated successfully'
+          this.empty = this.websites.length === 0
+          this.loading = false
+        } catch (error) {
+          this.loading = false
+          this.error = `Failed to duplicate website - ${error.message}`
+          this.message = ''
+        }
+      },
+
+      async renameWebsite(websiteId) {
+        const website = this.websites.find(w => w.websiteId === websiteId)
+        const name = prompt('New name for this website', website.name)
+        if (!name) return
+        this.loading = true
+        try {
+          const result = await websiteMetaWrite({websiteId, connectorId: this.user.storage.connectorId, data: { name }})
+          this.message = 'Website renamed successfully'
+          this.error = ''
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
+          this.loading = false
+          return result
+        } catch (error) {
+          this.loading = false
+          this.error = `Failed to rename website - ${error.message}`
+          this.message = ''
+        }
+      },
+    },
+  };
+  // Prepare elements for vue
+  document.querySelectorAll('[v-text], [v-html]')
+  .forEach(el => el.innerText = '')
+
+  // Create the app
+  const app = createApp(App);
+
+  // Suppress "v-text will override element children" warning
+  app.config.compilerOptions.directiveTransforms = {
+    text: false,
+  }
+
+  // Mount the app
+  app.mount('.app');
+
+
+  // Remove loading
+  setTimeout(() => {
+    document.querySelector('.before-js').classList.add('after-js')
+  }, 100)
+})
+</script>
+
+<title>Silex Dashboard</title>
+<link rel="icon" href="/assets/favicon-32x32.png" />
+<meta name="og:title" property="og:title" content="Silex Dashboard"/>
+<link href="https://www.googleapis.com" rel="preconnect" ><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin ><link href="https://www.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" ></head>
+<body id="i2hcfw" class="body app before-js"><A id="ixzhcr" href="/" class="button button-bar__item--secondary">< Back</A><div id="imawg3" class="bg-silex-purpel"><div id="imgx81" class=""><div id="iikf0s" class="box box_login"><div id="ie0dxn" class="text-centered"><img id="ior0hl" src="/assets/logo-silex.svg"/><p id="it2175" class="subtitle-16">Please login to continue</p><div id="ilq8ui" class="text-centered">Do you need help? Check <a href="https://docs.silex.me/en/user/login" target="_blank">the documentation</a>.</div></div><h3 id="iqc1xf" class="margin-top">Recommended and free</h3><div id="in62y2">
+    
+  
+    
+  <div id="isqe61" class="">
+<a id="i0vhjr" href="/api/connector/login?connectorId=gitlab&type=STORAGE" class="connector__card" data-style="background: rgba(252, 109, 38, 0.2); color: #2B1B63;" title="Gitlab.com is the service we recommend to host your Silex website. We trust the company behind the service, go check them out."><div id="io3lid" class="button-bar__item__icon"><svg   xmlns:svg="http://www.w3.org/2000/svg"   xmlns="http://www.w3.org/2000/svg"   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"   width="100%"   height="100%"   viewBox="0 0 1000 963.197"   version="1.1"   id="svg85">   <sodipodi:namedview     id="namedview87"     pagecolor="#ffffff"     bordercolor="#666666"     borderopacity="1.0"     inkscape:pageshadow="2"     inkscape:pageopacity="0.0"     inkscape:pagecheckerboard="0"     showgrid="false"     inkscape:zoom="1"     inkscape:cx="991.5"     inkscape:cy="964.5"     inkscape:window-width="1126"     inkscape:window-height="895"     inkscape:window-x="774"     inkscape:window-y="12"     inkscape:window-maximized="0"     inkscape:current-layer="svg85" />   <defs id="defs74">     <style id="style72">       .cls-1{fill:#e24329;}       .cls-2{fill:#fc6d26;}       .cls-3{fill:#fca326;}     </style>   </defs>   <g     id="LOGO"     transform="matrix(5.2068817,0,0,5.2068817,-489.30756,-507.76085)">     <path       class="cls-1"       d="m 282.83,170.73 -0.27,-0.69 -26.14,-68.22 a 6.81,6.81 0 0 0 -2.69,-3.24 7,7 0 0 0 -8,0.43 7,7 0 0 0 -2.32,3.52 l -17.65,54 h -71.47 l -17.65,-54 a 6.86,6.86 0 0 0 -2.32,-3.53 7,7 0 0 0 -8,-0.43 6.87,6.87 0 0 0 -2.69,3.24 L 97.44,170 l -0.26,0.69 a 48.54,48.54 0 0 0 16.1,56.1 l 0.09,0.07 0.24,0.17 39.82,29.82 19.7,14.91 12,9.06 a 8.07,8.07 0 0 0 9.76,0 l 12,-9.06 19.7,-14.91 40.06,-30 0.1,-0.08 a 48.56,48.56 0 0 0 16.08,-56.04 z"       id="path76" />     <path       class="cls-2"       d="m 282.83,170.73 -0.27,-0.69 a 88.3,88.3 0 0 0 -35.15,15.8 L 190,229.25 c 19.55,14.79 36.57,27.64 36.57,27.64 l 40.06,-30 0.1,-0.08 a 48.56,48.56 0 0 0 16.1,-56.08 z"       id="path78" />     <path       class="cls-3"       d="m 153.43,256.89 19.7,14.91 12,9.06 a 8.07,8.07 0 0 0 9.76,0 l 12,-9.06 19.7,-14.91 c 0,0 -17.04,-12.89 -36.59,-27.64 -19.55,14.75 -36.57,27.64 -36.57,27.64 z"       id="path80" />     <path       class="cls-2"       d="M 132.58,185.84 A 88.19,88.19 0 0 0 97.44,170 l -0.26,0.69 a 48.54,48.54 0 0 0 16.1,56.1 l 0.09,0.07 0.24,0.17 39.82,29.82 c 0,0 17,-12.85 36.57,-27.64 z"       id="path82" />   </g> </svg></div><div id="i87asw" class="connector__description">Connect with GitLab.com</div></a></div>
+  
+    </div><h3 id="i8w75b" class="margin-30">Advanced users</h3><div id="igp4xl">
+    
+  
+    
+  
+    
+  <div id="id9k25" href="" class="">
+<a href="/api/connector/login?connectorId=ftp&type=STORAGE" id="irgt6z" class="connector__card" data-style="background: #0066CC; color: #ffffff;" title="FTP is for professional users who want to host their websites with a hosting company of their choice
+"><div class="button-bar__item__icon"><svg xmlns='http://www.w3.org/2000/svg' height='100%' viewBox='0 0 512 512'>   <path d='M64 32C28.7 32 0 60.7 0 96v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm280 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm48 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zM64 288c-35.3 0-64 28.7-64 64v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V352c0-35.3-28.7-64-64-64H64zm280 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm56 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z' /> </svg></div><div class="connector__description">Connect with FTP</div></a></div></div><div id="i3cney" class="button-bar"><a id="iacshy" class="button big-button connector__card" v-if="!loading" :key="index" :style="{ backgroundColor: connector.background, color: connector.color }" v-for="(connector, index) in connectors" v-on-click="openLogin(connector)"><div id="iiwn36"><div class="button-bar__item__icon" :style="`background: url('${connector.icon}'); background-repeat: no-repeat; background-size: contain;`"></div><div id="if4gvb" class="" v-text="connector.displayName">Name<br/></div></div><div id="isndui">This connector is about blablabla<br/></div></a></div></div><div id="i9msnk" class="text-white top-space-20" v-if="error" v-text="message" :test="message">Insert your text here</div><div id="i6akll" class="button button--tertiary text-centered" v-if="error" v-on:click="logout()">Logout</div></div></div></body>
+</html>
