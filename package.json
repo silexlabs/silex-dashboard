@@ -2,7 +2,7 @@
   "name": "@silexlabs/silex-dashboard",
   "version": "1.0.41",
   "description": "Dashboard for Silex v3",
-  "main": ".silex.js",
+  "main": "silex/server-config.js",
   "scripts": {
     "start": "concurrently --kill-others \"$npm_execpath run silex:dev\" \"$npm_execpath run 11ty:dev\" \"$npm_execpath run tina:dev\"",
     "silex:dev": "silex --cors-url * --fs-root `pwd`/silex/websites --fs-hosting-root `pwd`/templates --server-config `pwd`/silex/server-config.js --client-config `pwd`/silex/client-config.js --debug",

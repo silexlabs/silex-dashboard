@@ -8,7 +8,7 @@ collection: "Connectors"
 <html lang="">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/css/connectors-a2728c8029c499fd520881f2a40fe77b73347a71526f1c723cb6894cb471270e.css" />
+<link rel="stylesheet" href="/css/connectors-61bd21c2345101e48cc530cacf3afc0156ce7e089fcef3a34f853a537f0c55f2.css" />
 <!--  font google -->
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
@@ -148,90 +148,293 @@ collection: "Connectors"
   /*flash-in animation*/
   /*FX ANIMATIONS*/
 </style>
-{% comment %}
-{% render "api-connectors.js.html" frontmatter: frontmatter page: page site: site api-translations: api-translations lang: lang %}
-{% endcomment %}
+<script src="/js/vue.global.prod.js"></script>
+<script src="/js/main.js"></script>
+<script type="module">
+          console.log('xxxxxx')
+const CONNECTORS_PATH = '/connectors/'
+window.addEventListener('load', function() {
+          console.log('xxxxxx')
+  const { createApp } = Vue;
+  const { api, constants, types } = silex;
+  const {
+    ConnectorType,
+  } = types
+  const {
+    setServerUrl,
+    getUser,
+    logout,
+    websiteDelete,
+    websiteDuplicate,
+    websiteList,
+    websiteCreate,
+    websiteMetaWrite,
+  } = api
+  function toSafeId(name) {
+    return name.replace(/[/\\?%*:|"<>]/g, '_')
+  }
+
+  const App = {
+    data() {
+      return {
+        websites: [],
+        newWebsiteName: '',
+        showCreationForm: false,
+        error: null,
+        message: null,
+        loggedIn: false,
+        loading: true,
+        storage: null,
+        user: null,
+        showMenu: false,
+        empty: false,
+      }
+    },
+    mounted() {
+      this.init()
+    },
+
+    methods: {
+      async init() {
+        try {
+          // Init Silex server path
+          // Go up one level because of the language prefix
+          setServerUrl(window.location.origin)
+          // Start
+          const user = await getUser({type: ConnectorType.STORAGE})
+          // Escape single quotes in the picture URL and decode the picture URL
+          user.picture = decodeURIComponent(user.picture).replace(/'/g, "\\'")
+          if(user) {
+            this.user = user
+            this.loggedIn = true
+            this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+            this.empty = this.websites.length === 0
+            this.loading = false
+          } else {
+            this.openLogin()
+          }
+        } catch (error) {
+          console.error(error)
+          this.loading = false
+          if(error.code === 401 || error.httpStatusCode === 401) {
+            this.loggedIn = false
+            this.openLogin()
+          } else {
+            this.error = `{{ api-translations[lang]["Failed to start dashboard"] }} - ${error.message}`
+            this.message = ''
+          }
+        }
+      },
+
+      openLogin(id, lang) {
+        //throw new Error('debug')
+        const path = `/{{lang}}${CONNECTORS_PATH}`
+        console.log(window.location.pathname, window.location.path, path)
+        if(window.location.pathname === path) return
+        window.open(path, '_self')
+      },
+
+      openEditor(id, lang) {
+        window.open(`/?id=${id}&lang=${lang}&connectorId=${this.user.storage.connectorId}`, '_self')
+      },
+
+      async logout() {
+        await logout({
+          type: ConnectorType.STORAGE,
+          connectorId: this.user.storage.connectorId,
+        })
+        window.location.reload()
+      },
+
+      async createWebsite() {
+        try {
+          if (!this.newWebsiteName) throw new Error('{{ api-translations[lang]["You need to provide a website name"] }}')
+          this.loading = true
+          const websiteId = toSafeId(this.newWebsiteName)
+          const result = await websiteCreate({
+            websiteId,
+            data: {
+              name: this.newWebsiteName,
+              imageUrl: null,
+            },
+            connectorId: this.user.storage.connectorId
+          })
+          this.message = '{{ api-translations[lang]["Website created successfully"] }}'
+          this.error = ''
+          this.newWebsiteName = ''
+          this.showCreationForm = false;
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
+          this.loading = false
+          return result
+        } catch (error) {
+          this.loading = false
+          console.error(error)
+          this.error = `{{ api-translations[lang]["Failed to create website"] }} - ${error.message}`
+          this.message = ''
+        }
+      },
+
+      async deleteWebsite(websiteId) {
+        const ok = confirm('{{ api-translations[lang]["Deleting a website? Are your sure? Really?"] }}')
+        if (!ok) return
+        this.loading = true
+        try {
+          const result = await websiteDelete({websiteId, connectorId: this.user.storage.connectorId})
+          this.message = '{{ api-translations[lang]["Website deleted successfully"] }}'
+          this.error = ''
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
+          this.loading = false
+          return result
+        } catch (error) {
+          this.loading = false
+          this.error = `{{ api-translations[lang]["Failed to delete website"] }} - ${error.message}`
+          this.message = ''
+        }
+      },
+
+      async duplicateWebsite(websiteId) {
+        this.loading = true
+        try {
+          await websiteDuplicate({websiteId, connectorId: this.user.storage.connectorId, data: { name }})
+          this.error = ''
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.message = '{{ api-translations[lang]["Website duplicated successfully"] }}'
+          this.empty = this.websites.length === 0
+          this.loading = false
+        } catch (error) {
+          this.loading = false
+          this.error = `{{ api-translations[lang]["Failed to duplicate website"] }} - ${error.message}`
+          this.message = ''
+        }
+      },
+
+      async renameWebsite(websiteId) {
+        const website = this.websites.find(w => w.websiteId === websiteId)
+        const name = prompt('{{ api-translations[lang]["New name for this website"] }}', website.name)
+        if (!name) return
+        this.loading = true
+        try {
+          const result = await websiteMetaWrite({websiteId, connectorId: this.user.storage.connectorId, data: { name }})
+          this.message = '{{ api-translations[lang]["Website renamed successfully"] }}'
+          this.error = ''
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
+          this.loading = false
+          return result
+        } catch (error) {
+          this.loading = false
+          this.error = `{{ api-translations[lang]["Failed to rename website"] }} - ${error.message}`
+          this.message = ''
+        }
+      },
+    },
+  };
+  // Prepare elements for vue
+  document.querySelectorAll('[v-text], [v-html]')
+  .forEach(el => el.innerText = '')
+
+  // Create the app
+  const app = createApp(App);
+
+  // Suppress "v-text will override element children" warning
+  app.config.compilerOptions.directiveTransforms = {
+    text: false,
+  }
+
+  // Mount the app
+  app.mount('.app');
+
+
+  // Remove loading
+  setTimeout(() => {
+    document.querySelector('.before-js').classList.add('after-js')
+  }, 100)
+})
+</script>
+
 
 <link rel="icon" href="/assets/favicon-32x32.png" />
 
 <link href="https://www.googleapis.com" rel="preconnect" ><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin ><link href="https://www.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" ></head>
-<body id="i2hcfw" class="body app"><A id="ixzhcr" href="/" class="button button-bar__item--secondary">{{ api-translations[lang]["Back to home"] }}</A><div id="imawg3" class="bg-silex-purpel">{% liquid
-    assign var_imgx81_1201 = tina.connectorsConnection.edges | where: "node.lang", page.lang | first
-	assign var_imgx81_1202 = var_imgx81_1201.node
-    assign state_imgx81-1985_imgx81-7uhkrqd2giq = var_imgx81_1202
+<body id="i2hcfw" class="body app before-js"><A id="ixzhcr" href="/" class="button button-bar__item--secondary">{{ api-translations[lang]["Back to home"] }}</A><div id="imawg3" class="bg-silex-purpel">{% liquid
+    assign var_imgx81_4896 = tina.connectorsConnection.edges | where: "node.lang", page.lang | first
+	assign var_imgx81_4897 = var_imgx81_4896.node
+    assign state_imgx81-1985_imgx81-7uhkrqd2giq = var_imgx81_4897
   %}<div id="imgx81" class=""><div id="iikf0s" class="box box_login"><div id="ie0dxn" class="text-centered"><img id="ior0hl" src="/assets/logo-silex.svg"/><p id="it2175" class="subtitle-16">{% liquid
-    assign var_it2175_1155 = state_imgx81-1985_imgx81-7uhkrqd2giq.subtitle
-    echo var_it2175_1155
+    assign var_it2175_4850 = state_imgx81-1985_imgx81-7uhkrqd2giq.subtitle
+    echo var_it2175_4850
   %}</p><div id="ilq8ui" class="text-centered">{% liquid
-    assign var_ilq8ui_1156 = state_imgx81-1985_imgx81-7uhkrqd2giq.help
-    echo var_ilq8ui_1156
+    assign var_ilq8ui_4851 = state_imgx81-1985_imgx81-7uhkrqd2giq.help
+    echo var_ilq8ui_4851
   %}</div></div><h3 id="iqc1xf" class="margin-top">{% liquid
-    assign var_iqc1xf_1157 = state_imgx81-1985_imgx81-7uhkrqd2giq.recommended
-    echo var_iqc1xf_1157
+    assign var_iqc1xf_4852 = state_imgx81-1985_imgx81-7uhkrqd2giq.recommended
+    echo var_iqc1xf_4852
   %}</h3><div id="in62y2">{% liquid
-    assign var_isqe61_1178 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
+    assign var_isqe61_4873 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
     %}
-    {% for state_isqe61-589___data in var_isqe61_1178 %}
+    {% for state_isqe61-589___data in var_isqe61_4873 %}
   {% liquid
-    assign var_isqe61_1176 = forloop.index0
-	assign var_isqe61_1177 = "0"
+    assign var_isqe61_4871 = forloop.index0
+	assign var_isqe61_4872 = "0"
     %}
-    {% if var_isqe61_1176 <= var_isqe61_1177 %}
+    {% if var_isqe61_4871 <= var_isqe61_4872 %}
   <div id="isqe61" class="">{% liquid
-    assign var_i0vhjr_1171 = state_isqe61-589___data.background_color
-    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_i0vhjr_1171
+    assign var_i0vhjr_4866 = state_isqe61-589___data.background_color
+    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_i0vhjr_4866
   %}
 {% liquid
-    assign var_i0vhjr_1172 = state_isqe61-589___data.color
-    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_i0vhjr_1172
+    assign var_i0vhjr_4867 = state_isqe61-589___data.color
+    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_i0vhjr_4867
   %}<a id="i0vhjr" href="{% liquid
-    assign var_i0vhjr_1173 = state_isqe61-589___data.auth_url
-    echo var_i0vhjr_1173
+    assign var_i0vhjr_4868 = state_isqe61-589___data.auth_url
+    echo var_i0vhjr_4868
   %}" class="connector__card" data-style="{% liquid
-    assign var_i0vhjr_1174 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
-    echo var_i0vhjr_1174
+    assign var_i0vhjr_4869 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
+    echo var_i0vhjr_4869
   %}" title="{% liquid
-    assign var_i0vhjr_1175 = state_isqe61-589___data.description | strip_html
-    echo var_i0vhjr_1175
+    assign var_i0vhjr_4870 = state_isqe61-589___data.description | strip_html
+    echo var_i0vhjr_4870
   %}"><div id="io3lid" class="button-bar__item__icon">{% liquid
-    assign var_io3lid_1169 = state_isqe61-589___data.icon
-    echo var_io3lid_1169
+    assign var_io3lid_4864 = state_isqe61-589___data.icon
+    echo var_io3lid_4864
   %}</div><div id="i87asw" class="connector__description">{% liquid
-    assign var_i87asw_1170 = state_isqe61-589___data.text
-    echo var_i87asw_1170
+    assign var_i87asw_4865 = state_isqe61-589___data.text
+    echo var_i87asw_4865
   %}</div></a></div>{% endif %}{% endfor %}</div><h3 id="i8w75b" class="margin-30">{% liquid
-    assign var_i8w75b_1179 = state_imgx81-1985_imgx81-7uhkrqd2giq.advanced_users
-    echo var_i8w75b_1179
+    assign var_i8w75b_4874 = state_imgx81-1985_imgx81-7uhkrqd2giq.advanced_users
+    echo var_i8w75b_4874
   %}</h3><div id="igp4xl">{% liquid
-    assign var_id9k25_1200 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
+    assign var_id9k25_4895 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
     %}
-    {% for state_isqe61-589___data in var_id9k25_1200 %}
+    {% for state_isqe61-589___data in var_id9k25_4895 %}
   {% liquid
-    assign var_id9k25_1198 = forloop.index0
-	assign var_id9k25_1199 = "0"
+    assign var_id9k25_4893 = forloop.index0
+	assign var_id9k25_4894 = "0"
     %}
-    {% if var_id9k25_1198 > var_id9k25_1199 %}
+    {% if var_id9k25_4893 > var_id9k25_4894 %}
   <div id="id9k25" href="" class="">{% liquid
-    assign var_irgt6z_1193 = state_isqe61-589___data.background_color
-    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_irgt6z_1193
+    assign var_irgt6z_4888 = state_isqe61-589___data.background_color
+    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_irgt6z_4888
   %}
 {% liquid
-    assign var_irgt6z_1194 = state_isqe61-589___data.color
-    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_irgt6z_1194
+    assign var_irgt6z_4889 = state_isqe61-589___data.color
+    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_irgt6z_4889
   %}<a href="{% liquid
-    assign var_irgt6z_1195 = state_isqe61-589___data.auth_url
-    echo var_irgt6z_1195
+    assign var_irgt6z_4890 = state_isqe61-589___data.auth_url
+    echo var_irgt6z_4890
   %}" id="irgt6z" class="connector__card" data-style="{% liquid
-    assign var_irgt6z_1196 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
-    echo var_irgt6z_1196
+    assign var_irgt6z_4891 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
+    echo var_irgt6z_4891
   %}" title="{% liquid
-    assign var_irgt6z_1197 = state_isqe61-589___data.description | strip_html
-    echo var_irgt6z_1197
+    assign var_irgt6z_4892 = state_isqe61-589___data.description | strip_html
+    echo var_irgt6z_4892
   %}"><div class="button-bar__item__icon">{% liquid
-    assign var_ifqjkg_1191 = state_isqe61-589___data.icon
-    echo var_ifqjkg_1191
+    assign var_ix94gh_4886 = state_isqe61-589___data.icon
+    echo var_ix94gh_4886
   %}</div><div class="connector__description">{% liquid
-    assign var_ifj2f7_1192 = state_isqe61-589___data.text
-    echo var_ifj2f7_1192
-  %}</div></a></div>{% endif %}{% endfor %}</div><div id="i3cney" class="button-bar"><a id="iacshy" class="button big-button connector__card" v-if="!loading" :key="index" :style="{ backgroundColor: connector.background, color: connector.color }" v-for="(connector, index) in connectors" v-on-click="openLogin(connector)"><div id="iiwn36"><div class="button-bar__item__icon" :style="`background: url('${connector.icon}'); background-repeat: no-repeat; background-size: contain;`"></div><div id="if4gvb" class="" v-text="connector.displayName">Name<br/></div></div><div id="isndui">This connector is about blablabla<br/></div></a></div></div><div id="i9msnk" class="text-white top-space-20" v-if="error" v-html="message">Insert your text here</div><div id="i6akll" class="button button--tertiary text-centered" v-if="error" v-on:click="logout()">{{ api-translations[lang]["Logout"] }}</div></div></div></body>
+    assign var_iy3fi9_4887 = state_isqe61-589___data.text
+    echo var_iy3fi9_4887
+  %}</div></a></div>{% endif %}{% endfor %}</div><div id="i3cney" class="button-bar"><a id="iacshy" class="button big-button connector__card" v-if="!loading" :key="index" :style="{ backgroundColor: connector.background, color: connector.color }" v-for="(connector, index) in connectors" v-on-click="openLogin(connector)"><div id="iiwn36"><div class="button-bar__item__icon" :style="`background: url('${connector.icon}'); background-repeat: no-repeat; background-size: contain;`"></div><div id="if4gvb" class="" v-text="connector.displayName">Name<br/></div></div><div id="isndui">This connector is about blablabla<br/></div></a></div></div><div id="i9msnk" class="text-white top-space-20" v-if="error" v-text="message" :test="message">Insert your text here</div><div id="i6akll" class="button button--tertiary text-centered" v-if="error" v-on:click="logout()">{{ api-translations[lang]["Logout"] }}</div></div></div></body>
 </html>

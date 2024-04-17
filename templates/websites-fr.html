@@ -197,7 +197,7 @@ window.addEventListener('load', function() {
         try {
           // Init Silex server path
           // Go up one level because of the language prefix
-          setServerUrl((window.location.origin + window.location.pathname.replace(/\/$/, '')).replace(/\/[^/]+$/, ''))
+          setServerUrl(window.location.origin)
           // Start
           const user = await getUser({type: ConnectorType.STORAGE})
           // Escape single quotes in the picture URL and decode the picture URL
@@ -329,14 +329,13 @@ window.addEventListener('load', function() {
       },
     },
   };
+  // Prepare elements for vue
+  document.querySelectorAll('[v-text], [v-html]')
+  .forEach(el => el.innerText = '')
+
 
   // Create the app
   const app = createApp(App);
-
-  // Suppress "v-text will override element children" warning
-  app.config.compilerOptions.directiveTransforms = {
-    text: false,
-  }
 
   // Mount the app
   app.mount('.app');
@@ -350,130 +349,130 @@ window.addEventListener('load', function() {
 </script>
 
 <title>{% liquid
-    assign var_ik0i_1203 = tina.homeConnection.edges | where | first
-	assign var_ik0i_1204 = var_ik0i_1203.node.title
-    echo var_ik0i_1204
+    assign var_ik0i_4898 = tina.homeConnection.edges | where | first
+	assign var_ik0i_4899 = var_ik0i_4898.node.title
+    echo var_ik0i_4899
   %}</title>
 <link rel="icon" href="/assets/favicon-32x32.png" />
 
 <link href="https://www.googleapis.com" rel="preconnect" ><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin ><link href="https://www.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" ></head>
 {% liquid
-    assign var_ik0i_1106 = tina.settingsConnection.edges | where: "node.lang", page.lang | first
-    assign state_ik0i-958_ik0i-e8l061o7k5 = var_ik0i_1106
+    assign var_ik0i_4801 = tina.settingsConnection.edges | where: "node.lang", page.lang | first
+    assign state_ik0i-958_ik0i-e8l061o7k5 = var_ik0i_4801
   %}
 {% liquid
-    assign var_ik0i_1107 = tina.homeConnection.edges | where: "node.lang", page.lang | first
-	assign var_ik0i_1108 = var_ik0i_1107.node
-    assign state_ik0i-958_ik0i-24xejc2n0xy = var_ik0i_1108
+    assign var_ik0i_4802 = tina.homeConnection.edges | where: "node.lang", page.lang | first
+	assign var_ik0i_4803 = var_ik0i_4802.node
+    assign state_ik0i-958_ik0i-24xejc2n0xy = var_ik0i_4803
   %}<body id="ik0i" class="body loading app before-js"><HEADER id="igrg" class="menu-bar"><A id="igvu43" href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="i9jq" class="nav">{% liquid
-    assign var_iels_1034 = tina.settingsConnection.edges | where: "node.lang", page.lang | first
-	assign var_iels_1035 = var_iels_1034.node.nav
+    assign var_iels_4729 = tina.settingsConnection.edges | where: "node.lang", page.lang | first
+	assign var_iels_4730 = var_iels_4729.node.nav
     %}
-    {% for state_iels-228___data in var_iels_1035 %}
+    {% for state_iels-228___data in var_iels_4730 %}
   <a id="iels" href="{% liquid
-    assign var_iels_1036 = state_iels-228___data.url
-    echo var_iels_1036
+    assign var_iels_4731 = state_iels-228___data.url
+    echo var_iels_4731
   %}" class="nav__item uppercase" target="{% liquid
-    assign var_iels_1037 = state_iels-228___data.target
-    echo var_iels_1037
+    assign var_iels_4732 = state_iels-228___data.target
+    echo var_iels_4732
   %}">{% liquid
-    assign var_iels_1033 = state_iels-228___data.label
-    echo var_iels_1033
+    assign var_iels_4728 = state_iels-228___data.label
+    echo var_iels_4728
   %}</a>{% endfor %}</NAV>{% liquid
-    assign var_i2red7_1042 = tina.languagesConnection.edges
+    assign var_i2red7_4737 = tina.languagesConnection.edges
     %}
-    {% for state_i2red7-8291___data in var_i2red7_1042 %}
+    {% for state_i2red7-8291___data in var_i2red7_4737 %}
   <div id="i2red7" class="lang h-space"><a href="{% liquid
-    assign var_iciz_1041 = state_i2red7-8291___data.node.permalink
-    echo var_iciz_1041
+    assign var_iciz_4736 = state_i2red7-8291___data.node.permalink
+    echo var_iciz_4736
   %}" id="iciz" class="lang__item nav__item uppercase">{% liquid
-    assign var_iciz_1040 = state_i2red7-8291___data.node.label
-    echo var_iciz_1040
+    assign var_iciz_4735 = state_i2red7-8291___data.node.label
+    echo var_iciz_4735
   %}</a></div>{% endfor %}<div id="i24ew" class="user__wrapper pointer" v-if="user" v-on:click="showMenu = !showMenu"><div id="i5xsbd" class="user-icon__wrapper" v-if="user" v-show="!showMenu || user.storage.disableLogout"><div id="i5wlbq" class="user-icon__image" v-if="user" v-show="!showMenu || user.storage.disableLogout" :style="{ backgroundImage: `url('${user?.picture}')`, backgroundRepeat: 'no-repeat', backgroundSize: 'contain', }"></div></div><div id="ic9eoa" class="" v-show="showMenu && !user.storage.disableLogout"><div id="iksw4d" class="button button--tertiary text-centered" v-on:click="logout()">Logout</div></div></div></HEADER><HEADER id="iy8ax3" class="bg-silex-purpel"><div id="iisz8f" class="section-top text-centered text-white"><h1 id="ic31o" class="title-40" v-if="!empty">{% liquid
-    assign var_ic31o_1043 = state_ik0i-958_ik0i-24xejc2n0xy.title2
-    echo var_ic31o_1043
+    assign var_ic31o_4738 = state_ik0i-958_ik0i-24xejc2n0xy.title2
+    echo var_ic31o_4738
   %}</h1><p id="iyex8" class="subtitle-16" v-if="!empty">{% liquid
-    assign var_iyex8_1044 = state_ik0i-958_ik0i-24xejc2n0xy.subtitle
-    echo var_iyex8_1044
+    assign var_iyex8_4739 = state_ik0i-958_ik0i-24xejc2n0xy.subtitle
+    echo var_iyex8_4739
   %}</p><h1 id="i4ybc" class="title-40" v-if="empty">{% liquid
-    assign var_i4ybc_1045 = state_ik0i-958_ik0i-24xejc2n0xy.title2_empty
-    echo var_i4ybc_1045
+    assign var_i4ybc_4740 = state_ik0i-958_ik0i-24xejc2n0xy.title2_empty
+    echo var_i4ybc_4740
   %}</h1><p id="iino6r" class="subtitle-16" v-if="empty">{% liquid
-    assign var_iino6r_1046 = state_ik0i-958_ik0i-24xejc2n0xy.subtitle_empty
-    echo var_iino6r_1046
+    assign var_iino6r_4741 = state_ik0i-958_ik0i-24xejc2n0xy.subtitle_empty
+    echo var_iino6r_4741
   %}</p></div></HEADER><MAIN id="iz63r" class="padding-normal main-min-height website-max-width margin-80"><section id="iqmx38" class="" v-if="empty"></section><div id="ickx4" class="margin-20" v-if="!empty"><button id="ic92g" class="button button--primary rounded top-space-40 fx-scale-round" v-if="!showCreationForm" v-on:click="showCreationForm = !showCreationForm"><span id="igsxoc" class="icon-font">+</span> <span id="ixu14" class="">{% liquid
-    assign var_ixu14_1050 = state_ik0i-958_ik0i-24xejc2n0xy.add_button
-    echo var_ixu14_1050
+    assign var_ixu14_4745 = state_ik0i-958_ik0i-24xejc2n0xy.add_button
+    echo var_ixu14_4745
   %}</span></button><div id="i0ro3" class="button button--secondary rounded">Import</div></div><div id="ihwwxz" class="box top-space-40 padding-30 box_transp" v-if="showCreationForm"><h3 id="i3gd1b" class="box__header text-centered">{% liquid
-    assign var_i3gd1b_1060 = state_ik0i-958_ik0i-24xejc2n0xy.add_title
-    echo var_i3gd1b_1060
+    assign var_i3gd1b_4755 = state_ik0i-958_ik0i-24xejc2n0xy.add_title
+    echo var_i3gd1b_4755
   %}</h3><form method="get" id="i50acf" class="form" v-on:submit.prevent="createWebsite"><div id="igtg1t" class="v-space"><label id="i1nmbc" class="v-space bold color-2B1B63-80">{% liquid
-    assign var_i1nmbc_1065 = state_ik0i-958_ik0i-24xejc2n0xy.add_name_label
-    echo var_i1nmbc_1065
+    assign var_i1nmbc_4760 = state_ik0i-958_ik0i-24xejc2n0xy.add_name_label
+    echo var_i1nmbc_4760
   %}</label><input type="text" id="ij5iwh" placeholder="{% liquid
-    assign var_ij5iwh_1066 = state_ik0i-958_ik0i-24xejc2n0xy.add_name_placeholder
-    echo var_ij5iwh_1066
+    assign var_ij5iwh_4761 = state_ik0i-958_ik0i-24xejc2n0xy.add_name_placeholder
+    echo var_ij5iwh_4761
   %}" class="input full-width" v-model="newWebsiteName"></input></div><div id="ie0xes"><button type="submit" id="i021na" class="button rounded button--primary right-space-20 fx-scale-round">{% liquid
-    assign var_i021na_1067 = state_ik0i-958_ik0i-24xejc2n0xy.add_ok
-    echo var_i021na_1067
+    assign var_i021na_4762 = state_ik0i-958_ik0i-24xejc2n0xy.add_ok
+    echo var_i021na_4762
   %}</button><button type="reset" class="button rounded button--secondary fx-scale-round" v-on:click="showCreationForm = !showCreationForm" v-if="!empty">{% liquid
-    assign var_ipwp1_1068 = state_ik0i-958_ik0i-24xejc2n0xy.add_cancel
-    echo var_ipwp1_1068
-  %}</button></div></form></div><div id="if80m" class="margin-20"><section id="idgvg" class="button-bar loaded__item" v-if="!loading" v-for="(website, index) in websites" :key="index"><h3 id="i69a7" class="right-space-40 color-2B1B63-80 uppercase pointer fx-flash full-width button-bar__title underline" v-text="website.name || website.id" v-on:click="openEditor(website.websiteId, 'en')">My first website</h3><p id="i65hn" class="button-bar__item--secondary flex-no-shrink right-space-40" v-text="'Updated ' + new Date(website.updatedAt).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })">Updated 1h ago by lexoyo</p><p id="i64qa" class="button-bar__item--secondary flex-no-shrink right-space-40" v-text="'Created ' + new Date(website.createdAt).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })">Created 2023-02-16 by lexoyo</p><div id="i3b4tr" class="flex-no-shrink"><button id="ifyf6p" title="{% liquid
-    assign var_ifyf6p_1077 = state_ik0i-958_ik0i-24xejc2n0xy.list_edit
-    echo var_ifyf6p_1077
+    assign var_iz3wg_4763 = state_ik0i-958_ik0i-24xejc2n0xy.add_cancel
+    echo var_iz3wg_4763
+  %}</button></div></form></div><div id="if80m" class="margin-20"><section id="idgvg" class="button-bar loaded__item" v-if="!loading" v-for="(website, index) in websites" :key="index"><h3 id="i69a7" class="right-space-40 color-2B1B63-80 uppercase pointer fx-flash full-width button-bar__title underline" v-on:click="openEditor(website.websiteId, 'en')" v-text="website.name || website.id">My first website</h3><p id="i65hn" class="button-bar__item--secondary flex-no-shrink right-space-40" v-text="'Updated ' + new Date(website.updatedAt).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })">Updated 1h ago by lexoyo</p><p id="i64qa" class="button-bar__item--secondary flex-no-shrink right-space-40" v-text="'Created ' + new Date(website.createdAt).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })">Created 2023-02-16 by lexoyo</p><div id="i3b4tr" class="flex-no-shrink"><button id="ifyf6p" title="{% liquid
+    assign var_ifyf6p_4772 = state_ik0i-958_ik0i-24xejc2n0xy.list_edit
+    echo var_ifyf6p_4772
   %}" class="button-bar__item--link pointer fx-scale fx-flash button-bar__item--icon" v-on:click="openEditor(website.websiteId, 'en')">{% liquid
-    assign var_ifyf6p_1076 = state_ik0i-958_ik0i-24xejc2n0xy.list_edit_icon
-    echo var_ifyf6p_1076
+    assign var_ifyf6p_4771 = state_ik0i-958_ik0i-24xejc2n0xy.list_edit_icon
+    echo var_ifyf6p_4771
   %}</button><button id="ihf6ew" title="{% liquid
-    assign var_ihf6ew_1079 = state_ik0i-958_ik0i-24xejc2n0xy.list_rename
-    echo var_ihf6ew_1079
+    assign var_ihf6ew_4774 = state_ik0i-958_ik0i-24xejc2n0xy.list_rename
+    echo var_ihf6ew_4774
   %}" class="button-bar__item--link pointer fx-scale fx-flash button-bar__item--icon" v-on:click="renameWebsite(website.websiteId, 'en')">{% liquid
-    assign var_ihf6ew_1078 = state_ik0i-958_ik0i-24xejc2n0xy.list_rename_icon
-    echo var_ihf6ew_1078
+    assign var_ihf6ew_4773 = state_ik0i-958_ik0i-24xejc2n0xy.list_rename_icon
+    echo var_ihf6ew_4773
   %}</button><button id="iol4h" title="{% liquid
-    assign var_iol4h_1081 = state_ik0i-958_ik0i-24xejc2n0xy.list_duplicate
-    echo var_iol4h_1081
+    assign var_iol4h_4776 = state_ik0i-958_ik0i-24xejc2n0xy.list_duplicate
+    echo var_iol4h_4776
   %}" class="button-bar__item--link pointer fx-flash fx-scale button-bar__item--icon" v-on:click="duplicateWebsite(website.websiteId, 'en')">{% liquid
-    assign var_iol4h_1080 = state_ik0i-958_ik0i-24xejc2n0xy.list_duplicate_icon
-    echo var_iol4h_1080
+    assign var_iol4h_4775 = state_ik0i-958_ik0i-24xejc2n0xy.list_duplicate_icon
+    echo var_iol4h_4775
   %}</button><button id="it5ia" class="button-bar__item--link pointer fx-flash fx-scale" title="{% liquid
-    assign var_it5ia_1082 = state_ik0i-958_ik0i-24xejc2n0xy.list_delete
-    echo var_it5ia_1082
+    assign var_it5ia_4777 = state_ik0i-958_ik0i-24xejc2n0xy.list_delete
+    echo var_it5ia_4777
   %}" v-on:click="deleteWebsite(website.websiteId)">X</button></div></section><section id="i1fjn" class="button-bar loading__item skeleton-anim skeleton-wrapper" v-if="loading"><H3 id="iwu6a" class="skeleton-text skeleton right-space-40">My first websiteMy first websiteMy first websiteMy first</H3><P id="i26fn" class="button-bar__item--secondary skeleton-text skeleton right-space-40">Updated 1h ago by lexoyo</P><P id="iywbk" class="button-bar__item--secondary skeleton-text skeleton right-space-40">Created 2023-02-16 by lexoyo</P><div id="ixz6c" class="skeleton skeleton-button">Edit</div></section><section id="iwxxo5" class="button-bar loading__item skeleton-anim skeleton-wrapper" v-if="loading"><H3 id="inmp3" class="skeleton-text skeleton right-space-40">My first websiteMy first websiteMy first websiteMy first</H3><P id="icjz8" class="button-bar__item--secondary skeleton-text skeleton right-space-40">Updated 1h ago by lexoyo</P><P id="illbe" class="button-bar__item--secondary skeleton-text skeleton right-space-40">Created 2023-02-16 by lexoyo</P><div id="i9fx3l" class="skeleton skeleton-button">Edit</div></section><section id="isld3r" class="button-bar loading__item skeleton-anim skeleton-wrapper" v-if="loading"><H3 class="button-bar_item button-bar__item--main skeleton-text skeleton right-space-40">My first websiteMy first websiteMy first websiteMy first</H3><P class="button-bar_item button-bar__item--secondary skeleton-text skeleton right-space-40">Updated 1h ago by lexoyo</P><P class="button-bar_item button-bar__item--secondary skeleton-text skeleton right-space-40">Created 2023-02-16 by lexoyo</P><div id="i8oes3" class="button-bar_item skeleton skeleton-button">Edit</div></section></div><div id="ipccl7"><div id="i2fkm9" class="margin-20 empty-image" v-if="empty"></div><div id="i5ydxo" class="box padding-50-30 box--centered" v-if="empty"><p id="ikl1qu" class="text-centered title-26">{% liquid
-    assign var_ikl1qu_1087 = state_ik0i-958_ik0i-24xejc2n0xy.text_empty1
-    echo var_ikl1qu_1087
+    assign var_ikl1qu_4782 = state_ik0i-958_ik0i-24xejc2n0xy.text_empty1
+    echo var_ikl1qu_4782
   %}</p><h3 id="iwzrqi" class="text-centered title-26">{% liquid
-    assign var_iwzrqi_1088 = state_ik0i-958_ik0i-24xejc2n0xy.text_empty2
-    echo var_iwzrqi_1088
+    assign var_iwzrqi_4783 = state_ik0i-958_ik0i-24xejc2n0xy.text_empty2
+    echo var_iwzrqi_4783
   %}</h3><button id="i2x0l" class="button button--primary rounded top-space-40 fx-scale-round" v-on:click="showCreationForm = !showCreationForm" v-if="!showCreationForm"><span id="ibsgw" class="icon-font">+</span> <span id="itl2n8" class="">{% liquid
-    assign var_itl2n8_1090 = state_ik0i-958_ik0i-24xejc2n0xy.add_button
-    echo var_itl2n8_1090
+    assign var_itl2n8_4785 = state_ik0i-958_ik0i-24xejc2n0xy.add_button
+    echo var_itl2n8_4785
   %}</span></button></div></div><div id="i7ej6j" class="flex-between box-message text-white" v-if="error"><h3 id="iv0eyi" class="box-message-text" v-text="error">Insert your text here</h3><div id="i4656n" class="pointer button-bar__item--link text-white" v-on:click="error = null">{% liquid
-    assign var_i4656n_1092 = state_ik0i-958_ik0i-24xejc2n0xy.message_dismiss
-    echo var_i4656n_1092
+    assign var_i4656n_4787 = state_ik0i-958_ik0i-24xejc2n0xy.message_dismiss
+    echo var_i4656n_4787
   %}</div></div><div id="ilteie" class="flex-between box-message text-white" v-if="message"><h3 id="i2d31v" class="box-message-text" v-text="message">Insert your text here</h3><div id="i2urco" class="rounded pointer button-bar__item--link text-white" v-on:click="message = null">{% liquid
-    assign var_i2urco_1094 = state_ik0i-958_ik0i-24xejc2n0xy.message_dismiss
-    echo var_i2urco_1094
+    assign var_i2urco_4789 = state_ik0i-958_ik0i-24xejc2n0xy.message_dismiss
+    echo var_i2urco_4789
   %}</div></div></MAIN><FOOTER id="ilzpl" class="footer">{% liquid
-    assign var_isucae_1105 = state_ik0i-958_ik0i-e8l061o7k5.node.footer_links
+    assign var_isucae_4800 = state_ik0i-958_ik0i-e8l061o7k5.node.footer_links
     %}
-    {% for state_isucae-3308___data in var_isucae_1105 %}
+    {% for state_isucae-3308___data in var_isucae_4800 %}
   <div id="isucae" class="footer__column"><h3 id="ipa5zg" href="" class="footer__item">{% liquid
-    assign var_ipa5zg_1100 = state_isucae-3308___data.title
-    echo var_ipa5zg_1100
+    assign var_ipa5zg_4795 = state_isucae-3308___data.title
+    echo var_ipa5zg_4795
   %}</h3>{% liquid
-    assign var_iy4qao_1102 = state_isucae-3308___data.columns
+    assign var_ipd0xz_4797 = state_isucae-3308___data.columns
     %}
-    {% for state_i2u9h4-2642___data in var_iy4qao_1102 %}
+    {% for state_i2u9h4-2642___data in var_ipd0xz_4797 %}
   <a href="{% liquid
-    assign var_iy4qao_1103 = state_i2u9h4-2642___data.url
-    echo var_iy4qao_1103
+    assign var_ipd0xz_4798 = state_i2u9h4-2642___data.url
+    echo var_ipd0xz_4798
   %}" class="footer__item" target="{% liquid
-    assign var_iy4qao_1104 = state_i2u9h4-2642___data.target
-    echo var_iy4qao_1104
+    assign var_ipd0xz_4799 = state_i2u9h4-2642___data.target
+    echo var_ipd0xz_4799
   %}">{% liquid
-    assign var_iy4qao_1101 = state_i2u9h4-2642___data.label
-    echo var_iy4qao_1101
+    assign var_ipd0xz_4796 = state_i2u9h4-2642___data.label
+    echo var_ipd0xz_4796
   %}</a>{% endfor %}</div>{% endfor %}</FOOTER></body>
 </html>
