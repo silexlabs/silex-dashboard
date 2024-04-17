@@ -26,48 +26,106 @@
       "target": "_blank"
     }
   ],
-  "footer1": [
+  "footer_links": [
     {
-      "label": "Documentation",
-      "url": "http://docs.silex.me/",
-      "target": "_blank"
+      "title": "Social & communauté",
+      "columns": [
+        {
+          "label": "A propos de Silex, site officiel",
+          "url": "https://www.silex.me/",
+          "target": "_blank"
+        },
+        {
+          "label": "Email l'équipe",
+          "url": "mailto:contact+silex-dashboard-footer@silex.me",
+          "target": "_blank"
+        },
+        {
+          "label": "Sponsors",
+          "url": "https://short.silex.me/sponsors",
+          "target": "_blank"
+        },
+        {
+          "label": "Faire un don",
+          "url": "https://short.silex.me/donate",
+          "target": "_blank"
+        },
+        {
+          "label": "Forum de la communauté",
+          "url": "https://short.silex.me/community",
+          "target": "_blank"
+        },
+        {
+          "label": "Newsletter",
+          "url": "https://news.silex.me/forms/nfrm_weLJnLY5",
+          "target": "_blank"
+        },
+        {
+          "label": "Meetups/ Evénements",
+          "url": "https://events.silex.me/",
+          "target": "_blank"
+        },
+        {
+          "label": "Mastodon",
+          "url": "https://short.silex.me/mastodon",
+          "target": "_blank"
+        },
+        {
+          "label": "Chat",
+          "url": "https://short.silex.me/chat",
+          "target": "_blank"
+        }
+      ]
     },
     {
-      "label": "À propos de Silex, site officiel",
-      "url": "https://www.silex.me/",
-      "target": "_blank"
+      "title": "Ressources",
+      "columns": [
+        {
+          "label": "Code source",
+          "url": "https://short.silex.me/code",
+          "target": "_blank"
+        },
+        {
+          "label": "Documentation",
+          "url": "http://docs.silex.me/",
+          "target": "_blank"
+        },
+        {
+          "label": "Vidéos",
+          "url": "https://video.silex.me/my-library/video-playlists",
+          "target": "_blank"
+        },
+        {
+          "label": "Feuille de route",
+          "url": "https://short.silex.me/roadmap",
+          "target": "_blank"
+        },
+        {
+          "label": "Contribuer",
+          "url": "https://short.silex.me/contribute",
+          "target": "_blank"
+        }
+      ]
     },
     {
-      "label": "Forum communautaire",
-      "url": "https://community.silex.me/",
-      "target": "_blank"
-    },
-    {
-      "label": "Silex Labs - l'organisation à but non lucratif derrière Silex",
-      "url": "http://www.silexlabs.org/",
-      "target": "_blank"
-    }
-  ],
-  "footer2": [
-    {
-      "label": "Newsletter - tous les 3 mois",
-      "url": "https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=fr-FR&source=silex-dashboard",
-      "target": "_blank"
-    },
-    {
-      "label": "Meetups, événements, ateliers",
-      "url": "https://www.meetup.com/Silex-Labs-Aperopensource/",
-      "target": "_blank"
-    },
-    {
-      "label": "Mastodon - suivez-nous sur le réseau social libre/gratuit",
-      "url": "https://fosstodon.org/@silex",
-      "target": "_blank"
-    },
-    {
-      "label": "Youtube - tutoriels et plus",
-      "url": "https://www.youtube.com/user/Silexlabs/",
-      "target": "_blank"
+      "title": "Articles et revues",
+      "columns": [
+        {
+          "label": "Alternatives à Silex",
+          "url": "https://short.silex.me/alternatives_fr",
+          "target": "_blank"
+        },
+        {
+          "label": "Revues de Silex",
+          "url": "https://short.silex.me/reviews_fr",
+          "target": "_blank"
+        },
+        {
+          "label": "Silex dans la presse",
+          "url": "https://short.silex.me/press_fr",
+          "target": "_blank"
+        }
+      ]
     }
   ]
 }

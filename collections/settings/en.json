@@ -26,48 +26,102 @@
       "target": "_blank"
     }
   ],
-  "footer1": [
+  "footer_links": [
     {
-      "label": "Documentation",
-      "url": "http://docs.silex.me/",
-      "target": "_blank"
+      "title": "Social & community",
+      "columns": [
+        {
+          "label": "About Silex, official website",
+          "url": "https://www.silex.me/",
+          "target": "_blank"
+        },
+        {
+          "label": "Email the team",
+          "url": "mailto:contact+silex-dashboard-footer@silex.me"
+        },
+        {
+          "label": "Sponsors",
+          "url": "https://short.silex.me/sponsors"
+        },
+        {
+          "label": "Donate",
+          "url": "https://short.silex.me/donate"
+        },
+        {
+          "label": "Community forum",
+          "url": "https://short.silex.me/community",
+          "target": "_blank"
+        },
+        {
+          "label": "Newsletter",
+          "url": "https://news.silex.me/forms/nfrm_weLJnLY5",
+          "target": "_blank"
+        },
+        {
+          "label": "Meetups/ Events",
+          "url": "https://events.silex.me/",
+          "target": "_blank"
+        },
+        {
+          "label": "Mastodon",
+          "url": "https://short.silex.me/mastodon",
+          "target": "_blank"
+        },
+        {
+          "label": "Chat",
+          "url": "https://short.silex.me/chat"
+        }
+      ]
     },
     {
-      "label": "About Silex, official website",
-      "url": "https://www.silex.me/",
-      "target": "_blank"
+      "title": "Resources",
+      "columns": [
+        {
+          "label": "Source code",
+          "url": "https://short.silex.me/code",
+          "target": "_blank"
+        },
+        {
+          "label": "Documentation",
+          "url": "http://docs.silex.me/",
+          "target": "_blank"
+        },
+        {
+          "label": "Videos",
+          "url": "https://video.silex.me/my-library/video-playlists",
+          "target": "_blank"
+        },
+        {
+          "label": "Roadmap",
+          "url": "https://short.silex.me/roadmap",
+          "target": "_blank"
+        },
+        {
+          "label": "Contribute",
+          "url": "https://short.silex.me/contribute",
+          "target": "_blank"
+        }
+      ]
     },
     {
-      "label": "Community furum",
-      "url": "https://community.silex.me/",
-      "target": "_blank"
-    },
-    {
-      "label": "Silex Labs - the non profit organization behind Silex",
-      "url": "http://www.silexlabs.org/",
-      "target": "_blank"
-    }
-  ],
-  "footer2": [
-    {
-      "label": "Newsletter - every 3 months",
-      "url": "https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=en-US&source=silex-dashboard",
-      "target": "_blank"
-    },
-    {
-      "label": "Meetups, events, workshops",
-      "url": "https://www.meetup.com/Silex-Labs-Aperopensource/",
-      "target": "_blank"
-    },
-    {
-      "label": "Mastodon - follow us on the free/libre social network",
-      "url": "https://fosstodon.org/@silex",
-      "target": "_blank"
-    },
-    {
-      "label": "Youtube - tutorials and more",
-      "url": "https://www.youtube.com/user/Silexlabs/",
-      "target": "_blank"
+      "title": "Articles and reviews",
+      "columns": [
+        {
+          "label": "Silex alternatives",
+          "url": "https://short.silex.me/alternatives",
+          "target": "_blank"
+        },
+        {
+          "label": "Silex reviews",
+          "url": "https://short.silex.me/reviews",
+          "target": "_blank"
+        },
+        {
+          "label": "Silex in the press",
+          "url": "https://short.silex.me/press",
+          "target": "_blank"
+        }
+      ]
     }
   ]
 }

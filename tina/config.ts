@@ -234,31 +234,23 @@ export default defineConfig({
             fields: [
               { label: 'Label', name: 'label', type: 'string' },
               { label: 'URL', name: 'url', type: 'string' },
-              { label: 'Target', name: 'target', type: 'string' }
+              { label: 'Target', name: 'target', type: 'string' },
             ]
           },
           {
-            label: 'Footer Section 1 Links',
-            name: 'footer1',
+            label: 'Footer links',
+            name: 'footer_links',
             type: 'object',
             list: true,
             fields: [
-              { label: 'Label', name: 'label', type: 'string' },
-              { label: 'URL', name: 'url', type: 'string' },
-              { label: 'Target', name: 'target', type: 'string' }
+              { label: 'Title', name: 'title', type: 'string' },
+              { label: 'Columns', name: 'columns', type: 'object', list: true, fields: [
+                { label: 'Label', name: 'label', type: 'string' },
+                { label: 'URL', name: 'url', type: 'string' },
+                { label: 'Target', name: 'target', type: 'string' }
+              ]}
             ]
           },
-          {
-            label: 'Footer Section 2 Links',
-            name: 'footer2',
-            type: 'object',
-            list: true,
-            fields: [
-              { label: 'Label', name: 'label', type: 'string' },
-              { label: 'URL', name: 'url', type: 'string' },
-              { label: 'Target', name: 'target', type: 'string' }
-            ]
-          }
         ]
       }
     ],

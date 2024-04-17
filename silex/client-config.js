@@ -19,5 +19,6 @@ export default async function (config, options) {
     imagePlugin: false,
     i18nPlugin: true,
     cacheBuster: false,
+    fetchPlugin: false,
   })
 }
