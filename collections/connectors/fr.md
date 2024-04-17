@@ -5,7 +5,7 @@ title2: Bienvenue sur Silex
 subtitle: Connectez-vous pour continuer
 recommended: Recommandé et gratuit
 advanced_users: Utilisateurs avancés
-help: Avez-vous besoin d'aide ? Consultez <a href="https://docs.silex.me/fr/user/login">la documentation</a>.
+help: Avez-vous besoin d'aide ? Consultez <a href="https://docs.silex.me/fr/user/login" target="_blank">la documentation</a>.
 connectors:
   - name: GitLab
     text: Se connecter avec GitLab.com

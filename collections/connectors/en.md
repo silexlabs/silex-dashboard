@@ -5,7 +5,7 @@ title2: Welcome to Silex
 subtitle: Please login to continue
 recommended: Recommended and free
 advanced_users: Advanced users
-help: Do you need help? Check <a href="https://docs.silex.me/en/user/login">the documentation</a>.
+help: Do you need help? Check <a href="https://docs.silex.me/en/user/login" target="_blank">the documentation</a>.
 connectors:
   - name: GitLab
     text: Connect with GitLab.com
