@@ -357,82 +357,82 @@ window.addEventListener('load', function() {
 <meta name="og:title" property="og:title" content="Silex Dashboard"/>
 <link href="https://www.googleapis.com" rel="preconnect" ><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin ><link href="https://www.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" ></head>
 <body id="i2hcfw" class="body app before-js"><A id="ixzhcr" href="/" class="button button-bar__item--secondary">{{ api-translations[lang]["Back to home"] }}</A><div id="imawg3" class="bg-silex-purpel">{% liquid
-    assign var_imgx81_1956 = tina.connectorsConnection.edges | where: "node.lang", page.lang | first
-	assign var_imgx81_1957 = var_imgx81_1956.node
-    assign state_imgx81-1985_imgx81-7uhkrqd2giq = var_imgx81_1957
+    assign var_imgx81_486 = tina.connectorsConnection.edges | where: "node.lang", page.lang | first
+	assign var_imgx81_487 = var_imgx81_486.node
+    assign state_imgx81-1985_imgx81-7uhkrqd2giq = var_imgx81_487
   %}<div id="imgx81" class=""><div id="iikf0s" class="box box_login"><div id="ie0dxn" class="text-centered"><img id="ior0hl" src="/assets/logo-silex.svg"/><p id="it2175" class="subtitle-16">{% liquid
-    assign var_it2175_1910 = state_imgx81-1985_imgx81-7uhkrqd2giq.subtitle
-    echo var_it2175_1910
+    assign var_it2175_440 = state_imgx81-1985_imgx81-7uhkrqd2giq.subtitle
+    echo var_it2175_440
   %}</p><div id="ilq8ui" class="text-centered">{% liquid
-    assign var_ilq8ui_1911 = state_imgx81-1985_imgx81-7uhkrqd2giq.help
-    echo var_ilq8ui_1911
+    assign var_ilq8ui_441 = state_imgx81-1985_imgx81-7uhkrqd2giq.help
+    echo var_ilq8ui_441
   %}</div></div><h3 id="iqc1xf" class="margin-top">{% liquid
-    assign var_iqc1xf_1912 = state_imgx81-1985_imgx81-7uhkrqd2giq.recommended
-    echo var_iqc1xf_1912
+    assign var_iqc1xf_442 = state_imgx81-1985_imgx81-7uhkrqd2giq.recommended
+    echo var_iqc1xf_442
   %}</h3><div id="in62y2">{% liquid
-    assign var_isqe61_1933 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
+    assign var_isqe61_463 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
     %}
-    {% for state_isqe61-589___data in var_isqe61_1933 %}
+    {% for state_isqe61-589___data in var_isqe61_463 %}
   {% liquid
-    assign var_isqe61_1931 = forloop.index0
-	assign var_isqe61_1932 = "0"
+    assign var_isqe61_461 = forloop.index0
+	assign var_isqe61_462 = "0"
     %}
-    {% if var_isqe61_1931 <= var_isqe61_1932 %}
+    {% if var_isqe61_461 <= var_isqe61_462 %}
   <div id="isqe61" class="">{% liquid
-    assign var_i0vhjr_1926 = state_isqe61-589___data.background_color
-    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_i0vhjr_1926
+    assign var_i0vhjr_456 = state_isqe61-589___data.background_color
+    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_i0vhjr_456
   %}
 {% liquid
-    assign var_i0vhjr_1927 = state_isqe61-589___data.color
-    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_i0vhjr_1927
+    assign var_i0vhjr_457 = state_isqe61-589___data.color
+    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_i0vhjr_457
   %}<a id="i0vhjr" href="{% liquid
-    assign var_i0vhjr_1928 = state_isqe61-589___data.auth_url
-    echo var_i0vhjr_1928
+    assign var_i0vhjr_458 = state_isqe61-589___data.auth_url
+    echo var_i0vhjr_458
   %}" class="connector__card" data-style="{% liquid
-    assign var_i0vhjr_1929 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
-    echo var_i0vhjr_1929
+    assign var_i0vhjr_459 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
+    echo var_i0vhjr_459
   %}" title="{% liquid
-    assign var_i0vhjr_1930 = state_isqe61-589___data.description | strip_html
-    echo var_i0vhjr_1930
+    assign var_i0vhjr_460 = state_isqe61-589___data.description | strip_html
+    echo var_i0vhjr_460
   %}"><div id="io3lid" class="button-bar__item__icon">{% liquid
-    assign var_io3lid_1924 = state_isqe61-589___data.icon
-    echo var_io3lid_1924
+    assign var_io3lid_454 = state_isqe61-589___data.icon
+    echo var_io3lid_454
   %}</div><div id="i87asw" class="connector__description">{% liquid
-    assign var_i87asw_1925 = state_isqe61-589___data.text
-    echo var_i87asw_1925
+    assign var_i87asw_455 = state_isqe61-589___data.text
+    echo var_i87asw_455
   %}</div></a></div>{% endif %}{% endfor %}</div><h3 id="i8w75b" class="margin-30">{% liquid
-    assign var_i8w75b_1934 = state_imgx81-1985_imgx81-7uhkrqd2giq.advanced_users
-    echo var_i8w75b_1934
+    assign var_i8w75b_464 = state_imgx81-1985_imgx81-7uhkrqd2giq.advanced_users
+    echo var_i8w75b_464
   %}</h3><div id="igp4xl">{% liquid
-    assign var_id9k25_1955 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
+    assign var_id9k25_485 = state_imgx81-1985_imgx81-7uhkrqd2giq.connectors
     %}
-    {% for state_isqe61-589___data in var_id9k25_1955 %}
+    {% for state_isqe61-589___data in var_id9k25_485 %}
   {% liquid
-    assign var_id9k25_1953 = forloop.index0
-	assign var_id9k25_1954 = "0"
+    assign var_id9k25_483 = forloop.index0
+	assign var_id9k25_484 = "0"
     %}
-    {% if var_id9k25_1953 > var_id9k25_1954 %}
+    {% if var_id9k25_483 > var_id9k25_484 %}
   <div id="id9k25" href="" class="">{% liquid
-    assign var_irgt6z_1948 = state_isqe61-589___data.background_color
-    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_irgt6z_1948
+    assign var_irgt6z_478 = state_isqe61-589___data.background_color
+    assign state_i0vhjr-6879_i0vhjr-uop2xr4ta4 = var_irgt6z_478
   %}
 {% liquid
-    assign var_irgt6z_1949 = state_isqe61-589___data.color
-    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_irgt6z_1949
+    assign var_irgt6z_479 = state_isqe61-589___data.color
+    assign state_i0vhjr-6879_i0vhjr-q0yr34th38p = var_irgt6z_479
   %}<a href="{% liquid
-    assign var_irgt6z_1950 = state_isqe61-589___data.auth_url
-    echo var_irgt6z_1950
+    assign var_irgt6z_480 = state_isqe61-589___data.auth_url
+    echo var_irgt6z_480
   %}" id="irgt6z" class="connector__card" data-style="{% liquid
-    assign var_irgt6z_1951 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
-    echo var_irgt6z_1951
+    assign var_irgt6z_481 = "background: " | append: state_i0vhjr-6879_i0vhjr-uop2xr4ta4 | append: "; color: " | append: state_i0vhjr-6879_i0vhjr-q0yr34th38p | append: ";"
+    echo var_irgt6z_481
   %}" title="{% liquid
-    assign var_irgt6z_1952 = state_isqe61-589___data.description | strip_html
-    echo var_irgt6z_1952
+    assign var_irgt6z_482 = state_isqe61-589___data.description | strip_html
+    echo var_irgt6z_482
   %}"><div class="button-bar__item__icon">{% liquid
-    assign var_i85agy_1946 = state_isqe61-589___data.icon
-    echo var_i85agy_1946
+    assign var_idf1xo_476 = state_isqe61-589___data.icon
+    echo var_idf1xo_476
   %}</div><div class="connector__description">{% liquid
-    assign var_ixbbzb_1947 = state_isqe61-589___data.text
-    echo var_ixbbzb_1947
+    assign var_il50gj_477 = state_isqe61-589___data.text
+    echo var_il50gj_477
   %}</div></a></div>{% endif %}{% endfor %}</div><div id="i3cney" class="button-bar"><a id="iacshy" class="button big-button connector__card" v-if="!loading" :key="index" :style="{ backgroundColor: connector.background, color: connector.color }" v-for="(connector, index) in connectors" v-on-click="openLogin(connector)"><div id="iiwn36"><div class="button-bar__item__icon" :style="`background: url('${connector.icon}'); background-repeat: no-repeat; background-size: contain;`"></div><div id="if4gvb" class="" v-text="connector.displayName">Name<br/></div></div><div id="isndui">This connector is about blablabla<br/></div></a></div></div><div id="i9msnk" class="text-white top-space-20" v-if="error" v-text="message" :test="message">Insert your text here</div><div id="i6akll" class="button button--tertiary text-centered" v-if="error" v-on:click="logout()">{{ api-translations[lang]["Logout"] }}</div></div></div></body>
 </html>
