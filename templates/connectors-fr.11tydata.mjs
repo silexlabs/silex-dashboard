@@ -23,7 +23,6 @@ connectorsConnection {
     node {
       __typename
       subtitle
-      help
       recommended
       advanced_users
       connectors {
@@ -36,6 +35,7 @@ connectorsConnection {
         text
 
       }
+      help
       lang
 
     }
