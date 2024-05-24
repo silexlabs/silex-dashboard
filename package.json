@@ -29,7 +29,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0-alpha.5",
     "@silexlabs/silex": "^3.0.0-alpha.153",
-    "@silexlabs/silex-cms": "^0.0.125",
+    "@silexlabs/silex-cms": "^0.0.126",
     "@tinacms/cli": "^1.5.45",
     "@types/node": "^20.12.12",
     "concurrently": "^8.2.2",
