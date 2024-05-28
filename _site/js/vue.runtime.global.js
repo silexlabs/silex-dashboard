@@ -1,5 +1,5 @@
 /**
-* vue v3.4.23
+* vue v3.4.27
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -10,7 +10,7 @@ var Vue = (function (exports) {
   // @__NO_SIDE_EFFECTS__
   function makeMap(str, expectsLowerCase) {
     const set = new Set(str.split(","));
-    return expectsLowerCase ? (val) => set.has(val.toLowerCase()) : (val) => set.has(val);
+    return (val) => set.has(val);
   }
 
   const EMPTY_OBJ = Object.freeze({}) ;
@@ -84,10 +84,11 @@ var Vue = (function (exports) {
       fns[i](arg);
     }
   };
-  const def = (obj, key, value) => {
+  const def = (obj, key, value, writable = false) => {
     Object.defineProperty(obj, key, {
       configurable: true,
       enumerable: false,
+      writable,
       value
     });
   };
@@ -144,8 +145,8 @@ var Vue = (function (exports) {
     }
     for (const key in styles) {
       const value = styles[key];
-      const normalizedKey = key.startsWith(`--`) ? key : hyphenate(key);
       if (isString(value) || typeof value === "number") {
+        const normalizedKey = key.startsWith(`--`) ? key : hyphenate(key);
         ret += `${normalizedKey}:${value};`;
       }
     }
@@ -479,11 +480,10 @@ var Vue = (function (exports) {
       }
     }
     stop() {
-      var _a;
       if (this.active) {
         preCleanupEffect(this);
         postCleanupEffect(this);
-        (_a = this.onStop) == null ? void 0 : _a.call(this);
+        this.onStop && this.onStop();
         this.active = false;
       }
     }
@@ -696,8 +696,8 @@ var Vue = (function (exports) {
     resetScheduling();
   }
   function getDepFromReactive(object, key) {
-    var _a;
-    return (_a = targetMap.get(object)) == null ? void 0 : _a.get(key);
+    const depsMap = targetMap.get(object);
+    return depsMap && depsMap.get(key);
   }
 
   const isNonTrackableKeys = /* @__PURE__ */ makeMap(`__proto__,__v_isRef,__isVue`);
@@ -2359,21 +2359,21 @@ getter: `, this.getter);
       vnode,
       proxy,
       withProxy,
-      props,
       propsOptions: [propsOptions],
       slots,
       attrs,
       emit,
       render,
       renderCache,
+      props,
       data,
       setupState,
       ctx,
       inheritAttrs
     } = instance;
+    const prev = setCurrentRenderingInstance(instance);
     let result;
     let fallthroughAttrs;
-    const prev = setCurrentRenderingInstance(instance);
     {
       accessedAttrs = false;
     }
@@ -2395,7 +2395,7 @@ getter: `, this.getter);
             thisProxy,
             proxyToUse,
             renderCache,
-            props,
+            true ? shallowReadonly(props) : props,
             setupState,
             data,
             ctx
@@ -2409,19 +2409,18 @@ getter: `, this.getter);
         }
         result = normalizeVNode(
           render2.length > 1 ? render2(
-            props,
+            true ? shallowReadonly(props) : props,
             true ? {
               get attrs() {
                 markAttrsAccessed();
-                return attrs;
+                return shallowReadonly(attrs);
               },
               slots,
               emit
             } : { attrs, slots, emit }
           ) : render2(
-            props,
+            true ? shallowReadonly(props) : props,
             null
-            /* we know it doesn't need it */
           )
         );
         fallthroughAttrs = Component.props ? attrs : getFunctionalFallthrough(attrs);
@@ -2447,7 +2446,7 @@ getter: `, this.getter);
               propsOptions
             );
           }
-          root = cloneVNode(root, fallthroughAttrs);
+          root = cloneVNode(root, fallthroughAttrs, false, true);
         } else if (!accessedAttrs && root.type !== Comment) {
           const allAttrs = Object.keys(attrs);
           const eventAttrs = [];
@@ -2481,7 +2480,7 @@ getter: `, this.getter);
           `Runtime directive used on component with non-element root node. The directives will not function as intended.`
         );
       }
-      root = cloneVNode(root);
+      root = cloneVNode(root, null, false, true);
       root.dirs = root.dirs ? root.dirs.concat(vnode.dirs) : vnode.dirs;
     }
     if (vnode.transition) {
@@ -2972,7 +2971,7 @@ If this is a native custom element, make sure to exclude it from component resol
     let parentSuspenseId;
     const isSuspensible = isVNodeSuspensible(vnode);
     if (isSuspensible) {
-      if (parentSuspense == null ? void 0 : parentSuspense.pendingBranch) {
+      if (parentSuspense && parentSuspense.pendingBranch) {
         parentSuspenseId = parentSuspense.pendingId;
         parentSuspense.deps++;
       }
@@ -3284,8 +3283,8 @@ If this is a native custom element, make sure to exclude it from component resol
     }
   }
   function isVNodeSuspensible(vnode) {
-    var _a;
-    return ((_a = vnode.props) == null ? void 0 : _a.suspensible) != null && vnode.props.suspensible !== false;
+    const suspensible = vnode.props && vnode.props.suspensible;
+    return suspensible != null && suspensible !== false;
   }
 
   const ssrContextKey = Symbol.for("v-scx");
@@ -3512,34 +3511,29 @@ If this is a native custom element, make sure to exclude it from component resol
       return cur;
     };
   }
-  function traverse(value, depth, currentDepth = 0, seen) {
-    if (!isObject(value) || value["__v_skip"]) {
+  function traverse(value, depth = Infinity, seen) {
+    if (depth <= 0 || !isObject(value) || value["__v_skip"]) {
       return value;
-    }
-    if (depth && depth > 0) {
-      if (currentDepth >= depth) {
-        return value;
-      }
-      currentDepth++;
     }
     seen = seen || /* @__PURE__ */ new Set();
     if (seen.has(value)) {
       return value;
     }
     seen.add(value);
+    depth--;
     if (isRef(value)) {
-      traverse(value.value, depth, currentDepth, seen);
+      traverse(value.value, depth, seen);
     } else if (isArray(value)) {
       for (let i = 0; i < value.length; i++) {
-        traverse(value[i], depth, currentDepth, seen);
+        traverse(value[i], depth, seen);
       }
     } else if (isSet(value) || isMap(value)) {
       value.forEach((v) => {
-        traverse(v, depth, currentDepth, seen);
+        traverse(v, depth, seen);
       });
     } else if (isPlainObject(value)) {
       for (const key in value) {
-        traverse(value[key], depth, currentDepth, seen);
+        traverse(value[key], depth, seen);
       }
     }
     return value;
@@ -3697,7 +3691,7 @@ If this is a native custom element, make sure to exclude it from component resol
             instance
           );
           setTransitionHooks(oldInnerChild, leavingHooks);
-          if (mode === "out-in") {
+          if (mode === "out-in" && innerChild.type !== Comment) {
             state.isLeaving = true;
             leavingHooks.afterLeave = () => {
               state.isLeaving = false;
@@ -3882,11 +3876,21 @@ If this is a native custom element, make sure to exclude it from component resol
     }
   }
   function getKeepAliveChild(vnode) {
-    return isKeepAlive(vnode) ? (
-      // #7121 ensure get the child component subtree in case
-      // it's been replaced during HMR
-      vnode.component ? vnode.component.subTree : vnode.children ? vnode.children[0] : void 0
-    ) : vnode;
+    if (!isKeepAlive(vnode)) {
+      return vnode;
+    }
+    if (vnode.component) {
+      return vnode.component.subTree;
+    }
+    const { shapeFlag, children } = vnode;
+    if (children) {
+      if (shapeFlag & 16) {
+        return children[0];
+      }
+      if (shapeFlag & 32 && isFunction(children.default)) {
+        return children.default();
+      }
+    }
   }
   function setTransitionHooks(vnode, hooks) {
     if (vnode.shapeFlag & 6 && vnode.component) {
@@ -4202,7 +4206,7 @@ If this is a native custom element, make sure to exclude it from component resol
       return () => {
         pendingCacheKey = null;
         if (!slots.default) {
-          return current = null;
+          return null;
         }
         const children = slots.default();
         const rawVNode = children[0];
@@ -5485,7 +5489,7 @@ If you want to remount the same app, move your app creation logic into a factory
     return !!(currentInstance || currentRenderingInstance || currentApp);
   }
 
-  const internalObjectProto = /* @__PURE__ */ Object.create(null);
+  const internalObjectProto = {};
   const createInternalObject = () => Object.create(internalObjectProto);
   const isInternalObject = (obj) => Object.getPrototypeOf(obj) === internalObjectProto;
 
@@ -5938,21 +5942,17 @@ If you want to remount the same app, move your app creation logic into a factory
     instance.slots.default = () => normalized;
   };
   const initSlots = (instance, children) => {
+    const slots = instance.slots = createInternalObject();
     if (instance.vnode.shapeFlag & 32) {
       const type = children._;
       if (type) {
-        instance.slots = toRaw(children);
-        def(instance.slots, "_", type);
+        extend(slots, children);
+        def(slots, "_", type, true);
       } else {
-        normalizeObjectSlots(
-          children,
-          instance.slots = createInternalObject());
+        normalizeObjectSlots(children, slots);
       }
-    } else {
-      instance.slots = createInternalObject();
-      if (children) {
-        normalizeVNodeSlots(instance, children);
-      }
+    } else if (children) {
+      normalizeVNodeSlots(instance, children);
     }
   };
   const updateSlots = (instance, children, optimized) => {
@@ -6561,7 +6561,7 @@ Server rendered element contains fewer child nodes than client vdom.`
         mismatchType = mismatchKey = `class`;
       }
     } else if (key === "style") {
-      actual = el.getAttribute("style");
+      actual = el.getAttribute("style") || "";
       expected = isString(clientValue) ? clientValue : stringifyStyle(normalizeStyle(clientValue));
       const actualMap = toStyleMap(actual);
       const expectedMap = toStyleMap(expected);
@@ -8694,8 +8694,8 @@ Component that was made reactive: `,
       return null;
     return isProxy(props) || isInternalObject(props) ? extend({}, props) : props;
   }
-  function cloneVNode(vnode, extraProps, mergeRef = false) {
-    const { props, ref, patchFlag, children } = vnode;
+  function cloneVNode(vnode, extraProps, mergeRef = false, cloneTransition = false) {
+    const { props, ref, patchFlag, children, transition } = vnode;
     const mergedProps = extraProps ? mergeProps(props || {}, extraProps) : props;
     const cloned = {
       __v_isVNode: true,
@@ -8725,7 +8725,7 @@ Component that was made reactive: `,
       dynamicChildren: vnode.dynamicChildren,
       appContext: vnode.appContext,
       dirs: vnode.dirs,
-      transition: vnode.transition,
+      transition,
       // These should technically only be non-null on mounted VNodes. However,
       // they *should* be copied for kept-alive vnodes. So we just always copy
       // them since them being non-null during a mount doesn't affect the logic as
@@ -8739,6 +8739,9 @@ Component that was made reactive: `,
       ctx: vnode.ctx,
       ce: vnode.ce
     };
+    if (transition && cloneTransition) {
+      cloned.transition = transition.clone(cloned);
+    }
     return cloned;
   }
   function deepCloneVNode(vnode) {
@@ -9546,7 +9549,7 @@ Component that was made reactive: `,
     return true;
   }
 
-  const version = "3.4.23";
+  const version = "3.4.27";
   const warn = warn$1 ;
   const ErrorTypeStrings = ErrorTypeStrings$1 ;
   const devtools = devtools$1 ;
@@ -9742,8 +9745,8 @@ Component that was made reactive: `,
         el._isLeaving = true;
         const resolve = () => finishLeave(el, done);
         addTransitionClass(el, leaveFromClass);
-        forceReflow();
         addTransitionClass(el, leaveActiveClass);
+        forceReflow();
         nextFrame(() => {
           if (!el._isLeaving) {
             return;

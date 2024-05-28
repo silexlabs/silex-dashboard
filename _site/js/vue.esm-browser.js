@@ -1,5 +1,5 @@
 /**
-* vue v3.4.23
+* vue v3.4.27
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -81,10 +81,11 @@ const invokeArrayFns = (fns, arg) => {
     fns[i](arg);
   }
 };
-const def = (obj, key, value) => {
+const def = (obj, key, value, writable = false) => {
   Object.defineProperty(obj, key, {
     configurable: true,
     enumerable: false,
+    writable,
     value
   });
 };
@@ -204,8 +205,8 @@ function stringifyStyle(styles) {
   }
   for (const key in styles) {
     const value = styles[key];
-    const normalizedKey = key.startsWith(`--`) ? key : hyphenate(key);
     if (isString(value) || typeof value === "number") {
+      const normalizedKey = key.startsWith(`--`) ? key : hyphenate(key);
       ret += `${normalizedKey}:${value};`;
     }
   }
@@ -541,11 +542,10 @@ class ReactiveEffect {
     }
   }
   stop() {
-    var _a;
     if (this.active) {
       preCleanupEffect(this);
       postCleanupEffect(this);
-      (_a = this.onStop) == null ? void 0 : _a.call(this);
+      this.onStop && this.onStop();
       this.active = false;
     }
   }
@@ -758,8 +758,8 @@ function trigger(target, type, key, newValue, oldValue, oldTarget) {
   resetScheduling();
 }
 function getDepFromReactive(object, key) {
-  var _a;
-  return (_a = targetMap.get(object)) == null ? void 0 : _a.get(key);
+  const depsMap = targetMap.get(object);
+  return depsMap && depsMap.get(key);
 }
 
 const isNonTrackableKeys = /* @__PURE__ */ makeMap(`__proto__,__v_isRef,__isVue`);
@@ -2421,21 +2421,21 @@ function renderComponentRoot(instance) {
     vnode,
     proxy,
     withProxy,
-    props,
     propsOptions: [propsOptions],
     slots,
     attrs,
     emit,
     render,
     renderCache,
+    props,
     data,
     setupState,
     ctx,
     inheritAttrs
   } = instance;
+  const prev = setCurrentRenderingInstance(instance);
   let result;
   let fallthroughAttrs;
-  const prev = setCurrentRenderingInstance(instance);
   {
     accessedAttrs = false;
   }
@@ -2457,7 +2457,7 @@ function renderComponentRoot(instance) {
           thisProxy,
           proxyToUse,
           renderCache,
-          props,
+          true ? shallowReadonly(props) : props,
           setupState,
           data,
           ctx
@@ -2471,19 +2471,18 @@ function renderComponentRoot(instance) {
       }
       result = normalizeVNode(
         render2.length > 1 ? render2(
-          props,
+          true ? shallowReadonly(props) : props,
           true ? {
             get attrs() {
               markAttrsAccessed();
-              return attrs;
+              return shallowReadonly(attrs);
             },
             slots,
             emit
           } : { attrs, slots, emit }
         ) : render2(
-          props,
+          true ? shallowReadonly(props) : props,
           null
-          /* we know it doesn't need it */
         )
       );
       fallthroughAttrs = Component.props ? attrs : getFunctionalFallthrough(attrs);
@@ -2509,7 +2508,7 @@ function renderComponentRoot(instance) {
             propsOptions
           );
         }
-        root = cloneVNode(root, fallthroughAttrs);
+        root = cloneVNode(root, fallthroughAttrs, false, true);
       } else if (!accessedAttrs && root.type !== Comment) {
         const allAttrs = Object.keys(attrs);
         const eventAttrs = [];
@@ -2543,7 +2542,7 @@ function renderComponentRoot(instance) {
         `Runtime directive used on component with non-element root node. The directives will not function as intended.`
       );
     }
-    root = cloneVNode(root);
+    root = cloneVNode(root, null, false, true);
     root.dirs = root.dirs ? root.dirs.concat(vnode.dirs) : vnode.dirs;
   }
   if (vnode.transition) {
@@ -3034,7 +3033,7 @@ function createSuspenseBoundary(vnode, parentSuspense, parentComponent, containe
   let parentSuspenseId;
   const isSuspensible = isVNodeSuspensible(vnode);
   if (isSuspensible) {
-    if (parentSuspense == null ? void 0 : parentSuspense.pendingBranch) {
+    if (parentSuspense && parentSuspense.pendingBranch) {
       parentSuspenseId = parentSuspense.pendingId;
       parentSuspense.deps++;
     }
@@ -3346,8 +3345,8 @@ function setActiveBranch(suspense, branch) {
   }
 }
 function isVNodeSuspensible(vnode) {
-  var _a;
-  return ((_a = vnode.props) == null ? void 0 : _a.suspensible) != null && vnode.props.suspensible !== false;
+  const suspensible = vnode.props && vnode.props.suspensible;
+  return suspensible != null && suspensible !== false;
 }
 
 const ssrContextKey = Symbol.for("v-scx");
@@ -3580,34 +3579,29 @@ function createPathGetter(ctx, path) {
     return cur;
   };
 }
-function traverse(value, depth, currentDepth = 0, seen) {
-  if (!isObject(value) || value["__v_skip"]) {
+function traverse(value, depth = Infinity, seen) {
+  if (depth <= 0 || !isObject(value) || value["__v_skip"]) {
     return value;
-  }
-  if (depth && depth > 0) {
-    if (currentDepth >= depth) {
-      return value;
-    }
-    currentDepth++;
   }
   seen = seen || /* @__PURE__ */ new Set();
   if (seen.has(value)) {
     return value;
   }
   seen.add(value);
+  depth--;
   if (isRef(value)) {
-    traverse(value.value, depth, currentDepth, seen);
+    traverse(value.value, depth, seen);
   } else if (isArray(value)) {
     for (let i = 0; i < value.length; i++) {
-      traverse(value[i], depth, currentDepth, seen);
+      traverse(value[i], depth, seen);
     }
   } else if (isSet(value) || isMap(value)) {
     value.forEach((v) => {
-      traverse(v, depth, currentDepth, seen);
+      traverse(v, depth, seen);
     });
   } else if (isPlainObject(value)) {
     for (const key in value) {
-      traverse(value[key], depth, currentDepth, seen);
+      traverse(value[key], depth, seen);
     }
   }
   return value;
@@ -3765,7 +3759,7 @@ const BaseTransitionImpl = {
           instance
         );
         setTransitionHooks(oldInnerChild, leavingHooks);
-        if (mode === "out-in") {
+        if (mode === "out-in" && innerChild.type !== Comment) {
           state.isLeaving = true;
           leavingHooks.afterLeave = () => {
             state.isLeaving = false;
@@ -3950,11 +3944,21 @@ function emptyPlaceholder(vnode) {
   }
 }
 function getKeepAliveChild(vnode) {
-  return isKeepAlive(vnode) ? (
-    // #7121 ensure get the child component subtree in case
-    // it's been replaced during HMR
-    vnode.component ? vnode.component.subTree : vnode.children ? vnode.children[0] : void 0
-  ) : vnode;
+  if (!isKeepAlive(vnode)) {
+    return vnode;
+  }
+  if (vnode.component) {
+    return vnode.component.subTree;
+  }
+  const { shapeFlag, children } = vnode;
+  if (children) {
+    if (shapeFlag & 16) {
+      return children[0];
+    }
+    if (shapeFlag & 32 && isFunction(children.default)) {
+      return children.default();
+    }
+  }
 }
 function setTransitionHooks(vnode, hooks) {
   if (vnode.shapeFlag & 6 && vnode.component) {
@@ -4270,7 +4274,7 @@ const KeepAliveImpl = {
     return () => {
       pendingCacheKey = null;
       if (!slots.default) {
-        return current = null;
+        return null;
       }
       const children = slots.default();
       const rawVNode = children[0];
@@ -5553,7 +5557,7 @@ function hasInjectionContext() {
   return !!(currentInstance || currentRenderingInstance || currentApp);
 }
 
-const internalObjectProto = /* @__PURE__ */ Object.create(null);
+const internalObjectProto = {};
 const createInternalObject = () => Object.create(internalObjectProto);
 const isInternalObject = (obj) => Object.getPrototypeOf(obj) === internalObjectProto;
 
@@ -6006,21 +6010,17 @@ const normalizeVNodeSlots = (instance, children) => {
   instance.slots.default = () => normalized;
 };
 const initSlots = (instance, children) => {
+  const slots = instance.slots = createInternalObject();
   if (instance.vnode.shapeFlag & 32) {
     const type = children._;
     if (type) {
-      instance.slots = toRaw(children);
-      def(instance.slots, "_", type);
+      extend(slots, children);
+      def(slots, "_", type, true);
     } else {
-      normalizeObjectSlots(
-        children,
-        instance.slots = createInternalObject());
+      normalizeObjectSlots(children, slots);
     }
-  } else {
-    instance.slots = createInternalObject();
-    if (children) {
-      normalizeVNodeSlots(instance, children);
-    }
+  } else if (children) {
+    normalizeVNodeSlots(instance, children);
   }
 };
 const updateSlots = (instance, children, optimized) => {
@@ -6629,7 +6629,7 @@ function propHasMismatch(el, key, clientValue, vnode, instance) {
       mismatchType = mismatchKey = `class`;
     }
   } else if (key === "style") {
-    actual = el.getAttribute("style");
+    actual = el.getAttribute("style") || "";
     expected = isString(clientValue) ? clientValue : stringifyStyle(normalizeStyle(clientValue));
     const actualMap = toStyleMap(actual);
     const expectedMap = toStyleMap(expected);
@@ -8762,8 +8762,8 @@ function guardReactiveProps(props) {
     return null;
   return isProxy(props) || isInternalObject(props) ? extend({}, props) : props;
 }
-function cloneVNode(vnode, extraProps, mergeRef = false) {
-  const { props, ref, patchFlag, children } = vnode;
+function cloneVNode(vnode, extraProps, mergeRef = false, cloneTransition = false) {
+  const { props, ref, patchFlag, children, transition } = vnode;
   const mergedProps = extraProps ? mergeProps(props || {}, extraProps) : props;
   const cloned = {
     __v_isVNode: true,
@@ -8793,7 +8793,7 @@ function cloneVNode(vnode, extraProps, mergeRef = false) {
     dynamicChildren: vnode.dynamicChildren,
     appContext: vnode.appContext,
     dirs: vnode.dirs,
-    transition: vnode.transition,
+    transition,
     // These should technically only be non-null on mounted VNodes. However,
     // they *should* be copied for kept-alive vnodes. So we just always copy
     // them since them being non-null during a mount doesn't affect the logic as
@@ -8807,6 +8807,9 @@ function cloneVNode(vnode, extraProps, mergeRef = false) {
     ctx: vnode.ctx,
     ce: vnode.ce
   };
+  if (transition && cloneTransition) {
+    cloned.transition = transition.clone(cloned);
+  }
   return cloned;
 }
 function deepCloneVNode(vnode) {
@@ -9614,7 +9617,7 @@ function isMemoSame(cached, memo) {
   return true;
 }
 
-const version = "3.4.23";
+const version = "3.4.27";
 const warn = warn$1 ;
 const ErrorTypeStrings = ErrorTypeStrings$1 ;
 const devtools = devtools$1 ;
@@ -9810,8 +9813,8 @@ function resolveTransitionProps(rawProps) {
       el._isLeaving = true;
       const resolve = () => finishLeave(el, done);
       addTransitionClass(el, leaveFromClass);
-      forceReflow();
       addTransitionClass(el, leaveActiveClass);
+      forceReflow();
       nextFrame(() => {
         if (!el._isLeaving) {
           return;
@@ -12808,11 +12811,10 @@ const tokenizer = new Tokenizer(stack, {
     }
   },
   onselfclosingtag(end) {
-    var _a;
     const name = currentOpenTag.tag;
     currentOpenTag.isSelfClosing = true;
     endOpenTag(end);
-    if (((_a = stack[0]) == null ? void 0 : _a.tag) === name) {
+    if (stack[0] && stack[0].tag === name) {
       onCloseTag(stack.shift(), end);
     }
   },
@@ -13113,16 +13115,15 @@ function endOpenTag(end) {
   currentOpenTag = null;
 }
 function onText(content, start, end) {
-  var _a;
   {
-    const tag = (_a = stack[0]) == null ? void 0 : _a.tag;
+    const tag = stack[0] && stack[0].tag;
     if (tag !== "script" && tag !== "style" && content.includes("&")) {
       content = currentOptions.decodeEntities(content, false);
     }
   }
   const parent = stack[0] || currentRoot;
   const lastNode = parent.children[parent.children.length - 1];
-  if ((lastNode == null ? void 0 : lastNode.type) === 2) {
+  if (lastNode && lastNode.type === 2) {
     lastNode.content += content;
     setLocEnd(lastNode.loc, end);
   } else {
@@ -13198,11 +13199,10 @@ function isFragmentTemplate({ tag, props }) {
   return false;
 }
 function isComponent({ tag, props }) {
-  var _a;
   if (currentOptions.isCustomElement(tag)) {
     return false;
   }
-  if (tag === "component" || isUpperCase(tag.charCodeAt(0)) || isCoreComponent(tag) || ((_a = currentOptions.isBuiltInComponent) == null ? void 0 : _a.call(currentOptions, tag)) || currentOptions.isNativeTag && !currentOptions.isNativeTag(tag)) {
+  if (tag === "component" || isUpperCase(tag.charCodeAt(0)) || isCoreComponent(tag) || currentOptions.isBuiltInComponent && currentOptions.isBuiltInComponent(tag) || currentOptions.isNativeTag && !currentOptions.isNativeTag(tag)) {
     return true;
   }
   for (let i = 0; i < props.length; i++) {
@@ -13222,7 +13222,6 @@ function isUpperCase(c) {
 }
 const windowsNewlineRE = /\r\n/g;
 function condenseWhitespace(nodes, tag) {
-  var _a, _b;
   const shouldCondense = currentOptions.whitespace !== "preserve";
   let removedWhitespace = false;
   for (let i = 0; i < nodes.length; i++) {
@@ -13230,8 +13229,8 @@ function condenseWhitespace(nodes, tag) {
     if (node.type === 2) {
       if (!inPre) {
         if (isAllWhitespace(node.content)) {
-          const prev = (_a = nodes[i - 1]) == null ? void 0 : _a.type;
-          const next = (_b = nodes[i + 1]) == null ? void 0 : _b.type;
+          const prev = nodes[i - 1] && nodes[i - 1].type;
+          const next = nodes[i + 1] && nodes[i + 1].type;
           if (!prev || !next || shouldCondense && (prev === 3 && (next === 3 || next === 1) || prev === 1 && (next === 3 || next === 1 && hasNewlineChar(node.content)))) {
             removedWhitespace = true;
             nodes[i] = null;
@@ -13369,7 +13368,7 @@ function baseParse(input, options) {
   }
   tokenizer.mode = currentOptions.parseMode === "html" ? 1 : currentOptions.parseMode === "sfc" ? 2 : 0;
   tokenizer.inXML = currentOptions.ns === 1 || currentOptions.ns === 2;
-  const delimiters = options == null ? void 0 : options.delimiters;
+  const delimiters = options && options.delimiters;
   if (delimiters) {
     tokenizer.delimiterOpen = toCharCodes(delimiters[0]);
     tokenizer.delimiterClose = toCharCodes(delimiters[1]);
@@ -13694,6 +13693,7 @@ function createTransformContext(root, {
       vOnce: 0
     },
     parent: null,
+    grandParent: null,
     currentNode: root,
     childIndex: 0,
     inVOnce: false,
@@ -13834,6 +13834,7 @@ function traverseChildren(parent, context) {
     const child = parent.children[i];
     if (isString(child))
       continue;
+    context.grandParent = context.parent;
     context.parent = parent;
     context.childIndex = i;
     context.onNodeRemoved = nodeRemoved;
@@ -15393,6 +15394,16 @@ function buildProps(node, context, props = node.props, isComponent, isDynamicCom
     if (arg)
       mergeArgs.push(arg);
   };
+  const pushRefVForMarker = () => {
+    if (context.scopes.vFor > 0) {
+      properties.push(
+        createObjectProperty(
+          createSimpleExpression("ref_for", true),
+          createSimpleExpression("true")
+        )
+      );
+    }
+  };
   const analyzePatchFlag = ({ key, value }) => {
     if (isStaticExp(key)) {
       const name = key.content;
@@ -15436,14 +15447,7 @@ function buildProps(node, context, props = node.props, isComponent, isDynamicCom
       let isStatic = true;
       if (name === "ref") {
         hasRef = true;
-        if (context.scopes.vFor > 0) {
-          properties.push(
-            createObjectProperty(
-              createSimpleExpression("ref_for", true),
-              createSimpleExpression("true")
-            )
-          );
-        }
+        pushRefVForMarker();
       }
       if (name === "is" && (isComponentTag(tag) || value && value.content.startsWith("vue:") || false)) {
         continue;
@@ -15487,18 +15491,14 @@ function buildProps(node, context, props = node.props, isComponent, isDynamicCom
       ) {
         shouldUseBlock = true;
       }
-      if (isVBind && isStaticArgOf(arg, "ref") && context.scopes.vFor > 0) {
-        properties.push(
-          createObjectProperty(
-            createSimpleExpression("ref_for", true),
-            createSimpleExpression("true")
-          )
-        );
+      if (isVBind && isStaticArgOf(arg, "ref")) {
+        pushRefVForMarker();
       }
       if (!arg && (isVBind || isVOn)) {
         hasDynamicKeys = true;
         if (exp) {
           if (isVBind) {
+            pushRefVForMarker();
             pushMergeArg();
             mergeArgs.push(exp);
           } else {
@@ -15819,7 +15819,7 @@ function processSlotOutlet(node, context) {
   };
 }
 
-const fnExpRE = /^\s*([\w$_]+|(async\s*)?\([^)]*?\))\s*(:[^=]+)?=>|^\s*(async\s+)?function(?:\s+[\w$]+)?\s*\(/;
+const fnExpRE = /^\s*(async\s*)?(\([^)]*?\)|[\w$_]+)\s*(:[^=]+)?=>|^\s*(async\s+)?function(?:\s+[\w$]+)?\s*\(/;
 const transformOn$1 = (dir, node, context, augmentor) => {
   const { loc, modifiers, arg } = dir;
   if (!dir.exp && !modifiers.length) {
