@@ -29,11 +29,11 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0-alpha.5",
     "@tinacms/cli": "^1.5.45",
-    "@types/node": "^20.12.12",
+    "@types/node": "^20.13.0",
     "concurrently": "^8.2.2",
     "start-server-and-test": "^2.0.3",
     "@silexlabs/silex-cms": "^0.0.129",
-    "@silexlabs/silex": "^3.0.0-alpha.160"
+    "@silexlabs/silex": "^3.0.0-alpha.162"
   },
   "dependencies": {
     "locale": "^0.1.0",
