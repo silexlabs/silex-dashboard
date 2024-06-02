@@ -31,9 +31,7 @@
     "@tinacms/cli": "^1.5.45",
     "@types/node": "^20.12.12",
     "concurrently": "^8.2.2",
-    "start-server-and-test": "^2.0.3"
-  },
-  "peerDependencies": {
+    "start-server-and-test": "^2.0.3",
     "@silexlabs/silex-cms": "^0.0.129",
     "@silexlabs/silex": "^3.0.0-alpha.160"
   },
