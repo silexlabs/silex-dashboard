@@ -32,8 +32,8 @@
     "@types/node": "^20.13.0",
     "concurrently": "^8.2.2",
     "start-server-and-test": "^2.0.3",
-    "@silexlabs/silex-cms": "^0.0.129",
-    "@silexlabs/silex": "^3.0.0-alpha.162"
+    "@silexlabs/silex-cms": "^0.0.132",
+    "@silexlabs/silex": "^3.0.0-alpha.163"
   },
   "dependencies": {
     "locale": "^0.1.0",
