@@ -29,16 +29,16 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0-alpha.5",
     "@tinacms/cli": "^1.5.46",
-    "@types/node": "^20.14.2",
+    "@types/node": "^20.14.4",
     "concurrently": "^8.2.2",
     "start-server-and-test": "^2.0.4",
-    "@silexlabs/silex-cms": "^0.0.133",
-    "@silexlabs/silex": "^3.0.0-alpha.164"
+    "@silexlabs/silex-cms": "^0.0.144",
+    "@silexlabs/silex": "^3.0.0-alpha.166"
   },
   "dependencies": {
     "locale": "^0.1.0",
     "node_modules-path": "^2.0.8",
     "serve-static": "^1.15.0",
-    "vue": "^3.4.27"
+    "vue": "^3.4.29"
   }
 }
