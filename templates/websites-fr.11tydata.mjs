@@ -22,13 +22,6 @@ settingsConnection {
     __typename
     node {
       __typename
-      nav {
-        __typename
-        label
-        url
-        target
-
-      }
       footer_links {
         __typename
         title
@@ -39,6 +32,13 @@ settingsConnection {
           target
 
         }
+
+      }
+      nav {
+        __typename
+        label
+        url
+        target
 
       }
       lang
@@ -54,6 +54,7 @@ homeConnection {
     __typename
     node {
       __typename
+      title
       title2
       subtitle
       title2_empty
