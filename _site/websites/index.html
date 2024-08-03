@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/websites-e6d63d0512032a2909a7f648cecfad311842ecba7bd03f94afc8639998e606f0.css" />
+<!--  font google -->
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
+
+<style>
+  .before-js > * {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease;
+  }
+  .before-js[data-gjs-type] > *, /* This is only inside the editor, .before-js needs to be on the body */
+  .after-js > * {
+    visibility: visible;
+    opacity: 1;
+  }
+  .before-js:before {
+    content: 'Loading';
+    position: absolute;
+    top: 49%;
+    left: 49%;
+  }
+  .before-js[data-gjs-type]:before, /* This is only inside the editor, .before-js needs to be on the body */
+  .after-js:before {
+    content: none;
+  }
+  /*BTNS*/
+  .button, .pointer {
+    cursor: pointer!important}
+  .button{
+    min-width:110px;
+  }
+  details {
+	max-height: 2em;
+    display: block;
+    overflow: hidden;
+    transition: max-height .75s ease;
+  }
+  details[open] {
+    max-height: 40em;
+  }
+
+  /*BTNS*/
+  a {
+    text-decoration: none;
+    color:#8873FE;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .uppercase  {
+    text-transform: uppercase;
+  }
+  .underline:hover{
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
+    text-underline-position: under;
+  }
+  /*footer position*/
+  .main-min-height {
+    min-height: calc(100vh - 560px);
+  }
+  /*footer position*/
+  /*label*/
+  ::placeholder {
+    color: #8873FE;
+  }
+  input:focus {
+    border: 2px solid #9977FE;
+    background-color:#ffffff;
+  }
+  :focus {
+    outline: none;
+  }
+  /*label*/
+  .skeleton-anim:after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background: 
+      linear-gradient(0.25turn, transparent, rgba(255,255,255,.75), transparent),
+      linear-gradient(transparent, transparent),
+      radial-gradient(38px circle at 19px 19px, transparent 50%, transparent 51%),
+      linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: 315px 250px, 315px 180px, 100px 100px, 225px 30px;
+    background-position: -315px 0, 0 0, 0px 190px, 50px 195px;
+    animation: loading 1.5s infinite;
+  }
+  @keyframes loading {
+    to {
+      background-position: 200% 0, 0 0, 0 190px, 50px 195px;
+    }
+  }
+  /*FX ANIMATIONS*/
+  /*scale-round-inside_pour-BTN*/
+  .fx-scale-round {
+    position:relative;
+    z-index: 10;
+    overflow: hidden;
+  }
+  .fx-scale-round::after {
+    content: "";
+    background: #ffffff;
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    left: -50%;
+    right: -50%;
+    top: -100%;
+    bottom: -100%;
+    transform: scale(0, 0);
+    transform-origin: center bottom;
+    transition: all 0.3s ease-out;
+  }
+  .fx-scale-round:hover {
+    transform-origin: center bottom;
+    transform: scale(1.1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  .fx-scale-round:hover::after {
+    transform: scale(1, 1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  /*scale-round-inside_pour-BTN*/
+  /*scale*/
+  .fx-scale:hover  {
+    transform-origin: center bottom;
+    transform: scale(1.1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  /*flash*/
+  .fx-flash:hover {
+    animation: flash-in .25s ;
+  }
+  /*flash-in animation*/
+  @keyframes flash-in{
+    0% {
+      opacity:.25;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  /*flash-in animation*/
+  /*FX ANIMATIONS*/
+</style>
+<script src="/js/vue.global.prod.js"></script>
+<script src="/js/main.js"></script>
+<script type="module">
+const CONNECTORS_PATH = '/connectors/'
+window.addEventListener('load', function() {
+  const { createApp } = Vue;
+  const { api, constants, types } = silex;
+  const {
+    ConnectorType,
+  } = types
+  const {
+    setServerUrl,
+    getUser,
+    logout,
+    websiteDelete,
+    websiteDuplicate,
+    websiteList,
+    websiteCreate,
+    websiteMetaWrite,
+  } = api
+  function toSafeId(name) {
+    return name.replace(/[/\\?%*:|"<>]/g, '_')
+  }
+
+  const App = {
+    data() {
+      return {
+        websites: [],
+        newWebsiteName: '',
+        showCreationForm: false,
+        error: null,
+        message: null,
+        loggedIn: false,
+        loading: true,
+        storage: null,
+        user: null,
+        showMenu: false,
+        empty: false,
+      }
+    },
+    mounted() {
+      this.init()
+    },
+
+    methods: {
+      async init() {
+        try {
+          // Init Silex server path
+          // Go up one level because of the language prefix
+          setServerUrl(window.location.origin)
+          // Start
+          const user = await getUser({type: ConnectorType.STORAGE})
+          // Escape single quotes in the picture URL and decode the picture URL
+          if(user) {
+	        user.picture = decodeURIComponent(user.picture).replace(/'/g, "\\'")
+            this.user = user
+            this.loggedIn = true
+            this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+            this.empty = this.websites.length === 0
+            this.loading = false
+          } else {
+            this.openLogin()
+          }
+        } catch (error) {
+          console.error(error)
+          this.loading = false
+          if(error.code === 401 || error.httpStatusCode === 401) {
+            this.loggedIn = false
+            this.openLogin()
+          } else {
+            this.error = ` - ${error.message}`
+            this.message = ''
+          }
+        }
+      },
+
+      openLogin(id, lang) {
+        //throw new Error('debug')
+        const path = `/${CONNECTORS_PATH}`
+        console.log(window.location.pathname, window.location.path, path)
+        if(window.location.pathname === path) return
+        window.open(path, '_self')
+      },
+
+      openEditor(id, lang) {
+        window.open(`/?id=${id}&lang=${lang}&connectorId=${this.user.storage.connectorId}`, '_self')
+      },
+
+      async logout() {
+        await logout({
+          type: ConnectorType.STORAGE,
+          connectorId: this.user.storage.connectorId,
+        })
+        window.location.reload()
+      },
+
+      async createWebsite() {
+        try {
+          if (!this.newWebsiteName) throw new Error('')
+          this.loading = true
+          const websiteId = toSafeId(this.newWebsiteName)
+          const result = await websiteCreate({
+            websiteId,
+            data: {
+              name: this.newWebsiteName,
+              imageUrl: null,
+            },
+            connectorId: this.user.storage.connectorId
+          })
+          this.message = ''
+          this.error = ''
+          this.newWebsiteName = ''
+          this.showCreationForm = false;
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
+          this.loading = false
+          return result
+        } catch (error) {
+          this.loading = false
+          console.error(error)
+          this.error = ` - ${error.message}`
+          this.message = ''
+        }
+      },
+
+      async deleteWebsite(websiteId) {
+        const ok = confirm('')
+        if (!ok) return
+        this.loading = true
+        try {
+          const result = await websiteDelete({websiteId, connectorId: this.user.storage.connectorId})
+          this.message = ''
+          this.error = ''
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
+          this.loading = false
+          return result
+        } catch (error) {
+          this.loading = false
+          this.error = ` - ${error.message}`
+          this.message = ''
+        }
+      },
+
+      async duplicateWebsite(websiteId) {
+        this.loading = true
+        try {
+          await websiteDuplicate({websiteId, connectorId: this.user.storage.connectorId, data: { name }})
+          this.error = ''
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.message = ''
+          this.empty = this.websites.length === 0
+          this.loading = false
+        } catch (error) {
+          this.loading = false
+          this.error = ` - ${error.message}`
+          this.message = ''
+        }
+      },
+
+      async renameWebsite(websiteId) {
+        const website = this.websites.find(w => w.websiteId === websiteId)
+        const name = prompt('', website.name)
+        if (!name) return
+        this.loading = true
+        try {
+          const result = await websiteMetaWrite({websiteId, connectorId: this.user.storage.connectorId, data: { name }})
+          this.message = ''
+          this.error = ''
+          this.websites = await websiteList({connectorId: this.user.storage.connectorId})
+          this.empty = this.websites.length === 0
+          this.loading = false
+          return result
+        } catch (error) {
+          this.loading = false
+          this.error = ` - ${error.message}`
+          this.message = ''
+        }
+      },
+    },
+  };
+  // Prepare elements for vue
+  document.querySelectorAll('[v-text], [v-html]')
+  .forEach(el => el.innerText = '')
+
+
+  // Create the app
+  const app = createApp(App);
+
+  // Mount the app
+  app.mount('.app');
+
+
+  // Remove loading
+  setTimeout(() => {
+    document.querySelector('.before-js').classList.add('after-js')
+  }, 100)
+})
+</script>
+
+<title>Silex Dashboard</title>
+<link rel="icon" href="/assets/favicon-32x32.png" />
+<meta name="og:title" property="og:title" content="Silex Dashboard"/>
+<link href="https://fonts.googleapis.com" rel="preconnect" ><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin ><link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" ></head>
+<body id="ik0i" class="body loading app before-js"><HEADER id="igrg" class="menu-bar"><A id="igvu43" href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="i9jq" class="nav"><A id="iels" href="" class="nav__item uppercase fx-flash nav_item--active">Sites</A></NAV><div id="i2red7" class="lang"><A href="/" id="iciz" class="lang__item nav__item uppercase">en</A></div><div id="i24ew" class="user__wrapper pointer"><div id="i5xsbd" class="user-icon__wrapper"><div id="i5wlbq" class="user-icon__image"></div></div><div id="ic9eoa"><div id="iksw4d" class="button button--tertiary text-centered">Logout</div></div></div></HEADER><HEADER id="iy8ax3" class="bg-silex-purpel"><div id="iisz8f" class="section-top text-centered text-white"><H1 id="ic31o" class="title-40">Welcome back!<br/></H1><P id="iyex8" class="subtitle-16">Dive into your projects or kickstart a new one</P><H1 id="i4ybc" class="title-40">Welcome, let's get started<br/></H1><P id="iino6r" class="subtitle-16">Create your first project, click on the button "Create a website"<br/></P></div></HEADER><MAIN id="iz63r" class="padding-normal main-min-height website-max-width margin-80"><SECTION id="iqmx38"></SECTION><div id="ickx4" class="margin-20"><BUTTON id="ic92g" class="button button--primary rounded top-space-40 fx-scale-round"><span id="igsxoc" class="icon-font">+</span> <span id="ixu14">Create website</span></BUTTON><div id="i0ro3" class="button button--secondary rounded">Import</div></div><div id="ihwwxz" class="box top-space-40 padding-30 box_transp"><H3 id="i3gd1b" class="box__header text-centered">Create a new website</H3><form method="get" id="i50acf" class="form"><div id="igtg1t" class="v-space"><label id="i1nmbc" class="v-space bold color-2B1B63-80">Website name</label><input type="text" id="ij5iwh" placeholder="" class="input full-width"/></div><div id="ie0xes"><button type="submit" id="i021na" class="button rounded button--primary right-space-20 fx-scale-round">Create</button><button type="reset" class="button rounded button--secondary fx-scale-round">Cancel</button></div></form></div><div id="if80m" class="margin-20"><SECTION id="idgvg" class="button-bar loaded__item"><H3 id="i69a7" class="right-space-40 color-2B1B63-80 uppercase pointer fx-flash full-width button-bar__title underline">My first website</H3><P id="i65hn" class="button-bar__item--secondary flex-no-shrink right-space-40">Updated 1h ago by lexoyo</P><P id="i64qa" class="button-bar__item--secondary flex-no-shrink right-space-40">Created 2023-02-16 by lexoyo</P><div id="i3b4tr" class="flex-no-shrink"><BUTTON id="ifyf6p" title="" class="button-bar__item--link pointer fx-scale fx-flash button-bar__item--icon">Edit</BUTTON><BUTTON id="ihf6ew" title="" class="button-bar__item--link pointer fx-scale fx-flash button-bar__item--icon">Rename</BUTTON><BUTTON id="iol4h" title="" class="button-bar__item--link pointer fx-flash fx-scale button-bar__item--icon">⎘</BUTTON><BUTTON id="it5ia" class="button-bar__item--link pointer fx-flash fx-scale">X</BUTTON></div></SECTION><SECTION id="i1fjn" class="button-bar loading__item skeleton-anim skeleton-wrapper"><H3 id="iwu6a" class="skeleton-text skeleton right-space-40">My first websiteMy first websiteMy first websiteMy first</H3><P id="i26fn" class="button-bar__item--secondary skeleton-text skeleton right-space-40">Updated 1h ago by lexoyo</P><P id="iywbk" class="button-bar__item--secondary skeleton-text skeleton right-space-40">Created 2023-02-16 by lexoyo</P><div id="ixz6c" class="skeleton skeleton-button">Edit</div></SECTION><SECTION id="iwxxo5" class="button-bar loading__item skeleton-anim skeleton-wrapper"><H3 id="inmp3" class="skeleton-text skeleton right-space-40">My first websiteMy first websiteMy first websiteMy first</H3><P id="icjz8" class="button-bar__item--secondary skeleton-text skeleton right-space-40">Updated 1h ago by lexoyo</P><P id="illbe" class="button-bar__item--secondary skeleton-text skeleton right-space-40">Created 2023-02-16 by lexoyo</P><div id="i9fx3l" class="skeleton skeleton-button">Edit</div></SECTION><SECTION id="isld3r" class="button-bar loading__item skeleton-anim skeleton-wrapper"><H3 class="button-bar_item button-bar__item--main skeleton-text skeleton right-space-40">My first websiteMy first websiteMy first websiteMy first</H3><P class="button-bar_item button-bar__item--secondary skeleton-text skeleton right-space-40">Updated 1h ago by lexoyo</P><P class="button-bar_item button-bar__item--secondary skeleton-text skeleton right-space-40">Created 2023-02-16 by lexoyo</P><div id="i8oes3" class="button-bar_item skeleton skeleton-button">Edit</div></SECTION></div><div id="ipccl7"><div id="i2fkm9" class="margin-20 empty-image"></div><div id="i5ydxo" class="box padding-50-30 box--centered"><P id="ikl1qu" class="text-centered title-26">C'est bien calme ici..<br/></P><H3 id="iwzrqi" class="text-centered title-26">Prêt à démarrer une nouvelle aventure ?</H3><BUTTON id="i2x0l" class="button button--primary rounded top-space-40 fx-scale-round"><span id="ibsgw" class="icon-font">+</span> <span id="itl2n8">Create website</span></BUTTON></div></div><div id="i7ej6j" class="flex-between box-message text-white"><H3 id="iv0eyi" class="box-message-text">Insert your text here</H3><div id="i4656n" class="pointer button-bar__item--link text-white">Dismiss</div></div><div id="ilteie" class="flex-between box-message text-white"><H3 id="i2d31v" class="box-message-text">Insert your text here</H3><div id="i2urco" class="rounded pointer button-bar__item--link text-white">Dismiss</div></div></MAIN><FOOTER id="ilzpl" class="footer"><div id="isucae" class="footer__column"><H3 id="ipa5zg" href="" class="footer__item">Insert your text here</H3><A href="#" class="footer__item">Insert your text here</A></div></FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2" class="nav"><A href="" class="nav__item uppercase fx-flash nav_item--active">Sites</A></NAV><div class="lang"><A href="/" class="lang__item nav__item uppercase">en</A></div><div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div id="ir10ge-2-2" class="button button--tertiary text-centered">Logout</div></div></div></HEADER><FOOTER class="footer"><div id="ilgsqu" class="footer__column"><H3 href="" class="footer__item">Insert your text here</H3><A href="#" class="footer__item">Insert your text here</A></div></FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2-2" class="nav"><A href="" class="nav__item uppercase fx-flash nav_item--active">Sites</A></NAV><div class="lang"><A href="/" class="lang__item nav__item uppercase">en</A></div><div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div id="ir10ge-2-2-2" class="button button--tertiary text-centered">Logout</div></div></div></HEADER><FOOTER class="footer"><div id="ilgsqu-2" class="footer__column"><H3 href="" class="footer__item">Insert your text here</H3><A href="#" class="footer__item">Insert your text here</A></div></FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2-2-2" class="nav"><A href="" class="nav__item uppercase fx-flash nav_item--active">Sites</A></NAV><div class="lang"><A href="/" class="lang__item nav__item uppercase">en</A></div><div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div id="ir10ge-2-2-2-2" class="button button--tertiary text-centered">Logout</div></div></div></HEADER><FOOTER class="footer"><div id="ilgsqu-2-2" class="footer__column"><H3 href="" class="footer__item">Insert your text here</H3><A href="#" class="footer__item">Insert your text here</A></div></FOOTER></body>
+</html>
