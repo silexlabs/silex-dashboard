@@ -54,6 +54,7 @@ homeConnection {
     __typename
     node {
       __typename
+      title
       title2
       subtitle
       title2_empty

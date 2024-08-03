@@ -16,6 +16,31 @@ export default async function (configData) {
   body: JSON.stringify({
     query: `query {
 __typename
+settingsConnection {
+  __typename
+  edges {
+    __typename
+    node {
+      __typename
+      footer_links {
+        __typename
+        title
+        columns {
+          __typename
+          label
+          url
+          target
+
+        }
+
+      }
+      lang
+
+    }
+
+  }
+
+}
 connectorsConnection {
   __typename
   edges {
@@ -25,16 +50,6 @@ connectorsConnection {
       subtitle
       recommended
       advanced_users
-      connectors {
-        __typename
-        background_color
-        color
-        auth_url
-        description
-        icon
-        text
-
-      }
       help
       lang
 

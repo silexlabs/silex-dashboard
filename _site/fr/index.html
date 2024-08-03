@@ -2,7 +2,7 @@
 <html lang="">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/css/websites-4b9b2b0a0a907b33eca109d50c2a3eee97f1955c742cef487110d21a0bbf8f50.css" />
+<link rel="stylesheet" href="/css/websites-c678e6ed7f508aa4b0e9218070d7235ed56f0eaea49350b30b849f4ef176cfb0.css" />
 <!--  font google -->
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
@@ -34,6 +34,16 @@
   .button{
     min-width:110px;
   }
+  details {
+	max-height: 2em;
+    display: block;
+    overflow: hidden;
+    transition: max-height .75s ease;
+  }
+  details[open] {
+    max-height: 40em;
+  }
+
   /*BTNS*/
   a {
     text-decoration: none;
@@ -195,8 +205,8 @@ window.addEventListener('load', function() {
           // Start
           const user = await getUser({type: ConnectorType.STORAGE})
           // Escape single quotes in the picture URL and decode the picture URL
-          user.picture = decodeURIComponent(user.picture).replace(/'/g, "\\'")
           if(user) {
+	        user.picture = decodeURIComponent(user.picture).replace(/'/g, "\\'")
             this.user = user
             this.loggedIn = true
             this.websites = await websiteList({connectorId: this.user.storage.connectorId})
@@ -377,6 +387,105 @@ window.addEventListener('load', function() {
   <a href="https://short.silex.me/roadmap" class="footer__item" target="_blank">Feuille de route</a>
   <a href="https://short.silex.me/contribute" class="footer__item" target="_blank">Contribuer</a></div>
   <div id="isucae" class="footer__column"><h3 id="ipa5zg" href="" class="footer__item">Articles et revues</h3>
+    
+  <a href="https://short.silex.me/alternatives_fr" class="footer__item" target="_blank">Alternatives à Silex</a>
+  <a href="https://short.silex.me/reviews_fr" class="footer__item" target="_blank">Revues de Silex</a>
+  <a href="https://short.silex.me/press_fr" class="footer__item" target="_blank">Silex dans la presse</a></div></FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2" class="nav">
+    
+  <a href="/" class="nav__item uppercase fx-flash nav_item--active" target="">Sites</a>
+  <a href="http://docs.silex.me/" class="nav__item uppercase fx-flash nav_item--active" target="_blank">Docs</a>
+  <a href="https://www.silex.me/" class="nav__item uppercase fx-flash nav_item--active" target="_blank">A propos</a>
+  <a href="https://community.silex.me/" class="nav__item uppercase fx-flash nav_item--active" target="_blank">Communauté</a>
+  <a href="https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=fr-FR&source=silex-dashboard" class="nav__item uppercase fx-flash nav_item--active" target="_blank">News</a></NAV>
+    
+  <div class="lang"><a href="/en" class="lang__item nav__item uppercase">EN</a></div>
+  <div class="lang"><a href="/fr" class="lang__item nav__item uppercase">FR</a></div><div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div id="ir10ge-2-2" class="button button--tertiary text-centered">Logout</div></div></div></HEADER><FOOTER class="footer">
+    
+  <div id="ilgsqu" class="footer__column"><h3 href="" class="footer__item">Social & communauté</h3>
+    
+  <a href="https://www.silex.me/" class="footer__item" target="_blank">A propos de Silex, site officiel</a>
+  <a href="mailto:contact+silex-dashboard-footer@silex.me" class="footer__item" target="_blank">Email l'équipe</a>
+  <a href="https://short.silex.me/sponsors" class="footer__item" target="_blank">Sponsors</a>
+  <a href="https://short.silex.me/donate" class="footer__item" target="_blank">Faire un don</a>
+  <a href="https://short.silex.me/community" class="footer__item" target="_blank">Forum de la communauté</a>
+  <a href="https://news.silex.me/forms/nfrm_weLJnLY5" class="footer__item" target="_blank">Newsletter</a>
+  <a href="https://events.silex.me/" class="footer__item" target="_blank">Meetups/ Evénements</a>
+  <a href="https://short.silex.me/mastodon" class="footer__item" target="_blank">Mastodon</a>
+  <a href="https://short.silex.me/chat" class="footer__item" target="_blank">Chat</a></div>
+  <div id="ilgsqu" class="footer__column"><h3 href="" class="footer__item">Ressources</h3>
+    
+  <a href="https://short.silex.me/code" class="footer__item" target="_blank">Code source</a>
+  <a href="http://docs.silex.me/" class="footer__item" target="_blank">Documentation</a>
+  <a href="https://video.silex.me/my-library/video-playlists" class="footer__item" target="_blank">Vidéos</a>
+  <a href="https://short.silex.me/roadmap" class="footer__item" target="_blank">Feuille de route</a>
+  <a href="https://short.silex.me/contribute" class="footer__item" target="_blank">Contribuer</a></div>
+  <div id="ilgsqu" class="footer__column"><h3 href="" class="footer__item">Articles et revues</h3>
+    
+  <a href="https://short.silex.me/alternatives_fr" class="footer__item" target="_blank">Alternatives à Silex</a>
+  <a href="https://short.silex.me/reviews_fr" class="footer__item" target="_blank">Revues de Silex</a>
+  <a href="https://short.silex.me/press_fr" class="footer__item" target="_blank">Silex dans la presse</a></div></FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2-2" class="nav">
+    
+  <a href="/" class="nav__item uppercase fx-flash nav_item--active" target="">Sites</a>
+  <a href="http://docs.silex.me/" class="nav__item uppercase fx-flash nav_item--active" target="_blank">Docs</a>
+  <a href="https://www.silex.me/" class="nav__item uppercase fx-flash nav_item--active" target="_blank">A propos</a>
+  <a href="https://community.silex.me/" class="nav__item uppercase fx-flash nav_item--active" target="_blank">Communauté</a>
+  <a href="https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=fr-FR&source=silex-dashboard" class="nav__item uppercase fx-flash nav_item--active" target="_blank">News</a></NAV>
+    
+  <div class="lang"><a href="/en" class="lang__item nav__item uppercase">EN</a></div>
+  <div class="lang"><a href="/fr" class="lang__item nav__item uppercase">FR</a></div><div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div id="ir10ge-2-2-2" class="button button--tertiary text-centered">Logout</div></div></div></HEADER><FOOTER class="footer">
+    
+  <div id="ilgsqu-2" class="footer__column"><h3 href="" class="footer__item">Social & communauté</h3>
+    
+  <a href="https://www.silex.me/" class="footer__item" target="_blank">A propos de Silex, site officiel</a>
+  <a href="mailto:contact+silex-dashboard-footer@silex.me" class="footer__item" target="_blank">Email l'équipe</a>
+  <a href="https://short.silex.me/sponsors" class="footer__item" target="_blank">Sponsors</a>
+  <a href="https://short.silex.me/donate" class="footer__item" target="_blank">Faire un don</a>
+  <a href="https://short.silex.me/community" class="footer__item" target="_blank">Forum de la communauté</a>
+  <a href="https://news.silex.me/forms/nfrm_weLJnLY5" class="footer__item" target="_blank">Newsletter</a>
+  <a href="https://events.silex.me/" class="footer__item" target="_blank">Meetups/ Evénements</a>
+  <a href="https://short.silex.me/mastodon" class="footer__item" target="_blank">Mastodon</a>
+  <a href="https://short.silex.me/chat" class="footer__item" target="_blank">Chat</a></div>
+  <div id="ilgsqu-2" class="footer__column"><h3 href="" class="footer__item">Ressources</h3>
+    
+  <a href="https://short.silex.me/code" class="footer__item" target="_blank">Code source</a>
+  <a href="http://docs.silex.me/" class="footer__item" target="_blank">Documentation</a>
+  <a href="https://video.silex.me/my-library/video-playlists" class="footer__item" target="_blank">Vidéos</a>
+  <a href="https://short.silex.me/roadmap" class="footer__item" target="_blank">Feuille de route</a>
+  <a href="https://short.silex.me/contribute" class="footer__item" target="_blank">Contribuer</a></div>
+  <div id="ilgsqu-2" class="footer__column"><h3 href="" class="footer__item">Articles et revues</h3>
+    
+  <a href="https://short.silex.me/alternatives_fr" class="footer__item" target="_blank">Alternatives à Silex</a>
+  <a href="https://short.silex.me/reviews_fr" class="footer__item" target="_blank">Revues de Silex</a>
+  <a href="https://short.silex.me/press_fr" class="footer__item" target="_blank">Silex dans la presse</a></div></FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2-2-2" class="nav">
+    
+  <a href="/" class="nav__item uppercase fx-flash nav_item--active" target="">Sites</a>
+  <a href="http://docs.silex.me/" class="nav__item uppercase fx-flash nav_item--active" target="_blank">Docs</a>
+  <a href="https://www.silex.me/" class="nav__item uppercase fx-flash nav_item--active" target="_blank">A propos</a>
+  <a href="https://community.silex.me/" class="nav__item uppercase fx-flash nav_item--active" target="_blank">Communauté</a>
+  <a href="https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=fr-FR&source=silex-dashboard" class="nav__item uppercase fx-flash nav_item--active" target="_blank">News</a></NAV>
+    
+  <div class="lang"><a href="/en" class="lang__item nav__item uppercase">EN</a></div>
+  <div class="lang"><a href="/fr" class="lang__item nav__item uppercase">FR</a></div><div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div id="ir10ge-2-2-2-2" class="button button--tertiary text-centered">Logout</div></div></div></HEADER><FOOTER class="footer">
+    
+  <div id="ilgsqu-2-2" class="footer__column"><h3 href="" class="footer__item">Social & communauté</h3>
+    
+  <a href="https://www.silex.me/" class="footer__item" target="_blank">A propos de Silex, site officiel</a>
+  <a href="mailto:contact+silex-dashboard-footer@silex.me" class="footer__item" target="_blank">Email l'équipe</a>
+  <a href="https://short.silex.me/sponsors" class="footer__item" target="_blank">Sponsors</a>
+  <a href="https://short.silex.me/donate" class="footer__item" target="_blank">Faire un don</a>
+  <a href="https://short.silex.me/community" class="footer__item" target="_blank">Forum de la communauté</a>
+  <a href="https://news.silex.me/forms/nfrm_weLJnLY5" class="footer__item" target="_blank">Newsletter</a>
+  <a href="https://events.silex.me/" class="footer__item" target="_blank">Meetups/ Evénements</a>
+  <a href="https://short.silex.me/mastodon" class="footer__item" target="_blank">Mastodon</a>
+  <a href="https://short.silex.me/chat" class="footer__item" target="_blank">Chat</a></div>
+  <div id="ilgsqu-2-2" class="footer__column"><h3 href="" class="footer__item">Ressources</h3>
+    
+  <a href="https://short.silex.me/code" class="footer__item" target="_blank">Code source</a>
+  <a href="http://docs.silex.me/" class="footer__item" target="_blank">Documentation</a>
+  <a href="https://video.silex.me/my-library/video-playlists" class="footer__item" target="_blank">Vidéos</a>
+  <a href="https://short.silex.me/roadmap" class="footer__item" target="_blank">Feuille de route</a>
+  <a href="https://short.silex.me/contribute" class="footer__item" target="_blank">Contribuer</a></div>
+  <div id="ilgsqu-2-2" class="footer__column"><h3 href="" class="footer__item">Articles et revues</h3>
     
   <a href="https://short.silex.me/alternatives_fr" class="footer__item" target="_blank">Alternatives à Silex</a>
   <a href="https://short.silex.me/reviews_fr" class="footer__item" target="_blank">Revues de Silex</a>
