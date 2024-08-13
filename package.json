@@ -1,6 +1,6 @@
 {
   "name": "@silexlabs/silex-dashboard",
-  "version": "1.0.64",
+  "version": "1.0.65",
   "description": "Dashboard for Silex v3",
   "main": "silex/server-config.js",
   "scripts": {
@@ -32,10 +32,10 @@
     "@types/node": "^22.2.0",
     "concurrently": "^8.2.2",
     "start-server-and-test": "^2.0.5",
-    "@silexlabs/silex-cms": "^0.0.150"
+    "@silexlabs/silex-cms": "^0.0.152"
   },
   "peerDependencies": {
-    "@silexlabs/silex": "^3.0.0-alpha.168"
+    "@silexlabs/silex": "*"
   },
   "dependencies": {
     "locale": "^0.1.0",
