@@ -28,11 +28,13 @@
   "homepage": "https://github.com/silexlabs/silex-dashboard#readme",
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0-alpha.5",
-    "@tinacms/cli": "^1.5.52",
-    "@types/node": "^22.1.0",
+    "@tinacms/cli": "^1.5.53",
+    "@types/node": "^22.2.0",
     "concurrently": "^8.2.2",
     "start-server-and-test": "^2.0.5",
-    "@silexlabs/silex-cms": "^0.0.148",
+    "@silexlabs/silex-cms": "^0.0.150"
+  },
+  "peerDependencies": {
     "@silexlabs/silex": "^3.0.0-alpha.168"
   },
   "dependencies": {
