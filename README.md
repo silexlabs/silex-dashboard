@@ -10,13 +10,13 @@ For discussions and bug report please go to [Silex main project](https://github.
 
 ## Contribute
 
-Start 11ty
+Start Tina CMS
 
 ```sh
-$ npm run serve
+$ npm run tina:dev
 ```
 
-Start Silex
+In another terminal, start Silex and 11ty
 
 ```sh
 $ npm start

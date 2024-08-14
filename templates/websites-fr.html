@@ -374,7 +374,7 @@ window.addEventListener('load', function() {
     assign var_ik0i_821 = tina.homeConnection.edges | where: "node.lang", page.lang | first
 	assign var_ik0i_822 = var_ik0i_821.node
     assign state_ik0i-958_ik0i-24xejc2n0xy = var_ik0i_822
-  %}<body id="ik0i" class="body loading app before-js"><HEADER id="igrg" class="menu-bar"><A id="igvu43" href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="i9jq" class="nav">{% liquid
+  %}<body id="ik0i" class="body loading app before-js"><HEADER id="igrg" class="menu-bar"><A id="igvu43" href="/"><img src="/assets/picto-silex@3x.png" id="iel80b-2" class="nav__logo"/></A><NAV id="i9jq" class="nav">{% liquid
     assign var_iels_628 = tina.settingsConnection.edges | where: "node.lang", page.lang | first
 	assign var_iels_629 = var_iels_628.node.nav
     %}
@@ -426,8 +426,8 @@ window.addEventListener('load', function() {
     assign var_i021na_661 = state_ik0i-958_ik0i-24xejc2n0xy.add_ok
     echo var_i021na_661
   %}</button><button type="reset" class="button rounded button--secondary fx-scale-round" v-on:click="showCreationForm = !showCreationForm" v-if="!empty">{% liquid
-    assign var_ict83_662 = state_ik0i-958_ik0i-24xejc2n0xy.add_cancel
-    echo var_ict83_662
+    assign var_ibmmf_662 = state_ik0i-958_ik0i-24xejc2n0xy.add_cancel
+    echo var_ibmmf_662
   %}</button></div></form></div><div id="if80m" class="margin-20"><section id="idgvg" class="button-bar loaded__item" v-if="!loading" v-for="(website, index) in websites" :key="index"><h3 id="i69a7" class="right-space-40 color-2B1B63-80 uppercase pointer fx-flash full-width button-bar__title underline" v-on:click="openEditor(website.websiteId, 'en')" v-text="website.name || website.id">My first website</h3><p id="i65hn" class="button-bar__item--secondary flex-no-shrink right-space-40" v-text="'Updated ' + new Date(website.updatedAt).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })">Updated 1h ago by lexoyo</p><p id="i64qa" class="button-bar__item--secondary flex-no-shrink right-space-40" v-text="'Created ' + new Date(website.createdAt).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })">Created 2023-02-16 by lexoyo</p><div id="i3b4tr" class="flex-no-shrink"><button id="ifyf6p" title="{% liquid
     assign var_ifyf6p_671 = state_ik0i-958_ik0i-24xejc2n0xy.list_edit
     echo var_ifyf6p_671
@@ -472,275 +472,275 @@ window.addEventListener('load', function() {
     assign var_ipa5zg_694 = state_isucae-3308___data.title
     echo var_ipa5zg_694
   %}</h3>{% liquid
-    assign var_i70x7n_696 = state_isucae-3308___data.columns
+    assign var_igoone_696 = state_isucae-3308___data.columns
     %}
-    {% for state_i2u9h4-2642___data in var_i70x7n_696 %}
+    {% for state_i2u9h4-2642___data in var_igoone_696 %}
   <a href="{% liquid
-    assign var_i70x7n_697 = state_i2u9h4-2642___data.url
-    echo var_i70x7n_697
+    assign var_igoone_697 = state_i2u9h4-2642___data.url
+    echo var_igoone_697
   %}" class="footer__item" target="{% liquid
-    assign var_i70x7n_698 = state_i2u9h4-2642___data.target
-    echo var_i70x7n_698
+    assign var_igoone_698 = state_i2u9h4-2642___data.target
+    echo var_igoone_698
   %}">{% liquid
-    assign var_i70x7n_695 = state_i2u9h4-2642___data.label
-    echo var_i70x7n_695
-  %}</a>{% endfor %}</div>{% endfor %}</FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2" class="nav">{% liquid
-    assign var_iftafe_701 = state_ik0i-958_ik0i-e8l061o7k5.node.nav
+    assign var_igoone_695 = state_i2u9h4-2642___data.label
+    echo var_igoone_695
+  %}</a>{% endfor %}</div>{% endfor %}</FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/picto-silex@3x.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2" class="nav">{% liquid
+    assign var_izc859_701 = state_ik0i-958_ik0i-e8l061o7k5.node.nav
     %}
-    {% for state_iels-228___data in var_iftafe_701 %}
+    {% for state_iels-228___data in var_izc859_701 %}
   <a href="{% liquid
-    assign var_iftafe_702 = state_iels-228___data.url
-    echo var_iftafe_702
+    assign var_izc859_702 = state_iels-228___data.url
+    echo var_izc859_702
   %}" class="nav__item uppercase fx-flash nav_item--active" target="{% liquid
-    assign var_iftafe_703 = state_iels-228___data.target
-    echo var_iftafe_703
+    assign var_izc859_703 = state_iels-228___data.target
+    echo var_izc859_703
   %}">{% liquid
-    assign var_iftafe_700 = state_iels-228___data.label
-    echo var_iftafe_700
+    assign var_izc859_700 = state_iels-228___data.label
+    echo var_izc859_700
   %}</a>{% endfor %}</NAV>{% liquid
-    assign var_inztu2_708 = tina.languagesConnection.edges
+    assign var_iidpon_708 = tina.languagesConnection.edges
     %}
-    {% for state_i2red7-8291___data in var_inztu2_708 %}
+    {% for state_i2red7-8291___data in var_iidpon_708 %}
   <div class="lang"><a href="{% liquid
-    assign var_i9m0fs_707 = state_i2red7-8291___data.node.permalink
-    echo var_i9m0fs_707
+    assign var_iwi8yo_707 = state_i2red7-8291___data.node.permalink
+    echo var_iwi8yo_707
   %}" class="lang__item nav__item uppercase">{% liquid
-    assign var_i9m0fs_706 = state_i2red7-8291___data.node.label
-    echo var_i9m0fs_706
+    assign var_iwi8yo_706 = state_i2red7-8291___data.node.label
+    echo var_iwi8yo_706
   %}</a></div>{% endfor %}<div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div id="ir10ge-2-2" class="button button--tertiary text-centered">Logout</div></div></div></HEADER><FOOTER class="footer">{% liquid
     assign var_ilgsqu_719 = state_ik0i-958_ik0i-e8l061o7k5.node.footer_links
     %}
     {% for state_isucae-3308___data in var_ilgsqu_719 %}
   <div id="ilgsqu" style="min-height:100px;" class="footer__column"><h3 href="" class="footer__item">{% liquid
-    assign var_izos64_714 = state_isucae-3308___data.title
-    echo var_izos64_714
+    assign var_ig6fcw_714 = state_isucae-3308___data.title
+    echo var_ig6fcw_714
   %}</h3>{% liquid
-    assign var_ihjatf_716 = state_isucae-3308___data.columns
+    assign var_i9vapb_716 = state_isucae-3308___data.columns
     %}
-    {% for state_i2u9h4-2642___data in var_ihjatf_716 %}
+    {% for state_i2u9h4-2642___data in var_i9vapb_716 %}
   <a href="{% liquid
-    assign var_ihjatf_717 = state_i2u9h4-2642___data.url
-    echo var_ihjatf_717
+    assign var_i9vapb_717 = state_i2u9h4-2642___data.url
+    echo var_i9vapb_717
   %}" class="footer__item" target="{% liquid
-    assign var_ihjatf_718 = state_i2u9h4-2642___data.target
-    echo var_ihjatf_718
+    assign var_i9vapb_718 = state_i2u9h4-2642___data.target
+    echo var_i9vapb_718
   %}">{% liquid
-    assign var_ihjatf_715 = state_i2u9h4-2642___data.label
-    echo var_ihjatf_715
-  %}</a>{% endfor %}</div>{% endfor %}</FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2-2" class="nav">{% liquid
-    assign var_ilcxcu_721 = state_ik0i-958_ik0i-e8l061o7k5.node.nav
+    assign var_i9vapb_715 = state_i2u9h4-2642___data.label
+    echo var_i9vapb_715
+  %}</a>{% endfor %}</div>{% endfor %}</FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/picto-silex@3x.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2-2" class="nav">{% liquid
+    assign var_iw92sf_721 = state_ik0i-958_ik0i-e8l061o7k5.node.nav
     %}
-    {% for state_iels-228___data in var_ilcxcu_721 %}
+    {% for state_iels-228___data in var_iw92sf_721 %}
   <a href="{% liquid
-    assign var_ilcxcu_722 = state_iels-228___data.url
-    echo var_ilcxcu_722
+    assign var_iw92sf_722 = state_iels-228___data.url
+    echo var_iw92sf_722
   %}" class="nav__item uppercase fx-flash nav_item--active" target="{% liquid
-    assign var_ilcxcu_723 = state_iels-228___data.target
-    echo var_ilcxcu_723
+    assign var_iw92sf_723 = state_iels-228___data.target
+    echo var_iw92sf_723
   %}">{% liquid
-    assign var_ilcxcu_720 = state_iels-228___data.label
-    echo var_ilcxcu_720
+    assign var_iw92sf_720 = state_iels-228___data.label
+    echo var_iw92sf_720
   %}</a>{% endfor %}</NAV>{% liquid
-    assign var_igxn1h_728 = tina.languagesConnection.edges
+    assign var_ivu6aw_728 = tina.languagesConnection.edges
     %}
-    {% for state_i2red7-8291___data in var_igxn1h_728 %}
+    {% for state_i2red7-8291___data in var_ivu6aw_728 %}
   <div class="lang"><a href="{% liquid
-    assign var_imt6jk_727 = state_i2red7-8291___data.node.permalink
-    echo var_imt6jk_727
+    assign var_iqzaxg_727 = state_i2red7-8291___data.node.permalink
+    echo var_iqzaxg_727
   %}" class="lang__item nav__item uppercase">{% liquid
-    assign var_imt6jk_726 = state_i2red7-8291___data.node.label
-    echo var_imt6jk_726
+    assign var_iqzaxg_726 = state_i2red7-8291___data.node.label
+    echo var_iqzaxg_726
   %}</a></div>{% endfor %}<div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div id="ir10ge-2-2-2" class="button button--tertiary text-centered">Logout</div></div></div></HEADER><FOOTER class="footer">{% liquid
     assign var_ilgsqu-2_739 = state_ik0i-958_ik0i-e8l061o7k5.node.footer_links
     %}
     {% for state_isucae-3308___data in var_ilgsqu-2_739 %}
   <div id="ilgsqu-2" class="footer__column"><h3 href="" class="footer__item">{% liquid
-    assign var_i29bsj_734 = state_isucae-3308___data.title
-    echo var_i29bsj_734
+    assign var_i8gv6w_734 = state_isucae-3308___data.title
+    echo var_i8gv6w_734
   %}</h3>{% liquid
-    assign var_ikbqeh_736 = state_isucae-3308___data.columns
+    assign var_i3s293_736 = state_isucae-3308___data.columns
     %}
-    {% for state_i2u9h4-2642___data in var_ikbqeh_736 %}
+    {% for state_i2u9h4-2642___data in var_i3s293_736 %}
   <a href="{% liquid
-    assign var_ikbqeh_737 = state_i2u9h4-2642___data.url
-    echo var_ikbqeh_737
+    assign var_i3s293_737 = state_i2u9h4-2642___data.url
+    echo var_i3s293_737
   %}" class="footer__item" target="{% liquid
-    assign var_ikbqeh_738 = state_i2u9h4-2642___data.target
-    echo var_ikbqeh_738
+    assign var_i3s293_738 = state_i2u9h4-2642___data.target
+    echo var_i3s293_738
   %}">{% liquid
-    assign var_ikbqeh_735 = state_i2u9h4-2642___data.label
-    echo var_ikbqeh_735
-  %}</a>{% endfor %}</div>{% endfor %}</FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2-2-2" class="nav">{% liquid
-    assign var_ioymrj_741 = state_ik0i-958_ik0i-e8l061o7k5.node.nav
+    assign var_i3s293_735 = state_i2u9h4-2642___data.label
+    echo var_i3s293_735
+  %}</a>{% endfor %}</div>{% endfor %}</FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/picto-silex@3x.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2-2-2" class="nav">{% liquid
+    assign var_iap0ka_741 = state_ik0i-958_ik0i-e8l061o7k5.node.nav
     %}
-    {% for state_iels-228___data in var_ioymrj_741 %}
+    {% for state_iels-228___data in var_iap0ka_741 %}
   <a href="{% liquid
-    assign var_ioymrj_742 = state_iels-228___data.url
-    echo var_ioymrj_742
+    assign var_iap0ka_742 = state_iels-228___data.url
+    echo var_iap0ka_742
   %}" class="nav__item uppercase fx-flash nav_item--active" target="{% liquid
-    assign var_ioymrj_743 = state_iels-228___data.target
-    echo var_ioymrj_743
+    assign var_iap0ka_743 = state_iels-228___data.target
+    echo var_iap0ka_743
   %}">{% liquid
-    assign var_ioymrj_740 = state_iels-228___data.label
-    echo var_ioymrj_740
+    assign var_iap0ka_740 = state_iels-228___data.label
+    echo var_iap0ka_740
   %}</a>{% endfor %}</NAV>{% liquid
-    assign var_iea57v_748 = tina.languagesConnection.edges
+    assign var_ilx1i6_748 = tina.languagesConnection.edges
     %}
-    {% for state_i2red7-8291___data in var_iea57v_748 %}
+    {% for state_i2red7-8291___data in var_ilx1i6_748 %}
   <div class="lang"><a href="{% liquid
-    assign var_iz3qd6_747 = state_i2red7-8291___data.node.permalink
-    echo var_iz3qd6_747
+    assign var_ipjiec_747 = state_i2red7-8291___data.node.permalink
+    echo var_ipjiec_747
   %}" class="lang__item nav__item uppercase">{% liquid
-    assign var_iz3qd6_746 = state_i2red7-8291___data.node.label
-    echo var_iz3qd6_746
+    assign var_ipjiec_746 = state_i2red7-8291___data.node.label
+    echo var_ipjiec_746
   %}</a></div>{% endfor %}<div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div id="ir10ge-2-2-2-2" class="button button--tertiary text-centered">Logout</div></div></div></HEADER><FOOTER class="footer">{% liquid
     assign var_ilgsqu-2-2_759 = state_ik0i-958_ik0i-e8l061o7k5.node.footer_links
     %}
     {% for state_isucae-3308___data in var_ilgsqu-2-2_759 %}
   <div id="ilgsqu-2-2" class="footer__column"><h3 href="" class="footer__item">{% liquid
-    assign var_i1ilzy_754 = state_isucae-3308___data.title
-    echo var_i1ilzy_754
+    assign var_iu1wys_754 = state_isucae-3308___data.title
+    echo var_iu1wys_754
   %}</h3>{% liquid
-    assign var_imyjvf_756 = state_isucae-3308___data.columns
+    assign var_i0au2l_756 = state_isucae-3308___data.columns
     %}
-    {% for state_i2u9h4-2642___data in var_imyjvf_756 %}
+    {% for state_i2u9h4-2642___data in var_i0au2l_756 %}
   <a href="{% liquid
-    assign var_imyjvf_757 = state_i2u9h4-2642___data.url
-    echo var_imyjvf_757
+    assign var_i0au2l_757 = state_i2u9h4-2642___data.url
+    echo var_i0au2l_757
   %}" class="footer__item" target="{% liquid
-    assign var_imyjvf_758 = state_i2u9h4-2642___data.target
-    echo var_imyjvf_758
+    assign var_i0au2l_758 = state_i2u9h4-2642___data.target
+    echo var_i0au2l_758
   %}">{% liquid
-    assign var_imyjvf_755 = state_i2u9h4-2642___data.label
-    echo var_imyjvf_755
-  %}</a>{% endfor %}</div>{% endfor %}</FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2-2-2-2" class="nav">{% liquid
-    assign var_idhmql_761 = state_ik0i-958_ik0i-e8l061o7k5.node.nav
+    assign var_i0au2l_755 = state_i2u9h4-2642___data.label
+    echo var_i0au2l_755
+  %}</a>{% endfor %}</div>{% endfor %}</FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/picto-silex@3x.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2-2-2-2" class="nav">{% liquid
+    assign var_iiihfi_761 = state_ik0i-958_ik0i-e8l061o7k5.node.nav
     %}
-    {% for state_iels-228___data in var_idhmql_761 %}
+    {% for state_iels-228___data in var_iiihfi_761 %}
   <a href="{% liquid
-    assign var_idhmql_762 = state_iels-228___data.url
-    echo var_idhmql_762
+    assign var_iiihfi_762 = state_iels-228___data.url
+    echo var_iiihfi_762
   %}" class="nav__item uppercase fx-flash nav_item--active" target="{% liquid
-    assign var_idhmql_763 = state_iels-228___data.target
-    echo var_idhmql_763
+    assign var_iiihfi_763 = state_iels-228___data.target
+    echo var_iiihfi_763
   %}">{% liquid
-    assign var_idhmql_760 = state_iels-228___data.label
-    echo var_idhmql_760
+    assign var_iiihfi_760 = state_iels-228___data.label
+    echo var_iiihfi_760
   %}</a>{% endfor %}</NAV>{% liquid
-    assign var_iy8dw1_768 = tina.languagesConnection.edges
+    assign var_it82ok_768 = tina.languagesConnection.edges
     %}
-    {% for state_i2red7-8291___data in var_iy8dw1_768 %}
+    {% for state_i2red7-8291___data in var_it82ok_768 %}
   <div class="lang"><a href="{% liquid
-    assign var_ij8uvg_767 = state_i2red7-8291___data.node.permalink
-    echo var_ij8uvg_767
+    assign var_iivt2t_767 = state_i2red7-8291___data.node.permalink
+    echo var_iivt2t_767
   %}" class="lang__item nav__item uppercase">{% liquid
-    assign var_ij8uvg_766 = state_i2red7-8291___data.node.label
-    echo var_ij8uvg_766
+    assign var_iivt2t_766 = state_i2red7-8291___data.node.label
+    echo var_iivt2t_766
   %}</a></div>{% endfor %}<div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div id="ir10ge-2-2-2-2-2" class="button button--tertiary text-centered">Logout</div></div></div></HEADER><FOOTER class="footer">{% liquid
     assign var_ilgsqu-2-2-2_779 = state_ik0i-958_ik0i-e8l061o7k5.node.footer_links
     %}
     {% for state_isucae-3308___data in var_ilgsqu-2-2-2_779 %}
   <div id="ilgsqu-2-2-2" class="footer__column"><h3 href="" class="footer__item">{% liquid
-    assign var_iwophc_774 = state_isucae-3308___data.title
-    echo var_iwophc_774
+    assign var_idcvr3_774 = state_isucae-3308___data.title
+    echo var_idcvr3_774
   %}</h3>{% liquid
-    assign var_ikqzqi_776 = state_isucae-3308___data.columns
+    assign var_iakhnn_776 = state_isucae-3308___data.columns
     %}
-    {% for state_i2u9h4-2642___data in var_ikqzqi_776 %}
+    {% for state_i2u9h4-2642___data in var_iakhnn_776 %}
   <a href="{% liquid
-    assign var_ikqzqi_777 = state_i2u9h4-2642___data.url
-    echo var_ikqzqi_777
+    assign var_iakhnn_777 = state_i2u9h4-2642___data.url
+    echo var_iakhnn_777
   %}" class="footer__item" target="{% liquid
-    assign var_ikqzqi_778 = state_i2u9h4-2642___data.target
-    echo var_ikqzqi_778
+    assign var_iakhnn_778 = state_i2u9h4-2642___data.target
+    echo var_iakhnn_778
   %}">{% liquid
-    assign var_ikqzqi_775 = state_i2u9h4-2642___data.label
-    echo var_ikqzqi_775
-  %}</a>{% endfor %}</div>{% endfor %}</FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2-2-2-2-2" class="nav">{% liquid
-    assign var_ic2opl_781 = state_ik0i-958_ik0i-e8l061o7k5.node.nav
+    assign var_iakhnn_775 = state_i2u9h4-2642___data.label
+    echo var_iakhnn_775
+  %}</a>{% endfor %}</div>{% endfor %}</FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/picto-silex@3x.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2-2-2-2-2" class="nav">{% liquid
+    assign var_ixohhk_781 = state_ik0i-958_ik0i-e8l061o7k5.node.nav
     %}
-    {% for state_iels-228___data in var_ic2opl_781 %}
+    {% for state_iels-228___data in var_ixohhk_781 %}
   <a href="{% liquid
-    assign var_ic2opl_782 = state_iels-228___data.url
-    echo var_ic2opl_782
+    assign var_ixohhk_782 = state_iels-228___data.url
+    echo var_ixohhk_782
   %}" class="nav__item uppercase fx-flash nav_item--active" target="{% liquid
-    assign var_ic2opl_783 = state_iels-228___data.target
-    echo var_ic2opl_783
+    assign var_ixohhk_783 = state_iels-228___data.target
+    echo var_ixohhk_783
   %}">{% liquid
-    assign var_ic2opl_780 = state_iels-228___data.label
-    echo var_ic2opl_780
+    assign var_ixohhk_780 = state_iels-228___data.label
+    echo var_ixohhk_780
   %}</a>{% endfor %}</NAV>{% liquid
-    assign var_imaa54_788 = tina.languagesConnection.edges
+    assign var_iygkpj_788 = tina.languagesConnection.edges
     %}
-    {% for state_i2red7-8291___data in var_imaa54_788 %}
+    {% for state_i2red7-8291___data in var_iygkpj_788 %}
   <div class="lang"><a href="{% liquid
-    assign var_irxyrx_787 = state_i2red7-8291___data.node.permalink
-    echo var_irxyrx_787
+    assign var_ipa2wt_787 = state_i2red7-8291___data.node.permalink
+    echo var_ipa2wt_787
   %}" class="lang__item nav__item uppercase">{% liquid
-    assign var_irxyrx_786 = state_i2red7-8291___data.node.label
-    echo var_irxyrx_786
+    assign var_ipa2wt_786 = state_i2red7-8291___data.node.label
+    echo var_ipa2wt_786
   %}</a></div>{% endfor %}<div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div id="ir10ge-2-2-2-2-2-2" class="button button--tertiary text-centered">Logout</div></div></div></HEADER><FOOTER class="footer">{% liquid
     assign var_ilgsqu-2-2-2-2_799 = state_ik0i-958_ik0i-e8l061o7k5.node.footer_links
     %}
     {% for state_isucae-3308___data in var_ilgsqu-2-2-2-2_799 %}
   <div id="ilgsqu-2-2-2-2" class="footer__column"><h3 href="" class="footer__item">{% liquid
-    assign var_i8z8qg_794 = state_isucae-3308___data.title
-    echo var_i8z8qg_794
+    assign var_izbfso_794 = state_isucae-3308___data.title
+    echo var_izbfso_794
   %}</h3>{% liquid
-    assign var_i8sl51_796 = state_isucae-3308___data.columns
+    assign var_ir1t73_796 = state_isucae-3308___data.columns
     %}
-    {% for state_i2u9h4-2642___data in var_i8sl51_796 %}
+    {% for state_i2u9h4-2642___data in var_ir1t73_796 %}
   <a href="{% liquid
-    assign var_i8sl51_797 = state_i2u9h4-2642___data.url
-    echo var_i8sl51_797
+    assign var_ir1t73_797 = state_i2u9h4-2642___data.url
+    echo var_ir1t73_797
   %}" class="footer__item" target="{% liquid
-    assign var_i8sl51_798 = state_i2u9h4-2642___data.target
-    echo var_i8sl51_798
+    assign var_ir1t73_798 = state_i2u9h4-2642___data.target
+    echo var_ir1t73_798
   %}">{% liquid
-    assign var_i8sl51_795 = state_i2u9h4-2642___data.label
-    echo var_i8sl51_795
-  %}</a>{% endfor %}</div>{% endfor %}</FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/favicon-32x32.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2-2-2-2-2-2" class="nav">{% liquid
-    assign var_iqrzzz_801 = state_ik0i-958_ik0i-e8l061o7k5.node.nav
+    assign var_ir1t73_795 = state_i2u9h4-2642___data.label
+    echo var_ir1t73_795
+  %}</a>{% endfor %}</div>{% endfor %}</FOOTER><HEADER class="menu-bar"><A href="/"><img src="/assets/picto-silex@3x.png" id="iel80b-2" class="nav__logo"/></A><NAV id="in0357-2-2-2-2-2-2-2" class="nav">{% liquid
+    assign var_i99cki_801 = state_ik0i-958_ik0i-e8l061o7k5.node.nav
     %}
-    {% for state_iels-228___data in var_iqrzzz_801 %}
+    {% for state_iels-228___data in var_i99cki_801 %}
   <a href="{% liquid
-    assign var_iqrzzz_802 = state_iels-228___data.url
-    echo var_iqrzzz_802
+    assign var_i99cki_802 = state_iels-228___data.url
+    echo var_i99cki_802
   %}" class="nav__item uppercase fx-flash nav_item--active" target="{% liquid
-    assign var_iqrzzz_803 = state_iels-228___data.target
-    echo var_iqrzzz_803
+    assign var_i99cki_803 = state_iels-228___data.target
+    echo var_i99cki_803
   %}">{% liquid
-    assign var_iqrzzz_800 = state_iels-228___data.label
-    echo var_iqrzzz_800
+    assign var_i99cki_800 = state_iels-228___data.label
+    echo var_i99cki_800
   %}</a>{% endfor %}</NAV>{% liquid
-    assign var_irxaek_808 = tina.languagesConnection.edges
+    assign var_ijp094_808 = tina.languagesConnection.edges
     %}
-    {% for state_i2red7-8291___data in var_irxaek_808 %}
+    {% for state_i2red7-8291___data in var_ijp094_808 %}
   <div class="lang"><a href="{% liquid
-    assign var_isfvmh_807 = state_i2red7-8291___data.node.permalink
-    echo var_isfvmh_807
+    assign var_idmg8z_807 = state_i2red7-8291___data.node.permalink
+    echo var_idmg8z_807
   %}" class="lang__item nav__item uppercase">{% liquid
-    assign var_isfvmh_806 = state_i2red7-8291___data.node.label
-    echo var_isfvmh_806
+    assign var_idmg8z_806 = state_i2red7-8291___data.node.label
+    echo var_idmg8z_806
   %}</a></div>{% endfor %}<div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div id="ir10ge-2-2-2-2-2-2-2" class="button button--tertiary text-centered">Logout</div></div></div></HEADER><FOOTER class="footer">{% liquid
     assign var_ilgsqu-2-2-2-2-2_819 = state_ik0i-958_ik0i-e8l061o7k5.node.footer_links
     %}
     {% for state_isucae-3308___data in var_ilgsqu-2-2-2-2-2_819 %}
   <div id="ilgsqu-2-2-2-2-2" class="footer__column"><h3 href="" class="footer__item">{% liquid
-    assign var_iecsuc_814 = state_isucae-3308___data.title
-    echo var_iecsuc_814
+    assign var_ilkcfh_814 = state_isucae-3308___data.title
+    echo var_ilkcfh_814
   %}</h3>{% liquid
-    assign var_i3xafp_816 = state_isucae-3308___data.columns
+    assign var_ihunqj_816 = state_isucae-3308___data.columns
     %}
-    {% for state_i2u9h4-2642___data in var_i3xafp_816 %}
+    {% for state_i2u9h4-2642___data in var_ihunqj_816 %}
   <a href="{% liquid
-    assign var_i3xafp_817 = state_i2u9h4-2642___data.url
-    echo var_i3xafp_817
+    assign var_ihunqj_817 = state_i2u9h4-2642___data.url
+    echo var_ihunqj_817
   %}" class="footer__item" target="{% liquid
-    assign var_i3xafp_818 = state_i2u9h4-2642___data.target
-    echo var_i3xafp_818
+    assign var_ihunqj_818 = state_i2u9h4-2642___data.target
+    echo var_ihunqj_818
   %}">{% liquid
-    assign var_i3xafp_815 = state_i2u9h4-2642___data.label
-    echo var_i3xafp_815
+    assign var_ihunqj_815 = state_i2u9h4-2642___data.label
+    echo var_ihunqj_815
   %}</a>{% endfor %}</div>{% endfor %}</FOOTER></body>
 </html>

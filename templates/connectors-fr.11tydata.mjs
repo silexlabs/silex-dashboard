@@ -10,7 +10,7 @@ export default async function (configData) {
   result['tina'] = (await (await fetch(`http://localhost:4001/graphql`, {
 
   headers: {
-    'Content-Type': `application/json`,
+    'content-type': `application/json`,
   },
   method: 'POST',
   body: JSON.stringify({
