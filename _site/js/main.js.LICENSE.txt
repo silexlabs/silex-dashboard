@@ -1,6 +1,6 @@
 /*!
  * Backbone.Undo.js v0.2
- *
+ * 
  * Copyright (c)2013 Oliver Sartun
  * Released under the MIT License
  *
@@ -28,6 +28,12 @@
 /**
  * @license
  * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+/**
+ * @license
+ * Copyright 2020 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
 

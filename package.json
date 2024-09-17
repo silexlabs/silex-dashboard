@@ -28,17 +28,17 @@
   "homepage": "https://github.com/silexlabs/silex-dashboard#readme",
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0-alpha.5",
-    "@tinacms/cli": "^1.5.53",
-    "@types/node": "^22.3.0",
-    "concurrently": "^8.2.2",
-    "start-server-and-test": "^2.0.5"
+    "@tinacms/cli": "^1.6.3",
+    "@types/node": "^22.5.5",
+    "concurrently": "^9.0.1",
+    "start-server-and-test": "^2.0.8"
   },
   "dependencies": {
-    "@silexlabs/silex": "^3.0.0-alpha.172",
-    "@silexlabs/silex-cms": "^0.0.153",
+    "@silexlabs/silex": "^3.0.0-alpha.176",
+    "@silexlabs/silex-cms": "^0.0.156",
     "locale": "^0.1.0",
     "node_modules-path": "^2.0.8",
-    "serve-static": "^1.15.0",
-    "vue": "^3.4.37"
+    "serve-static": "^1.16.2",
+    "vue": "^3.5.6"
   }
 }
