@@ -7,7 +7,7 @@ export default async function (configData) {
   }
   const result = {}
   try {
-  result['tina'] = (await (await fetch(`http://localhost:4001/graphql`, {
+  const response = await fetch(`http://localhost:4001/graphql`, {
 
   headers: {
     'content-type': `application/json`,
@@ -61,7 +61,9 @@ connectorsConnection {
 
 }`,
   })
-  })).json()).data
+  })
+  const json = await response.json()
+  result['tina'] = json.data
 } catch (e) {
   console.error('11ty plugin for Silex: error fetching graphql data', e, 'tina', 'http://localhost:4001/graphql')
   throw e
