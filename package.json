@@ -27,15 +27,15 @@
   },
   "homepage": "https://github.com/silexlabs/silex-dashboard#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0-alpha.5",
-    "@tinacms/cli": "^1.6.5",
+    "@11ty/eleventy": "^3.0.0",
+    "@tinacms/cli": "^1.6.8",
     "@types/node": "^22.7.4",
     "concurrently": "^9.0.1",
     "start-server-and-test": "^2.0.8"
   },
   "dependencies": {
-    "@silexlabs/silex": "^3.0.0-alpha.177",
-    "@silexlabs/silex-cms": "^0.0.156",
+    "@silexlabs/silex": "^3.0.0-alpha.179",
+    "@silexlabs/silex-cms": "^0.0.157",
     "locale": "^0.1.0",
     "node_modules-path": "^2.0.8",
     "serve-static": "^1.16.2",
