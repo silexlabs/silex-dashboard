@@ -5,6 +5,9 @@ title2: Bienvenue sur Silex
 subtitle: Connectez-vous pour continuer
 recommended: Recommandé et gratuit
 advanced_users: Utilisateurs avancés
+rgpd:
+  feedbackCheck: Autoriser le contact pour débogage et feedback
+  nlCheck: S'abonner à la newsletter
 help: >-
   Avez-vous besoin d'aide ? Consultez <a href="https://docs.silex.me/fr/user/login" target="_blank">la documentation</a>.
   <br><br>

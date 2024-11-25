@@ -184,6 +184,16 @@ export default defineConfig({
             type: 'string',
           },
           {
+            label: 'RGPD',
+            name: 'rgpd',
+            type: 'object',
+            list: false,
+            fields: [
+              { label: 'Label feedback', name: 'feedbackCheck', type: 'string' },
+              { label: 'Label newsletter', name: 'nlCheck', type: 'string' },
+            ],
+          },
+          {
             label: 'Help',
             name: 'help',
             type: 'string',
