@@ -34,8 +34,8 @@
     "start-server-and-test": "^2.0.9"
   },
   "dependencies": {
-    "@silexlabs/silex": "^3.0.0-alpha.185",
-    "@silexlabs/silex-cms": "^0.0.165",
+    "@silexlabs/silex": "^3.0.1",
+    "@silexlabs/silex-cms": "^0.1.0",
     "locale": "^0.1.0",
     "node_modules-path": "^2.0.8",
     "serve-static": "^1.16.2",
