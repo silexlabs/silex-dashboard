@@ -1,6 +1,6 @@
 {
   "name": "@silexlabs/silex-dashboard",
-  "version": "1.0.87",
+  "version": "1.0.88",
   "description": "Dashboard for Silex v3",
   "main": "silex/server-config.js",
   "scripts": {
