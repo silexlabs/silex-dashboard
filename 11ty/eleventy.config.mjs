@@ -32,9 +32,10 @@ export default async function (eleventyConfig) {
       for(const file of await fs.readdir(`${nodeModules('vue')}/vue/dist/`)) {
         await fs.copyFile(`${nodeModules('vue')}/vue/dist/${file}`, `${dir.output}/js/${file}`)
       }
-      for(const file of await fs.readdir(`${nodeModules('@silexlabs/silex')}/@silexlabs/silex/dist/client/js/`)) {
-        await fs.copyFile(`${nodeModules('@silexlabs/silex')}/@silexlabs/silex/dist/client/js/${file}`, `${dir.output}/js/${file}`)
-      }
+      // No need because it will be served by the silex server
+      //for(const file of await fs.readdir(`${nodeModules('@silexlabs/silex')}/@silexlabs/silex/dist/client/js/`)) {
+      //  await fs.copyFile(`${nodeModules('@silexlabs/silex')}/@silexlabs/silex/dist/client/js/${file}`, `${dir.output}/js/${file}`)
+      //}
 		}
 	)
   // // Ignore all files from ../.gitignore
