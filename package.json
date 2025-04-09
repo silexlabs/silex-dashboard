@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@silexlabs/silex": "^3.0.6",
-    "@silexlabs/silex-cms": "^0.1.5",
+    "@silexlabs/silex-cms": "^0.1.6",
     "locale": "^0.1.0",
     "node_modules-path": "^2.0.8",
     "serve-static": "^2.2.0",
