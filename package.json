@@ -29,12 +29,12 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@tinacms/cli": "^1.9.5",
-    "@types/node": "^22.14.0",
+    "@types/node": "^22.14.1",
     "concurrently": "^9.1.2",
     "start-server-and-test": "^2.0.11"
   },
   "dependencies": {
-    "@silexlabs/silex": "^3.0.6",
+    "@silexlabs/silex": "^3.0.7",
     "@silexlabs/silex-cms": "^0.1.6",
     "locale": "^0.1.0",
     "node_modules-path": "^2.0.8",
