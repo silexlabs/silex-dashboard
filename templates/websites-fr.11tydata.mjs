@@ -10,7 +10,7 @@ export default async function (configData) {
   const response = await fetch(`http://localhost:4001/graphql`, {
 
   headers: {
-    'content-type': `application/json`,
+    'Content-Type': `application/json`,
   },
   method: 'POST',
   body: JSON.stringify({
