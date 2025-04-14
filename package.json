@@ -26,6 +26,10 @@
     "url": "https://github.com/silexlabs/silex-dashboard/issues"
   },
   "homepage": "https://github.com/silexlabs/silex-dashboard#readme",
+  "peerDependencies": {
+    "@silexlabs/silex": ">=3.0.4",
+    "@silexlabs/silex-cms": ">=0.1.4"
+  },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@tinacms/cli": "^1.9.5",
@@ -34,8 +38,6 @@
     "start-server-and-test": "^2.0.11"
   },
   "dependencies": {
-    "@silexlabs/silex": "^3.0.7",
-    "@silexlabs/silex-cms": "^0.1.6",
     "locale": "^0.1.0",
     "node_modules-path": "^2.0.8",
     "serve-static": "^2.2.0",
