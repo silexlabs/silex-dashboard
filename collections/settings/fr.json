@@ -2,27 +2,22 @@
   "lang": "fr",
   "nav": [
     {
-      "label": "Sites",
+      "label": "Mes Sites",
       "url": "/"
     },
     {
       "label": "Docs",
-      "url": "http://docs.silex.me/",
+      "url": "https://docs.silex.me/fr/home",
       "target": "_blank"
     },
     {
-      "label": "A propos",
-      "url": "https://www.silex.me/",
+      "label": "Forum",
+      "url": "https://short.silex.me/community_fr/",
       "target": "_blank"
     },
     {
-      "label": "Communauté",
-      "url": "https://community.silex.me/",
-      "target": "_blank"
-    },
-    {
-      "label": "News",
-      "url": "https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=fr-FR&source=silex-dashboard",
+      "label": "Chat",
+      "url": "https://short.silex.me/chat",
       "target": "_blank"
     }
   ],
@@ -30,6 +25,7 @@
     {
       "title": "Social & communauté",
       "columns": [
+        {},
         {
           "label": "A propos de Silex, site officiel",
           "url": "https://www.silex.me/",
@@ -66,13 +62,13 @@
           "target": "_blank"
         },
         {
-          "label": "Mastodon",
-          "url": "https://short.silex.me/mastodon",
+          "label": "Lemmy",
+          "url": "https://short.silex.me/lemmy",
           "target": "_blank"
         },
         {
-          "label": "Chat",
-          "url": "https://short.silex.me/chat",
+          "label": "Mastodon",
+          "url": "https://short.silex.me/mastodon",
           "target": "_blank"
         }
       ]

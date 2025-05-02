@@ -2,7 +2,7 @@
   "lang": "en",
   "nav": [
     {
-      "label": "Sites",
+      "label": "My Sites",
       "url": "/"
     },
     {
@@ -11,18 +11,13 @@
       "target": "_blank"
     },
     {
-      "label": "About",
-      "url": "https://www.silex.me/",
+      "label": "Forum",
+      "url": "https://short.silex.me/community_en/",
       "target": "_blank"
     },
     {
-      "label": "Community",
-      "url": "https://community.silex.me/",
-      "target": "_blank"
-    },
-    {
-      "label": "News",
-      "url": "https://mail-list.silexlabs.org/subscription/cemnfkaVrK?locale=en-US&source=silex-dashboard",
+      "label": "Chat",
+      "url": "https://short.silex.me/chat",
       "target": "_blank"
     }
   ],
@@ -37,11 +32,13 @@
         },
         {
           "label": "Email the team",
-          "url": "mailto:contact+silex-dashboard-footer@silex.me"
+          "url": "mailto:contact+silex-dashboard-footer@silex.me",
+          "target": ""
         },
         {
           "label": "Sponsors",
-          "url": "https://short.silex.me/sponsors"
+          "url": "https://short.silex.me/sponsors",
+          "target": "_blank"
         },
         {
           "label": "Donate",
@@ -68,8 +65,9 @@
           "target": "_blank"
         },
         {
-          "label": "Chat",
-          "url": "https://short.silex.me/chat"
+          "label": "Lemmy",
+          "url": "https://short.silex.me/lemmy",
+          "target": "_blank"
         }
       ]
     },
