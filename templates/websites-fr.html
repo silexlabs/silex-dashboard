@@ -8,7 +8,7 @@ collection: "Websites"
 <html lang="">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/css/websites-931c1ae713658c5aca51e25f5c43a79611c9a762dc38b989cc99ad4dbd4eda8e.css" />
+<link rel="stylesheet" href="/css/websites-7843a323acc9c4921d373250c5f647854910ea0913530659823fbe29844ee6b5.css" />
 <!--  font google -->
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
@@ -359,21 +359,21 @@ window.addEventListener('load', function() {
 </script>
 
 <title>{% liquid
-    assign var_ik0i_65 = tina.homeConnection.edges | where: "",  | first
-	assign var_ik0i_66 = var_ik0i_65.node.title
-    echo var_ik0i_66
+    assign var_ik0i_39 = tina.homeConnection.edges | where: "",  | first
+	assign var_ik0i_40 = var_ik0i_39.node.title
+    echo var_ik0i_40
   %}</title>
 <link rel="icon" href="/assets/favicon-32x32.png" />
 <meta name="og:title" property="og:title" content="Silex Dashboard"/>
 <link href="https://fonts.googleapis.com" rel="preconnect" ><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin ><link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" ></head>
 {% liquid
-    assign var_ik0i_62 = tina.settingsConnection.edges | where: "node.lang", page.lang | first
-    assign state_ik0i-958_ik0i-e8l061o7k5 = var_ik0i_62
+    assign var_ik0i_36 = tina.settingsConnection.edges | where: "node.lang", page.lang | first
+    assign state_ik0i-958_ik0i-e8l061o7k5 = var_ik0i_36
   %}
 {% liquid
-    assign var_ik0i_63 = tina.homeConnection.edges | where: "node.lang", page.lang | first
-	assign var_ik0i_64 = var_ik0i_63.node
-    assign state_ik0i-958_ik0i-24xejc2n0xy = var_ik0i_64
+    assign var_ik0i_37 = tina.homeConnection.edges | where: "node.lang", page.lang | first
+	assign var_ik0i_38 = var_ik0i_37.node
+    assign state_ik0i-958_ik0i-24xejc2n0xy = var_ik0i_38
   %}<body id="ik0i" class="body loading app before-js"><HEADER id="igrg" class="menu-bar"><A id="igvu43" href="/"><img src="/assets/picto-silex@3x.png" id="iel80b-2-2" class="nav__logo"/></A><NAV id="i9jq" class="nav">{% liquid
     assign var_iels_1 = tina.settingsConnection.edges | where: "node.lang", page.lang | first
 	assign var_iels_2 = var_iels_1.node.nav
@@ -426,8 +426,8 @@ window.addEventListener('load', function() {
     assign var_i021na_16 = state_ik0i-958_ik0i-24xejc2n0xy.add_ok
     echo var_i021na_16
   %}</button><button type="reset" class="button rounded button--secondary fx-scale-round" v-on:click="showCreationForm = !showCreationForm" v-if="!empty">{% liquid
-    assign var_ijttx_17 = state_ik0i-958_ik0i-24xejc2n0xy.add_cancel
-    echo var_ijttx_17
+    assign var_irmaf_17 = state_ik0i-958_ik0i-24xejc2n0xy.add_cancel
+    echo var_irmaf_17
   %}</button></div></form></div><div id="if80m" class="margin-20"><section id="idgvg" class="button-bar loaded__item" v-if="!loading" v-for="(website, index) in websites" :key="index"><h3 id="i69a7" class="right-space-40 color-2B1B63-80 uppercase pointer fx-flash full-width button-bar__title underline" v-on:click="openEditor(website.websiteId)" v-text="website.name || website.id">My first website</h3><p id="i65hn" class="button-bar__item--secondary flex-no-shrink right-space-40" v-text="'Updated ' + new Date(website.updatedAt).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })">Updated 1h ago by lexoyo</p><p id="i64qa" class="button-bar__item--secondary flex-no-shrink right-space-40" v-text="'Created ' + new Date(website.createdAt).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })">Created 2023-02-16 by lexoyo</p><div id="i3b4tr" class="flex-no-shrink"><button id="ifyf6p" title="{% liquid
     assign var_ifyf6p_19 = state_ik0i-958_ik0i-24xejc2n0xy.list_edit
     echo var_ifyf6p_19
@@ -472,103 +472,17 @@ window.addEventListener('load', function() {
     assign var_ipa5zg_30 = state_isucae-3308___data.title
     echo var_ipa5zg_30
   %}</h3>{% liquid
-    assign var_ihw63h_32 = state_isucae-3308___data.columns
+    assign var_irs6gh_32 = state_isucae-3308___data.columns
     %}
-    {% for state_i2u9h4-2642___data in var_ihw63h_32 %}
+    {% for state_i2u9h4-2642___data in var_irs6gh_32 %}
   <a href="{% liquid
-    assign var_ihw63h_33 = state_i2u9h4-2642___data.url
-    echo var_ihw63h_33
+    assign var_irs6gh_33 = state_i2u9h4-2642___data.url
+    echo var_irs6gh_33
   %}" class="footer__item" target="{% liquid
-    assign var_ihw63h_34 = state_i2u9h4-2642___data.target
-    echo var_ihw63h_34
+    assign var_irs6gh_34 = state_i2u9h4-2642___data.target
+    echo var_irs6gh_34
   %}">{% liquid
-    assign var_ihw63h_31 = state_i2u9h4-2642___data.label
-    echo var_ihw63h_31
-  %}</a>{% endfor %}</div>{% endfor %}</FOOTER><HEADER id="iich6a" class="menu-bar"><A href="/"><img src="/assets/picto-silex@3x.png" id="iel80b-2-2" class="nav__logo"/></A><NAV id="in0357-2-2-2-2-2-2-2" class="nav">{% liquid
-    assign var_ikiby8_37 = state_ik0i-958_ik0i-e8l061o7k5.node.nav
-    %}
-    {% for state_iels-228___data in var_ikiby8_37 %}
-  <a href="{% liquid
-    assign var_ikiby8_38 = state_iels-228___data.url
-    echo var_ikiby8_38
-  %}" class="nav__item uppercase fx-flash nav_item--active" target="{% liquid
-    assign var_ikiby8_39 = state_iels-228___data.target
-    echo var_ikiby8_39
-  %}">{% liquid
-    assign var_ikiby8_36 = state_iels-228___data.label
-    echo var_ikiby8_36
-  %}</a>{% endfor %}</NAV>{% liquid
-    assign var_inf3uk_42 = tina.languagesConnection.edges
-    %}
-    {% for state_i2red7-8291___data in var_inf3uk_42 %}
-  <div class="lang"><a href="{% liquid
-    assign var_i93oqy_41 = state_i2red7-8291___data.node.permalink
-    echo var_i93oqy_41
-  %}" class="lang__item nav__item uppercase">{% liquid
-    assign var_i93oqy_40 = state_i2red7-8291___data.node.label
-    echo var_i93oqy_40
-  %}</a></div>{% endfor %}<div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div id="ib2z6n" class="nav__item">Logout</div><div id="i47tek">Insert your text here</div></div></div></HEADER><FOOTER class="footer">{% liquid
-    assign var_ilgsqu-2-2-2-2-2_48 = state_ik0i-958_ik0i-e8l061o7k5.node.footer_links
-    %}
-    {% for state_isucae-3308___data in var_ilgsqu-2-2-2-2-2_48 %}
-  <div id="ilgsqu-2-2-2-2-2" class="footer__column"><h3 href="" class="footer__item">{% liquid
-    assign var_ih0vw4_43 = state_isucae-3308___data.title
-    echo var_ih0vw4_43
-  %}</h3>{% liquid
-    assign var_ivmy15_45 = state_isucae-3308___data.columns
-    %}
-    {% for state_i2u9h4-2642___data in var_ivmy15_45 %}
-  <a href="{% liquid
-    assign var_ivmy15_46 = state_i2u9h4-2642___data.url
-    echo var_ivmy15_46
-  %}" class="footer__item" target="{% liquid
-    assign var_ivmy15_47 = state_i2u9h4-2642___data.target
-    echo var_ivmy15_47
-  %}">{% liquid
-    assign var_ivmy15_44 = state_i2u9h4-2642___data.label
-    echo var_ivmy15_44
-  %}</a>{% endfor %}</div>{% endfor %}</FOOTER><HEADER id="iich6a-2" class="menu-bar"><A href="/"><img src="/assets/picto-silex@3x.png" id="iel80b-2-2" class="nav__logo"/></A><NAV id="in0357-2-2-2-2-2-2-2-2" class="nav">{% liquid
-    assign var_i5o1vi_50 = state_ik0i-958_ik0i-e8l061o7k5.node.nav
-    %}
-    {% for state_iels-228___data in var_i5o1vi_50 %}
-  <a href="{% liquid
-    assign var_i5o1vi_51 = state_iels-228___data.url
-    echo var_i5o1vi_51
-  %}" class="nav__item uppercase fx-flash nav_item--active" target="{% liquid
-    assign var_i5o1vi_52 = state_iels-228___data.target
-    echo var_i5o1vi_52
-  %}">{% liquid
-    assign var_i5o1vi_49 = state_iels-228___data.label
-    echo var_i5o1vi_49
-  %}</a>{% endfor %}</NAV>{% liquid
-    assign var_ijuvo8_55 = tina.languagesConnection.edges
-    %}
-    {% for state_i2red7-8291___data in var_ijuvo8_55 %}
-  <div class="lang"><a href="{% liquid
-    assign var_isads6_54 = state_i2red7-8291___data.node.permalink
-    echo var_isads6_54
-  %}" class="lang__item nav__item uppercase">{% liquid
-    assign var_isads6_53 = state_i2red7-8291___data.node.label
-    echo var_isads6_53
-  %}</a></div>{% endfor %}<div class="user__wrapper pointer"><div class="user-icon__wrapper"><div class="user-icon__image"></div></div><div><div id="ib2z6n-2" class="nav__item">Logout</div><div id="i47tek-2">Insert your text here</div></div></div></HEADER><FOOTER class="footer">{% liquid
-    assign var_ilgsqu-2-2-2-2-2-2_61 = state_ik0i-958_ik0i-e8l061o7k5.node.footer_links
-    %}
-    {% for state_isucae-3308___data in var_ilgsqu-2-2-2-2-2-2_61 %}
-  <div id="ilgsqu-2-2-2-2-2-2" class="footer__column"><h3 href="" class="footer__item">{% liquid
-    assign var_i7utef_56 = state_isucae-3308___data.title
-    echo var_i7utef_56
-  %}</h3>{% liquid
-    assign var_i6fzl8_58 = state_isucae-3308___data.columns
-    %}
-    {% for state_i2u9h4-2642___data in var_i6fzl8_58 %}
-  <a href="{% liquid
-    assign var_i6fzl8_59 = state_i2u9h4-2642___data.url
-    echo var_i6fzl8_59
-  %}" class="footer__item" target="{% liquid
-    assign var_i6fzl8_60 = state_i2u9h4-2642___data.target
-    echo var_i6fzl8_60
-  %}">{% liquid
-    assign var_i6fzl8_57 = state_i2u9h4-2642___data.label
-    echo var_i6fzl8_57
+    assign var_irs6gh_31 = state_i2u9h4-2642___data.label
+    echo var_irs6gh_31
   %}</a>{% endfor %}</div>{% endfor %}</FOOTER></body>
 </html>
