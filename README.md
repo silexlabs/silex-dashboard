@@ -8,6 +8,26 @@ Technically, the dashboard is an [11ty](https://11ty.dev) website with a design 
 
 For discussions and bug report please go to [Silex main project](https://github.com/silexlabs/Silex)
 
+## Development
+
+To contribute to this project:
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/silexlabs/silex-dashboard.git
+   cd silex-dashboard
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Build the Project**:
+   ```bash
+   npm run build
+   ```
+
 ## Contribute
 
 Start Tina CMS
