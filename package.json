@@ -21,7 +21,10 @@
     "silex-plugin",
     "plugin"
   ],
-  "author": "lexoyo",
+  "author": {
+    "name": "Alex Hoyau",
+    "url": "https://lexoyo.me/"
+  },
   "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/silexlabs/silex-dashboard/issues"
