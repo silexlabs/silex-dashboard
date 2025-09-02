@@ -33,15 +33,15 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@tinacms/cli": "^1.9.5",
-    "@silexlabs/silex": "3.3.1-4",
-    "@silexlabs/silex-cms": "0.3.1-4",
+    "@silexlabs/silex": "3.3.1-6",
+    "@silexlabs/silex-cms": "0.3.1-5",
     "@types/node": "^22.14.1",
     "concurrently": "^9.1.2",
     "start-server-and-test": "^2.0.11"
   },
   "dependencies": {
     "locale": "^0.1.0",
-    "node_modules-path": "^2.1.0",
+    "node_modules-path": "^2.1.1-0",
     "serve-static": "^2.2.0",
     "vue": "^3.5.13"
   }
