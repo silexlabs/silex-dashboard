@@ -1,11 +1,5 @@
-import SilexCms from './js/silex-cms/client.js'
-
 export default async function (config, options) {
-  // Defaults
-  const opts = {
-    ...options,
-  }
-  config.addPlugin(SilexCms, {
+  config.cmsConfig = {
     dataSources: [{
       id: 'tina',
       type: 'graphql',
@@ -20,5 +14,5 @@ export default async function (config, options) {
     i18nPlugin: true,
     cacheBuster: false,
     fetchPlugin: false,
-  })
+  }
 }

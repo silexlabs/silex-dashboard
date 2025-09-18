@@ -39,14 +39,6 @@ module.exports = async function(config, options) {
   //  }),
   //])
 
-  // Serve vue from node_modules
-  config.addPlugin(StaticPlugin, {
-    routes: [{
-      route: '/js/silex-cms/',
-      path: node_modules('@silexlabs/silex-cms') + '/@silexlabs/silex-cms/dist/',
-    }],
-  })
-
   // Detect language from browser
   // List of languages from collections/languages/*.json
   const languages = []
