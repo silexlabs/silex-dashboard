@@ -1,6 +1,6 @@
 {
   "name": "@silexlabs/silex-dashboard",
-  "version": "1.2.1-5",
+  "version": "1.2.1-8",
   "description": "Dashboard for Silex v3",
   "main": "silex/server-config.js",
   "scripts": {
@@ -33,7 +33,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@tinacms/cli": "^1.9.5",
-    "@silexlabs/silex": "3.3.1-6",
+    "@silexlabs/silex": "3.3.1-9",
     "@types/node": "^22.14.1",
     "concurrently": "^9.1.2",
     "start-server-and-test": "^2.0.11"
