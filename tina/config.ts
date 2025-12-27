@@ -216,6 +216,82 @@ export default defineConfig({
           },
         ],
       }, {
+        name: "fork",
+        label: "Fork",
+        path: "collections/fork",
+        fields: [
+          {
+            label: 'Language',
+            name: 'lang',
+            type: 'string',
+          },
+          {
+            label: 'Title',
+            name: 'title',
+            type: 'string',
+          },
+          {
+            label: 'Hero Title',
+            name: 'hero_title',
+            type: 'string',
+          },
+          {
+            label: 'Hero Subtitle',
+            name: 'hero_subtitle',
+            type: 'string',
+          },
+          {
+            label: 'Loading Title',
+            name: 'loading_title',
+            type: 'string',
+          },
+          {
+            label: 'Loading Message',
+            name: 'loading_message',
+            type: 'string',
+          },
+          {
+            label: 'Success Title',
+            name: 'success_title',
+            type: 'string',
+          },
+          {
+            label: 'Success Message',
+            name: 'success_message',
+            type: 'string',
+          },
+          {
+            label: 'Error Title',
+            name: 'error_title',
+            type: 'string',
+          },
+          {
+            label: 'Error Message',
+            name: 'error_message',
+            type: 'string',
+          },
+          {
+            label: 'Back Button',
+            name: 'back_button',
+            type: 'string',
+          },
+          {
+            label: 'Footer Text',
+            name: 'footer_text',
+            type: 'string',
+          },
+          {
+            label: 'Footer Link',
+            name: 'footer_link',
+            type: 'string',
+          },
+          {
+            label: 'Footer Link Text',
+            name: 'footer_link_text',
+            type: 'string',
+          },
+        ],
+      }, {
         label: 'Languages',
         name: 'languages',
         path: 'collections/languages',

@@ -16,6 +16,23 @@ export default async function (configData) {
   body: JSON.stringify({
     query: `query {
 __typename
+homeConnection {
+  __typename
+  edges {
+    __typename
+    node {
+      __typename
+      title
+      title2
+      subtitle
+      message_dismiss
+      lang
+
+    }
+
+  }
+
+}
 settingsConnection {
   __typename
   edges {
@@ -41,40 +58,6 @@ settingsConnection {
         }
 
       }
-      lang
-
-    }
-
-  }
-
-}
-homeConnection {
-  __typename
-  edges {
-    __typename
-    node {
-      __typename
-      title
-      title2
-      subtitle
-      title2_empty
-      subtitle_empty
-      add_title
-      add_name_label
-      add_name_placeholder
-      add_ok
-      add_cancel
-      list_edit_icon
-      list_edit
-      list_rename_icon
-      list_rename
-      list_duplicate
-      list_duplicate_icon
-      list_delete
-      text_empty1
-      text_empty2
-      add_button
-      message_dismiss
       lang
 
     }

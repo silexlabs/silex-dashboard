@@ -16,38 +16,6 @@ export default async function (configData) {
   body: JSON.stringify({
     query: `query {
 __typename
-settingsConnection {
-  __typename
-  edges {
-    __typename
-    node {
-      __typename
-      nav {
-        __typename
-        label
-        url
-        target
-
-      }
-      footer_links {
-        __typename
-        title
-        columns {
-          __typename
-          label
-          url
-          target
-
-        }
-
-      }
-      lang
-
-    }
-
-  }
-
-}
 homeConnection {
   __typename
   edges {
@@ -75,6 +43,38 @@ homeConnection {
       text_empty2
       add_button
       message_dismiss
+      lang
+
+    }
+
+  }
+
+}
+settingsConnection {
+  __typename
+  edges {
+    __typename
+    node {
+      __typename
+      nav {
+        __typename
+        label
+        url
+        target
+
+      }
+      footer_links {
+        __typename
+        title
+        columns {
+          __typename
+          label
+          url
+          target
+
+        }
+
+      }
       lang
 
     }

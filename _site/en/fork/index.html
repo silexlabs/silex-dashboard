@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Silex v3.6.0-canary.1">
+<link rel="stylesheet" href="/css/fork-923d814802e46c2d0db0f71c5c488c616ca0016f340d8dae66b263ba7f1143bc.css" />
+<!--  font google -->
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
+
+<style>
+  .before-js > * {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease;
+  }
+  .before-js[data-gjs-type] > *, /* This is only inside the editor, .before-js needs to be on the body */
+  .after-js > * {
+    visibility: visible;
+    opacity: 1;
+  }
+  .before-js:before {
+    content: 'Loading';
+    position: absolute;
+    top: 49%;
+    left: 49%;
+  }
+  .before-js[data-gjs-type]:before, /* This is only inside the editor, .before-js needs to be on the body */
+  .after-js:before {
+    content: none;
+  }
+  /*BTNS*/
+  .button, .pointer {
+    cursor: pointer!important}
+  .button{
+    min-width:110px;
+  }
+  details {
+	max-height: 2em;
+    display: block;
+    overflow: hidden;
+    transition: max-height .75s ease;
+  }
+  details[open] {
+    max-height: 40em;
+  }
+
+  /*BTNS*/
+  a {
+    text-decoration: none;
+    color:#8873FE;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .uppercase  {
+    text-transform: uppercase;
+  }
+  .underline:hover{
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
+    text-underline-position: under;
+  }
+  /*footer position*/
+  .main-min-height {
+    min-height: calc(100vh - 560px);
+  }
+  /*footer position*/
+  /*label*/
+  ::placeholder {
+    color: #8873FE;
+  }
+  input:focus {
+    border: 2px solid #9977FE;
+    background-color:#ffffff;
+  }
+  :focus {
+    outline: none;
+  }
+  /*label*/
+  .skeleton-anim:after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background: 
+      linear-gradient(0.25turn, transparent, rgba(255,255,255,.75), transparent),
+      linear-gradient(transparent, transparent),
+      radial-gradient(38px circle at 19px 19px, transparent 50%, transparent 51%),
+      linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: 315px 250px, 315px 180px, 100px 100px, 225px 30px;
+    background-position: -315px 0, 0 0, 0px 190px, 50px 195px;
+    animation: loading 1.5s infinite;
+  }
+  @keyframes loading {
+    to {
+      background-position: 200% 0, 0 0, 0 190px, 50px 195px;
+    }
+  }
+  /*FX ANIMATIONS*/
+  /*scale-round-inside_pour-BTN*/
+  .fx-scale-round {
+    position:relative;
+    z-index: 10;
+    overflow: hidden;
+  }
+  .fx-scale-round::after {
+    content: "";
+    background: #ffffff;
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    left: -50%;
+    right: -50%;
+    top: -100%;
+    bottom: -100%;
+    transform: scale(0, 0);
+    transform-origin: center bottom;
+    transition: all 0.3s ease-out;
+  }
+  .fx-scale-round:hover {
+    transform-origin: center bottom;
+    transform: scale(1.1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  .fx-scale-round:hover::after {
+    transform: scale(1, 1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  /*scale-round-inside_pour-BTN*/
+  /*scale*/
+  .fx-scale:hover  {
+    transform-origin: center bottom;
+    transform: scale(1.1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  /*flash*/
+  .fx-flash:hover {
+    animation: flash-in .25s ;
+  }
+  /*flash-in animation*/
+  @keyframes flash-in{
+    0% {
+      opacity:.25;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  /*flash-in animation*/
+  /*FX ANIMATIONS*/
+</style>
+<script src="/js/vue.global.prod.js"></script>
+<script src="/js/main.js"></script>
+<script type="module">
+const CONNECTORS_PATH = '/connectors/'
+
+window.addEventListener('load', () => {
+  const { createApp } = Vue
+  const { api, types } = silex
+  const { ConnectorType } = types
+  const { setServerUrl, getUser, logout } = api
+
+  const App = {
+    data() {
+      return {
+        loading: true,
+        loggedIn: false,
+        user: null,
+
+        message: '',
+        error: '',
+      }
+    },
+
+    async mounted() {
+      await this.init()
+      await this.initForkFromUrl()
+    },
+
+    methods: {
+      async init() {
+        try {
+          setServerUrl(window.location.origin)
+
+          const user = await getUser({ type: ConnectorType.STORAGE })
+          if (!user) {
+            this.openLogin()
+            return
+          }
+
+          user.picture = decodeURIComponent(user.picture).replace(/'/g, "\\'")
+          this.user = user
+          this.loggedIn = true
+          this.loading = false
+        } catch (error) {
+          this.loading = false
+          if (error.code === 401 || error.httpStatusCode === 401) {
+            this.openLogin()
+          } else {
+            this.showError(error.message)
+          }
+        }
+      },
+
+      async initForkFromUrl() {
+        const params = new URLSearchParams(window.location.search)
+        const gitlabUrl = params.get('gitlabUrl')
+        if (!gitlabUrl || !this.loggedIn) return
+
+        await this.forkWebsite(gitlabUrl)
+      },
+
+      async forkWebsite(gitlabUrl) {
+        try {
+          this.showLoading()
+          this.updateStatus('Cloning repository...')
+
+          const response = await fetch('/api/website/fork', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ gitlabUrl }),
+          })
+
+          if (response.status === 401) {
+            this.openLogin()
+            return
+          }
+          if (!response.ok) {
+            throw new Error(`API ${response.status} ${response.statusText}`)
+          }
+
+          const data = await response.json()
+          const websiteId = data.websiteId || data.id
+
+          this.updateStatus('Project ready. Redirecting, please wait...')
+          this.showSuccess()
+
+          setTimeout(() => {
+            this.openEditor(websiteId)
+          }, 1500)
+        } catch (error) {
+          this.showError(error.message || 'Fork failed')
+        }
+      },
+
+      updateStatus(message) {
+        this.message = message
+        const el = document.querySelector('.fork-status-title')
+        if (el) el.textContent = message
+      },
+
+      showLoading() {
+        document.querySelector('.fork-loading')?.style.setProperty('display', 'block')
+        document.querySelector('.fork-success')?.style.setProperty('display', 'none')
+        document.querySelector('.fork-error')?.style.setProperty('display', 'none')
+      },
+
+      showSuccess() {
+        document.querySelector('.fork-loading')?.style.setProperty('display', 'none')
+        document.querySelector('.fork-success')?.style.setProperty('display', 'block')
+      },
+
+      showError(message) {
+        this.error = message
+        document.querySelector('.fork-loading')?.style.setProperty('display', 'none')
+        document.querySelector('.fork-error')?.style.setProperty('display', 'block')
+
+        const msg = document.querySelector('.error-message')
+        if (msg) msg.textContent = message
+
+        const backBtn = document.querySelector('.error-back-btn')
+        if (backBtn) {
+          backBtn.onclick = () => this.openLogin()
+        }
+      },
+
+      openEditor(id) {
+        const params = new URLSearchParams(window.location.search)
+        const lang = params.get('lang') || 'en'
+        window.location.href =
+          `/?id=${id}&lang=${lang}&connectorId=${this.user.storage.connectorId}`
+      },
+
+      openLogin() {
+        const path = `/en${CONNECTORS_PATH}`
+        if (window.location.pathname !== path) {
+          window.location.href = path
+        }
+      },
+
+      async logout() {
+        await logout({
+          type: ConnectorType.STORAGE,
+          connectorId: this.user.storage.connectorId,
+        })
+        window.location.reload()
+      },
+    },
+  }
+
+  document
+    .querySelectorAll('[v-text], [v-html]')
+    .forEach(el => (el.innerText = ''))
+
+  const app = createApp(App)
+  app.mount('.app')
+
+  setTimeout(() => {
+    document.querySelector('.before-js')?.classList.add('after-js')
+  }, 100)
+})
+</script>
+
+<title></title>
+<link rel="icon" href="/assets/favicon-32x32.png" />
+<meta name="og:title" property="og:title" content="Silex Dashboard"/>
+<link href="https://fonts.googleapis.com" rel="preconnect" ><link href="https://fonts.googleapis.com/css2" rel="preconnect" crossorigin ><link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet" ></head>
+
+<body id="ik0i-2" class="body loading app before-js"><HEADER id="igrg-2" class="menu-bar"><A href="/" id="igvu43-2"><img id="iel80b-2-2-2" src="/assets/picto-silex@3x.png" class="nav__logo"/></A><NAV id="i9jq-2" class="nav">
+    
+  <a href="/" id="iels-2" class="nav__item uppercase fx-flash nav_item--active" target="">My Sites</a>
+  <a href="http://docs.silex.me/" id="iels-2" class="nav__item uppercase fx-flash nav_item--active" target="_blank">Docs</a>
+  <a href="https://short.silex.me/community_en/" id="iels-2" class="nav__item uppercase fx-flash nav_item--active" target="_blank">Forum</a>
+  <a href="https://short.silex.me/chat" id="iels-2" class="nav__item uppercase fx-flash nav_item--active" target="_blank">Chat</a></NAV>
+    
+  <div id="i2red7-2" class="lang"><a href="/en" id="iciz-2" class="lang__item nav__item uppercase">EN</a></div>
+  <div id="i2red7-2" class="lang"><a href="/fr" id="iciz-2" class="lang__item nav__item uppercase">FR</a></div><div id="i24ew-2" class="user__wrapper pointer" v-if="user" v-on:click="showMenu = !showMenu"><div id="i5xsbd-2" class="user-icon__wrapper" v-if="user" v-show="!showMenu || user.storage.disableLogout"><div id="i5wlbq-2" class="user-icon__image" v-if="user" v-show="!showMenu || user.storage.disableLogout" :style="{ backgroundImage: `url('${user?.picture}')`, backgroundRepeat: 'no-repeat', backgroundSize: 'contain', }"></div></div><div id="ic9eoa-2" class="" v-show="showMenu && !user.storage.disableLogout" v-on:click="logout"><div id="igv1rf-2" class="nav__item">Logout</div></div></div></HEADER><HEADER id="iy8ax3-2" class="bg-silex-purpel"><div id="iisz8f-2" class="section-top text-centered text-white"><h1 id="ic31o-2" class="title-40" v-if="!empty">Welcome back!</h1><p id="iyex8-2" class="subtitle-16" v-if="!empty">Dive into your projects or kickstart a new one</p></div></HEADER><MAIN id="iz63r-2" class="padding-normal main-min-height website-max-width margin-80"><div id="i7ej6j-2" class="flex-between box-message text-white" v-if="error"><h3 id="iv0eyi-2" class="box-message-text" v-text="error">Insert your text here</h3><div id="i4656n-2" class="pointer button-bar__item--link text-white" v-on:click="error = null">Dismiss</div></div><div id="ilteie-2" class="flex-between box-message text-white" v-if="message && !error"><h3 id="i2d31v-2" class="box-message-text" v-text="message">Insert your text here</h3><div id="i2urco-2" class="rounded pointer button-bar__item--link text-white" v-on:click="message = null">Dismiss</div></div></MAIN><FOOTER id="ilzpl-2" class="footer">
+    
+  <div id="isucae-2" style="min-height:100px;" class="footer__column"><h3 href="" id="ipa5zg-2" class="footer__item">Social & community</h3>
+    
+  <a href="https://www.silex.me/" id="i0cyhf" class="footer__item" target="_blank">About Silex, official website</a>
+  <a href="mailto:contact+silex-dashboard-footer@silex.me" id="i0cyhf" class="footer__item" target="">Email the team</a>
+  <a href="https://short.silex.me/sponsors" id="i0cyhf" class="footer__item" target="_blank">Sponsors</a>
+  <a href="https://short.silex.me/donate" id="i0cyhf" class="footer__item" target="">Donate</a>
+  <a href="https://short.silex.me/community" id="i0cyhf" class="footer__item" target="_blank">Community forum</a>
+  <a href="https://news.silex.me/forms/nfrm_weLJnLY5" id="i0cyhf" class="footer__item" target="_blank">Newsletter</a>
+  <a href="https://events.silex.me/" id="i0cyhf" class="footer__item" target="_blank">Meetups/ Events</a>
+  <a href="https://short.silex.me/mastodon" id="i0cyhf" class="footer__item" target="_blank">Mastodon</a>
+  <a href="https://short.silex.me/lemmy" id="i0cyhf" class="footer__item" target="_blank">Lemmy</a></div>
+  <div id="isucae-2" style="min-height:100px;" class="footer__column"><h3 href="" id="ipa5zg-2" class="footer__item">Resources</h3>
+    
+  <a href="https://short.silex.me/code" id="i0cyhf" class="footer__item" target="_blank">Source code</a>
+  <a href="http://docs.silex.me/" id="i0cyhf" class="footer__item" target="_blank">Documentation</a>
+  <a href="https://video.silex.me/my-library/video-playlists" id="i0cyhf" class="footer__item" target="_blank">Videos</a>
+  <a href="https://short.silex.me/roadmap" id="i0cyhf" class="footer__item" target="_blank">Roadmap</a>
+  <a href="https://short.silex.me/contribute" id="i0cyhf" class="footer__item" target="_blank">Contribute</a></div>
+  <div id="isucae-2" style="min-height:100px;" class="footer__column"><h3 href="" id="ipa5zg-2" class="footer__item">Articles and reviews</h3>
+    
+  <a href="https://short.silex.me/alternatives" id="i0cyhf" class="footer__item" target="_blank">Silex alternatives</a>
+  <a href="https://short.silex.me/reviews" id="i0cyhf" class="footer__item" target="_blank">Silex reviews</a>
+  <a href="https://short.silex.me/press" id="i0cyhf" class="footer__item" target="_blank">Silex in the press</a></div></FOOTER></body>
+</html>
