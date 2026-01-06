@@ -208,7 +208,7 @@ window.addEventListener('load', () => {
           if (error.code === 401 || error.httpStatusCode === 401) {
             this.openLogin()
           } else {
-            this.showError(error.message)
+            this.updateStatus(error.message)
           }
         }
       },
@@ -237,27 +237,38 @@ window.addEventListener('load', () => {
             return
           }
           if (!response.ok) {
-            throw new Error(`API ${response.status} ${response.statusText}`)
-          }
+            let message = ''
+            try {
+              const body = await response.text()
+              message = JSON.parse(body).message
+            } catch (e) {}
 
+            console.error('ERROR:', {response, message})
+            throw new Error(
+              message
+				? `${message}\n\n(Error ${response.status})`
+                : `API ${response.status} ${response.statusText}`
+            )
+          }
           const data = await response.json()
           const websiteId = data.websiteId || data.id
 
-          this.updateStatus('Project ready. Redirecting, please wait...')
+          this.updateStatus('Project ready')
           this.showSuccess()
 
           setTimeout(() => {
             this.openEditor(websiteId)
           }, 1500)
         } catch (error) {
-          this.showError(error.message || 'Fork failed')
+          this.updateStatus(error.message || 'Fork failed')
         }
       },
 
       updateStatus(message) {
-        this.message = message
-        const el = document.querySelector('.fork-status-title')
-        if (el) el.textContent = message
+        this.message = message.replace(/\n/g, '<br>')
+        //const el = document.querySelector('.fork-status-title')
+        //if (el) el.textContent = message
+        //console.log('updateStatus', {message, el})
       },
 
       showLoading() {
@@ -272,6 +283,7 @@ window.addEventListener('load', () => {
       },
 
       showError(message) {
+        throw new Error('Useless method, pls remove')
         this.error = message
         document.querySelector('.fork-loading')?.style.setProperty('display', 'none')
         document.querySelector('.fork-error')?.style.setProperty('display', 'block')
@@ -283,6 +295,7 @@ window.addEventListener('load', () => {
         if (backBtn) {
           backBtn.onclick = () => this.openLogin()
         }
+        console.log({message, msg, backBtn})
       },
 
       openEditor(id) {
@@ -323,76 +336,76 @@ window.addEventListener('load', () => {
 </script>
 
 <title>{% liquid
-    assign var_ik0i-2_745 = tina.homeConnection.edges | where: "",  | first
-	assign var_ik0i-2_746 = var_ik0i-2_745.node.title
-    echo var_ik0i-2_746
+    assign var_ik0i-2_77 = tina.homeConnection.edges | where: "",  | first
+	assign var_ik0i-2_78 = var_ik0i-2_77.node.title
+    echo var_ik0i-2_78
   %}</title>
 <link rel="icon" href="/assets/favicon-32x32.png" />
 <meta name="og:title" property="og:title" content="Silex Dashboard"/>
 <link href="https://fonts.googleapis.com" rel="preconnect" ><link href="https://fonts.googleapis.com/css2" rel="preconnect" crossorigin ><link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet" ></head>
 {% liquid
-    assign var_ik0i-2_742 = tina.settingsConnection.edges | where: "node.lang", page.lang | first
-    assign state_ik0i-958_ik0i-e8l061o7k5 = var_ik0i-2_742
+    assign var_ik0i-2_74 = tina.settingsConnection.edges | where: "node.lang", page.lang | first
+    assign state_ik0i-958_ik0i-e8l061o7k5 = var_ik0i-2_74
   %}
 {% liquid
-    assign var_ik0i-2_743 = tina.homeConnection.edges | where: "node.lang", page.lang | first
-	assign var_ik0i-2_744 = var_ik0i-2_743.node
-    assign state_ik0i-958_ik0i-24xejc2n0xy = var_ik0i-2_744
+    assign var_ik0i-2_75 = tina.homeConnection.edges | where: "node.lang", page.lang | first
+	assign var_ik0i-2_76 = var_ik0i-2_75.node
+    assign state_ik0i-958_ik0i-24xejc2n0xy = var_ik0i-2_76
   %}<body id="ik0i-2" class="body loading app before-js"><HEADER id="igrg-2" class="menu-bar"><A href="/" id="igvu43-2"><img id="iel80b-2-2-2" src="/assets/picto-silex@3x.png" class="nav__logo"/></A><NAV id="i9jq-2" class="nav">{% liquid
-    assign var_iels-2_725 = tina.settingsConnection.edges | where: "node.lang", page.lang | first
-	assign var_iels-2_726 = var_iels-2_725.node.nav
+    assign var_iels-2_57 = tina.settingsConnection.edges | where: "node.lang", page.lang | first
+	assign var_iels-2_58 = var_iels-2_57.node.nav
     %}
-    {% for state_iels-228___data in var_iels-2_726 %}
+    {% for state_iels-228___data in var_iels-2_58 %}
   <a href="{% liquid
-    assign var_iels-2_727 = state_iels-228___data.url
-    echo var_iels-2_727
+    assign var_iels-2_59 = state_iels-228___data.url
+    echo var_iels-2_59
   %}" id="iels-2" class="nav__item uppercase fx-flash nav_item--active" target="{% liquid
-    assign var_iels-2_728 = state_iels-228___data.target
-    echo var_iels-2_728
+    assign var_iels-2_60 = state_iels-228___data.target
+    echo var_iels-2_60
   %}">{% liquid
-    assign var_iels-2_724 = state_iels-228___data.label
-    echo var_iels-2_724
+    assign var_iels-2_56 = state_iels-228___data.label
+    echo var_iels-2_56
   %}</a>{% endfor %}</NAV>{% liquid
-    assign var_i2red7-2_731 = tina.languagesConnection.edges
+    assign var_i2red7-2_63 = tina.languagesConnection.edges
     %}
-    {% for state_i2red7-8291___data in var_i2red7-2_731 %}
+    {% for state_i2red7-8291___data in var_i2red7-2_63 %}
   <div id="i2red7-2" class="lang"><a href="{% liquid
-    assign var_iciz-2_730 = state_i2red7-8291___data.node.permalink
-    echo var_iciz-2_730
+    assign var_iciz-2_62 = state_i2red7-8291___data.node.permalink
+    echo var_iciz-2_62
   %}" id="iciz-2" class="lang__item nav__item uppercase">{% liquid
-    assign var_iciz-2_729 = state_i2red7-8291___data.node.label
-    echo var_iciz-2_729
+    assign var_iciz-2_61 = state_i2red7-8291___data.node.label
+    echo var_iciz-2_61
   %}</a></div>{% endfor %}<div id="i24ew-2" class="user__wrapper pointer" v-if="user" v-on:click="showMenu = !showMenu"><div id="i5xsbd-2" class="user-icon__wrapper" v-if="user" v-show="!showMenu || user.storage.disableLogout"><div id="i5wlbq-2" class="user-icon__image" v-if="user" v-show="!showMenu || user.storage.disableLogout" :style="{ backgroundImage: `url('${user?.picture}')`, backgroundRepeat: 'no-repeat', backgroundSize: 'contain', }"></div></div><div id="ic9eoa-2" class="" v-show="showMenu && !user.storage.disableLogout" v-on:click="logout"><div id="igv1rf-2" class="nav__item">Logout</div></div></div></HEADER><HEADER id="iy8ax3-2" class="bg-silex-purpel"><div id="iisz8f-2" class="section-top text-centered text-white"><h1 id="ic31o-2" class="title-40" v-if="!empty">{% liquid
-    assign var_ic31o-2_732 = state_ik0i-958_ik0i-24xejc2n0xy.title2
-    echo var_ic31o-2_732
+    assign var_ic31o-2_64 = state_ik0i-958_ik0i-24xejc2n0xy.title2
+    echo var_ic31o-2_64
   %}</h1><p id="iyex8-2" class="subtitle-16" v-if="!empty">{% liquid
-    assign var_iyex8-2_733 = state_ik0i-958_ik0i-24xejc2n0xy.subtitle
-    echo var_iyex8-2_733
-  %}</p></div></HEADER><MAIN id="iz63r-2" class="padding-normal main-min-height website-max-width margin-80"><div id="i7ej6j-2" class="flex-between box-message text-white" v-if="error"><h3 id="iv0eyi-2" class="box-message-text" v-text="error">Insert your text here</h3><div id="i4656n-2" class="pointer button-bar__item--link text-white" v-on:click="error = null">{% liquid
-    assign var_i4656n-2_734 = state_ik0i-958_ik0i-24xejc2n0xy.message_dismiss
-    echo var_i4656n-2_734
-  %}</div></div><div id="ilteie-2" class="flex-between box-message text-white" v-if="message && !error"><h3 id="i2d31v-2" class="box-message-text" v-text="message">Insert your text here</h3><div id="i2urco-2" class="rounded pointer button-bar__item--link text-white" v-on:click="message = null">{% liquid
-    assign var_i2urco-2_735 = state_ik0i-958_ik0i-24xejc2n0xy.message_dismiss
-    echo var_i2urco-2_735
+    assign var_iyex8-2_65 = state_ik0i-958_ik0i-24xejc2n0xy.subtitle
+    echo var_iyex8-2_65
+  %}</p></div></HEADER><MAIN id="iz63r-2" class="padding-normal main-min-height website-max-width margin-80"><div id="i7ej6j-2" class="flex-between box-message text-white" v-if="error"><h3 id="iv0eyi-2" class="box-message-text" v-html="error">Insert your text here</h3><div id="i4656n-2" class="pointer button-bar__item--link text-white" v-on:click="error = null">{% liquid
+    assign var_i4656n-2_66 = state_ik0i-958_ik0i-24xejc2n0xy.message_dismiss
+    echo var_i4656n-2_66
+  %}</div></div><div id="ilteie-2" class="flex-between box-message text-white" v-if="message"><h3 id="i2d31v-2" class="box-message-text" v-html="message">Insert your text here</h3><div id="i2urco-2" class="rounded pointer button-bar__item--link text-white" v-on:click="message = null">{% liquid
+    assign var_i2urco-2_67 = state_ik0i-958_ik0i-24xejc2n0xy.message_dismiss
+    echo var_i2urco-2_67
   %}</div></div></MAIN><FOOTER id="ilzpl-2" class="footer">{% liquid
-    assign var_isucae-2_741 = state_ik0i-958_ik0i-e8l061o7k5.node.footer_links
+    assign var_isucae-2_73 = state_ik0i-958_ik0i-e8l061o7k5.node.footer_links
     %}
-    {% for state_isucae-3308___data in var_isucae-2_741 %}
+    {% for state_isucae-3308___data in var_isucae-2_73 %}
   <div id="isucae-2" style="min-height:100px;" class="footer__column"><h3 href="" id="ipa5zg-2" class="footer__item">{% liquid
-    assign var_ipa5zg-2_736 = state_isucae-3308___data.title
-    echo var_ipa5zg-2_736
+    assign var_ipa5zg-2_68 = state_isucae-3308___data.title
+    echo var_ipa5zg-2_68
   %}</h3>{% liquid
-    assign var_i0cyhf_738 = state_isucae-3308___data.columns
+    assign var_i0cyhf_70 = state_isucae-3308___data.columns
     %}
-    {% for state_i2u9h4-2642___data in var_i0cyhf_738 %}
+    {% for state_i2u9h4-2642___data in var_i0cyhf_70 %}
   <a href="{% liquid
-    assign var_i0cyhf_739 = state_i2u9h4-2642___data.url
-    echo var_i0cyhf_739
+    assign var_i0cyhf_71 = state_i2u9h4-2642___data.url
+    echo var_i0cyhf_71
   %}" id="i0cyhf" class="footer__item" target="{% liquid
-    assign var_i0cyhf_740 = state_i2u9h4-2642___data.target
-    echo var_i0cyhf_740
+    assign var_i0cyhf_72 = state_i2u9h4-2642___data.target
+    echo var_i0cyhf_72
   %}">{% liquid
-    assign var_i0cyhf_737 = state_i2u9h4-2642___data.label
-    echo var_i0cyhf_737
+    assign var_i0cyhf_69 = state_i2u9h4-2642___data.label
+    echo var_i0cyhf_69
   %}</a>{% endfor %}</div>{% endfor %}</FOOTER></body>
 </html>

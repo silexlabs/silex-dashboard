@@ -202,7 +202,7 @@ window.addEventListener('load', () => {
           if (error.code === 401 || error.httpStatusCode === 401) {
             this.openLogin()
           } else {
-            this.showError(error.message)
+            this.updateStatus(error.message)
           }
         }
       },
@@ -231,27 +231,38 @@ window.addEventListener('load', () => {
             return
           }
           if (!response.ok) {
-            throw new Error(`API ${response.status} ${response.statusText}`)
-          }
+            let message = ''
+            try {
+              const body = await response.text()
+              message = JSON.parse(body).message
+            } catch (e) {}
 
+            console.error('ERROR:', {response, message})
+            throw new Error(
+              message
+				? `${message}\n\n(Error ${response.status})`
+                : `API ${response.status} ${response.statusText}`
+            )
+          }
           const data = await response.json()
           const websiteId = data.websiteId || data.id
 
-          this.updateStatus('Project ready. Redirecting, please wait...')
+          this.updateStatus('Project ready')
           this.showSuccess()
 
           setTimeout(() => {
             this.openEditor(websiteId)
           }, 1500)
         } catch (error) {
-          this.showError(error.message || 'Fork failed')
+          this.updateStatus(error.message || 'Fork failed')
         }
       },
 
       updateStatus(message) {
-        this.message = message
-        const el = document.querySelector('.fork-status-title')
-        if (el) el.textContent = message
+        this.message = message.replace(/\n/g, '<br>')
+        //const el = document.querySelector('.fork-status-title')
+        //if (el) el.textContent = message
+        //console.log('updateStatus', {message, el})
       },
 
       showLoading() {
@@ -266,6 +277,7 @@ window.addEventListener('load', () => {
       },
 
       showError(message) {
+        throw new Error('Useless method, pls remove')
         this.error = message
         document.querySelector('.fork-loading')?.style.setProperty('display', 'none')
         document.querySelector('.fork-error')?.style.setProperty('display', 'block')
@@ -277,6 +289,7 @@ window.addEventListener('load', () => {
         if (backBtn) {
           backBtn.onclick = () => this.openLogin()
         }
+        console.log({message, msg, backBtn})
       },
 
       openEditor(id) {
@@ -329,7 +342,7 @@ window.addEventListener('load', () => {
   <a href="https://short.silex.me/chat" id="iels-2" class="nav__item uppercase fx-flash nav_item--active" target="_blank">Chat</a></NAV>
     
   <div id="i2red7-2" class="lang"><a href="/en" id="iciz-2" class="lang__item nav__item uppercase">EN</a></div>
-  <div id="i2red7-2" class="lang"><a href="/fr" id="iciz-2" class="lang__item nav__item uppercase">FR</a></div><div id="i24ew-2" class="user__wrapper pointer" v-if="user" v-on:click="showMenu = !showMenu"><div id="i5xsbd-2" class="user-icon__wrapper" v-if="user" v-show="!showMenu || user.storage.disableLogout"><div id="i5wlbq-2" class="user-icon__image" v-if="user" v-show="!showMenu || user.storage.disableLogout" :style="{ backgroundImage: `url('${user?.picture}')`, backgroundRepeat: 'no-repeat', backgroundSize: 'contain', }"></div></div><div id="ic9eoa-2" class="" v-show="showMenu && !user.storage.disableLogout" v-on:click="logout"><div id="igv1rf-2" class="nav__item">Logout</div></div></div></HEADER><HEADER id="iy8ax3-2" class="bg-silex-purpel"><div id="iisz8f-2" class="section-top text-centered text-white"><h1 id="ic31o-2" class="title-40" v-if="!empty">Bienvenue !</h1><p id="iyex8-2" class="subtitle-16" v-if="!empty">Plongez-vous dans un projet ou créez-en un nouveau</p></div></HEADER><MAIN id="iz63r-2" class="padding-normal main-min-height website-max-width margin-80"><div id="i7ej6j-2" class="flex-between box-message text-white" v-if="error"><h3 id="iv0eyi-2" class="box-message-text" v-text="error">Insert your text here</h3><div id="i4656n-2" class="pointer button-bar__item--link text-white" v-on:click="error = null">Fermer</div></div><div id="ilteie-2" class="flex-between box-message text-white" v-if="message && !error"><h3 id="i2d31v-2" class="box-message-text" v-text="message">Insert your text here</h3><div id="i2urco-2" class="rounded pointer button-bar__item--link text-white" v-on:click="message = null">Fermer</div></div></MAIN><FOOTER id="ilzpl-2" class="footer">
+  <div id="i2red7-2" class="lang"><a href="/fr" id="iciz-2" class="lang__item nav__item uppercase">FR</a></div><div id="i24ew-2" class="user__wrapper pointer" v-if="user" v-on:click="showMenu = !showMenu"><div id="i5xsbd-2" class="user-icon__wrapper" v-if="user" v-show="!showMenu || user.storage.disableLogout"><div id="i5wlbq-2" class="user-icon__image" v-if="user" v-show="!showMenu || user.storage.disableLogout" :style="{ backgroundImage: `url('${user?.picture}')`, backgroundRepeat: 'no-repeat', backgroundSize: 'contain', }"></div></div><div id="ic9eoa-2" class="" v-show="showMenu && !user.storage.disableLogout" v-on:click="logout"><div id="igv1rf-2" class="nav__item">Logout</div></div></div></HEADER><HEADER id="iy8ax3-2" class="bg-silex-purpel"><div id="iisz8f-2" class="section-top text-centered text-white"><h1 id="ic31o-2" class="title-40" v-if="!empty">Bienvenue !</h1><p id="iyex8-2" class="subtitle-16" v-if="!empty">Plongez-vous dans un projet ou créez-en un nouveau</p></div></HEADER><MAIN id="iz63r-2" class="padding-normal main-min-height website-max-width margin-80"><div id="i7ej6j-2" class="flex-between box-message text-white" v-if="error"><h3 id="iv0eyi-2" class="box-message-text" v-html="error">Insert your text here</h3><div id="i4656n-2" class="pointer button-bar__item--link text-white" v-on:click="error = null">Fermer</div></div><div id="ilteie-2" class="flex-between box-message text-white" v-if="message"><h3 id="i2d31v-2" class="box-message-text" v-html="message">Insert your text here</h3><div id="i2urco-2" class="rounded pointer button-bar__item--link text-white" v-on:click="message = null">Fermer</div></div></MAIN><FOOTER id="ilzpl-2" class="footer">
     
   <div id="isucae-2" style="min-height:100px;" class="footer__column"><h3 href="" id="ipa5zg-2" class="footer__item">Social & communauté</h3>
     
