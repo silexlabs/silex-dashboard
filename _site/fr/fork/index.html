@@ -157,7 +157,10 @@
 <script src="/js/vue.global.prod.js"></script>
 <script src="/js/main.js"></script>
 <script type="module">
+const params = new URLSearchParams(window.location.search)
 const CONNECTORS_PATH = '/connectors/'
+const GITLAB_REPO = params.get('gitlabUrl')
+const REDIRECT_PATH = `/fork/?gitlabUrl=${ GITLAB_REPO }`
 
 window.addEventListener('load', () => {
   const { createApp } = Vue
@@ -208,11 +211,9 @@ window.addEventListener('load', () => {
       },
 
       async initForkFromUrl() {
-        const params = new URLSearchParams(window.location.search)
-        const gitlabUrl = params.get('gitlabUrl')
-        if (!gitlabUrl || !this.loggedIn) return
+        if (!GITLAB_REPO || !this.loggedIn) return
 
-        await this.forkWebsite(gitlabUrl)
+        await this.forkWebsite(GITLAB_REPO)
       },
 
       async forkWebsite(gitlabUrl) {
@@ -296,11 +297,11 @@ window.addEventListener('load', () => {
         const params = new URLSearchParams(window.location.search)
         const lang = params.get('lang') || 'en'
         window.location.href =
-          `/?id=${id}&lang=${lang}&connectorId=${this.user.storage.connectorId}`
+          `/?id=${id}&lang=${lang}&connectorId=${this.user.storage.connectorId}&forked=${GITLAB_REPO}`
       },
 
       openLogin() {
-        const path = `/fr${CONNECTORS_PATH}`
+        const path = `/fr${CONNECTORS_PATH}?redirect=/fr${REDIRECT_PATH}`
         if (window.location.pathname !== path) {
           window.location.href = path
         }
@@ -342,7 +343,7 @@ window.addEventListener('load', () => {
   <a href="https://short.silex.me/chat" id="iels-2" class="nav__item uppercase fx-flash nav_item--active" target="_blank">Chat</a></NAV>
     
   <div id="i2red7-2" class="lang"><a href="/en" id="iciz-2" class="lang__item nav__item uppercase">EN</a></div>
-  <div id="i2red7-2" class="lang"><a href="/fr" id="iciz-2" class="lang__item nav__item uppercase">FR</a></div><div id="i24ew-2" class="user__wrapper pointer" v-if="user" v-on:click="showMenu = !showMenu"><div id="i5xsbd-2" class="user-icon__wrapper" v-if="user" v-show="!showMenu || user.storage.disableLogout"><div id="i5wlbq-2" class="user-icon__image" v-if="user" v-show="!showMenu || user.storage.disableLogout" :style="{ backgroundImage: `url('${user?.picture}')`, backgroundRepeat: 'no-repeat', backgroundSize: 'contain', }"></div></div><div id="ic9eoa-2" class="" v-show="showMenu && !user.storage.disableLogout" v-on:click="logout"><div id="igv1rf-2" class="nav__item">Logout</div></div></div></HEADER><HEADER id="iy8ax3-2" class="bg-silex-purpel"><div id="iisz8f-2" class="section-top text-centered text-white"><h1 id="ic31o-2" class="title-40" v-if="!empty">Bienvenue !</h1><p id="iyex8-2" class="subtitle-16" v-if="!empty">Plongez-vous dans un projet ou créez-en un nouveau</p></div></HEADER><MAIN id="iz63r-2" class="padding-normal main-min-height website-max-width margin-80"><div id="i7ej6j-2" class="flex-between box-message text-white" v-if="error"><h3 id="iv0eyi-2" class="box-message-text" v-html="error">Insert your text here</h3><div id="i4656n-2" class="pointer button-bar__item--link text-white" v-on:click="error = null">Fermer</div></div><div id="ilteie-2" class="flex-between box-message text-white" v-if="message"><h3 id="i2d31v-2" class="box-message-text" v-html="message">Insert your text here</h3><div id="i2urco-2" class="rounded pointer button-bar__item--link text-white" v-on:click="message = null">Fermer</div></div></MAIN><FOOTER id="ilzpl-2" class="footer">
+  <div id="i2red7-2" class="lang"><a href="/fr" id="iciz-2" class="lang__item nav__item uppercase">FR</a></div><div id="i24ew-2" class="user__wrapper pointer" v-if="user" v-on:click="showMenu = !showMenu"><div id="i5xsbd-2" class="user-icon__wrapper" v-if="user" v-show="!showMenu || user.storage.disableLogout"><div id="i5wlbq-2" class="user-icon__image" v-if="user" v-show="!showMenu || user.storage.disableLogout" :style="{ backgroundImage: `url('${user?.picture}')`, backgroundRepeat: 'no-repeat', backgroundSize: 'contain', }"></div></div><div id="ic9eoa-2" class="" v-show="showMenu && !user.storage.disableLogout" v-on:click="logout"><div id="igv1rf-2" class="nav__item">Logout</div></div></div></HEADER><HEADER id="iy8ax3-2" class="bg-silex-purpel"><div id="iisz8f-2" class="section-top text-centered text-white"><h1 id="ic31o-2" class="title-40" v-if="!empty">Fork du projet en cours...</h1><p id="iyex8-2" class="subtitle-16" v-if="!empty">Veuillez patienter pendant que nous créons votre fork</p></div></HEADER><MAIN id="iz63r-2" class="padding-normal main-min-height website-max-width margin-80"><div id="i7ej6j-2" class="flex-between box-message text-white" v-if="error"><h3 id="iv0eyi-2" class="box-message-text" v-html="error">Insert your text here</h3><div id="i4656n-2" class="pointer button-bar__item--link text-white" v-on:click="error = null"></div></div><div id="ilteie-2" class="flex-between box-message text-white" v-if="message"><h3 id="i2d31v-2" class="box-message-text" v-html="message">Insert your text here</h3><div id="i2urco-2" class="rounded pointer button-bar__item--link text-white" v-on:click="message = null"></div></div></MAIN><FOOTER id="ilzpl-2" class="footer">
     
   <div id="isucae-2" style="min-height:100px;" class="footer__column"><h3 href="" id="ipa5zg-2" class="footer__item">Social & communauté</h3>
     

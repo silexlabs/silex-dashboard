@@ -13,4 +13,5 @@ back_button: Retour au tableau de bord
 footer_text: Silex - Créateur de sites Web gratuit
 footer_link: https://www.silex.me
 footer_link_text: En savoir plus sur Silex
+message_dismiss: Fermer
 ---

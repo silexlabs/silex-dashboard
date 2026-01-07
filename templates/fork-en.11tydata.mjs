@@ -23,10 +23,6 @@ homeConnection {
     node {
       __typename
       title
-      title2
-      subtitle
-      message_dismiss
-      lang
 
     }
 
@@ -58,6 +54,21 @@ settingsConnection {
         }
 
       }
+      lang
+
+    }
+
+  }
+
+}
+forkConnection {
+  __typename
+  edges {
+    __typename
+    node {
+      __typename
+      hero_title
+      hero_subtitle
       lang
 
     }

@@ -13,4 +13,5 @@ back_button: Back to Dashboard
 footer_text: Silex - Free Website Builder
 footer_link: https://www.silex.me
 footer_link_text: Learn more about Silex
+message_dismiss: Dismiss
 ---

@@ -178,6 +178,9 @@ function toSafeId(name) {
   return name.replace(/[/\\?%*:|"<>]/g, '_')
 }
 
+const params = new URLSearchParams(window.location.search)
+const redirect = params.get('redirect')
+
 const App = {
   data() {
     return {
@@ -223,10 +226,30 @@ const App = {
     },
 
     getHref(connector) {
-      if(connector.isLoggedIn) return '/'
-      if(connector.oauthUrl) return connector.oauthUrl
-      return '/api/connector/login/?type=STORAGE&connectorId=' + connector.connectorId
+      const params = new URLSearchParams(window.location.search)
+      const redirect = params.get('redirect')
+
+      if (connector.isLoggedIn) {
+        return redirect || '/'
+      }
+
+      if (!connector.oauthUrl) {
+        return '/api/connector/login/?type=STORAGE&connectorId=' + connector.connectorId
+      }
+
+      if (!redirect) return connector.oauthUrl
+
+      const url = new URL(connector.oauthUrl)
+      const state = url.searchParams.get('state')
+
+      url.searchParams.set(
+        'state',
+        JSON.stringify({ state, redirect })
+      )
+
+      return url.toString()
     },
+
 
     getConnectorStyle(connector) {
       return {
