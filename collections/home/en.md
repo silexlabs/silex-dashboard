@@ -8,6 +8,7 @@ subtitle_empty: 'Create your first project, click on "Create a website"'
 text_empty1: Such emptyness...
 text_empty2: Ready to start your journey?
 add_button: Create website
+add_from_template: "\U0001FA84 From a template"
 add_title: Create a new website
 add_name_label: Website name
 add_name_placeholder: My project website

@@ -32,6 +32,7 @@ homeConnection {
       add_name_placeholder
       add_ok
       add_cancel
+      add_from_template
       list_edit_icon
       list_edit
       list_rename_icon

@@ -73,6 +73,11 @@ export default defineConfig({
             type: 'string'
           },
           {
+            label: 'Add From Template Button',
+            name: 'add_from_template',
+            type: 'string'
+          },
+          {
             label: 'Add Title',
             name: 'add_title',
             type: 'string'
