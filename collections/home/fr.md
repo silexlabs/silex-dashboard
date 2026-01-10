@@ -8,7 +8,7 @@ subtitle_empty: 'Créez votre premier projet, clickez sur le boutont "Créer un 
 text_empty1: C'est bien calme ici...
 text_empty2: Prêt.e à démarrer une nouvelle aventure?
 add_button: Créer un site
-add_from_template: "\U0001FA84 A partir d'une template"
+add_from_template: "\U0001F50E︎ A partir d'une template"
 add_title: Créer un nouveau site internet
 add_name_label: Nom du site
 add_name_placeholder: Mon super projet
