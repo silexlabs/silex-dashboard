@@ -300,8 +300,7 @@ window.addEventListener('load', () => {
       },
 
       openEditor(id) {
-        const params = new URLSearchParams(window.location.search)
-        const lang = params.get('lang') || 'en'
+        const lang = window.location.pathname.split('/')[1] || 'en'
         window.location.href =
           `/?id=${id}&lang=${lang}&connectorId=${this.user.storage.connectorId}&forked=${GITLAB_REPO}`
       },
