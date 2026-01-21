@@ -33,6 +33,7 @@ homeConnection {
       add_ok
       add_cancel
       add_from_template
+      add_from_template_link
       list_edit_icon
       list_edit
       list_rename_icon

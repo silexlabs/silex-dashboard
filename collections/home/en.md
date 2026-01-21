@@ -9,6 +9,7 @@ text_empty1: Such emptyness...
 text_empty2: Ready to start your journey?
 add_button: Create website
 add_from_template: "\U0001F50E︎ From a template"
+add_from_template_link: "https://www.silex.me/templates/"
 add_title: Create a new website
 add_name_label: Website name
 add_name_placeholder: My project website
@@ -55,4 +56,3 @@ list_duplicate_icon: >-
 list_delete: Delete
 message_dismiss: Dismiss
 ---
-

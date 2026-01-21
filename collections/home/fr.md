@@ -9,6 +9,7 @@ text_empty1: C'est bien calme ici...
 text_empty2: Prêt.e à démarrer une nouvelle aventure?
 add_button: Créer un site
 add_from_template: "\U0001F50E︎ A partir d'une template"
+add_from_template_link: "https://www.silex.me/fr/templates/"
 add_title: Créer un nouveau site internet
 add_name_label: Nom du site
 add_name_placeholder: Mon super projet
@@ -55,4 +56,3 @@ list_duplicate_icon: >-
 list_delete: Supprimer
 message_dismiss: Fermer
 ---
-

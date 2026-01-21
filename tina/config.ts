@@ -78,6 +78,11 @@ export default defineConfig({
             type: 'string'
           },
           {
+            label: 'Add From Template Link',
+            name: 'add_from_template_link',
+            type: 'string'
+          },
+          {
             label: 'Add Title',
             name: 'add_title',
             type: 'string'
