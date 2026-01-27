@@ -27,13 +27,6 @@ homeConnection {
       subtitle
       title2_empty
       subtitle_empty
-      add_title
-      add_name_label
-      add_name_placeholder
-      add_ok
-      add_cancel
-      add_from_template
-      add_from_template_link
       list_edit_icon
       list_edit
       list_rename_icon
@@ -44,6 +37,13 @@ homeConnection {
       text_empty1
       text_empty2
       add_button
+      add_title
+      add_name_label
+      add_name_placeholder
+      add_ok
+      add_cancel
+      add_from_template
+      add_from_template_link
       message_dismiss
       lang
 
