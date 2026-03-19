@@ -1,6 +1,6 @@
 # Silex Dashboard
 
-Here is the source code of Silex dashboard. It is a [Silex](https://www.silex.me) plugin which can be installed to manage websites you will then edit in Silex.
+Dashboard plugin for managing websites in Silex. Built with 11ty and Vue.js, it provides a UI to create, list and manage your Silex sites.
 
 Technically, the dashboard is an [11ty](https://11ty.dev) website with a design made in Silex + [a vue.js app](https://vuejs.org/) which interacts with Silex API
 
