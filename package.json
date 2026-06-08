@@ -36,6 +36,8 @@
     "@silexlabs/silex": "3.7.0-canary.1",
     "@types/node": "^22.14.1",
     "concurrently": "^9.2.1",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "start-server-and-test": "^2.0.11"
   },
   "dependencies": {
