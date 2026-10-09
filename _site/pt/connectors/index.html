@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Silex v3.6.2">
+<link rel="stylesheet" href="/css/connectors-e4ae24975f4df2e2bea5121337282d8f2201bb86dc8c041c9ef43c0c2d7a32a7.css" />
+<!--  font google -->
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
+
+<style>
+  .before-js > * {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease;
+  }
+  .before-js[data-gjs-type] > *, /* This is only inside the editor, .before-js needs to be on the body */
+  .after-js > * {
+    visibility: visible;
+    opacity: 1;
+  }
+  .before-js:before {
+    content: 'Carregando';
+    position: absolute;
+    top: 49%;
+    left: 49%;
+  }
+  .before-js[data-gjs-type]:before, /* This is only inside the editor, .before-js needs to be on the body */
+  .after-js:before {
+    content: none;
+  }
+  /*BTNS*/
+  .button, .pointer {
+    cursor: pointer!important}
+  .button{
+    min-width:110px;
+  }
+  details {
+	max-height: 2em;
+    display: block;
+    overflow: hidden;
+    transition: max-height .75s ease;
+  }
+  details[open] {
+    max-height: 40em;
+  }
+
+  /*BTNS*/
+  a {
+    text-decoration: none;
+    color:#8873FE;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .uppercase  {
+    text-transform: uppercase;
+  }
+  .underline:hover{
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
+    text-underline-position: under;
+  }
+  /*footer position*/
+  .main-min-height {
+    min-height: calc(100vh - 560px);
+  }
+  /*footer position*/
+  /*label*/
+  ::placeholder {
+    color: #8873FE;
+  }
+  input:focus {
+    border: 2px solid #9977FE;
+    background-color:#ffffff;
+  }
+  :focus {
+    outline: none;
+  }
+  /*label*/
+  .skeleton-anim:after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background:
+      linear-gradient(0.25turn, transparent, rgba(255,255,255,.75), transparent),
+      linear-gradient(transparent, transparent),
+      radial-gradient(38px circle at 19px 19px, transparent 50%, transparent 51%),
+      linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: 315px 250px, 315px 180px, 100px 100px, 225px 30px;
+    background-position: -315px 0, 0 0, 0px 190px, 50px 195px;
+    animation: loading 1.5s infinite;
+  }
+  @keyframes loading {
+    to {
+      background-position: 200% 0, 0 0, 0 190px, 50px 195px;
+    }
+  }
+  /*FX ANIMATIONS*/
+  /*scale-round-inside_pour-BTN*/
+  .fx-scale-round {
+    position:relative;
+    z-index: 10;
+    overflow: hidden;
+  }
+  .fx-scale-round::after {
+    content: "";
+    background: #ffffff;
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    left: -50%;
+    right: -50%;
+    top: -100%;
+    bottom: -100%;
+    transform: scale(0, 0);
+    transform-origin: center bottom;
+    transition: all 0.3s ease-out;
+  }
+  .fx-scale-round:hover {
+    transform-origin: center bottom;
+    transform: scale(1.1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  .fx-scale-round:hover::after {
+    transform: scale(1, 1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  /*scale-round-inside_pour-BTN*/
+  /*scale*/
+  .fx-scale:hover  {
+    transform-origin: center bottom;
+    transform: scale(1.1);
+    transition: transform 0.2s cubic-bezier(0, -0.530, 0.405, 2.8);
+  }
+  /*flash*/
+  .fx-flash:hover {
+    animation: flash-in .25s ;
+  }
+  /*flash-in animation*/
+  @keyframes flash-in{
+    0% {
+      opacity:.25;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  /*flash-in animation*/
+  /*FX ANIMATIONS*/
+</style>
+<script src="/js/vue.global.prod.js"></script>
+<script src="/js/main.js"></script>
+<script type="module">
+const CONNECTORS_PATH = ''
+const { createApp } = Vue;
+const { api, constants, types } = silex;
+const {
+  ConnectorType,
+} = types
+const {
+  setServerUrl,
+  getUser,
+  logout,
+  websiteDelete,
+  websiteDuplicate,
+  websiteList,
+  websiteCreate,
+  websiteMetaWrite,
+  connectorList,
+} = api
+function toSafeId(name) {
+  return name.replace(/[/\\?%*:|"<>]/g, '_')
+}
+
+const params = new URLSearchParams(window.location.search)
+const redirect = params.get('redirect')
+
+const App = {
+  data() {
+    return {
+      websites: [],
+      connectors: [],
+      newWebsiteName: '',
+      showCreationForm: false,
+      error: null,
+      message: null,
+      loggedIn: false,
+      loading: true,
+      storage: null,
+      user: null,
+      showMenu: false,
+      empty: false,
+      rgpdFeedback: false,
+      rgpdNL: false,
+    }
+  },
+  mounted() {
+    this.init()
+  },
+
+  methods: {
+    async init() {
+      try {
+        // Init Silex server path
+        // Go up one level because of the language prefix
+        setServerUrl(window.location.origin)
+        await this.getConnectors()
+        this.setRgpd('nl', this.getRgpd('nl') ?? true)
+        this.setRgpd('feedback', this.getRgpd('feedback') ?? true)
+      } catch (error) {
+        console.error(error)
+        this.loading = false
+        this.error = `Falha ao iniciar o painel - ${error.message}`
+        this.message = ''
+      }
+    },
+
+    getIcon(connector) {
+      return decodeURIComponent(connector.icon.split(',').slice(1).join(','))
+    },
+
+    getHref(connector) {
+      const params = new URLSearchParams(window.location.search)
+      const redirect = params.get('redirect')
+
+      if (connector.isLoggedIn) {
+        return redirect || '/'
+      }
+
+      if (!connector.oauthUrl) {
+        return '/api/connector/login/?type=STORAGE&connectorId=' + connector.connectorId
+      }
+
+      if (!redirect) return connector.oauthUrl
+
+      const url = new URL(connector.oauthUrl)
+      const state = url.searchParams.get('state')
+
+      url.searchParams.set(
+        'state',
+        JSON.stringify({ state, redirect })
+      )
+
+      return url.toString()
+    },
+
+
+    getConnectorStyle(connector) {
+      return {
+        backgroundImage: `url(${connector.icon})`,
+        //color: connector.color,
+        //backgroundColor: connector.background
+      }
+    },
+
+    async getConnectors() {
+      try {
+        this.loading = true
+        const connectors = await connectorList({ type: ConnectorType.STORAGE })
+        this.connectors = connectors
+        // this.connectors = [{"connectorId":"gitlab","type":"STORAGE","displayName":"GitLab.com","icon":"/assets/gitlab.png","disableLogout":false,"isLoggedIn":true,"oauthUrl":"https://gitlab.com/oauth/authorize?client_id=55cb55ab5fd12ab93883378513212d0c85833ef1f4084375f973618e938af107&redirect_uri=https%3A%2F%2Fv3.silex.me%2Fapi%2Fconnector%2Flogin%2Fcallback%3FconnectorId%3Dgitlab%26type%3DSTORAGE&response_type=code&state=6z1oajr7s9q75vl47i5065&scope=api&code_challenge=APGn3qQ0O5zDzkLelHIMtjKMo2WmFJj4XxFqAd3bQJ4&code_challenge_method=S256","color":"#2B1B63","background":"rgba(252, 109, 38, 0.2)"},{"connectorId":"gitlab2","type":"STORAGE","displayName":"Framagit","icon":"/assets/gitlab.png","disableLogout":false,"isLoggedIn":false,"oauthUrl":"https://framagit.org/oauth/authorize?client_id=13484ab1c802362f0292cbf637fd348a3bca46dfb2c2466a361ab89a799a8925&redirect_uri=https%3A%2F%2Fv3.silex.me%2Fapi%2Fconnector%2Flogin%2Fcallback%3FconnectorId%3Dgitlab2%26type%3DSTORAGE&response_type=code&state=1mzpmxpuymoy2ss07wv01f&scope=api&code_challenge=dkwe8iS7dOH8Cmm5YVIv39huEkLCJ1xx276h1jok7oQ&code_challenge_method=S256","color":"#2B1B63","background":"rgba(252, 109, 38, 0.2)"},{"connectorId":"ftp","type":"STORAGE","displayName":"Ftp","icon":"/assets/ftp.png","disableLogout":false,"isLoggedIn":false,"oauthUrl":null,"color":"#ffffff","background":"#0066CC"}]
+        this.loading = false
+      } catch (error) {
+        this.loading = false
+        console.error(error)
+        this.error = `Falha ao carregar os conectores - ${error.message}`
+        this.message = ''
+      }
+    },
+	openLogin() {},
+    // name: "nl" | "feedback", value: Boolean
+    setRgpd(name, value) {
+      const errorDiv = document.getElementById('errorDiv');
+      console.log('definir RGPD', {name, value, errorDiv})
+      if (errorDiv) errorDiv.textContent = ''; // Clear previous errors
+
+      if(name === 'feedback') this.rgpdFeedback = value.toString()
+      if(name === 'nl') this.rgpdNL = value.toString()
+
+      if (typeof Storage !== 'undefined') {
+          try {
+              localStorage.setItem(name, JSON.stringify(value));
+              console.log(`Configuração RGPD salva: ${name} = ${value}`);
+          } catch (e) {
+              if (errorDiv) {
+                  errorDiv.textContent = 'Erro ao salvar no localStorage: ' + e.message;
+              }
+              console.error('Erro ao salvar no localStorage', e);
+          }
+      } else {
+          const warning = 'O armazenamento local não é suportado neste navegador.';
+          if (errorDiv) {
+              errorDiv.textContent = warning;
+          }
+          console.warn(warning);
+      }
+    },
+    getRgpd(name) {
+      const errorDiv = document.getElementById('errorDiv');
+      if (errorDiv) errorDiv.textContent = ''; // Clear previous errors
+      console.log('obter RGPD', name)
+
+      if (typeof Storage !== 'undefined') {
+          try {
+              const value = localStorage.getItem(name);
+              return value !== null ? JSON.parse(value) : null; // Return parsed value or null if not found
+          } catch (e) {
+              if (errorDiv) {
+                  errorDiv.textContent = 'Erro ao recuperar do localStorage: ' + e.message;
+              }
+              console.error('Erro ao recuperar do localStorage', e);
+              return null;
+          }
+      } else {
+          const warning = 'O armazenamento local não é suportado neste navegador.';
+          if (errorDiv) {
+              errorDiv.textContent = warning;
+          }
+          console.warn(warning);
+          return null;
+      }
+    },
+  },
+};
+// Prepare elements for vue
+document.querySelectorAll('[v-text], [v-html]')
+  .forEach(el => el.innerText = '')
+
+document.querySelectorAll('[data-remove-href]')
+  .forEach(el => {
+  	el.removeAttribute('href')
+    el.removeAttribute('data-remove-href')
+  })
+
+
+// Create the app
+const app = createApp(App);
+
+// Mount the app
+app.mount('.app');
+
+
+// Remove loading
+setTimeout(() => {
+  document.querySelector('.before-js').classList.add('after-js')
+}, 100)
+
+</script>
+
+<title>Painel Silex</title>
+<link rel="icon" href="/assets/favicon-32x32.png" />
+<meta name="og:title" property="og:title" content="Painel Silex"/>
+<link href="https://fonts.googleapis.com" rel="preconnect" ><link href="https://fonts.googleapis.com/css2" rel="preconnect" crossorigin ><link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet" ></head>
+<body id="i2hcfw" class="body app before-js"><A href="/" id="ixzhcr" class="button button-bar__item--secondary">< Voltar</A><div id="imawg3" class="bg-silex-purpel"><div id="imgx81" style="min-height:100vh;display:flex;justify-content:center;align-items:center;flex-direction:column;" class=""><div id="iikf0s" class="box box_login"><div id="ie0dxn" class="text-centered"><img id="ior0hl" src="/assets/logo-silex.svg"/><p id="it2175" style="margin:15px 0px 0px 0px;font-size:1rem;" class="subtitle-16">Faça login para continuar</p></div><h3 id="iqc1xf" style="display:none;" class="margin-top">Recomendado e gratuito</h3><div id="in62y2"><div id="isqe61" class="full-width margin-30" v-for="(connector, index) in connectors.slice(0, 1)"><a href="https://" id="i44y9w" class="connector__card" :href="getHref(connector)" data-remove-href="true"><div id="io3lid" class="button-bar__item__icon" :style="getConnectorStyle(connector)"></div><div id="i87asw" class="connector__description" v-text="connector.displayName">Entrar com <span href="" id="i0tt68">Name</span><br id="i1zf1p"/></div></a></div><div id="i9fpn7" class="rgpd-checks"><input type="checkbox" checked id="feedback-check" name="feedback-check" class="rgpd-checks__check" v-on:change="(event) => setRgpd('feedback', event.target.checked)" v-model="rgpdFeedback"></input><label for="feedback-check" id="iv7hwn" class="">Permitir contato para depuração e feedback</label></div><div id="iahvhn" class="rgpd-checks"><input type="checkbox" checked id="nl-check" name="nl-check" class="rgpd-checks__check" v-on:change="(event) => setRgpd('nl', event.target.checked)" v-model="rgpdNL"></input><label for="nl-check" id="isjk6j" class="">Assinar nossa newsletter</label></div><div id="errorDiv"></div></div><DETAILS id="ihn6fj"><summary id="i8w75b" class="margin-30">Usuários avançados</summary><div id="ibi9qh" class="full-width" v-for="(connector, index) in connectors.slice(1)"><a href="https://" id="i5p9p5" class="connector__card" :href="getHref(connector)" data-remove-href="true"><div id="ibphi6" class="button-bar__item__icon" :style="getConnectorStyle(connector)"></div><div id="iaoqw4" class="connector__description" v-text="connector.displayName">Entrar com <span href="" id="iz6g2i">Name</span><br id="ihgk46"/></div></a></div></DETAILS><div id="i3cney" class="button-bar"><a id="iacshy" class="button big-button connector__card" v-if="!loading" :key="index" :style="{ backgroundColor: connector.background, color: connector.color }" v-for="(connector, index) in connectors" v-on-click="openLogin(connector)"><div id="iiwn36"><div id="iiau0s" class="button-bar__item__icon" :style="`background: url('${connector.icon}'); background-repeat: no-repeat; background-size: contain;`"></div><div id="if4gvb" class="" v-text="connector.displayName">Name<br id="iimwvw"/></div></div><div id="isndui">Informações sobre este conector<br id="igsu87"/></div></a></div><div id="ijflxq" style="font-size:0.85rem;text-align:left;margin:30px 0px 0px 0px;" class="text-centered">Precisa de ajuda? Consulte <a href="https://docs.silex.me/en/user/login" target="_blank">a documentação</a>. <br><br> Ao fazer login, você concorda com os <a href="https://docs.silex.me/en/terms" target="_blank">termos de uso</a> e com a <a href="https://docs.silex.me/en/security" target="_blank">política de privacidade</a>.</div></div><div id="i9msnk" style="padding:10px;display:inline;" class="text-white top-space-20" v-if="error" v-text="message" :test="message">Insira seu texto aqui</div><div id="i6akll" style="padding:10px;display:inline;" class="button button--tertiary text-centered" v-if="error" v-on:click="logout()">Sair</div></div></div><FOOTER id="i6qv1n" class="footer">
+
+  <div id="iprzeh" style="min-height:100px;" class="footer__column"><h3 href="" id="ik1iir" class="footer__item">Redes sociais e comunidade</h3>
+
+  <a href="https://www.silex.me/" id="is59uo" class="footer__item" target="_blank">Sobre o Silex, site oficial</a>
+  <a href="mailto:contact+silex-dashboard-footer@silex.me" id="is59uo" class="footer__item" target="">Enviar e-mail para a equipe</a>
+  <a href="https://short.silex.me/sponsors" id="is59uo" class="footer__item" target="_blank">Patrocinadores</a>
+  <a href="https://short.silex.me/donate" id="is59uo" class="footer__item" target="">Fazer uma doação</a>
+  <a href="https://short.silex.me/community" id="is59uo" class="footer__item" target="_blank">Fórum da comunidade</a>
+  <a href="https://news.silex.me/forms/nfrm_weLJnLY5" id="is59uo" class="footer__item" target="_blank">Newsletter</a>
+  <a href="https://events.silex.me/" id="is59uo" class="footer__item" target="_blank">Encontros e eventos</a>
+  <a href="https://short.silex.me/mastodon" id="is59uo" class="footer__item" target="_blank">Mastodon</a>
+  <a href="https://short.silex.me/lemmy" id="is59uo" class="footer__item" target="_blank">Lemmy</a></div>
+  <div id="iprzeh" style="min-height:100px;" class="footer__column"><h3 href="" id="ik1iir" class="footer__item">Recursos</h3>
+
+  <a href="https://short.silex.me/code" id="is59uo" class="footer__item" target="_blank">Código-fonte</a>
+  <a href="http://docs.silex.me/" id="is59uo" class="footer__item" target="_blank">Documentação</a>
+  <a href="https://video.silex.me/c/silex_en/video-playlists" id="is59uo" class="footer__item" target="_blank">Vídeos</a>
+  <a href="https://short.silex.me/roadmap" id="is59uo" class="footer__item" target="_blank">Roteiro de desenvolvimento</a>
+  <a href="https://short.silex.me/contribute" id="is59uo" class="footer__item" target="_blank">Contribuir</a></div>
+  <div id="iprzeh" style="min-height:100px;" class="footer__column"><h3 href="" id="ik1iir" class="footer__item">Artigos e avaliações</h3>
+
+  <a href="https://short.silex.me/alternatives" id="is59uo" class="footer__item" target="_blank">Alternativas ao Silex</a>
+  <a href="https://short.silex.me/reviews" id="is59uo" class="footer__item" target="_blank">Avaliações do Silex</a>
+  <a href="https://short.silex.me/press" id="is59uo" class="footer__item" target="_blank">Silex na imprensa</a></div></FOOTER></body>
+</html>
