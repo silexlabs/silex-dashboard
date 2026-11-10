@@ -9,6 +9,8 @@ rgpd:
   feedbackCheck: Autoriser le contact pour débogage et feedback
   nlCheck: S'abonner à la newsletter
 help: >-
+  Vous cherchez le FTP ou le téléchargement en zip ? La version en ligne ne les propose plus. <a href="https://docs.silex.me/fr/designer/publishing/overview/#publier-sur-votre-propre-hebergeur-en-ftp-ou-sftp" target="_blank">Voir comment publier maintenant</a>.
+  <br><br>
   Avez-vous besoin d'aide ? Consultez <a href="https://docs.silex.me/fr/user/login" target="_blank">la documentation</a>.
   <br><br>
   En vous connectant, vous acceptez les <a href="https://docs.silex.me/fr/terms" target="_blank">conditions d'utilisation</a> et la <a href="https://docs.silex.me/fr/security" target="_blank">politique de confidentialité</a>.
