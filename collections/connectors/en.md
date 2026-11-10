@@ -9,6 +9,8 @@ rgpd:
   feedbackCheck: Allow contact for debugging and feedback
   nlCheck: Subscribe to our newsletter
 help: >-
+  Looking for FTP or the zip download? The online version no longer has them. <a href="https://docs.silex.me/designer/publishing/overview/#publish-to-your-own-web-host-with-ftp-or-sftp" target="_blank">See how to publish now</a>.
+  <br><br>
   Do you need help? Check <a href="https://docs.silex.me/en/user/login" target="_blank">the documentation</a>.
   <br><br>
   By logging in, you agree to the <a href="https://docs.silex.me/en/terms" target="_blank">terms of use</a> and the <a href="https://docs.silex.me/en/security" target="_blank">privacy policy</a>.
